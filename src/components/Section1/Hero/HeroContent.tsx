@@ -2,6 +2,7 @@ import React from 'react';
 import StarUs from '../Buttons/StarUs';
 import GetStarted from '../Buttons/GetStarted';
 import FloatingNavbar from '../Navbar/Navbar';
+import '../../../App.css'
 
 const HeroContent: React.FC = () => {
   return (

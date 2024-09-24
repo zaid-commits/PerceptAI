@@ -3,7 +3,7 @@ import React from 'react';
 import Sidebar from './SideBar/SideBar';
 import ProjectGrid from './ProjectGrid/ProjectGrid';
 import './Section2.css';
-import '../../index.css';
+import '../../App.css';
 
 // Functional component with no props
 const Section2: React.FC = () => {
