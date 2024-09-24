@@ -3,7 +3,6 @@ import FloatingNavbar from '../Navbar/Navbar';
 import HeroContent from './HeroContent';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-import '../../../App.css'
 gsap.registerPlugin(ScrollTrigger);
 
 const LandingPage: React.FC = () => {
