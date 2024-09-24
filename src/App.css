@@ -1,42 +1,150 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+html{
+  scroll-behavior: smooth;
+}
+
+/* landing page  */
+.hero-content {
+
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+  color: white;
+  box-sizing: border-box;
+}
+
+.content-wrapper {
+  max-width: 48rem;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.hero-title {
+    font-family: 'Inter';
+  font-size: 2.25rem;
+  font-weight: bold;
+  margin: 0;
+  margin-bottom: 1.5rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.hero-description {
+  font-size: 1.25rem;
+  margin-bottom: 3rem;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-wrapper {
+  transform: scale(1);
+  transition: transform 0.3s ease;
+}
+
+.button-wrapper:hover {
+  transform: scale(1.02);
+}
+
+@media (min-width: 640px) {
+  .hero-title {
+    font-size: 3rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  .button-container {
+    flex-direction: row;
+    gap: 1.5rem;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 3.75rem;
   }
 }
 
-.card {
-  padding: 2em;
+
+.box{
+  height: 300px;
+  width: 200px;
+  transform: rotate(-40deg);
+  background-image: url(https://i.pinimg.com/564x/a1/55/17/a15517b13e37ffd523d6b33bc86e85d7.jpg);
+  background-position: center;
+  background-size: cover;
+  filter: brightness(70%);
+
+
 }
 
-.read-the-docs {
-  color: #888;
+.box:nth-child(2){
+  transform: rotate(-20deg);
+  background-image: url(https://i.pinimg.com/originals/3c/90/7f/3c907f8dd28a84d202a4b794b79a6214.gif);
+
+
+}
+
+.box:nth-child(3){
+  transform: rotate(0deg);
+  background-image: url(https://i.pinimg.com/564x/25/66/58/25665846d70cc1f84b81a7f3a3dc8646.jpg);
+
+
+
+  
+}
+
+.box:nth-child(4){
+  transform: rotate(20deg);
+  background-image: url(https://i.pinimg.com/564x/82/3c/b5/823cb53f314aae06d2dd5d6b2d8562a9.jpg);
+
+}
+
+.box:nth-child(5){
+  transform: rotate(40deg);
+  background-image: url(https://i.pinimg.com/736x/55/27/64/5527648d92c47b0bbb626422348242da.jpg);
+
+
+  
+}
+
+.wrap{
+  width: 100%;
+  display: flex;
+}
+
+.box{
+  margin-top:12%;
+  position: absolute;
+  left: 20%;
+ 
+}
+
+.side{
+  margin-top: 122px;
+  background-color: rgba(255, 255, 255, 0.077);
+  border: 1px solid rgba(128, 128, 128, 0.465);
+  color: aliceblue;
+  
+  
+}
+
+
+.hover\:bg-gray-200:hover{
+  background-color: rgba(0, 0, 255, 0.383) !important;
+}
+
+.in{
+  mix-blend-mode: color;
+  color: floralwhite;
+}
+
+.sec3{
+  height: 100vh;
+  background-color: black;
 }
