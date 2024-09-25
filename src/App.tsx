@@ -1,5 +1,3 @@
-import React from 'react'
-import { MarqueeDemo } from './components/ui/MarqueeDemo'
 import Hero from './components/Section1/Hero/Hero'
 import Section2 from './components/Section2/Section2'
 
