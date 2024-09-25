@@ -2,6 +2,7 @@ import React from 'react';
 import StarUs from '../Buttons/StarUs';
 import GetStarted from '../Buttons/GetStarted';
 import FloatingNavbar from '../Navbar/Navbar';
+import { TypewriterEffectSmoothDemo } from '@/components/magicui/TypewriterEffectSmoothDemo';
 
 const HeroContent: React.FC = () => {
   return (
@@ -10,10 +11,13 @@ const HeroContent: React.FC = () => {
 
       <div className="content-wrapper">
         <div className="text-container">
-          <h1 className="hero-title in">AI Infused Vision Directory</h1>
+          {/* Replacing static text with the typewriter effect */}
+          <TypewriterEffectSmoothDemo />
+
           <p className="hero-description in">
             Explore the world of AI and Machine Learning with next level Computer Vision projects, dive into <strong>open-source</strong> project directory now!
           </p>
+
           <div className="button-container">
             <div className="button-wrapper">
               <StarUs />
