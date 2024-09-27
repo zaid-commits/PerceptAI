@@ -8,7 +8,7 @@ function App() {
            {/* <MarqueeDemo /> */}
            <Hero/>
            <Section2 />
-           <Section3 />
+           {/* <Section3 /> */}
     </div>
   )
 }

@@ -22,6 +22,46 @@ const projects: Project[] = [
     stars: 154,
     forks: 23,
     imageUrl: "https://socialify.git.ci/zaid-commits/tools/image?description=1&descriptionEditable=lorem%20ipsum%20dolor%20set%20amet!&font=KoHo&forks=1&issues=1&language=1&name=1&owner=1&pattern=Charlie%20Brown&pulls=1&stargazers=1&theme=Dark"
+  },{
+    title: "Object Detection AI",
+    author: "Zaid Rakhange",
+    description: "Advanced computer vision for real-time object detection.",
+    category: "OpenCV",
+    stars: 154,
+    forks: 23,
+    imageUrl: "https://socialify.git.ci/zaid-commits/tools/image?description=1&descriptionEditable=lorem%20ipsum%20dolor%20set%20amet!&font=KoHo&forks=1&issues=1&language=1&name=1&owner=1&pattern=Charlie%20Brown&pulls=1&stargazers=1&theme=Dark"
+  },{
+    title: "Object Detection AI",
+    author: "Zaid Rakhange",
+    description: "Advanced computer vision for real-time object detection.",
+    category: "OpenCV",
+    stars: 154,
+    forks: 23,
+    imageUrl: "https://socialify.git.ci/zaid-commits/tools/image?description=1&descriptionEditable=lorem%20ipsum%20dolor%20set%20amet!&font=KoHo&forks=1&issues=1&language=1&name=1&owner=1&pattern=Charlie%20Brown&pulls=1&stargazers=1&theme=Dark"
+  },{
+    title: "Object Detection AI",
+    author: "Zaid Rakhange",
+    description: "Advanced computer vision for real-time object detection.",
+    category: "OpenCV",
+    stars: 154,
+    forks: 23,
+    imageUrl: "https://socialify.git.ci/zaid-commits/tools/image?description=1&descriptionEditable=lorem%20ipsum%20dolor%20set%20amet!&font=KoHo&forks=1&issues=1&language=1&name=1&owner=1&pattern=Charlie%20Brown&pulls=1&stargazers=1&theme=Dark"
+  },{
+    title: "Object Detection AI",
+    author: "Zaid Rakhange",
+    description: "Advanced computer vision for real-time object detection.",
+    category: "OpenCV",
+    stars: 154,
+    forks: 23,
+    imageUrl: "https://socialify.git.ci/zaid-commits/tools/image?description=1&descriptionEditable=lorem%20ipsum%20dolor%20set%20amet!&font=KoHo&forks=1&issues=1&language=1&name=1&owner=1&pattern=Charlie%20Brown&pulls=1&stargazers=1&theme=Dark"
+  },{
+    title: "Object Detection AI",
+    author: "Zaid Rakhange",
+    description: "Advanced computer vision for real-time object detection.",
+    category: "OpenCV",
+    stars: 154,
+    forks: 23,
+    imageUrl: "https://socialify.git.ci/zaid-commits/tools/image?description=1&descriptionEditable=lorem%20ipsum%20dolor%20set%20amet!&font=KoHo&forks=1&issues=1&language=1&name=1&owner=1&pattern=Charlie%20Brown&pulls=1&stargazers=1&theme=Dark"
   },
 ];
 
