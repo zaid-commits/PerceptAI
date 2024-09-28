@@ -10,10 +10,10 @@ const Sidebar: React.FC = () => {
     const ts1 = gsap.timeline({
       scrollTrigger: {
         trigger: ".root",
-        start: "top 0",
-        end: "bottom 100%",
+        // start: "top 0",
+        // end: "bottom 100%",
         scrub: 2,
-        markers: true,
+        // markers: true,
       }
     });
 
