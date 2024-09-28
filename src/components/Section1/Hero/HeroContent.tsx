@@ -3,6 +3,7 @@ import StarUs from '../Buttons/StarUs';
 import GetStarted from '../Buttons/GetStarted';
 import FloatingNavbar from '../Navbar/Navbar';
 import { TypewriterEffectSmoothDemo } from '@/components/magicui/TypewriterEffectSmoothDemo';
+import '../../../App.css'
 
 const HeroContent: React.FC = () => {
   return (
@@ -11,7 +12,7 @@ const HeroContent: React.FC = () => {
 
       <div className="content-wrapper">
         <div className="text-container">
-          {/* Replacing static text with the typewriter effect */}
+          
           <TypewriterEffectSmoothDemo />
 
           <p className="hero-description in">
