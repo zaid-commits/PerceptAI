@@ -33,7 +33,7 @@ const Sidebar: React.FC = () => {
   }, []); // Empty dependency array to run once on mount
 
   return (
-    <div className="w-1/5 bg-gray-100 p-4 rounded-md shadow-md h-full side tt">
+    <div className="w-1/5 bg-black p-4 rounded-md shadow-md h-full side tt">
       <h2 className="text-xl font-bold mb-4">Most Popular Machine Learning Tools</h2>
       <strong>
         <p>Trending Topics</p>
