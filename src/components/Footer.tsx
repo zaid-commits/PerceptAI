@@ -24,9 +24,9 @@ const SocialIcons = styled.div`
     gap: 15px;
     
     & a {
-        color: white; /* White icons */
-        font-size: 20px; /* Size of the icon */
-        transition: color 0.3s; /* Transition for hover effect */
+        color: white; 
+        font-size: 20px; 
+        transition: color 0.3s;
         
     }
 
