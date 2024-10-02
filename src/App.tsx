@@ -10,6 +10,7 @@ function App() {
            <Hero/>
            <Section2 />
            <Section3 />
+           <Footer />
     </div>
   )
 }
