@@ -1,9 +1,10 @@
+import { AnimatedBeamMultipleOutputDemo } from "../magicui/AnimatedBeamMultipleOutputDemo"
 
 function Section3() {
   return (
     <div className='sec3'>
-      <div className="waitlist">
-        hello
+      <div className="multiContainer">
+        <AnimatedBeamMultipleOutputDemo />
       </div>
     </div>
   )
