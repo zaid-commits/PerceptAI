@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../../../assets/Images/corelogo.png'; // Corrected import
+import logo from '../../../assets/logos/corelogo.png'; // Corrected import
 
 
 const FloatingNavbar: React.FC = () => {

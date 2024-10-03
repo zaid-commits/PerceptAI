@@ -66,8 +66,8 @@ export function AnimatedBeamMultipleOutputDemo({
           </Circle>
         </div>
         <div className="flex flex-col justify-center">
-          <Circle ref={div6Ref} className="size-16">
-            <Icons.openai />
+          <Circle ref={div6Ref} className="size-14">
+            <img src="https://i.postimg.cc/XYdKwVW1/Untitled-design.png" alt="PerceptAI" />
           </Circle>
         </div>
         <div className="flex flex-col justify-center">
