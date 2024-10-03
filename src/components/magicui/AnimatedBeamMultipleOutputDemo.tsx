@@ -49,19 +49,20 @@ export function AnimatedBeamMultipleOutputDemo({
       <div className="flex size-full flex-row items-stretch justify-between gap-10 max-w-lg">
         <div className="flex flex-col justify-center gap-2">
           <Circle ref={div1Ref}>
-            <Icons.googleDrive />
+            <img src="https://upload.wikimedia.org/wikipedia/en/d/d9/Dlib_c%2B%2B_library_logo.png" alt="DLIB" />
           </Circle>
           <Circle ref={div2Ref}>
-            <Icons.googleDocs />
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEt1CW5ByKbRjN107xdxMqPnIRt2TwRQLReQ&s" alt="OpenCV" />
+            
           </Circle>
           <Circle ref={div3Ref}>
-            <Icons.whatsapp />
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmD38KsMgEwahtWc_Nfs5ZVktP9dBc36MUZA&s" alt="Flask" />
           </Circle>
           <Circle ref={div4Ref}>
-            <Icons.messenger />
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjxhy0suV8YbA8sybk_czVeMzFH_EvgXmdCg&s" alt="Mediapipe" />
           </Circle>
           <Circle ref={div5Ref}>
-            <Icons.notion />
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6iQyYphUHhLEUchqyhIwsRMe0G9aqVFjUaA&s" alt="TensorFlow" />
           </Circle>
         </div>
         <div className="flex flex-col justify-center">
