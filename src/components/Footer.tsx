@@ -32,8 +32,8 @@ const Footer: React.FC = () => {
         <FooterContainer>
             Under development by&nbsp; 
             <Link href="https://zed.impic.tech">Zed</Link>
-            &nbsp;and&nbsp;
-            <Link href="https://github.com/GabbarFramework">gabbarFramework</Link>
+            &nbsp;at&nbsp;
+            <Link href="https://www.community.impic.tech/">Impic</Link>
         </FooterContainer>
     );
 };
