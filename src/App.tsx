@@ -1,20 +1,25 @@
-// frontend/src/App.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-// Hardcoded backend URL
-const backendUrl = 'https://perceptai-backend.onrender.com';
+interface ProjectResponse {
+  projects: string[];
+}
 
-function App() {
-  const [projects, setProjects] = useState([]);
-  const [selectedProject, setSelectedProject] = useState('');
-  const [output, setOutput] = useState('');
-  const [error, setError] = useState('');
+interface RunProjectResponse {
+  output: string;
+  error: string;
+}
+
+const App: React.FC = () => {
+  const [projects, setProjects] = useState<string[]>([]);
+  const [selectedProject, setSelectedProject] = useState<string>('');
+  const [output, setOutput] = useState<string>('');
+  const [error, setError] = useState<string>('');
 
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await axios.get(`${backendUrl}/projects`);
+        const response = await axios.get<ProjectResponse>('http://localhost:5000/projects');
         setProjects(response.data.projects);
       } catch (err) {
         setError('Failed to fetch projects.');
@@ -25,7 +30,7 @@ function App() {
 
   const runProject = async () => {
     try {
-      const response = await axios.post(`${backendUrl}/run_project/${selectedProject}`);
+      const response = await axios.post<RunProjectResponse>(`http://localhost:5000/run_project/${selectedProject}`);
       setOutput(response.data.output);
       setError(response.data.error);
     } catch (err) {
