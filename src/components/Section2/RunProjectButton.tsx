@@ -1,6 +1,10 @@
 import React from 'react';
 
-const RunProjectButton = ({ projectName }) => {
+interface RunProjectButtonProps {
+  projectName: string;
+}
+
+const RunProjectButton: React.FC<RunProjectButtonProps> = ({ projectName }) => {
   const handleRunProject = async () => {
     try {
       const response = await fetch(`http://localhost:5000/run/${projectName}`);

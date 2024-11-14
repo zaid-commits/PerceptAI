@@ -1,10 +1,11 @@
 import React from 'react';
-
+import RunProjectButton from '../Section2/RunProjectButton';
+import ProjectLinks from '../Section2/ProjectLinks';
 const Test: React.FC = () => {
     return (
         <div>
-            <h1>Test Page</h1>
-            <p>This is a simple test page.</p>
+            <RunProjectButton projectName="Test" />
+            <ProjectLinks />
         </div>
     );
 };
