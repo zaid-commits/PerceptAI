@@ -1,13 +1,13 @@
-import { ReactLenis, useLenis } from 'lenis/react'
+// import { ReactLenis, useLenis } from 'lenis/react'
 
-function Component() {
-  const lenis = useLenis(({ scroll }) => {
-    // called every scroll
-  })
+// function Component() {
+//   const lenis = useLenis(({ scroll }) => {
+//     // called every scroll
+//   })
 
-  return (
-    <ReactLenis root>
-      { /* content */ }
-    </ReactLenis>
-  )
-}
+//   return (
+//     <ReactLenis root>
+//       { /* content */ }
+//     </ReactLenis>
+//   )
+// }
