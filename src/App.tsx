@@ -14,6 +14,7 @@ function App() {
         <Route path="/Test" element={<Test />} />
       </Routes>
     </Router>
+    <Analytics/>
     </ReactLenis>
   )
 }
