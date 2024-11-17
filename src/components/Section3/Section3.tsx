@@ -1,11 +1,14 @@
-import { AnimatedBeamMultipleOutputDemo } from "../magicui/AnimatedBeamMultipleOutputDemo"
+import React from 'react'
+import DeveloperFeatures from './developer-features'
+import GettingStartedGuide from './getting-started-guide'
+import PerformanceMetrics from './performance-metrics'
 
 function Section3() {
   return (
-    <div className='sec3'>
-      <div className="multiContainer">
-        <AnimatedBeamMultipleOutputDemo />
-      </div>
+    <div>
+      <PerformanceMetrics />
+      <GettingStartedGuide />
+      <DeveloperFeatures />
     </div>
   )
 }
