@@ -1,9 +1,9 @@
-import React from 'react'
 import DeveloperFeatures from './developer-features'
 import GettingStartedGuide from './getting-started-guide'
 import PerformanceMetrics from './performance-metrics'
 import DataVisualization from './DataVisualization'
-
+// import ComputerVisionPlayground from './PlayGround'
+import { InteractiveModelViewer } from './InteractiveModelViewer'
 function Section3() {
   return (
     <div>
@@ -11,6 +11,8 @@ function Section3() {
       <DataVisualization />
       <PerformanceMetrics />
       <DeveloperFeatures />
+      {/* <ComputerVisionPlayground /> */}
+      <InteractiveModelViewer />
     </div>
   )
 }
