@@ -40,7 +40,7 @@ const AnimatedNumber = ({ value, duration = 2000 }: AnimatedNumberProps) => {
 
 export default function PerformanceMetrics() {
   return (
-    <div className="bg-gray-900 py-20">
+    <div className="bg-black py-20">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-white text-center mb-12">
           Unparalleled <span className="text-purple-400">Performance</span>

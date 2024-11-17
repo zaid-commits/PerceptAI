@@ -2,12 +2,14 @@ import React from 'react'
 import DeveloperFeatures from './developer-features'
 import GettingStartedGuide from './getting-started-guide'
 import PerformanceMetrics from './performance-metrics'
+import DataVisualization from './DataVisualization'
 
 function Section3() {
   return (
     <div>
-      <PerformanceMetrics />
       <GettingStartedGuide />
+      <DataVisualization />
+      <PerformanceMetrics />
       <DeveloperFeatures />
     </div>
   )
