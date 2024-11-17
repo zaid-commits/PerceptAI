@@ -29,8 +29,8 @@ function Model({ url, scale, rotation }: { url: string, scale: number, rotation:
 
 const modelOptions = [
   { name: 'Robot Head', url: '/robot-head.glb' },
-  { name: 'Drone', url: '/drone.glb' },
-  { name: 'Smart Camera', url: '/smart-camera.glb' },
+  { name: 'Drone', url: '/robot-head.glb' },
+  { name: 'Smart Camera', url: '/robot-head.glb' },
 ]
 
 export  function InteractiveModelViewer() {
