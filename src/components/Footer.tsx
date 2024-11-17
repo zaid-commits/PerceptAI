@@ -23,17 +23,19 @@ const Link = styled.a`
     transition: color 0.3s;
 
     &:hover {
-        color: purple; /* Darker purple color */
+        color: purple; 
     }
 `;
 
 const Footer: React.FC = () => {
     return (
         <FooterContainer>
-            Under development by&nbsp; 
+            <p>
+            Under development by 
             <Link href="https://zed.impic.tech">Zed</Link>
-            &nbsp;at&nbsp;
+            <Link href="/">at</Link>
             <Link href="https://www.community.impic.tech/">Impic</Link>
+            </p>
         </FooterContainer>
     );
 };
