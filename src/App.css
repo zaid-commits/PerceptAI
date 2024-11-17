@@ -6,8 +6,7 @@ html{
 
 /* landing page  */
 .hero-content {
-
-  height: 100vh;
+  height: 80vh;
   width: 100vw;
   position: relative;
   z-index: 10;
