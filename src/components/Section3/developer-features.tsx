@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, lazy } from 'react'
 import { motion, useAnimation } from 'framer-motion'
 import { Terminal, Code2, Cpu, Zap, Layers, GitBranch } from 'lucide-react'
 import { Button } from "@/components/ui/button"
@@ -161,9 +161,8 @@ export default function DeveloperFeatures() {
                 </div>
               </div>
               <div className="bg-black rounded-lg overflow-hidden flex items-center justify-center">
-                <video 
-                  src="https://www.luxoft.com/files/services/computer-vision/our-natural-pic-4.jpg" 
-                  controls
+                <video  autoPlay muted loop
+                  src="https://cdn.prod.website-files.com/5f6bc60e665f54545a1e52a5%2F66cc83e20f0b4116036ea1b0_candy-1-transcode.mp4" 
                   className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-300"
                 />
               </div>
