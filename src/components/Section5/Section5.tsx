@@ -1,11 +1,11 @@
-import Promo from "./promo"
+import Promo from "./promo";
 
 function Section5() {
-  return (
-    <div>
-        <Promo />
-    </div>
-  )
+    return (
+        <div>
+            <Promo />
+        </div>
+    );
 }
 
-export default Section5
+export default Section5;
