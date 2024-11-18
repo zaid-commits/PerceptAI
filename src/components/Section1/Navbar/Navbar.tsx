@@ -20,17 +20,22 @@ const FloatingNavbar: React.FC = () => {
             Home
           </a>
         </Link>
-        <Link to={"/Test"}>
+        <Link to={"/Projects"}>
           <a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
             Projects
           </a>
         </Link>
-        <Link to={"/Test"}>
+        <Link to={"/Resources"}>
           <a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
             Resources
           </a>
         </Link>
-        <Link to={"/Test"}>
+        <Link to={"/Community"}>
+          <a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
+             Forum
+          </a>
+        </Link>
+        <Link to={"/Contact"}>
           <a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
             Contact
           </a>
