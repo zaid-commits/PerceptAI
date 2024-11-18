@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, lazy } from 'react'
+import { useState, useEffect, } from 'react'
 import { motion, useAnimation } from 'framer-motion'
 import { Terminal, Code2, Cpu, Zap, Layers, GitBranch } from 'lucide-react'
 import { Button } from "@/components/ui/button"
