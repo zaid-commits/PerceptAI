@@ -18,13 +18,7 @@ export default function Promo() {
                             >
                                 Join Now!
                             </Button>
-                            {/* <Button 
-                                variant="outline"
-                                className="hover:bg-gray-800 px-8 py-6 text-lg rounded-lg border-none"
-                                size="lg"
-                            >
-                                Talk to 
-                            </Button> */}
+                            
                         </div>
                     </div>
                 </CardContent>
