@@ -52,7 +52,7 @@ export default function PerformanceMetrics() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-black rounded-lg p-6 shadow-lg border border-purple-800"
+              className="bg-black rounded-lg p-6 shadow-lg border border-purple-950"
             >
               <div className="flex items-center mb-4">
                 <metric.icon className="w-8 h-8 text-purple-400 mr-3" />
