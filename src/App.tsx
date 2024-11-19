@@ -20,7 +20,7 @@ const AppRoutes: React.FC = () => {
     setLoading(true);
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000); // Set loading for 2 seconds
+    }, 2000); 
 
     return () => clearTimeout(timer);
   }, [location, setLoading]);
