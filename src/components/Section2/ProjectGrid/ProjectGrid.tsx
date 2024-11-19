@@ -15,54 +15,54 @@ interface Project {
 // Define the projects array with the Project type
 const projects: Project[] = [
   {
-    title: "Object Detection AI",
+    title: "Gesture Presentation Control",
     author: "Zaid Rakhange",
-    description: "Advanced computer vision for real-time object detection.",
+    description: "Control presentations with hand gestures using OpenCV.",
     category: "OpenCV",
     stars: 154,
     forks: 23,
-    imageUrl: "https://socialify.git.ci/zaid-commits/tools/image?description=1&descriptionEditable=lorem%20ipsum%20dolor%20set%20amet!&font=KoHo&forks=1&issues=1&language=1&name=1&owner=1&pattern=Charlie%20Brown&pulls=1&stargazers=1&theme=Dark"
-  },{
-    title: "Object Detection AI",
+    imageUrl: "https://blog.emb.global/wp-content/uploads/2024/01/The-Future-of-Gesture-Control-Technology.webp"
+  }, {
+    title: "Object Detection",
     author: "Zaid Rakhange",
-    description: "Advanced computer vision for real-time object detection.",
+    description: "Real-time object detection using OpenCV.",
     category: "OpenCV",
     stars: 154,
     forks: 23,
-    imageUrl: "https://socialify.git.ci/zaid-commits/tools/image?description=1&descriptionEditable=lorem%20ipsum%20dolor%20set%20amet!&font=KoHo&forks=1&issues=1&language=1&name=1&owner=1&pattern=Charlie%20Brown&pulls=1&stargazers=1&theme=Dark"
-  },{
-    title: "Object Detection AI",
+    imageUrl: "https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/real_time_object_detection.jpg"
+  }, {
+    title: "Virtual Paint",
     author: "Zaid Rakhange",
-    description: "Advanced computer vision for real-time object detection.",
+    description: "Create art with hand gestures using OpenCV.",
     category: "OpenCV",
     stars: 154,
     forks: 23,
-    imageUrl: "https://socialify.git.ci/zaid-commits/tools/image?description=1&descriptionEditable=lorem%20ipsum%20dolor%20set%20amet!&font=KoHo&forks=1&issues=1&language=1&name=1&owner=1&pattern=Charlie%20Brown&pulls=1&stargazers=1&theme=Dark"
-  },{
-    title: "Object Detection AI",
+    imageUrl: "https://media.licdn.com/dms/image/D5612AQGys8i58XR67g/article-cover_image-shrink_720_1280/0/1698330135309?e=2147483647&v=beta&t=99uyKHEjI3erTpJZTmNvo5_UBRStAcSRL7tunS9qgAg"
+  }, {
+    title: "AI Maths Solver",
     author: "Zaid Rakhange",
-    description: "Advanced computer vision for real-time object detection.",
+    description: "AI-powered math solver using computer vision.",
     category: "OpenCV",
     stars: 154,
     forks: 23,
-    imageUrl: "https://socialify.git.ci/zaid-commits/tools/image?description=1&descriptionEditable=lorem%20ipsum%20dolor%20set%20amet!&font=KoHo&forks=1&issues=1&language=1&name=1&owner=1&pattern=Charlie%20Brown&pulls=1&stargazers=1&theme=Dark"
-  },{
-    title: "Object Detection AI",
+    imageUrl: "https://math-ai.org/wp-content/uploads/2024/08/AI-Math-Solver-Powered-by-MathGPT.webp"
+  }, {
+    title: "Face Recognition",
     author: "Zaid Rakhange",
-    description: "Advanced computer vision for real-time object detection.",
+    description: "Advanced face recognition using OpenCV.",
     category: "OpenCV",
     stars: 154,
     forks: 23,
-    imageUrl: "https://socialify.git.ci/zaid-commits/tools/image?description=1&descriptionEditable=lorem%20ipsum%20dolor%20set%20amet!&font=KoHo&forks=1&issues=1&language=1&name=1&owner=1&pattern=Charlie%20Brown&pulls=1&stargazers=1&theme=Dark"
-  },{
-    title: "Object Detection AI",
+    imageUrl: "https://news.mit.edu/sites/default/files/styles/news_article__image_gallery/public/images/202203/face-600x900.png?itok=4wm2x8C2"
+  }, {
+    title: "Hand Tracking",
     author: "Zaid Rakhange",
-    description: "Advanced computer vision for real-time object detection.",
+    description: "High accuracy Hand Tracking using OpenCV.",
     category: "OpenCV",
     stars: 154,
     forks: 23,
-    imageUrl: "https://socialify.git.ci/zaid-commits/tools/image?description=1&descriptionEditable=lorem%20ipsum%20dolor%20set%20amet!&font=KoHo&forks=1&issues=1&language=1&name=1&owner=1&pattern=Charlie%20Brown&pulls=1&stargazers=1&theme=Dark"
-  },
+    imageUrl: "https://i.ytimg.com/vi/qAw5tuYgVec/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCgFsmn23tCnNhzX59fsFM1OS5t8Q"
+  }
 ];
 
 const ProjectGrid: React.FC = () => {
