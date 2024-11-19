@@ -1,4 +1,4 @@
-import DeveloperFeatures from './developer-features'
+// import DeveloperFeatures from './developer-features'
 import GettingStartedGuide from './getting-started-guide'
 import PerformanceMetrics from './performance-metrics'
 import DataVisualization from './DataVisualization'
@@ -10,7 +10,7 @@ function Section3() {
       <GettingStartedGuide />
       <DataVisualization />
       <PerformanceMetrics />
-      <DeveloperFeatures />
+      {/* <DeveloperFeatures /> */}
       {/* <ComputerVisionPlayground /> */}
       <div>
         {window.innerWidth > 768 && <InteractiveModelViewer />}
