@@ -44,7 +44,7 @@ const ResourceLibrary: React.FC = () => {
 
     return (
         <div className="bg-black py-20">
-            <FloatingNavbar /> {/* Added navbar component */}
+            <FloatingNavbar /> 
             <div className="container mx-auto px-4">
                 <h2 className="text-4xl font-bold text-white text-center mb-12">Resource Library</h2>
                 <input
@@ -56,7 +56,7 @@ const ResourceLibrary: React.FC = () => {
                 />
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {filteredResources.map((resource, index) => (
-                        <div key={index} className="bg-gray-800 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105">
+                        <div key={index} className="bg-slate-930 border border-purple-800 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105">
                             <h3 className="text-xl font-semibold text-purple-400">{resource.title}</h3>
                             <p className="text-gray-400 mt-2">{resource.description}</p>
                             <a href={resource.link} className="text-purple-400 mt-4 inline-block hover:underline">View Resource</a>
