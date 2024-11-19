@@ -7,7 +7,7 @@ const MouseFollower: React.FC = () => {
     const handleMouseMove = (event: MouseEvent) => {
       setTimeout(() => {
         setPosition({ x: event.clientX, y: event.clientY });
-      }, 100); // Added a little delay
+      }, 100); 
     };
 
     window.addEventListener('mousemove', handleMouseMove);
