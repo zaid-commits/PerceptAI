@@ -2,7 +2,6 @@
 import { Route, BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
 import { Main } from './components/Section1/Hero/Main';
 import Test from './components/routes/Test';
-import ReactLenis from 'lenis/react';
 import { Analytics } from "@vercel/analytics/react";
 import Projects from './components/routes/Projects';
 import Community from './components/routes/Community';
@@ -40,12 +39,10 @@ const AppRoutes: React.FC = () => {
 function App() {
   return (
     <LoadingProvider>
-      <ReactLenis root>
         <Router>
           <LoadingSpinner /> 
           <AppRoutes />
         </Router>
-      </ReactLenis>
       <Analytics />
     </LoadingProvider>
   );
