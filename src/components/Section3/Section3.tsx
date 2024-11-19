@@ -12,7 +12,9 @@ function Section3() {
       <PerformanceMetrics />
       <DeveloperFeatures />
       {/* <ComputerVisionPlayground /> */}
-      <InteractiveModelViewer />
+      <div>
+        {window.innerWidth > 768 && <InteractiveModelViewer />}
+      </div>
     </div>
   )
 }
