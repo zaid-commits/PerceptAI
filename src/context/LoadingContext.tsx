@@ -1,12 +1,17 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, ReactNode } from 'react';
 
-const LoadingContext = createContext({
+interface LoadingContextType {
+  loading: boolean;
+  setLoading: (loading: boolean) => void;
+}
+
+const LoadingContext = createContext<LoadingContextType>({
   loading: false,
-  setLoading: (loading: boolean) => {},
+  setLoading: () => {},
 });
 
-export const LoadingProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [loading, setLoading] = useState(false);
+export const LoadingProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const [loading, setLoading] = useState<boolean>(false);
 
   return (
     <LoadingContext.Provider value={{ loading, setLoading }}>
