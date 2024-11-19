@@ -69,7 +69,6 @@ export default function VideoTab({
                 autoPlay={activeTab === 'counting'}
                 loop
                 muted
-                controls
               >
                 <source src={videos.counting} type="video/mp4" />
                 Your browser does not support the video tag.
