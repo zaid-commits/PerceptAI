@@ -7,9 +7,6 @@ import Projects from './components/routes/Projects';
 import Community from './components/routes/Community';
 import Resources from './components/routes/Resources';
 import Contact from './components/routes/Contact';
-import Register from './components/Auth/Register';
-import Login from './components/Auth/Login';
-import UserProfile from './components/Auth/Profile';
 import LoadingSpinner from './components/LoadingSpinner';
 import { LoadingProvider, useLoading } from './context/LoadingContext';
 import { useEffect, useState } from 'react';
@@ -37,9 +34,6 @@ const AppRoutes: React.FC = () => {
       <Route path="/Community" element={<Community />} />
       <Route path="/Contact" element={<Contact />} />
       <Route path="/Test" element={<Test />} />
-      <Route path="/Register" element={isLoggedIn ? <Navigate to="/UserProfile" /> : <Register />} />
-      <Route path="/Login" element={isLoggedIn ? <Navigate to="/UserProfile" /> : <Login />} />
-      <Route path="/UserProfile" element={isLoggedIn ? <UserProfile /> : <Navigate to="/Login" />} />
     </Routes>
   );
 };
