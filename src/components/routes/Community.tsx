@@ -1,4 +1,4 @@
-import CommunityForum from "../Community/Forum"
+import CommunityForum from "../community/Forum"
 import FloatingNavbar from "../Section1/Navbar/Navbar"
 
 function Community() {

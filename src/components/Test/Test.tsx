@@ -1,7 +1,7 @@
 import React from 'react';
 import FloatingNavbar from '../Section1/Navbar/Navbar';
 import RunProjectButton from '../Section2/RunProjectButton';
-import CommunityForum from '../Community/Forum';
+import CommunityForum from '../community/Forum';
 const Test: React.FC = () => {
     return (
         <div>
