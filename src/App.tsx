@@ -1,4 +1,4 @@
-import { Route, BrowserRouter as Router, Routes, useLocation, Navigate } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes, Navigate } from 'react-router-dom';
 import { Main } from './components/Section1/Hero/Main';
 import Test from './components/routes/Test';
 // import { Analytics } from "@vercel/analytics/react";
@@ -7,23 +7,23 @@ import Community from './components/routes/Community';
 import Resources from './components/routes/Resources';
 import Contact from './components/routes/Contact';
 // import LoadingSpinner from './components/LoadingSpinner';
-import { LoadingProvider, useLoading } from './context/LoadingContext';
-import { useEffect } from 'react';
+// import { LoadingProvider, useLoading } from './context/LoadingContext';
+// import { useEffect } from 'react';
 import { SignedOut, SignedIn } from '@clerk/clerk-react';
 import Header from './components/auth/Header';
 import AuthPage from './components/auth/AuthPage';
 
 const AppRoutes: React.FC = () => {
-  const { setLoading } = useLoading();
-  const location = useLocation();
+  // const { setLoading } = useLoading();
+  // const location = useLocation();
 
-  useEffect(() => {
-    setLoading(true);
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-    return () => clearTimeout(timer);
-  }, [location, setLoading]);
+  // useEffect(() => {
+    // setLoading(true);
+    // const timer = setTimeout(() => {
+      // setLoading(false);
+    // }, 2000);
+    // return () => clearTimeout(timer);
+  // }, [location, setLoading]);
 
   return (
     <div>
@@ -51,11 +51,11 @@ const App: React.FC = () => {
         <AuthPage />
       </SignedOut>
       <SignedIn>
-        <LoadingProvider>
+        {/* <LoadingProvider> */}
           <Router>
             <AppRoutes />
           </Router>
-        </LoadingProvider>
+        {/* </LoadingProvider> */}
       </SignedIn>
     </>
   );
