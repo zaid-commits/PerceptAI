@@ -31,6 +31,9 @@ const Dashboard: React.FC = () => {
                                 <div>
                                     <p><strong>Name:</strong> {user.fullName}</p>
                                     <p><strong>Email:</strong> {user.primaryEmailAddress?.emailAddress}</p>
+                                    <p><strong>Joined:</strong> {new Date(user.createdAt).toLocaleDateString()}</p>
+                                    <p><strong>Last Active:</strong> {new Date(user.lastActiveAt).toLocaleDateString()}</p>
+                                    <p><strong>Role:</strong> {user.publicMetadata.role || "User"}</p>
                                     {/* Add more user details as needed */}
                                 </div>
                             ) : (
@@ -38,6 +41,35 @@ const Dashboard: React.FC = () => {
                             )}
                         </CardContent>
                     </Card>
+                    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                        <Card>
+                            <CardHeader>
+                                <CardTitle>Project Management</CardTitle>
+                                <CardDescription>Manage your projects efficiently.</CardDescription>
+                            </CardHeader>
+                            <CardContent>
+                                <p>Access all your projects and manage them from one place.</p>
+                            </CardContent>
+                        </Card>
+                        <Card>
+                            <CardHeader>
+                                <CardTitle>Analytics</CardTitle>
+                                <CardDescription>View detailed analytics.</CardDescription>
+                            </CardHeader>
+                            <CardContent>
+                                <p>Get insights into your project's performance.</p>
+                            </CardContent>
+                        </Card>
+                        <Card>
+                            <CardHeader>
+                                <CardTitle>Settings</CardTitle>
+                                <CardDescription>Customize your experience.</CardDescription>
+                            </CardHeader>
+                            <CardContent>
+                                <p>Adjust your preferences and account settings.</p>
+                            </CardContent>
+                        </Card>
+                    </div>
                 </section>
             </main>
         </div>
