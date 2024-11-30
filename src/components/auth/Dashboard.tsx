@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import Navbar from "@/components/Section1/Navbar/Navbar";
-import { useUser, User } from "@clerk/clerk-react";
+import { useUser } from "@clerk/clerk-react";
 
 interface User {
     fullName: string;
