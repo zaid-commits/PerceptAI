@@ -1,6 +1,5 @@
 import React from "react"
 import { SignIn } from "@clerk/clerk-react"
-import { Header } from "./Header"
 import { Card, CardContent } from "@/components/ui/card"
 
 const AuthPage: React.FC = () => {

@@ -1,7 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../../../assets/logos/corelogo.png'; // Corrected import
-
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  UserButton,
+} from '@clerk/clerk-react';
+import { Button } from '@/components/ui/button';
+import logo from '../../../assets/logos/corelogo.png'; // Ensure the path is correct
 
 const FloatingNavbar: React.FC = () => {
   return (
@@ -13,33 +19,45 @@ const FloatingNavbar: React.FC = () => {
             <img src={logo} alt="PerceptAI Logo" className="h-10" />
           </a>
         </Link>
-        
+
         {/* Navbar Items */}
-        <Link to={"/"}>
+        <Link to="/">
           <a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
             Home
           </a>
         </Link>
-        <Link to={"/Projects"}>
+        <Link to="/projects">
           <a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
             Projects
           </a>
         </Link>
-        <Link to={"/Resources"}>
+        <Link to="/community">
+          <a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
+            Community
+          </a>
+        </Link>
+        <Link to="/resources">
           <a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
             Resources
           </a>
         </Link>
-        <Link to={"/Community"}>
-          <a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
-             Forum
-          </a>
-        </Link>
-        <Link to={"/Contact"}>
+        <Link to="/contact">
           <a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
             Contact
           </a>
         </Link>
+
+        {/* Authentication Buttons */}
+        <div className="flex items-center space-x-2">
+          <SignedOut>
+            <SignInButton>
+              <Button variant="default">Sign In</Button>
+            </SignInButton>
+          </SignedOut>
+          <SignedIn>
+            <UserButton afterSignOutUrl="/" />
+          </SignedIn>
+        </div>
       </div>
     </nav>
   );
