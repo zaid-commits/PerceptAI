@@ -13,6 +13,7 @@ import UserProfile from './components/Auth/Profile';
 import LoadingSpinner from './components/LoadingSpinner';
 import { LoadingProvider, useLoading } from './context/LoadingContext';
 import { useEffect, useState } from 'react';
+import { SignedOut, SignedIn, SignInButton, UserButton } from '@clerk/clerk-react';
 
 const AppRoutes: React.FC = () => {
   const { setLoading } = useLoading();
@@ -46,10 +47,18 @@ const AppRoutes: React.FC = () => {
 function App() {
   return (
     <LoadingProvider>
-        <Router>
-          <LoadingSpinner /> 
-          <AppRoutes />
-        </Router>
+      <Router>
+        <header>
+          <SignedOut>
+            <SignInButton />
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+        </header>
+        <LoadingSpinner /> 
+        <AppRoutes />
+      </Router>
       <Analytics />
     </LoadingProvider>
   );
