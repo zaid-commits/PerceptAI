@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import Navbar from "@/components/Section1/Navbar/Navbar";
-import { useUser, UserResource } from "@clerk/clerk-react";
+import { useUser, User } from "@clerk/clerk-react";
 
 interface User {
     fullName: string;
@@ -38,7 +38,7 @@ const FeatureCard: React.FC<{ title: string, description: string, content: strin
 );
 
 const Dashboard: React.FC = () => {
-    const { user } = useUser() as { user: UserResource | null };
+    const { user } = useUser() as { user: User | null };
 
     return (
         <div className="flex min-h-screen flex-col">
