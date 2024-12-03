@@ -77,8 +77,79 @@ export function CommandMenu({ isOpen, setIsOpen, notes, tags }: CommandMenuProps
 
 
 
+                            <CommandItem
+                                onSelect={() => {
+                                    navigate(`/settings`)
+                                    setIsOpen(false)
+                                }}
+                            >
+                                <File className="mr-2 h-4 w-4" />
+                                Settings
+                            </CommandItem>
+                            <CommandItem
+                                onSelect={() => {
+                                    navigate(`/profile`)
+                                    setIsOpen(false)
+                                }}
+                            >
+                                <User className="mr-2 h-4 w-4" />
+                                Profile
+                            </CommandItem>
+                            <CommandItem
+                                onSelect={() => {
+                                    navigate(`/projects`)
+                                    setIsOpen(false)
+                                }}
+                            >
+                                <File className="mr-2 h-4 w-4" />
+                                Projects
+                            </CommandItem>
+                            <CommandItem
+                                onSelect={() => {
+                                    navigate(`/community`)
+                                    setIsOpen(false)
+                                }}
+                            >
+                                <User className="mr-2 h-4 w-4" />
+                                Community
+                            </CommandItem>
+                            <CommandItem
+                                onSelect={() => {
+                                    navigate(`/contact`)
+                                    setIsOpen(false)
+                                }}
+                            >
+                                <User className="mr-2 h-4 w-4" />
+                                Contact
+                            </CommandItem>
+                            <CommandItem
+                                onSelect={() => {
+                                    window.open(`https://github.com/your-repo`, '_blank')
+                                    setIsOpen(false)
+                                }}
+                            >
+                                <File className="mr-2 h-4 w-4" />
+                                GitHub Repository
+                            </CommandItem>
+                            <CommandItem
+                                onSelect={() => {
+                                    navigate(`/resources`)
+                                    setIsOpen(false)
+                                }}
+                            >
+                                <File className="mr-2 h-4 w-4" />
+                                Resources
+                            </CommandItem>
+                            <CommandItem
+                                onSelect={() => {
+                                    navigate(`/dashboard`)
+                                    setIsOpen(false)
+                                }}
+                            >
+                                <Home className="mr-2 h-4 w-4" />
+                                Dashboard
+                            </CommandItem>
 
-                            
                         </CommandGroup>
                     </CommandList>
                 </Command>
