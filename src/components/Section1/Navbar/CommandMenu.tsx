@@ -72,8 +72,13 @@ export function CommandMenu({ isOpen, setIsOpen, notes, tags }: CommandMenuProps
                                 }}
                             >
                                 <User className="mr-2 h-4 w-4" />
-                                Profile
+                                Developer of the project
                             </CommandItem>
+
+
+
+
+                            
                         </CommandGroup>
                     </CommandList>
                 </Command>
