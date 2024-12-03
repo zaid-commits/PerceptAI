@@ -1,11 +1,12 @@
-import CommunityForum from "../Community/Forum"
+import CommunityContainer from "../Community/Container"
+
 import FloatingNavbar from "../Section1/Navbar/Navbar"
 
 function Community() {
   return (
     <div>
         <FloatingNavbar/>
-      <CommunityForum/>
+        <CommunityContainer/>
     </div>
   )
 }
