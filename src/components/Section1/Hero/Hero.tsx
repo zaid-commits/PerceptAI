@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import FloatingNavbar from '../../Section1/Navbar/Navbar';
 import HeroContent from './HeroContent';
 import gsap from 'gsap';
@@ -39,6 +39,20 @@ const LandingPage: React.FC = () => {
     });
   });
 
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.ctrlKey && event.key === 'k') {
+        event.preventDefault();
+        setIsCommandMenuOpen(prev => !prev);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
   return (
     <div className="flex flex-col h-screen overflow-hidden">
       {/* Main Content */}
@@ -63,8 +77,10 @@ const LandingPage: React.FC = () => {
 
         {/* Content */}
         <HeroContent />
-        <nav className="fixed text-white top-4 right-4 bg-gray bg-opacity-70 backdrop-blur-md rounded-full shadow-lg border border-gray-700 z-10 p-4 navbar">
-          ⌘+K to toggle
+        <nav className="fixed text-white top-6 right-4 bg-gray bg-opacity-70 backdrop-blur-md rounded-full shadow-lg border border-gray-700 z-10 p-4 navbar">
+          <button onClick={() => setIsCommandMenuOpen(prev => !prev)}>
+            ⌘+K to toggle
+          </button>
         </nav>
         <div className="fixed top-4 right-4 z-20">
           <CommandMenu isOpen={isCommandMenuOpen} setIsOpen={setIsCommandMenuOpen} notes={[]} tags={[]} />
