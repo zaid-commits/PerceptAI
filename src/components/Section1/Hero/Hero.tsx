@@ -1,56 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import FloatingNavbar from '../../Section1/Navbar/Navbar';
 import HeroContent from './HeroContent';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { CommandMenu } from '../Navbar/CommandMenu';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const LandingPage: React.FC = () => {
+  const [isCommandMenuOpen, setIsCommandMenuOpen] = useState(false);
 
   useGSAP(() => {
-
-
-
     gsap.from(".navbar", {
       y: -100,
       opacity: 0,
       duration: 1,
-
-    })
-
-
-
+    });
 
     gsap.from(".wrap .box", {
       x: 100,
-      
       opacity: 0,
       stagger: 0.7,
       rotate: 80,
       scrub: 1.5,
-      
-
-    })
+    });
 
     gsap.from(".text-container h1 , .text-container p ", {
-
       y: 40,
       opacity: 0,
       stagger: 1,
+    });
 
-    })
-
-
-    gsap.from(".ani",{
-      x:100,
-      height:700,
-      width:700,
-    })
-
-  })
-
+    gsap.from(".ani", {
+      x: 100,
+      height: 700,
+      width: 700,
+    });
+  });
 
   return (
     <div className="flex flex-col h-screen overflow-hidden">
@@ -76,6 +63,12 @@ const LandingPage: React.FC = () => {
 
         {/* Content */}
         <HeroContent />
+        <nav className="fixed text-white top-4 right-4 bg-gray bg-opacity-70 backdrop-blur-md rounded-full shadow-lg border border-gray-700 z-10 p-4 navbar">
+          ⌘+K to toggle
+        </nav>
+        <div className="fixed top-4 right-4 z-20">
+          <CommandMenu isOpen={isCommandMenuOpen} setIsOpen={setIsCommandMenuOpen} notes={[]} tags={[]} />
+        </div>
       </main>
     </div>
   );
