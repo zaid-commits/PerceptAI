@@ -124,7 +124,7 @@ export function CommandMenu({ isOpen, setIsOpen, notes, tags }: CommandMenuProps
                             </CommandItem>
                             <CommandItem
                                 onSelect={() => {
-                                    window.open(`https://github.com/your-repo`, '_blank')
+                                    window.open(`https://github.com/zaid-commits/perceptai`, '_blank')
                                     setIsOpen(false)
                                 }}
                             >

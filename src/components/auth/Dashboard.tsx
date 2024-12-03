@@ -45,7 +45,7 @@ const Dashboard: React.FC = () => {
             <Navbar />
             <main className="flex-1 bg-black text-white">
                 <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
-                    <div className="flex max-w-[980px] flex-col items-start gap-2">
+                    <div className="flex max-w-[980px] flex-col items-start gap-2 ">
                         <h1 className="text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl">
                             Dashboard
                         </h1>
@@ -64,7 +64,7 @@ const Dashboard: React.FC = () => {
                             {user ? <UserDetails user={user} /> : <p>Loading user details...</p>}
                         </CardContent>
                     </Card>
-                    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 opacity-80 cursor-pointer">
                         <FeatureCard
                             title="Project Management"
                             description="Manage your projects efficiently."
