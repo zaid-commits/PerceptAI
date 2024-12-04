@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card"
 
 const AuthPage: React.FC = () => {
     return (
-        <div className="flex min-h-screen flex-col items-center justify-center">
+        <div className="flex min-h-screen flex-col items-center justify-center bg-black text-white">
             <main className="flex-1 flex items-center justify-center w-full">
                 <section className="container flex flex-col items-center justify-center gap-6 pb-8 pt-6 md:py-10">
                     <div className="flex max-w-[980px] flex-col items-center gap-2 text-center">
