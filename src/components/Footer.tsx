@@ -1,107 +1,117 @@
-// Footer.tsx
-
 import React from 'react';
-import styled from 'styled-components';
-import { FaTwitter, FaFacebook, FaLinkedin, FaGithub } from 'react-icons/fa';
-const FooterContainer = styled.footer`
-    width: 100%;
-    padding: 40px 20px;
-    background-color: black;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-top: 2px solid white;
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-`;
+import { FaTwitter, FaFacebook, FaLinkedin, FaGithub, FaInstagram, FaYoutube } from 'react-icons/fa';
 
-const FooterContent = styled.div`
-    width: 100%;
-    max-width: 1200px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
-`;
+const Navigation: React.FC = () => (
+    <div>
+        <h3 className="text-xl font-bold mb-4">Navigation</h3>
+        <nav className="flex flex-col space-y-2">
+            {['Home', 'Projects', 'Community', 'Resources', 'Contact', 'Blogs'].map((item) => (
+                <a 
+                    key={item} 
+                    href={`/${item.toLowerCase()}`} 
+                    className="text-[#BF40BF] hover:text-purple-700 transition-colors"
+                >
+                    {item}
+                </a>
+            ))}
+        </nav>
+    </div>
+);
 
-const Section = styled.div`
-    flex: 1;
-    min-width: 200px;
-`;
+const SocialMedia: React.FC = () => (
+    <div>
+        <h3 className="text-xl font-bold mb-4">Social Media</h3>
+        <div className="flex space-x-4">
+            {[
+                { Icon: FaTwitter, link: 'https://twitter.com/yourprofile' },
+                { Icon: FaFacebook, link: 'https://facebook.com/yourprofile' },
+                { Icon: FaLinkedin, link: 'https://linkedin.com/in/yourprofile' },
+                { Icon: FaGithub, link: 'https://github.com/yourprofile' },
+                { Icon: FaInstagram, link: 'https://instagram.com/yourprofile' },
+            ].map(({ Icon, link }) => (
+                <a 
+                    key={link} 
+                    href={link} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-[#BF40BF] hover:text-purple-700 text-2xl transition-colors"
+                >
+                    <Icon />
+                </a>
+            ))}
+        </div>
+    </div>
+);
 
-const SectionTitle = styled.h3`
-    font-size: 1.25rem;
-    margin-bottom: 10px;
-`;
+const Contact: React.FC = () => (
+    <div>
+        <h3 className="text-xl font-bold mb-4">Contact</h3>
+        <div className="space-y-2">
+            <p>Email: contact@perceptai.com</p>
+            <p>Phone: +1 (123) 456-7890</p>
+            <p>Address: 123 AI Street, Tech City</p>
+        </div>
+    </div>
+);
 
-const Link = styled.a`
-    color: #BF40BF;
-    text-decoration: none;
-    margin-bottom: 5px;
-    display: block;
-    transition: color 0.3s;
+const Newsletter: React.FC = () => (
+    <div>
+        <h3 className="text-xl font-bold mb-4">Newsletter</h3>
+        <form className="flex flex-col space-y-2">
+            <input 
+                type="email" 
+                placeholder="Enter your email" 
+                required 
+                className="p-2 rounded bg-white text-black"
+            />
+            <button 
+                type="submit" 
+                className="bg-[#BF40BF] text-white p-2 rounded hover:bg-purple-700 transition-colors"
+            >
+                Subscribe
+            </button>
+        </form>
+    </div>
+);
 
-    &:hover {
-        color: purple; 
-    }
-`;
+const Legal: React.FC = () => (
+    <div>
+        <h3 className="text-xl font-bold mb-4">Legal</h3>
+        <nav className="flex flex-col space-y-2">
+            <a href="/terms" className="text-[#BF40BF] hover:text-purple-700 transition-colors">Terms of Service</a>
+            <a href="/privacy" className="text-[#BF40BF] hover:text-purple-700 transition-colors">Privacy Policy</a>
+        </nav>
+    </div>
+);
 
-const SocialIcons = styled.div`
-    display: flex;
-    gap: 10px;
-`;
-
-const SocialIcon = styled.a`
-    color: #BF40BF;
-    font-size: 1.5rem;
-    transition: color 0.3s;
-
-    &:hover {
-        color: purple; 
-    }
-`;
+const Support: React.FC = () => (
+    <div>
+        <h3 className="text-xl font-bold mb-4">Support</h3>
+        <nav className="flex flex-col space-y-2">
+            <a href="/faq" className="text-[#BF40BF] hover:text-purple-700 transition-colors">FAQ</a>
+            <a href="/support" className="text-[#BF40BF] hover:text-purple-700 transition-colors">Customer Support</a>
+            <a href="/feedback" className="text-[#BF40BF] hover:text-purple-700 transition-colors">Feedback</a>
+        </nav>
+    </div>
+);
 
 const Footer: React.FC = () => {
     return (
-        <FooterContainer>
-            <FooterContent>
-                <Section>
-                    <SectionTitle>Navigation</SectionTitle>
-                    <Link href="/">Home</Link>
-                    <Link href="/projects">Projects</Link>
-                    <Link href="/community">Community</Link>
-                    <Link href="/resources">Resources</Link>
-                    <Link href="/contact">Contact</Link>
-                </Section>
-                <Section>
-                    <SectionTitle>Social Media</SectionTitle>
-                    <SocialIcons>
-                        <SocialIcon href="https://twitter.com/yourprofile" target="_blank" rel="noopener noreferrer">
-                            <FaTwitter />
-                        </SocialIcon>
-                        <SocialIcon href="https://facebook.com/yourprofile" target="_blank" rel="noopener noreferrer">
-                            <FaFacebook />
-                        </SocialIcon>
-                        <SocialIcon href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">
-                            <FaLinkedin />
-                        </SocialIcon>
-                        <SocialIcon href="https://github.com/yourprofile" target="_blank" rel="noopener noreferrer">
-                            <FaGithub />
-                        </SocialIcon>
-                    </SocialIcons>
-                </Section>
-                <Section>
-                    <SectionTitle>Contact</SectionTitle>
-                    <p>Email: contact@perceptai.com</p>
-                    <p>Phone: +1 (123) 456-7890</p>
-                    <p>Address: 123 AI Street, Tech City, AI World</p>
-                </Section>
-            </FooterContent>
-            <p style={{ marginTop: '20px', textAlign: 'center' }}>
-                &copy; {new Date().getFullYear()} PerceptAI. All rights reserved.
-            </p>
-        </FooterContainer>
+        <footer className="w-full bg-black text-white py-10 px-4">
+            <div className="max-w-7xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                    <Navigation />
+                    <SocialMedia />
+                    <Contact />
+                    <Newsletter />
+                    <Legal />
+                    <Support />
+                </div>
+                <div className="text-center mt-8 border-t border-gray-700 pt-4">
+                    &copy; {new Date().getFullYear()} PerceptAI. All rights reserved.
+                </div>
+            </div>
+        </footer>
     );
 };
 

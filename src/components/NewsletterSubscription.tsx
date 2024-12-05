@@ -27,27 +27,26 @@ const NewsletterSubscription: React.FC = () => {
   };
 
   return (
-    <div className="bg-gray-100 p-6 rounded-lg text-center">
-      <h2 className="text-2xl font-bold text-gray-700 mb-4">Subscribe to our Newsletter</h2>
-      <p className="text-gray-400 mb-4">Stay updated with the latest news and updates.</p>
-      <form onSubmit={handleSubmit}>
+    <div className="p-4 rounded-lg text-center">
+      <h2 className="text-xl font-bold mb-4">Subscribe to our Newsletter</h2>
+      <form onSubmit={handleSubmit} className="flex justify-center">
         <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Enter your email"
-          className="p-2 rounded-l-lg font-semibold text-purple-800 border border-gray-300"
+          className="p-2 rounded-l-lg font-semibold text-purple-800 border border-gray-300 text-lg"
           required
         />
         <button
           type="submit"
-          className="bg-purple-600 text-white p-2 rounded-r-lg hover:bg-purple-700 transition duration-300"
+          className="bg-purple-600 text-white p-2 rounded-r-lg hover:bg-purple-700 transition duration-300 text-lg"
         >
           Subscribe
         </button>
       </form>
-      {success && <p className="text-green-500 mt-4">Thanks for Subscribing!</p>}
-      {error && <p className="text-red-500 mt-4">{error}</p>}
+      {success && <p className="text-green-500 mt-2 text-lg">Thanks for Subscribing!</p>}
+      {error && <p className="text-red-500 mt-2 text-lg">{error}</p>}
     </div>
   );
 };
