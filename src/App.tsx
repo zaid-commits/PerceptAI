@@ -13,6 +13,7 @@ import Resources from "./components/routes/Resources";
 import Contact from "./components/routes/Contact";
 import AuthPage from "./components/auth/AuthPage";
 import Dashboard from "./components/auth/Dashboard";
+import Blogs from "./components/routes/Blogs";
 
 const App: React.FC = () => {
   return (
@@ -32,6 +33,8 @@ const App: React.FC = () => {
                   <Route path="/resources" element={<Resources />} />
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/dashboard" element={<Dashboard />} />
+                  <Route path="/blogs" element={<Blogs />} />
+
                   <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
               </SignedIn>
