@@ -16,7 +16,7 @@ const Blogs: React.FC = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await fetch('https://dev.to/api/articles'); // Replace with your API endpoint
+        const response = await fetch('https://dev.to/api/articles');
         const data = await response.json();
         setBlogs(data);
       } catch (error) {
@@ -36,7 +36,7 @@ const Blogs: React.FC = () => {
   return (
     <div>
       <FloatingNavbar />
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-8 bg-purple-50">
         <h1 className="text-4xl font-bold text-center py-12 ">Computer Vision Articles</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogs.map((blog) => (
