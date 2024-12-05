@@ -54,26 +54,6 @@ const Contact: React.FC = () => (
     </div>
 );
 
-const Newsletter: React.FC = () => (
-    <div>
-        <h3 className="text-xl font-bold mb-4">Newsletter</h3>
-        <form className="flex flex-col space-y-2">
-            <input 
-                type="email" 
-                placeholder="Enter your email" 
-                required 
-                className="p-2 rounded bg-white text-black"
-            />
-            <button 
-                type="submit" 
-                className="bg-[#BF40BF] text-white p-2 rounded hover:bg-purple-700 transition-colors"
-            >
-                Subscribe
-            </button>
-        </form>
-    </div>
-);
-
 const Legal: React.FC = () => (
     <div>
         <h3 className="text-xl font-bold mb-4">Legal</h3>
@@ -95,17 +75,37 @@ const Support: React.FC = () => (
     </div>
 );
 
+const Newsletter: React.FC = () => (
+    <div>
+        <h3 className="text-xl font-bold mb-4">Newsletter</h3>
+        <form className="flex flex-col space-y-2">
+            <input 
+                type="email" 
+                placeholder="Enter your email" 
+                required 
+                className="p-2 rounded bg-white text-black"
+            />
+            <button 
+                type="submit" 
+                className="bg-[#BF40BF] text-white p-2 rounded hover:bg-purple-700 transition-colors"
+            >
+                Subscribe
+            </button>
+        </form>
+    </div>
+);
+
 const Footer: React.FC = () => {
     return (
         <footer className="w-full bg-black text-white py-10 px-4">
             <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-6">
                     <Navigation />
-                    <SocialMedia />
                     <Contact />
-                    <Newsletter />
                     <Legal />
                     <Support />
+                    <SocialMedia />
+                    <Newsletter />
                 </div>
                 <div className="text-center mt-8 border-t border-gray-700 pt-4">
                     &copy; {new Date().getFullYear()} PerceptAI. All rights reserved.

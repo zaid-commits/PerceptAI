@@ -45,7 +45,7 @@ const NewsletterSubscription: React.FC = () => {
           Subscribe
         </button>
       </form>
-      {success && <p className="text-green-500 mt-2 text-lg">Thanks for Subscribing!</p>}
+      {success && <p className="text-green-500 mt-2 text-lg">Thanks for Subscribing to our Newsletter!</p>}
       {error && <p className="text-red-500 mt-2 text-lg">{error}</p>}
     </div>
   );
