@@ -37,9 +37,11 @@ const Blogs: React.FC = () => {
     <div>
         <FloatingNavbar />
       <div className="container mx-auto px-4 py-8 bg-black">
-        <h1 className="text-4xl font-bold text-center py-12 ">
-          Computer Vision Articles
+        <div className="headingWrapper mt-10">
+        <h1 className="text-4xl font-bold text-center text-purple-900 px-10 py-8">
+          PerceptAI Articles Library
         </h1>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
           {blogs.map((blog) =>
             blog.cover_image ? (
@@ -58,7 +60,7 @@ const Blogs: React.FC = () => {
                 <a
                   href={`${blog.url}`}
                   target="_blank"
-                  className="text-blue-500 hover:underline"
+                  className="text-blue-600 hover:underline"
                 >
                   Click to read full article
                 </a>
