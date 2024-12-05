@@ -60,7 +60,7 @@ const Blogs: React.FC = () => {
                   className="mt-4"
                   onError={(e) => (e.currentTarget.style.display = "none")}
                 />
-                <h2 className="text-2xl font-bold mt-4 mb-6">{blog.title}</h2>
+                <h2 className="text-2xl font-semibold mt-4 mb-4">{blog.title}</h2>
                 <p className="text-gray-400 mb-4">{blog.description}</p>
                 <div className="flex items-center mt-4">
                   <img
