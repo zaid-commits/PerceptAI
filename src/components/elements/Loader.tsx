@@ -5,12 +5,12 @@ import { motion } from 'framer-motion'
 
 const ModernPurpleLoader: React.FC = () => {
     const [textIndex, setTextIndex] = useState(0)
-    const texts = ["LOADING", "LOADING IMAGE", "GENERATING ASSETS"]
+    const texts = ["GENERATING","COOKING", "LOADING", "DISPLAYING"]
 
     useEffect(() => {
         const interval = setInterval(() => {
             setTextIndex((prevIndex) => (prevIndex + 1) % texts.length)
-        }, 2000) // Change text every 2 seconds
+        }, 800) 
 
         return () => clearInterval(interval)
     }, [])
@@ -55,8 +55,9 @@ const ModernPurpleLoader: React.FC = () => {
                         animate={{ pathLength: 1 }}
                         transition={{
                             duration: 2,
-                            ease: "easeInOut",
+                            ease: "easeIn",
                             repeat: Infinity,
+                            repeatType: "mirror",
                         }}
                     />
                     <g transform="translate(50 50)">
@@ -92,7 +93,7 @@ const ModernPurpleLoader: React.FC = () => {
                     transition={{
                         duration: 0.5,
                         repeat: Infinity,
-                        repeatType: "reverse",
+                        repeatType: "mirror",
                     }}
                 >
                     ...
