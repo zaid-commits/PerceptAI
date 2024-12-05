@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaTwitter, FaFacebook, FaLinkedin, FaGithub, FaInstagram, FaYoutube } from 'react-icons/fa';
+import { FaTwitter,FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa';
 
 const Navigation: React.FC = () => (
     <div>
@@ -23,11 +23,10 @@ const SocialMedia: React.FC = () => (
         <h3 className="text-xl font-bold mb-4">Social Media</h3>
         <div className="flex space-x-4">
             {[
-                { Icon: FaTwitter, link: 'https://twitter.com/yourprofile' },
-                { Icon: FaFacebook, link: 'https://facebook.com/yourprofile' },
-                { Icon: FaLinkedin, link: 'https://linkedin.com/in/yourprofile' },
-                { Icon: FaGithub, link: 'https://github.com/yourprofile' },
-                { Icon: FaInstagram, link: 'https://instagram.com/yourprofile' },
+                { Icon: FaGithub, link: 'https://github.com/zaid-commits' },
+                { Icon: FaTwitter, link: 'https://twitter.com/zaid_suiii' },
+                { Icon: FaLinkedin, link: 'https://linkedin.com/in/zaidrakhange' },
+                { Icon: FaInstagram, link: 'https://instagram.com/zaid_suiii' },
             ].map(({ Icon, link }) => (
                 <a 
                     key={link} 
