@@ -15,7 +15,7 @@ interface VideoTabsProps {
 
 export default function VideoTab({ 
   videos = {
-    detection: 'https://cdn.prod.website-files.com/5f6bc60e665f54545a1e52a5%2F66de5f2568b2ea306911ab8f_supervision-0190-promo%20%281%29%20%281%29-transcode.mp4',
+    detection: 'https://videos.ctfassets.net/zi2yef4nw297/6iLyQuUsxpjyk2ijhpKu4X/76c7b2ccdb7e3fac49bd19f262ce2ab4/Home_Video_August_3.mp4',
     tracking: 'https://cdn.prod.website-files.com/5f6bc60e665f54545a1e52a5%2F66de5e8c8945e61eaf09620e_walking-trace-and-corner-and-mask%20(1)%20(2)-transcode.mp4',
     counting: 'https://cdn.prod.website-files.com/5f6bc60e665f54545a1e52a5%2F66cc83e20f0b4116036ea1b0_candy-1-transcode.mp4',
     analysis: 'https://cdn.prod.website-files.com/5f6bc60e665f54545a1e52a5%2F66de5f2568b2ea306911ab8f_supervision-0190-promo%20%281%29%20%281%29-transcode.mp4'
