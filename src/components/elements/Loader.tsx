@@ -1,113 +1,105 @@
-import React from 'react';
-import styled from 'styled-components';
+"use client"
 
-const Loader = () => {
+import React, { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
+
+const ModernPurpleLoader: React.FC = () => {
+    const [textIndex, setTextIndex] = useState(0)
+    const texts = ["LOADING", "LOADING IMAGE", "GENERATING ASSETS"]
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setTextIndex((prevIndex) => (prevIndex + 1) % texts.length)
+        }, 2000) // Change text every 2 seconds
+
+        return () => clearInterval(interval)
+    }, [])
+
+    const circleVariants = {
+        start: {
+            y: "0%",
+        },
+        end: {
+            y: "100%",
+        },
+    }
+
+    const transition = {
+        duration: 0.5,
+        yoyo: Infinity,
+        ease: "easeInOut",
+    }
+
     return (
-        <StyledWrapper>
-            <div className="card">
-                <div className="loader">
-                    <p>loading</p>
-                    <div className="words">
-                        <span className="word">buttons</span>
-                        <span className="word">forms</span>
-                        <span className="word">switches</span>
-                        <span className="word">cards</span>
-                        <span className="word">buttons</span>
-                    </div>
-                </div>
+        <div className="flex flex-col items-center justify-center min-h-screen bg-black" role="alert" aria-live="assertive">
+            <div className="relative w-64 h-64">
+                <svg
+                    viewBox="0 0 100 100"
+                    className="w-full h-full"
+                    aria-hidden="true"
+                >
+                    <defs>
+                        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stopColor="#6B46C1" />
+                            <stop offset="100%" stopColor="#9F7AEA" />
+                        </linearGradient>
+                    </defs>
+                    <motion.circle
+                        cx="50"
+                        cy="50"
+                        r="30"
+                        stroke="url(#gradient)"
+                        strokeWidth="4"
+                        fill="none"
+                        initial={{ pathLength: 0 }}
+                        animate={{ pathLength: 1 }}
+                        transition={{
+                            duration: 2,
+                            ease: "easeInOut",
+                            repeat: Infinity,
+                        }}
+                    />
+                    <g transform="translate(50 50)">
+                        {[0, 1, 2].map((index) => (
+                            <motion.circle
+                                key={index}
+                                cx="0"
+                                cy="0"
+                                r="5"
+                                fill="#9F7AEA"
+                                variants={circleVariants}
+                                initial="start"
+                                animate="end"
+                                transition={{
+                                    ...transition,
+                                    delay: index * 0.15,
+                                }}
+                            />
+                        ))}
+                    </g>
+                </svg>
             </div>
-        </StyledWrapper>
-    );
+            <motion.div
+                className="mt-8 text-purple-300 text-xl font-light tracking-wide"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+            >
+                <span className="font-semibold">{texts[textIndex]}</span>
+                <motion.span
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{
+                        duration: 0.5,
+                        repeat: Infinity,
+                        repeatType: "reverse",
+                    }}
+                >
+                    ...
+                </motion.span>
+            </motion.div>
+        </div>
+    )
 }
 
-const StyledWrapper = styled.div`
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-
-    .card {
-        --bg-color: #212121;
-        background-color: var(--bg-color);
-        padding: 1rem 2rem;
-        border-radius: 1.25rem;
-    }
-    .loader {
-        color: rgb(124, 124, 124);
-        font-family: "Poppins", sans-serif;
-        font-weight: 500;
-        font-size: 25px;
-        box-sizing: content-box;
-        height: 40px;
-        padding: 10px 10px;
-        display: flex;
-        border-radius: 8px;
-    }
-
-    .words {
-        overflow: hidden;
-        position: relative;
-    }
-    .words::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-            var(--bg-color) 10%,
-            transparent 30%,
-            transparent 70%,
-            var(--bg-color) 90%
-        );
-        z-index: 20;
-    }
-
-    .word {
-        display: block;
-        height: 100%;
-        padding-left: 6px;
-        color: #956afa;
-        animation: spin_4991 4s infinite;
-    }
-
-    @keyframes spin_4991 {
-        10% {
-            transform: translateY(-102%);
-        }
-
-        25% {
-            transform: translateY(-100%);
-        }
-
-        35% {
-            transform: translateY(-202%);
-        }
-
-        50% {
-            transform: translateY(-200%);
-        }
-
-        60% {
-            transform: translateY(-302%);
-        }
-
-        75% {
-            transform: translateY(-300%);
-        }
-
-        85% {
-            transform: translateY(-402%);
-        }
-
-        100% {
-            transform: translateY(-400%);
-        }
-    }
-`;
-
-export default Loader;
+export default ModernPurpleLoader
