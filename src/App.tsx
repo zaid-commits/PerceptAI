@@ -14,6 +14,7 @@ import Contact from "./components/routes/Contact";
 import AuthPage from "./components/auth/AuthPage";
 import Dashboard from "./components/auth/Dashboard";
 import Blogs from "./components/routes/Blogs";
+import Loader from "./components/elements/Loader"
 
 const App: React.FC = () => {
   return (
@@ -34,6 +35,7 @@ const App: React.FC = () => {
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/dashboard" element={<Dashboard />} />
                   <Route path="/blogs" element={<Blogs />} />
+                  <Route path="/loader" element={<Loader />} />
 
                   <Route path="*" element={<Navigate to="/" />} />
                 </Routes>

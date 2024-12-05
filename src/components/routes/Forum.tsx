@@ -1,4 +1,5 @@
 import CommunityForum from '../Community/Forum'
+import Footer from '../Footer'
 import FloatingNavbar from '../Section1/Navbar/Navbar'
 
 function Forum() {
@@ -6,6 +7,7 @@ function Forum() {
     <div>
       <FloatingNavbar/>
       <CommunityForum/>
+      <Footer/>
     </div>
   )
 }

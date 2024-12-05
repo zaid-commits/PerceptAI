@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaTwitter,FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa';
+import { FaTwitter, FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa';
 
 const Navigation: React.FC = () => (
     <div>
@@ -96,7 +96,7 @@ const Newsletter: React.FC = () => (
 
 const Footer: React.FC = () => {
     return (
-        <footer className="w-full bg-black text-white py-10 px-4">
+        <footer className="w-full bg-black text-white py-10 px-4 border-t border-gray-700">
             <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-6">
                     <Navigation />

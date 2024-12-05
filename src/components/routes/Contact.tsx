@@ -1,6 +1,7 @@
 import React from 'react';
 import FloatingNavbar from '../Section1/Navbar/Navbar';
 import Promo from '../Section5/promo';
+import Footer from '../Footer';
 
 const Contact: React.FC = () => {
   return (
@@ -73,6 +74,7 @@ const Contact: React.FC = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };
