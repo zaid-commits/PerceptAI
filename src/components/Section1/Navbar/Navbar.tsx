@@ -7,7 +7,7 @@ import {
   UserButton,
 } from '@clerk/clerk-react';
 import { Button } from '@/components/ui/button';
-import logo from '../../../assets/logos/corelogo.png'; // Ensure the path is correct
+import logo from '../../../assets/logos/corelogo.png';
 
 const FloatingNavbar: React.FC = () => {
   return (
@@ -31,9 +31,9 @@ const FloatingNavbar: React.FC = () => {
             Projects
           </a>
         </Link>
-        <Link to="/community">
+        <Link to="/blogs">
           <a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
-            Community
+            Articles
           </a>
         </Link>
         <Link to="/resources">
