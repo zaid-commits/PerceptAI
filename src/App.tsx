@@ -11,6 +11,10 @@ import AuthPage from './components/auth/AuthPage';
 import Dashboard from './components/auth/Dashboard';
 import Blogs from './components/routes/Blogs';
 import Loader from './components/elements/Loader';
+import AdminDashboard from './components/admin/AdminDashboard';
+import Newsletter from './components/admin/Newsletter';
+import UserManagement from './components/admin/UserManagement';
+import Analytics from './components/admin/Analytics';
 
 const App: React.FC = () => {
   return (
@@ -32,6 +36,12 @@ const App: React.FC = () => {
                   <Route path="/dashboard" element={<Dashboard />} />
                   <Route path="/blogs" element={<Blogs />} />
                   <Route path="/loader" element={<Loader />} />
+                  <Route path="/admin/*" element={<AdminDashboard />}>
+                    <Route path="newsletter" element={<Newsletter />} />
+                    <Route path="users" element={<UserManagement />} />
+                    <Route path="analytics" element={<Analytics />} />
+                    <Route path="" element={<h2>Welcome to the Admin Dashboard</h2>} />
+                  </Route>
                   <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
               </SignedIn>
