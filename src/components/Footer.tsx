@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaTwitter, FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa';
 
 const Navigation: React.FC = () => (
@@ -74,25 +74,54 @@ const Support: React.FC = () => (
     </div>
 );
 
-const Newsletter: React.FC = () => (
-    <div>
-        <h3 className="text-xl font-bold mb-4">Newsletter</h3>
-        <form className="flex flex-col space-y-2">
-            <input 
-                type="email" 
-                placeholder="Enter your email" 
-                required 
-                className="p-2 rounded bg-white text-black"
-            />
-            <button 
-                type="submit" 
-                className="bg-[#BF40BF] text-white p-2 rounded hover:bg-purple-700 transition-colors"
-            >
-                Subscribe
-            </button>
-        </form>
-    </div>
-);
+const Newsletter: React.FC = () => {
+    const [email, setEmail] = useState('');
+    const [message, setMessage] = useState('');
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        try {
+            const response = await fetch('http://localhost:5000/api/newsletter/subscribe', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email }),
+            });
+            const data = await response.json();
+            if (response.ok) {
+                setMessage('Subscribed successfully!');
+            } else {
+                setMessage(data.msg);
+            }
+        } catch (error) {
+            setMessage('An error occurred. Please try again.');
+        }
+    };
+
+    return (
+        <div>
+            <h3 className="text-xl font-bold mb-4">Newsletter</h3>
+            <form className="flex flex-col space-y-2" onSubmit={handleSubmit}>
+                <input 
+                    type="email" 
+                    placeholder="Enter your email" 
+                    required 
+                    className="p-2 rounded bg-white text-black"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                <button 
+                    type="submit" 
+                    className="bg-[#BF40BF] text-white p-2 rounded hover:bg-purple-700 transition-colors"
+                >
+                    Subscribe
+                </button>
+            </form>
+            {message && <p>{message}</p>}
+        </div>
+    );
+};
 
 const Footer: React.FC = () => {
     return (

@@ -16,6 +16,7 @@ import Dashboard from "./components/auth/Dashboard";
 import Blogs from "./components/routes/Blogs";
 import Loader from "./components/elements/Loader"
 
+
 const App: React.FC = () => {
   return (
     <Router>
