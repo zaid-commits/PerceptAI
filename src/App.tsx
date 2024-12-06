@@ -1,21 +1,9 @@
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
-import { SignedIn, SignedOut, useUser } from "@clerk/clerk-react";
-import { Main } from "./components/Section1/Hero/Main";
-import Test from "./components/routes/Test";
-import Projects from "./components/routes/Projects";
-import Community from "./components/routes/Community";
-import Resources from "./components/routes/Resources";
-import Contact from "./components/routes/Contact";
-import AuthPage from "./components/auth/AuthPage";
-import Dashboard from "./components/auth/Dashboard";
-import Blogs from "./components/routes/Blogs";
-import Loader from "./components/elements/Loader";
-import AdminDashboard from "./components/admin/AdminDashboard";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { SignedIn, SignedOut, useUser } from '@clerk/clerk-react';
+import Main from './components/Section1/Hero/Main';
+import AuthPage from './components/auth/AuthPage';
+import AdminDashboard from './components/admin/AdminDashboard';
 
 const App: React.FC = () => {
   return (
@@ -29,14 +17,6 @@ const App: React.FC = () => {
               <SignedIn>
                 <Routes>
                   <Route path="/" element={<Main />} />
-                  <Route path="/test" element={<Test />} />
-                  <Route path="/projects" element={<Projects />} />
-                  <Route path="/community" element={<Community />} />
-                  <Route path="/resources" element={<Resources />} />
-                  <Route path="/contact" element={<Contact />} />
-                  <Route path="/dashboard" element={<Dashboard />} />
-                  <Route path="/blogs" element={<Blogs />} />
-                  <Route path="/loader" element={<Loader />} />
                   <Route path="/admin" element={<AdminDashboard />} />
                   <Route path="*" element={<Navigate to="/" />} />
                 </Routes>

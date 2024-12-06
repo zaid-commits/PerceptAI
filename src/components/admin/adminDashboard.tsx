@@ -11,8 +11,10 @@ const AdminDashboard: React.FC = () => {
   const [emails, setEmails] = useState<Email[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [sending, setSending] = useState(false);
+  const [sendMessage, setSendMessage] = useState<string | null>(null);
 
-  const adminEmail = 'rakhangezaid10@gmail.com'; 
+  const adminEmail = 'rakhangezaid10@gmail.com';
 
   useEffect(() => {
     if (user?.primaryEmailAddress?.emailAddress !== adminEmail) {
@@ -36,6 +38,26 @@ const AdminDashboard: React.FC = () => {
     fetchEmails();
   }, [user]);
 
+  const handleSendNewsletter = async () => {
+    setSending(true);
+    setSendMessage(null);
+    try {
+      const response = await fetch('http://localhost:5000/api/newsletter/send', {
+        method: 'POST',
+      });
+      const data = await response.json();
+      if (response.ok) {
+        setSendMessage('Newsletter sent successfully!');
+      } else {
+        setSendMessage(data.msg);
+      }
+    } catch (error) {
+      setSendMessage('Failed to send newsletter. Please try again.');
+    } finally {
+      setSending(false);
+    }
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -47,7 +69,7 @@ const AdminDashboard: React.FC = () => {
   return (
     <div className="container mx-auto px-4 py-8 bg-black text-white">
       <h1 className="text-4xl font-bold text-center text-purple-900 mb-8">Admin Dashboard</h1>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto mb-8">
         <table className="min-w-full bg-black text-white">
           <thead>
             <tr>
@@ -65,6 +87,14 @@ const AdminDashboard: React.FC = () => {
           </tbody>
         </table>
       </div>
+      <button
+        onClick={handleSendNewsletter}
+        className="bg-[#BF40BF] text-white p-2 rounded hover:bg-purple-700 transition-colors"
+        disabled={sending}
+      >
+        {sending ? 'Sending...' : 'Send Newsletter'}
+      </button>
+      {sendMessage && <p className="mt-4">{sendMessage}</p>}
     </div>
   );
 };
