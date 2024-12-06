@@ -4,7 +4,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import { SignedIn, SignedOut } from "@clerk/clerk-react";
+import { SignedIn, SignedOut, useUser } from "@clerk/clerk-react";
 import { Main } from "./components/Section1/Hero/Main";
 import Test from "./components/routes/Test";
 import Projects from "./components/routes/Projects";
@@ -14,8 +14,8 @@ import Contact from "./components/routes/Contact";
 import AuthPage from "./components/auth/AuthPage";
 import Dashboard from "./components/auth/Dashboard";
 import Blogs from "./components/routes/Blogs";
-import Loader from "./components/elements/Loader"
-
+import Loader from "./components/elements/Loader";
+import AdminDashboard from "./components/admin/AdminDashboard";
 
 const App: React.FC = () => {
   return (
@@ -37,7 +37,7 @@ const App: React.FC = () => {
                   <Route path="/dashboard" element={<Dashboard />} />
                   <Route path="/blogs" element={<Blogs />} />
                   <Route path="/loader" element={<Loader />} />
-
+                  <Route path="/admin" element={<AdminDashboard />} />
                   <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
               </SignedIn>
