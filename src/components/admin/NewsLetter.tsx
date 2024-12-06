@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import FloatingNavbar from "../Section1/Navbar/Navbar"
 
 interface NewsletterForm {
   subject: string;
@@ -49,47 +50,51 @@ const Newsletter: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-black text-white">
-      <h1 className="text-4xl font-bold text-center text-purple-900 mb-8">Send Newsletter</h1>
-      <div className="mb-8 max-w-2xl mx-auto">
-        <h2 className="text-2xl font-bold mb-4 text-purple-900">Compose Newsletter</h2>
-        <div className="space-y-4">
-          <input
-            type="text"
-            name="subject"
-            placeholder="Newsletter Subject"
-            value={newsletterForm.subject}
-            onChange={handleFormChange}
-            className="w-full p-2 rounded bg-gray-800 text-white"
-          />
-          <input
-            type="text"
-            name="heading"
-            placeholder="Newsletter Heading"
-            value={newsletterForm.heading}
-            onChange={handleFormChange}
-            className="w-full p-2 rounded bg-gray-800 text-white"
-          />
-          <textarea
-            name="content"
-            placeholder="Newsletter Content"
-            value={newsletterForm.content}
-            onChange={handleFormChange}
-            rows={6}
-            className="w-full p-2 rounded bg-gray-800 text-white"
-          />
+    <div className="min-h-screen bg-black text-white">
+      <FloatingNavbar />
+      <div className="container mx-auto px-4 py-8">
+        <h1 className="text-4xl font-bold text-center text-purple-500 mb-8">Send Newsletter</h1>
+        <div className="mb-8 max-w-2xl mx-auto">
+          <h2 className="text-2xl font-bold mb-4 text-purple-500">Compose Newsletter</h2>
+          <div className="space-y-4">
+            <input
+              type="text"
+              name="subject"
+              placeholder="Newsletter Subject"
+              value={newsletterForm.subject}
+              onChange={handleFormChange}
+              className="w-full p-2 rounded bg-gray-800 text-white border border-purple-500"
+            />
+            <input
+              type="text"
+              name="heading"
+              placeholder="Newsletter Heading"
+              value={newsletterForm.heading}
+              onChange={handleFormChange}
+              className="w-full p-2 rounded bg-gray-800 text-white border border-purple-500"
+            />
+            <textarea
+              name="content"
+              placeholder="Newsletter Content"
+              value={newsletterForm.content}
+              onChange={handleFormChange}
+              rows={6}
+              className="w-full p-2 rounded bg-gray-800 text-white border border-purple-500"
+            />
+          </div>
         </div>
+        <button
+          onClick={handleSendNewsletter}
+          className="bg-purple-500 text-white p-2 rounded hover:bg-purple-600 transition-colors"
+          disabled={sending}
+        >
+          {sending ? 'Sending...' : 'Send Newsletter'}
+        </button>
+        {sendMessage && <p className="mt-4 text-purple-300">{sendMessage}</p>}
       </div>
-      <button
-        onClick={handleSendNewsletter}
-        className="bg-[#BF40BF] text-white p-2 rounded hover:bg-purple-700 transition-colors"
-        disabled={sending}
-      >
-        {sending ? 'Sending...' : 'Send Newsletter'}
-      </button>
-      {sendMessage && <p className="mt-4">{sendMessage}</p>}
     </div>
   );
 };
 
 export default Newsletter;
+
