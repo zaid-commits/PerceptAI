@@ -7,13 +7,14 @@ import Analytics from './Analytics';
 
 const AdminDashboard: React.FC = () => {
   const cards = [
-    { title: 'Newsletter', route: '/admin/newsletter', description: 'Manage and send newsletters' },
-    { title: 'User Management', route: '/admin/users', description: 'Manage user accounts' },
+    { title: 'Newsletter', route: '/admin/newsletter', description: 'Send newsletters' },
+    { title: 'User Management', route: '/admin/users', description: 'Manage newsletter subscribers' },
     { title: 'Analytics', route: '/admin/analytics', description: 'View site analytics' },
-    { title: 'Dashboard', route: '/admin', description: 'Overview of admin functions' },
+    // { title: 'Dashboard', route: '/admin', description: 'Overview of admin functions' },
   ];
 
   return (
+    <div className="wrapper bg-black py-16">
     <div className="min-h-screen bg-black text-white">
       <FloatingNavbar />
       <div className="container mx-auto px-4 py-8">
@@ -35,6 +36,7 @@ const AdminDashboard: React.FC = () => {
           <Route path="/" element={<h2>Welcome to the Admin Dashboard</h2>} />
         </Routes>
       </div>
+    </div>
     </div>
   );
 };
