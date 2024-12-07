@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import FloatingNavbar from '../Section1/Navbar/Navbar';
+import Loader from '../elements/Loader';
 
 interface Subscriber {
   email: string;
@@ -38,7 +39,8 @@ const UserManagement = () => {
       <FloatingNavbar />
       <div className="container mx-auto px-4 py-8">
         {loading ? (
-          <div className="text-center text-gray-300">Loading...</div>
+          <Loader/>
+          // <div className="text-center text-gray-300">Loading...</div>
         ) : error ? (
           <div className="text-center text-red-500">{error}</div>
         ) : (
