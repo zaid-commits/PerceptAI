@@ -98,4 +98,4 @@ const Newsletter: React.FC = () => {
   );
 };
 
-export default NewsLetter;
+export default Newsletter;

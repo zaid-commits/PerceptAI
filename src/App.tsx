@@ -10,8 +10,8 @@ import Contact from './components/routes/Contact';
 import AuthPage from './components/auth/AuthPage';
 import Dashboard from './components/auth/Dashboard';
 import Blogs from './components/routes/Blogs';
-import AdminDashboard from './components/admin/AdminDashboard';
-import Newsletter from './components/admin/NewsLetter';
+import AdminDashboard from './components/admin/AdminDashboard'; // Ensure this path is correct
+import Newsletter from './components/admin/Newsletter'; // Ensure this path is correct
 import UserManagement from './components/admin/UserManagement';
 import Analytics from './components/admin/Analytics';
 import ModernPurpleLoader from './components/elements/Loader';
