@@ -8,7 +8,6 @@ import Community from './components/routes/Community';
 import Resources from './components/routes/Resources';
 import Contact from './components/routes/Contact';
 import AuthPage from './components/auth/AuthPage';
-import Dashboard from './components/auth/Dashboard';
 import Blogs from './components/routes/Blogs';
 import UserManagement from './components/admin/UserManagement';
 import Analytics from './components/admin/Analytics';
@@ -16,12 +15,14 @@ import ModernPurpleLoader from './components/elements/Loader';
 import { useLoading } from './context/LoadingContext';
 import AdminDashboard from './components/admin/adminDashboard';
 import Newsletter from './components/admin/NewsLetter';
+import AdminRoute from './components/auth/AdminRoute';
+
 const App: React.FC = () => {
   const { loading, setLoading } = useLoading();
 
   React.useEffect(() => {
     setLoading(true);
-    const timer = setTimeout(() => setLoading(false), 3000); 
+    const timer = setTimeout(() => setLoading(false), 3000);
     return () => clearTimeout(timer);
   }, [setLoading]);
 
@@ -46,7 +47,7 @@ const App: React.FC = () => {
                       <Route path="/contact" element={<Contact />} />
                       <Route path="/dashboard" element={<Dashboard />} />
                       <Route path="/blogs" element={<Blogs />} />
-                      <Route path="/admin/*" element={<AdminDashboard />}>
+                      <Route path="/admin/*" element={<AdminRoute element={<AdminDashboard />} />}>
                         <Route path="newsletter" element={<Newsletter />} />
                         <Route path="users" element={<UserManagement />} />
                         <Route path="analytics" element={<Analytics />} />
