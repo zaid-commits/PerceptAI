@@ -118,7 +118,7 @@ const Newsletter: React.FC = () => {
                     Subscribe
                 </button>
             </form>
-            <Toaster />
+            <Toaster position='bottom-right'/>
         </div>
     );
 };
