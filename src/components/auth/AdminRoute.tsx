@@ -9,7 +9,7 @@ const AdminRoute: React.FC<{ element: React.ReactNode }> = ({ element }) => {
     return <Navigate to="/auth" replace />;
   }
 
-  const isAdmin = user.primaryEmailAddress?.emailAddress === 'rakhangezaid@gmail.com';
+  const isAdmin = user.primaryEmailAddress?.emailAddress === 'rakhangezaid10@gmail.com';
 
   return isAdmin ? element : <Navigate to="/" replace />;
 };
