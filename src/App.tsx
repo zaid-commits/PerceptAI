@@ -14,8 +14,7 @@ import UserManagement from './components/admin/UserManagement';
 import Analytics from './components/admin/Analytics';
 import ModernPurpleLoader from './components/elements/Loader';
 import { useLoading } from './context/LoadingContext';
-import AdminDashboard from './components/admin/AdminDashboard';
-import Newsletter from './components/admin/Newsletter'; 
+import admin
 const App: React.FC = () => {
   const { loading, setLoading } = useLoading();
 
