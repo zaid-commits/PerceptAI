@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaTwitter, FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Navigation: React.FC = () => (
     <div>
@@ -76,7 +77,6 @@ const Support: React.FC = () => (
 
 const Newsletter: React.FC = () => {
     const [email, setEmail] = useState('');
-    const [message, setMessage] = useState('');
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -90,12 +90,12 @@ const Newsletter: React.FC = () => {
             });
             const data = await response.json();
             if (response.ok) {
-                setMessage('Subscribed successfully!');
+                toast.success('Subscribed successfully!');
             } else {
-                setMessage(data.msg);
+                toast.error(data.msg);
             }
         } catch (error) {
-            setMessage('An error occurred. Please try again.');
+            toast.error('An error occurred. Please try again.');
         }
     };
 
@@ -118,7 +118,7 @@ const Newsletter: React.FC = () => {
                     Subscribe
                 </button>
             </form>
-            {message && <p>{message}</p>}
+            <Toaster />
         </div>
     );
 };
