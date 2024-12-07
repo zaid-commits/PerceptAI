@@ -15,7 +15,7 @@ const UserManagement = () => {
   useEffect(() => {
     const fetchSubscribers = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/newsletter/emails');
+        const response = await fetch('https://perceptai-nodejs.onrender.com/api/newsletter/emails');
         if (!response.ok) {
           throw new Error('Failed to fetch subscribers');
         }
