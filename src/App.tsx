@@ -16,7 +16,6 @@ import ModernPurpleLoader from './components/elements/Loader';
 import { useLoading } from './context/LoadingContext';
 import AdminDashboard from './components/admin/AdminDashboard';
 import Newsletter from './components/admin/Newsletter'; 
-import Newsletter from './components/admin/Newsletter'; 
 const App: React.FC = () => {
   const { loading, setLoading } = useLoading();
 
