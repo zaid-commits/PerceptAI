@@ -1,17 +1,24 @@
-import FloatingNavbar from "../Section1/Navbar/Navbar";
-import Footer from "../Footer";
-import Chat from "../Community/Chat";
+import { useEffect } from 'react'
+import FloatingNavbar from "../Section1/Navbar/Navbar"
+import Footer from "../Footer"
+import Chat from '../Community/Chat'
 const Community = () => {
-  return (
-    <div className="flex flex-col min-h-screen">
-      <FloatingNavbar />
+  useEffect(() => {
+    document.body.style.backgroundColor = 'black'
+    return () => {
+      document.body.style.backgroundColor = ''
+    }
+  }, [])
 
-      <div className="flex-grow bg-black text-purple-800 p-4 py-24 flex justify-center items-center overflow-auto" style={{ maxHeight: 'calc(100vh - 128px)' }}>
+  return (
+    <div className="flex flex-col min-h-screen bg-black text-purple-300">
+      <FloatingNavbar />
+      <main className="flex-grow p-4 md:p-8 pt-24 pb-16 flex justify-center items-center overflow-hidden">
         <Chat />
-      </div>
+      </main>
       <Footer />
     </div>
-  );
-};
+  )
+}
 
-export default Community;
+export default Community
