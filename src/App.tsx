@@ -15,7 +15,7 @@ import { useLoading } from './context/LoadingContext';
 import AdminDashboard from './components/admin/adminDashboard';
 import Newsletter from './components/admin/NewsLetter';
 import AdminRoute from './components/auth/AdminRoute';
-import ChatRoom from './components/Community/ChatRoom';
+import Community from './components/routes/Community';
 
 const App: React.FC = () => {
   const { loading, setLoading } = useLoading();
@@ -42,7 +42,7 @@ const App: React.FC = () => {
                       <Route path="/" element={<Main />} />
                       <Route path="/test" element={<Test />} />
                       <Route path="/projects" element={<Projects />} />
-                      <Route path="/community" element={<ChatRoom />} />
+                      <Route path="/community" element={<Community />} />
                       <Route path="/resources" element={<Resources />} />
                       <Route path="/contact" element={<Contact />} />
                       <Route path="/blogs" element={<Blogs />} />
