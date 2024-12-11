@@ -10,6 +10,7 @@ interface Message {
   text: string;
   userId: string;
   username: string;
+  userImageUrl: string;
   timestamp: number;
 }
 
@@ -50,6 +51,7 @@ const Chat: React.FC = () => {
         text: inputValue,
         userId: user.id,
         username: user.username || user.firstName || 'Anonymous',
+        userImageUrl: (user.publicMetadata as { profileImageUrl?: string }).profileImageUrl || user.imageUrl || '',
         timestamp: Date.now()
       };
       socketRef.current.emit('chat message', newMessage);
@@ -68,16 +70,32 @@ const Chat: React.FC = () => {
             key={message.id} 
             className={`mb-2 ${message.userId === user?.id ? 'text-right' : 'text-left'}`}
           >
-            <div 
-              className={`inline-block px-3 py-2 rounded-lg ${
-                message.userId === user?.id ? 'bg-purple-800 text-white' : 'bg-gray-200 text-black'
-              }`}
-            >
-              <p className="font-bold text-sm">{message.username}</p>
-              <p>{message.text}</p>
-              <p className="text-xs opacity-50">
-                {new Date(message.timestamp).toLocaleTimeString()}
-              </p>
+            <div className="flex items-center">
+              {message.userId !== user?.id && (
+                <img 
+                  src={message.userImageUrl} 
+                  alt={message.username} 
+                  className="w-8 h-8 rounded-full mr-2"
+                />
+              )}
+              <div 
+                className={`inline-block px-3 py-2 rounded-lg ${
+                  message.userId === user?.id ? 'bg-purple-800 text-white' : 'bg-gray-200 text-black'
+                }`}
+              >
+                <p className="font-bold text-sm">{message.username}</p>
+                <p>{message.text}</p>
+                <p className="text-xs opacity-50">
+                  {new Date(message.timestamp).toLocaleTimeString()}
+                </p>
+              </div>
+              {message.userId === user?.id && (
+                <img 
+                  src={message.userImageUrl} 
+                  alt={message.username} 
+                  className="w-8 h-8 rounded-full ml-2"
+                />
+              )}
             </div>
           </div>
         ))}
