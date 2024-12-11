@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import FloatingNavbar from "../Section1/Navbar/Navbar"
-import Footer from "../Footer"
+// import Footer from "../Footer"
 import Chat from '../Community/Chat'
 const Community = () => {
   useEffect(() => {
@@ -16,7 +16,7 @@ const Community = () => {
       <main className="flex-grow p-4 md:p-8 pt-24 pb-16 flex justify-center items-center">
         <Chat />
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }
