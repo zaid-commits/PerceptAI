@@ -58,7 +58,7 @@ const Chat: React.FC = () => {
         text: inputValue,
         userId: user.id,
         username: user.username || user.firstName || 'Anonymous',
-        userImageUrl: (user.publicMetadata as { profileImageUrl?: string }).profileImageUrl || user.imageUrl || '',
+        userImageUrl: user.publicMetadata?.profileImageUrl || user.imageUrl || '',
         timestamp: Date.now()
       };
       socketRef.current.emit('chat message', newMessage);
