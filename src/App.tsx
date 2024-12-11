@@ -4,7 +4,6 @@ import { SignedIn, SignedOut } from '@clerk/clerk-react';
 import Main from './components/Section1/Hero/Main';
 import Test from './components/routes/Test';
 import Projects from './components/routes/Projects';
-import Community from './components/routes/Community';
 import Resources from './components/routes/Resources';
 import Contact from './components/routes/Contact';
 import AuthPage from './components/auth/AuthPage';
@@ -16,6 +15,7 @@ import { useLoading } from './context/LoadingContext';
 import AdminDashboard from './components/admin/adminDashboard';
 import Newsletter from './components/admin/NewsLetter';
 import AdminRoute from './components/auth/AdminRoute';
+import Chat from './components/Chat/Chat';
 
 const App: React.FC = () => {
   const { loading, setLoading } = useLoading();
@@ -42,7 +42,7 @@ const App: React.FC = () => {
                       <Route path="/" element={<Main />} />
                       <Route path="/test" element={<Test />} />
                       <Route path="/projects" element={<Projects />} />
-                      <Route path="/community" element={<Community />} />
+                      <Route path="/community" element={<Chat />} />
                       <Route path="/resources" element={<Resources />} />
                       <Route path="/contact" element={<Contact />} />
                       <Route path="/blogs" element={<Blogs />} />
