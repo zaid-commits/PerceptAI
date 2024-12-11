@@ -28,7 +28,7 @@ const Chat: React.FC = () => {
     if (!user) return;
 
     socketRef.current = io('https://ts-backend-6swe.onrender.com', {
-      query: { userId: user.id, username: user.username || user.firstName || 'Anonymous' }
+      query: { userId: user.id, username: user.username ?? user.firstName ?? 'Anonymous' }
     });
 
     socketRef.current.on('chat history', (messages: Message[]) => {
