@@ -81,7 +81,7 @@ const Newsletter: React.FC = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:5000/api/newsletter/subscribe', {
+            const response = await fetch('https://perceptai-nodejs.onrender.com/api/newsletter/subscribe', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
