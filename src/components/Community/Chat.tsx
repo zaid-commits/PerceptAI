@@ -27,7 +27,7 @@ const Chat: React.FC = () => {
   useEffect(() => {
     if (!user) return;
 
-    socketRef.current = io(import.meta.env.VITE_WS_URL || 'ws://localhost:5000', {
+    socketRef.current = io('https://ts-backend-6swe.onrender.com', {
       query: { userId: user.id, username: user.username ?? user.firstName ?? 'Anonymous' }
     });
 
