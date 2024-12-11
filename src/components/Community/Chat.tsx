@@ -58,9 +58,9 @@ const Chat: React.FC = () => {
   };
 
   return (
-    <Card className="w-full max-w-md mx-auto">
+    <Card className="w-full max-w-md mx-auto bg-black text-white">
       <CardHeader>
-        <CardTitle>PerceptAI Chat</CardTitle>
+        <CardTitle>PerceptAI ChatRoom</CardTitle>
       </CardHeader>
       <CardContent className="h-96 overflow-y-auto">
         {messages.map((message) => (
@@ -70,7 +70,7 @@ const Chat: React.FC = () => {
           >
             <div 
               className={`inline-block px-3 py-2 rounded-lg ${
-                message.userId === user?.id ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'
+                message.userId === user?.id ? 'bg-purple-800 text-white' : 'bg-gray-200 text-black'
               }`}
             >
               <p className="font-bold text-sm">{message.username}</p>
@@ -90,9 +90,9 @@ const Chat: React.FC = () => {
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             placeholder="Type a message..."
-            className="flex-grow"
+            className="flex-grow bg-gray-800 text-white"
           />
-          <Button type="submit">Send</Button>
+          <Button type="submit" className="bg-purple-800 text-white">Send</Button>
         </form>
       </CardFooter>
     </Card>
@@ -100,4 +100,3 @@ const Chat: React.FC = () => {
 };
 
 export default Chat;
-
