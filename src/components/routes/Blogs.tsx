@@ -22,11 +22,11 @@ const Blogs: React.FC = () => {
     useEffect(() => {
         const fetchBlogs = async () => {
             try {
-                const response = await fetch("https://dev.to/api/articles");
+                const response = await fetch("https://dev.to/api/articles/latest?tag=opencv&tag=computervision&tag=machinelearning");
                 const data = await response.json();
                 setBlogs(data);
             } catch (error) {
-                console.error("Error fetching blogs:", error);
+                console.error("Error fetching computer vision blogs:", error);
             } finally {
                 setLoading(false);
             }
