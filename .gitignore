@@ -26,3 +26,6 @@ dist-ssr
 *.sln
 *.sw?
 .vercel
+
+# Ignore specific component
+src/components/Section2/Card/ProjectCard.tsx

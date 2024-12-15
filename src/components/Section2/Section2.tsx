@@ -1,7 +1,6 @@
-// Section2.tsx
 import React from 'react';
 import Sidebar from './SideBar/SideBar';
-import ProjectGrid from './ProjectGrid/ProjectGrid';
+import { ProjectGrid } from './ProjectGrid/ProjectGrid';
 import './Section2.css';
 import '../../App.css';
 import FloatingNavbar from '../Section1/Navbar/Navbar';

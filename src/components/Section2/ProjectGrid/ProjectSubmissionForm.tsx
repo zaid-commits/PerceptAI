@@ -116,7 +116,7 @@ export const ProjectSubmissionForm = () => {
               <Label htmlFor="category" className="text-purple-400">Category</Label>
               <Select 
                 value={formData.category} 
-                onValueChange={(value) => setFormData(prev => ({ ...prev, category: value }))}
+                onValueChange={(value: string) => setFormData(prev => ({ ...prev, category: value }))}
               >
                 <SelectTrigger className="bg-black border-purple-800 text-white">
                   <SelectValue placeholder="Select a category" />
