@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { SignedIn, SignedOut } from '@clerk/clerk-react';
 import ModernPurpleLoader from './components/elements/Loader';
 import { useLoading } from './context/LoadingContext';
- 
 const Main = React.lazy(() => import('./components/Section1/Hero/Main'));
 const Test = React.lazy(() => import('./components/routes/Test'));
 const Projects = React.lazy(() => import('./components/routes/Projects'));
