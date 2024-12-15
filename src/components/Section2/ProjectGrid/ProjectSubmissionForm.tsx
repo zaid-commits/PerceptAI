@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { toast } from 'react-hot-toast';
+import { useUser } from '@clerk/clerk-react';
 
 const ProjectSubmissionForm: React.FC = () => {
+  const { user } = useUser();
   const [formData, setFormData] = useState({
     title: '',
-    author: '',
+    author: user?.fullName || '',
     description: '',
     category: '',
     stars: 0,
@@ -14,6 +16,15 @@ const ProjectSubmissionForm: React.FC = () => {
     codeUrl: '',
     tags: ''
   });
+
+  useEffect(() => {
+    if (user) {
+      setFormData((prevData) => ({
+        ...prevData,
+        author: user.fullName || ''
+      }));
+    }
+  }, [user]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -34,17 +45,18 @@ const ProjectSubmissionForm: React.FC = () => {
         body: JSON.stringify({ ...formData, tags: formData.tags.split(',').map(tag => tag.trim()) })
       });
       if (response.ok) {
+        const data = await response.json();
         toast.success('Project added successfully!');
         setFormData({
           title: '',
-          author: '',
+          author: user?.fullName || '',
           description: '',
           category: '',
           stars: 0,
           forks: 0,
           imageUrl: '',
-          demoUrl: '',
-          codeUrl: '',
+          demoUrl: data.demoUrl || '',
+          codeUrl: data.codeUrl || '',
           tags: ''
         });
       } else {
@@ -74,6 +86,7 @@ const ProjectSubmissionForm: React.FC = () => {
         placeholder="Author"
         className="w-full p-2 rounded bg-gray-800 text-white border border-purple-500"
         required
+        readOnly
       />
       <textarea
         name="description"
