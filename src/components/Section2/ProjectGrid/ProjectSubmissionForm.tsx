@@ -26,7 +26,7 @@ const ProjectSubmissionForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${import.meta.env.REACT_APP_API_URL}/api/projects`, {
+      const response = await fetch(`https://ts-backend-6swe.onrender.com/api/projects`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

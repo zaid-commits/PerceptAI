@@ -16,7 +16,7 @@ const UserManagement = () => {
   useEffect(() => {
     const fetchSubscribers = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/newsletter/emails`);
+        const response = await fetch(`https://ts-backend-6swe.onrender.com/api/newsletter/emails`);
         if (!response.ok) {
           throw new Error('Failed to fetch subscribers');
         }
