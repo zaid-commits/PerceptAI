@@ -2,8 +2,7 @@ import { motion } from 'framer-motion';
 import { ProjectGrid } from '../Section2/ProjectGrid/ProjectGrid';
 import { ProjectSubmissionForm } from '../Section2/ProjectGrid/ProjectSubmissionForm';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
-import { Plus, Grid, List } from 'lucide-react';
-import { Button } from '../ui/button';
+import { Plus, Grid } from 'lucide-react';
 
 export const Projects = () => {
   return (
