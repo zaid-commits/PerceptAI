@@ -10,12 +10,13 @@ interface NewsletterForm {
 
 const Newsletter: React.FC = () => {
   const [newsletterForm, setNewsletterForm] = useState<NewsletterForm>({
-    subject: '',
-    heading: '',
+    subject: 'Newsletter from PerceptAI',
+    heading: 'Newsletter #1',
     content: ''
   });
   const [sending, setSending] = useState(false);
   const [sendMessage, setSendMessage] = useState<string | null>(null);
+  const [newsletterCount, setNewsletterCount] = useState(1);
 
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -39,7 +40,12 @@ const Newsletter: React.FC = () => {
       const data = await response.json();
       if (response.ok) {
         toast.success("Newsletter sent successfully, will be delivered soon");
-        setNewsletterForm({ subject: '', heading: '', content: '' });
+        setNewsletterCount(prevCount => prevCount + 1);
+        setNewsletterForm({
+          subject: 'Newsletter from PerceptAI',
+          heading: `Newsletter #${newsletterCount + 1}`,
+          content: ''
+        });
       } else {
         setSendMessage(data.msg);
       }
@@ -66,6 +72,7 @@ const Newsletter: React.FC = () => {
               value={newsletterForm.subject}
               onChange={handleFormChange}
               className="w-full p-2 rounded bg-gray-800 text-white border border-purple-500"
+              readOnly
             />
             <input
               type="text"
@@ -74,6 +81,7 @@ const Newsletter: React.FC = () => {
               value={newsletterForm.heading}
               onChange={handleFormChange}
               className="w-full p-2 rounded bg-gray-800 text-white border border-purple-500"
+              readOnly
             />
             <textarea
               name="content"
