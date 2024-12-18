@@ -27,7 +27,7 @@ const Chat: React.FC = () => {
   useEffect(() => {
     if (!user) return
 
-    socketRef.current = io('http://localhost:5000',{
+    socketRef.current = io('https://percept-ai.vercel.app',{
       query: { userId: user.id, username: user.username || user.firstName || 'Anonymous' }
     })
 
@@ -60,7 +60,7 @@ const Chat: React.FC = () => {
       socketRef.current.on('chat history', (messages: Message[]) => {
         setMessages(messages);
       });
-      
+
       socketRef.current.emit('chat message', newMessage)
       setInputValue('')
     }
