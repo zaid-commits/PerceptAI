@@ -27,12 +27,16 @@ const Chat: React.FC = () => {
   useEffect(() => {
     if (!user) return
 
-    socketRef.current = io('https://ts-backend-6swe.onrender.com',{
+    socketRef.current = io('https://ts-backend-6swe.onrender.com', {
       query: { userId: user.id, username: user.username || user.firstName || 'Anonymous' }
     })
 
     socketRef.current.on('chat message', (msg: Message) => {
       setMessages(prevMessages => [...prevMessages, msg])
+    })
+
+    socketRef.current.on('chat history', (messages: Message[]) => {
+      setMessages(messages)
     })
 
     return () => {
@@ -57,22 +61,18 @@ const Chat: React.FC = () => {
         userImageUrl: (user.publicMetadata as { profileImageUrl?: string }).profileImageUrl || user.imageUrl || '',
         timestamp: Date.now()
       }
-      socketRef.current.on('chat history', (messages: Message[]) => {
-        setMessages(messages);
-      });
 
       socketRef.current.emit('chat message', newMessage)
       setInputValue('')
     }
-    
   }
 
   const formatTime = (timestamp: number) => {
-    return new Date(timestamp).toLocaleTimeString([], { 
-      hour: '2-digit', 
+    return new Date(timestamp).toLocaleTimeString([], {
+      hour: '2-digit',
       minute: '2-digit',
       second: '2-digit',
-      hour12: true 
+      hour12: true
     })
   }
 
@@ -89,20 +89,20 @@ const Chat: React.FC = () => {
             )}
             <div className={`mb-4 ${message.userId === user?.id ? 'flex justify-end' : 'flex justify-start'}`}>
               <div className={`flex max-w-[80%] ${message.userId === user?.id ? 'flex-row-reverse' : 'flex-row'} items-end gap-2`}>
-                <img 
-                  src={message.userImageUrl} 
-                  alt={message.username} 
+                <img
+                  src={message.userImageUrl}
+                  alt={message.username}
                   className="w-8 h-8 rounded-full flex-shrink-0"
                 />
-                <div 
+                <div
                   className={`flex flex-col ${
                     message.userId === user?.id ? 'items-end' : 'items-start'
                   }`}
                 >
-                  <div 
+                  <div
                     className={`px-4 py-2 rounded-2xl ${
-                      message.userId === user?.id 
-                        ? 'bg-purple-800 text-white rounded-br-none' 
+                      message.userId === user?.id
+                        ? 'bg-purple-800 text-white rounded-br-none'
                         : 'bg-gray-200 text-black rounded-bl-none'
                     }`}
                   >
