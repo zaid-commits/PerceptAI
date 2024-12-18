@@ -81,7 +81,7 @@ const Newsletter: React.FC = () => {
               value={newsletterForm.heading}
               onChange={handleFormChange}
               className="w-full p-2 rounded bg-gray-800 text-white border border-purple-500"
-              readOnly
+              // readOnly
             />
             <textarea
               name="content"
