@@ -1,70 +1,71 @@
-'use client';
+'use client'
 
-import React, { useState, useEffect, useRef } from 'react';
-import { useUser } from '@clerk/clerk-react';
-import io, { Socket } from 'socket.io-client';
-import { Input } from '../ui/input';
-import { Button } from '../ui/button';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "../ui/card";
-import { Separator } from "@/components/ui/separator";
+import React, { useState, useEffect, useRef } from 'react'
+import { useUser } from '@clerk/clerk-react'
+import io, { Socket } from 'socket.io-client'
+import { Input } from '../ui/input'
+import { Button } from '../ui/button'
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "../ui/card"
+import { Separator } from "@/components/ui/separator"
 
 interface Message {
-  id: string;
-  text: string;
-  userId: string;
-  username: string;
-  userImageUrl: string;
-  timestamp: number;
+  id: string
+  text: string
+  userId: string
+  username: string
+  userImageUrl: string
+  timestamp: number
 }
 
 const Chat: React.FC = () => {
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [inputValue, setInputValue] = useState('');
-  const socketRef = useRef<Socket | null>(null);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
-  const { user } = useUser();
+  const [messages, setMessages] = useState<Message[]>([])
+  const [inputValue, setInputValue] = useState('')
+  const socketRef = useRef<Socket | null>(null)
+  const messagesEndRef = useRef<HTMLDivElement>(null)
+  const { user } = useUser()
 
   useEffect(() => {
-    if (!user) return;
+    if (!user) return
 
-    socketRef.current = io(process.env.NEXT_PUBLIC_SOCKET_URL as string, {
-      query: { userId: user.id, username: user.username ?? user.firstName ?? 'Anonymous' }
-    });
-
-    socketRef.current.on('chat history', (messages: Message[]) => {
-      setMessages(messages);
-    });
+    socketRef.current = io('http://localhost:5000',{
+      query: { userId: user.id, username: user.username || user.firstName || 'Anonymous' }
+    })
 
     socketRef.current.on('chat message', (msg: Message) => {
-      setMessages(prevMessages => [...prevMessages, msg]);
-    });
+      setMessages(prevMessages => [...prevMessages, msg])
+    })
 
     return () => {
       if (socketRef.current) {
-        socketRef.current.disconnect();
+        socketRef.current.disconnect()
       }
     }
-  }, [user]);
+  }, [user])
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+  }, [messages])
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault()
     if (inputValue && socketRef.current && user) {
       const newMessage: Message = {
         id: Date.now().toString(),
         text: inputValue,
         userId: user.id,
         username: user.username || user.firstName || 'Anonymous',
-        userImageUrl: String(user.publicMetadata?.profileImageUrl || user.imageUrl || ''),
+        userImageUrl: (user.publicMetadata as { profileImageUrl?: string }).profileImageUrl || user.imageUrl || '',
         timestamp: Date.now()
-      };
-      socketRef.current.emit('chat message', newMessage);
-      setInputValue('');
+      }
+      socketRef.current.on('chat history', (messages: Message[]) => {
+        setMessages(messages);
+      });
+      
+      socketRef.current.emit('chat message', newMessage)
+      setInputValue('')
     }
-  };
+    
+  }
 
   const formatTime = (timestamp: number) => {
     return new Date(timestamp).toLocaleTimeString([], { 
@@ -72,8 +73,8 @@ const Chat: React.FC = () => {
       minute: '2-digit',
       second: '2-digit',
       hour12: true 
-    });
-  };
+    })
+  }
 
   return (
     <Card className="w-full max-w-md mx-auto bg-black text-white">
@@ -131,7 +132,7 @@ const Chat: React.FC = () => {
         </form>
       </CardFooter>
     </Card>
-  );
-};
+  )
+}
 
-export default Chat;
+export default Chat
