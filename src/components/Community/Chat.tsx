@@ -1,57 +1,60 @@
-'use client'
-
-import React, { useState, useEffect, useRef } from 'react'
-import { useUser } from '@clerk/clerk-react'
-import io, { Socket } from 'socket.io-client'
-import { Input } from '../ui/input'
-import { Button } from '../ui/button'
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "../ui/card"
-import { Separator } from "@/components/ui/separator"
+import React, { useState, useEffect, useRef } from 'react';
+import { useUser } from '@clerk/clerk-react';
+import io, { Socket } from 'socket.io-client';
+import { Input } from '../ui/input';
+import { Button } from '../ui/button';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "../ui/card";
+import { Separator } from "@/components/ui/separator";
 
 interface Message {
-  id: string
-  text: string
-  userId: string
-  username: string
-  userImageUrl: string
-  timestamp: number
+  id: string;
+  text: string;
+  userId: string;
+  username: string;
+  userImageUrl: string;
+  timestamp: number;
 }
 
 const Chat: React.FC = () => {
-  const [messages, setMessages] = useState<Message[]>([])
-  const [inputValue, setInputValue] = useState('')
-  const socketRef = useRef<Socket | null>(null)
-  const messagesEndRef = useRef<HTMLDivElement>(null)
-  const { user } = useUser()
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [inputValue, setInputValue] = useState('');
+  const socketRef = useRef<Socket | null>(null);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const { user } = useUser();
 
   useEffect(() => {
-    if (!user) return
+    if (!user) return;
 
     socketRef.current = io('https://ts-backend-6swe.onrender.com', {
       query: { userId: user.id, username: user.username || user.firstName || 'Anonymous' }
-    })
+    });
 
     socketRef.current.on('chat message', (msg: Message) => {
-      setMessages(prevMessages => [...prevMessages, msg])
-    })
+      setMessages(prevMessages => [...prevMessages, msg]);
+      showNotification(msg);
+    });
 
     socketRef.current.on('chat history', (messages: Message[]) => {
-      setMessages(messages)
-    })
+      setMessages(messages);
+    });
+
+    socketRef.current.on('notification', (notification) => {
+      showNotification(notification);
+    });
 
     return () => {
       if (socketRef.current) {
-        socketRef.current.disconnect()
+        socketRef.current.disconnect();
       }
-    }
-  }, [user])
+    };
+  }, [user]);
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
-  }, [messages])
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     if (inputValue && socketRef.current && user) {
       const newMessage: Message = {
         id: Date.now().toString(),
@@ -60,21 +63,27 @@ const Chat: React.FC = () => {
         username: user.username || user.firstName || 'Anonymous',
         userImageUrl: (user.publicMetadata as { profileImageUrl?: string }).profileImageUrl || user.imageUrl || '',
         timestamp: Date.now()
-      }
+      };
 
-      socketRef.current.emit('chat message', newMessage)
-      setInputValue('')
+      socketRef.current.emit('chat message', newMessage);
+      setInputValue('');
     }
-  }
+  };
 
-  const formatTime = (timestamp: number) => {
-    return new Date(timestamp).toLocaleTimeString([], {
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
-      hour12: true
-    })
-  }
+  const showNotification = (msg: Message | { type: string; message: string; timestamp: number }) => {
+    if (Notification.permission === 'granted') {
+      new Notification(msg.username || 'Notification', {
+        body: msg.text || msg.message,
+        icon: msg.userImageUrl || '/favicon.ico',
+      });
+    }
+  };
+
+  useEffect(() => {
+    if (Notification.permission !== 'granted') {
+      Notification.requestPermission();
+    }
+  }, []);
 
   return (
     <Card className="w-full max-w-md mx-auto bg-black text-white">
@@ -95,22 +104,21 @@ const Chat: React.FC = () => {
                   className="w-8 h-8 rounded-full flex-shrink-0"
                 />
                 <div
-                  className={`flex flex-col ${
-                    message.userId === user?.id ? 'items-end' : 'items-start'
-                  }`}
+                  className={`flex flex-col ${message.userId === user?.id ? 'items-end' : 'items-start'}`}
                 >
                   <div
-                    className={`px-4 py-2 rounded-2xl ${
-                      message.userId === user?.id
-                        ? 'bg-purple-800 text-white rounded-br-none'
-                        : 'bg-gray-200 text-black rounded-bl-none'
-                    }`}
+                    className={`px-4 py-2 rounded-2xl ${message.userId === user?.id ? 'bg-purple-800 text-white rounded-br-none' : 'bg-gray-200 text-black rounded-bl-none'}`}
                   >
                     <p className="font-bold text-sm">{message.username}</p>
                     <p className="break-words">{message.text}</p>
                   </div>
                   <p className="text-xs text-gray-400 mt-1 px-2">
-                    {formatTime(message.timestamp)}
+                    {new Date(message.timestamp).toLocaleTimeString([], {
+                      hour: '2-digit',
+                      minute: '2-digit',
+                      second: '2-digit',
+                      hour12: true
+                    })}
                   </p>
                 </div>
               </div>
@@ -132,7 +140,7 @@ const Chat: React.FC = () => {
         </form>
       </CardFooter>
     </Card>
-  )
-}
+  );
+};
 
-export default Chat
+export default Chat;
