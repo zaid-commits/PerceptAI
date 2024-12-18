@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import FloatingNavbar from "../Section1/Navbar/Navbar";
 import Loader from "../elements/Loader";
 import Footer from "../Footer";
+import Promo from "../Section5/promo";
 interface Blog {
     id: number;
     title: string;
@@ -90,6 +91,7 @@ const Blogs: React.FC = () => {
                     )}
                 </div>
             </div>
+            <Promo/>
             <Footer />
         </div>
 

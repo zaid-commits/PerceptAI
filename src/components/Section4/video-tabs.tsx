@@ -32,10 +32,34 @@ export default function VideoTab({
           onValueChange={setActiveTab}
         >
           <TabsList className="grid w-full grid-cols-4 bg-black text-white">
-            <TabsTrigger value="detection">Detection</TabsTrigger>
-            <TabsTrigger value="tracking">Tracking</TabsTrigger>
-            <TabsTrigger value="counting">Counting</TabsTrigger>
-            <TabsTrigger value="analysis">Analysis</TabsTrigger>
+            <TabsTrigger 
+              value="detection" 
+              className={`relative ${activeTab === 'detection' ? 'bg-black text-white' : ''}`}
+            >
+              Detection
+              {activeTab === 'detection' && <div className="absolute bottom-0 left-0 right-0 h-1 bg-white"></div>}
+            </TabsTrigger>
+            <TabsTrigger 
+              value="tracking" 
+              className={`relative ${activeTab === 'tracking' ? 'bg-black text-white' : ''}`}
+            >
+              Tracking
+              {activeTab === 'tracking' && <div className="absolute bottom-0 left-0 right-0 h-1 bg-white"></div>}
+            </TabsTrigger>
+            <TabsTrigger 
+              value="counting" 
+              className={`relative ${activeTab === 'counting' ? 'bg-black text-white' : ''}`}
+            >
+              Counting
+              {activeTab === 'counting' && <div className="absolute bottom-0 left-0 right-0 h-1 bg-white"></div>}
+            </TabsTrigger>
+            <TabsTrigger 
+              value="analysis" 
+              className={`relative ${activeTab === 'analysis' ? 'bg-black text-white' : ''}`}
+            >
+              Analysis
+              {activeTab === 'analysis' && <div className="absolute bottom-0 left-0 right-0 h-1 bg-white"></div>}
+            </TabsTrigger>
           </TabsList>
           <div className="mt-6 aspect-video relative rounded-lg overflow-hidden bg-muted ">
             <TabsContent value="detection">
@@ -92,4 +116,3 @@ export default function VideoTab({
     </Card>
   )
 }
-

@@ -7,7 +7,6 @@ const Contact: React.FC = () => {
   return (
     <div className="bg-black text-white min-h-screen flex flex-col">
       <FloatingNavbar />
-      <Promo />
       <div className="container mx-auto px-4 py-16 flex-grow">
         <h1 className="text-4xl font-bold text-center mb-8">Contact Us</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -74,6 +73,7 @@ const Contact: React.FC = () => {
           </div>
         </div>
       </div>
+      <Promo/>
       <Footer/>
     </div>
   );
