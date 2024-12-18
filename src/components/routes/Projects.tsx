@@ -5,10 +5,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { Plus, Grid, List } from 'lucide-react';
 import FloatingNavbar from '../Section1/Navbar/Navbar';
+import Promo from '../Section5/promo';
 
 export const ProjectsPage = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-gray-900 text-white">
+    <div className="min-h-screen bg-black text-white">
       <FloatingNavbar/>
       <div className="container mx-auto px-4 py-16">
         <motion.div
@@ -71,23 +72,24 @@ export const ProjectsPage = () => {
           </TabsContent>
         </Tabs>
 
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.8, ease: 'easeOut' }}
           className="text-center py-16 border-t border-purple-800"
-        >
+          >
           <h2 className="text-2xl font-bold mb-4 text-purple-400">
-            Want to contribute?
+          Want to contribute?
           </h2>
           <p className="text-gray-400 mb-6">
-            Join our community and showcase your projects to the world.
+          Join our community and showcase your projects to the world.
           </p>
           <Button className="bg-purple-800 hover:bg-purple-700 text-white px-6 py-3 rounded-lg transition-transform duration-300 transform hover:scale-105">
             Get Started
-          </Button>
-        </motion.div>
+            </Button>
+            </motion.div> */}
       </div>
+            <Promo/>
     </div>
   );
 };
