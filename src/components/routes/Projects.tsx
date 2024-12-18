@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Plus, Grid, List } from 'lucide-react';
 import FloatingNavbar from '../Section1/Navbar/Navbar';
 import Promo from '../Section5/promo';
+import Footer from '../Footer';
 
 export const ProjectsPage = () => {
   return (
@@ -90,6 +91,7 @@ export const ProjectsPage = () => {
             </motion.div> */}
       </div>
             <Promo/>
+            <Footer/>
     </div>
   );
 };
