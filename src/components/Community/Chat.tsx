@@ -15,6 +15,12 @@ interface Message {
   timestamp: number;
 }
 
+interface Notification {
+  type: string;
+  message: string;
+  timestamp: number;
+}
+
 const Chat: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState('');
@@ -38,7 +44,7 @@ const Chat: React.FC = () => {
       setMessages(messages);
     });
 
-    socketRef.current.on('notification', (notification) => {
+    socketRef.current.on('notification', (notification: Notification) => {
       showNotification(notification);
     });
 
@@ -70,11 +76,11 @@ const Chat: React.FC = () => {
     }
   };
 
-  const showNotification = (msg: Message | { type: string; message: string; timestamp: number }) => {
+  const showNotification = (msg: Message | Notification) => {
     if (Notification.permission === 'granted') {
-      new Notification(msg.username || 'Notification', {
-        body: msg.text || msg.message,
-        icon: msg.userImageUrl || '/favicon.ico',
+      new Notification('Notification', {
+        body: 'text' in msg ? msg.text : msg.message,
+        icon: 'userImageUrl' in msg ? msg.userImageUrl : '/favicon.ico',
       });
     }
   };
