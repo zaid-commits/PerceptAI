@@ -78,7 +78,7 @@ const Chat: React.FC = () => {
 
   const showNotification = (msg: Message | Notification) => {
     if (Notification.permission === 'granted') {
-      new Notification('PerceptAI ', {
+      new Notification('PerceptAI', {
         body: 'text' in msg ? msg.text : msg.message,
         icon: 'userImageUrl' in msg ? msg.userImageUrl : '/favicon.ico',
       });
