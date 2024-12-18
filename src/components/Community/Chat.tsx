@@ -27,7 +27,7 @@ const Chat: React.FC = () => {
   useEffect(() => {
     if (!user) return
 
-    socketRef.current = io('https://percept-ai.vercel.app',{
+    socketRef.current = io('https://ts-backend-6swe.onrender.com',{
       query: { userId: user.id, username: user.username || user.firstName || 'Anonymous' }
     })
 
