@@ -7,8 +7,8 @@ import Analytics from './Analytics';
 
 const AdminDashboard: React.FC = () => {
   const cards = [
-    { title: 'Newsletter', route: '/admin/newsletter', description: 'Send newsletters' },
-    { title: 'User Management', route: '/admin/users', description: 'Manage newsletter subscribers' },
+    { title: 'Newsletter', route: '/admin/newsletter', description: 'Deliver project insights to PerceptAI subscibers' },
+    { title: 'User Management', route: '/admin/users', description: 'Manage your subscribers' },
     { title: 'Analytics', route: '/admin/analytics', description: 'View site analytics' },
     // { title: 'Dashboard', route: '/admin', description: 'Overview of admin functions' },
   ];
