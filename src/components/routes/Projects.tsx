@@ -4,10 +4,12 @@ import { ProjectSubmissionForm } from '@/components/Section2/ProjectGrid/Project
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { Plus, Grid, List } from 'lucide-react';
+import FloatingNavbar from '../Section1/Navbar/Navbar';
 
 export const ProjectsPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-black to-gray-900 text-white">
+      <FloatingNavbar/>
       <div className="container mx-auto px-4 py-16">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
