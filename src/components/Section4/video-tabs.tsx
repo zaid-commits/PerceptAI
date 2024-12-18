@@ -24,20 +24,20 @@ export default function VideoTab({
   const [activeTab, setActiveTab] = useState('detection')
 
   return (
-    <Card className="w-full max-w-4xl mx-auto">
+    <Card className="w-full max-w-4xl mx-auto bg-black border-none">
       <CardContent className="p-6">
         <Tabs 
           defaultValue="detection" 
           className="w-full"
           onValueChange={setActiveTab}
         >
-          <TabsList className="grid w-full grid-cols-4">
+          <TabsList className="grid w-full grid-cols-4 bg-black text-white">
             <TabsTrigger value="detection">Detection</TabsTrigger>
             <TabsTrigger value="tracking">Tracking</TabsTrigger>
             <TabsTrigger value="counting">Counting</TabsTrigger>
             <TabsTrigger value="analysis">Analysis</TabsTrigger>
           </TabsList>
-          <div className="mt-6 aspect-video relative rounded-lg overflow-hidden bg-muted">
+          <div className="mt-6 aspect-video relative rounded-lg overflow-hidden bg-muted ">
             <TabsContent value="detection">
               <video
                 key={`detection-${activeTab === 'detection'}`}
