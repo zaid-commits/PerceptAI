@@ -16,6 +16,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
       <LoadingProvider>
         <App />
+        <KeepAlive /> {/* Add the KeepAlive component here */}
       </LoadingProvider>
     </ClerkProvider>
   </React.StrictMode>,
