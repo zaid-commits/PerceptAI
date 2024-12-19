@@ -72,7 +72,7 @@ const FloatingNavbar: React.FC = () => {
           isMenuOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
-        <div className="px-4 py-2 space-y-2">
+        <div className="px-4 py-2 space-y-2 bg-gray bg-opacity-30 backdrop-blur-md">
           {navItems.map((item) => (
             <Link
               key={item.to}
@@ -100,4 +100,3 @@ const FloatingNavbar: React.FC = () => {
 };
 
 export default FloatingNavbar;
-
