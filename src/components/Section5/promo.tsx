@@ -16,7 +16,7 @@ export default function Promo() {
                                 className="bg-purple-800 hover:bg-purple-900 text-white px-8 py-6 text-lg rounded-lg border-none"
                                 size="lg"
                             >
-                              <a href="https://community.impic.tech">  Join Now!</a>
+                              <a href="/community">  Join Now!</a>
                             </Button>
                             
                         </div>
