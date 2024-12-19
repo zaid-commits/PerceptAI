@@ -4,6 +4,7 @@ import App from './App';
 import './index.css';
 import { ClerkProvider } from '@clerk/clerk-react';
 import { LoadingProvider } from './context/LoadingContext';
+import KeepAlive from './components/KeepAlive';
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
