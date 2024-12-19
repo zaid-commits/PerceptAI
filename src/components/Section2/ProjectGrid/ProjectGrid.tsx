@@ -5,7 +5,7 @@ import ProjectCard from './ProjectCard';
 import { Search, Filter } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-
+import Loader from '../../elements/Loader'
 interface Project {
   id: string;
   title: string;
@@ -50,7 +50,7 @@ export const ProjectGrid: React.FC = () => {
   }, []);
 
   if (loading) {
-    return <div className="text-center text-gray-300">Loading...</div>;
+    return <Loader/>
   }
 
   if (error) {
