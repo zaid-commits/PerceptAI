@@ -1,0 +1,235 @@
+.hero-section {
+    background-color: #000000;
+    background-image: 
+      radial-gradient(circle at 20% 20%, rgba(91, 33, 182, 0.4) 0%, transparent 40%),
+      radial-gradient(circle at 80% 80%, rgba(91, 33, 182, 0.4) 0%, transparent 40%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    color: #ffffff;
+  }
+  
+  .hero-content {
+    max-width: 1200px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .hero-title {
+    font-size: 4.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #ffffff, #5b21b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 20px rgba(91, 33, 182, 0.5);
+  }
+  
+  .hero-description {
+    font-size: 1.25rem;
+    color: #e2e8f0;
+    margin-bottom: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .highlight {
+    color: #5b21b6;
+    font-weight: 700;
+  }
+  
+  .search-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+  
+  .search-bar {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  .search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #718096;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 1rem 1rem 1rem 3rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 9999px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    transition: all 0.3s ease;
+  }
+  
+  .search-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(91, 33, 182, 0.5);
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+  
+  .search-input::placeholder {
+    color: #a0aec0;
+  }
+  
+  .search-button {
+    background-color: #5b21b6;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 9999px;
+    margin-left: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .search-button:hover {
+    background-color: #4c1d95;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(91, 33, 182, 0.5);
+  }
+  
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+  
+  .github-button,
+  .start-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .github-button {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .github-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+  }
+  
+  .start-button {
+    background-color: #5b21b6;
+    color: #ffffff;
+    border: none;
+  }
+  
+  .start-button:hover {
+    background-color: #4c1d95;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(91, 33, 182, 0.5);
+  }
+  
+  .button-icon,
+  .star-icon,
+  .arrow-icon {
+    margin-right: 0.5rem;
+  }
+  
+  .star-icon {
+    color: #fbbf24;
+  }
+  
+  .star-count {
+    margin-left: 0.25rem;
+  }
+  
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+  }
+  
+  .feature-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(91, 33, 182, 0.3);
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: left;
+    transition: all 0.3s ease;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border-color: #5b21b6;
+  }
+  
+  .feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .feature-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+  }
+  
+  .feature-description {
+    font-size: 0.875rem;
+    color: #e2e8f0;
+  }
+  
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 3rem;
+    }
+  
+    .hero-description {
+      font-size: 1rem;
+    }
+  
+    .search-form {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .search-button {
+      margin-left: 0;
+      margin-top: 1rem;
+      width: 100%;
+      max-width: 600px;
+    }
+  
+    .cta-buttons {
+      flex-direction: column;
+    }
+  
+    .github-button,
+    .start-button {
+      width: 100%;
+    }
+  
+    .feature-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  
