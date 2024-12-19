@@ -11,7 +11,7 @@ const HeroSection: React.FC = () => {
   useEffect(() => {
     const fetchGitHubStars = async () => {
       try {
-        const response = await fetch('https://api.github.com/repos/yourusername/yourrepo');
+        const response = await fetch('https://api.github.com/repos/zaid-commits/perceptai');
         const data = await response.json();
         setStars(data.stargazers_count);
       } catch (error) {
@@ -35,7 +35,7 @@ const HeroSection: React.FC = () => {
   return (
     <div className="hero-section">
         <FloatingNavbar/>
-      <div className="hero-content">
+      <div className="hero-content py-10 mt-10">
         <motion.h1 
           className="hero-title"
           initial={{ opacity: 0, y: -20 }}
@@ -81,7 +81,7 @@ const HeroSection: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
         >
           <a
-            href="https://github.com/yourusername/yourrepo"
+            href="https://github.com/zaid-commits/perceptai"
             target="_blank"
             rel="noopener noreferrer"
             className="github-button"
