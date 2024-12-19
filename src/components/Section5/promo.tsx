@@ -1,7 +1,11 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { useUser } from "@clerk/clerk-react"
 
 export default function Promo() {
+    const { user } = useUser();
+    const isAdmin = user?.emailAddresses?.some(email => email.emailAddress === "rakhangezaid10@gmail.com");
+
     return (
         <div className="min-h-[500px] bg-[#000000] flex items-center justify-center p-4">
             <Card className="w-full max-w-4xl bg-[#000000] border-none">
@@ -16,9 +20,17 @@ export default function Promo() {
                                 className="bg-purple-800 hover:bg-purple-900 text-white px-8 py-6 text-lg rounded-lg border-none"
                                 size="lg"
                             >
-                              <a href="/community">  Join Now!</a>
+                              <a href="/community">Join Now!</a>
                             </Button>
-                            
+
+                            {isAdmin && (
+                                <Button 
+                                    className="bg-purple-800 hover:bg-purple-900 text-white px-8 py-6 text-lg rounded-lg border-none"
+                                    size="lg"
+                                >
+                                    <a href="/admin">Admin Panel</a>
+                                </Button>
+                            )}
                         </div>
                     </div>
                 </CardContent>
