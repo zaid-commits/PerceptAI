@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, {  useEffect } from 'react'; //usestate
 import FloatingNavbar from '../../Section1/Navbar/Navbar';
 import HeroContent from './HeroContent';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { CommandMenu } from '../Navbar/CommandMenu';
+// import { CommandMenu } from '../Navbar/CommandMenu';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const LandingPage: React.FC = () => {
-  const [isCommandMenuOpen, setIsCommandMenuOpen] = useState(false);
+  // const [isCommandMenuOpen, setIsCommandMenuOpen] = useState(false);
 
   useGSAP(() => {
     gsap.from(".navbar", {
@@ -43,7 +43,7 @@ const LandingPage: React.FC = () => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.ctrlKey && event.key === 'k') {
         event.preventDefault();
-        setIsCommandMenuOpen(prev => !prev);
+        // setIsCommandMenuOpen(prev => !prev);
       }
     };
 
@@ -77,14 +77,14 @@ const LandingPage: React.FC = () => {
 
         {/* Content */}
         <HeroContent />
-        <nav className="fixed text-white top-6 right-4 bg-gray bg-opacity-70 backdrop-blur-md rounded-full shadow-lg border border-gray-700 z-10 p-4 navbar">
+        {/* <nav className="fixed text-white top-6 right-4 bg-gray bg-opacity-70 backdrop-blur-md rounded-full shadow-lg border border-gray-700 z-10 p-4 navbar">
             <button className="hidden sm:block" onClick={() => setIsCommandMenuOpen(prev => !prev)}>
             ⌘+K to toggle
             </button>
         </nav>
         <div className="fixed top-4 right-4 z-20">
           <CommandMenu isOpen={isCommandMenuOpen} setIsOpen={setIsCommandMenuOpen} notes={[]} tags={[]} />
-        </div>
+        </div> */}
       </main>
     </div>
   );
