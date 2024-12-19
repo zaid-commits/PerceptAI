@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   SignedIn,
@@ -7,48 +7,54 @@ import {
   UserButton,
 } from '@clerk/clerk-react';
 import { Button } from '@/components/ui/button';
-import logo from '../../../assets/logos/corelogo.png';
-
+import { Menu, X } from 'lucide-react';
+import logo from "../../../assets/logos/corelogo.png"
 const FloatingNavbar: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const navItems = [
+    { to: '/', label: 'Home' },
+    { to: '/projects', label: 'Projects' },
+    { to: '/blogs', label: 'Articles' },
+    { to: '/resources', label: 'Resources' },
+    { to: '/contact', label: 'Contact' },
+  ];
+
   return (
-    <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-gray bg-opacity-70 backdrop-blur-md rounded-full shadow-lg border border-gray-700 z-10 p-4 navbar">
-      <div className="flex items-center space-x-6">
+    <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-gray bg-opacity-70 backdrop-blur-md rounded-full shadow-lg border border-gray-700 z-10 p-4 navbar w-[95%] md:w-auto">
+      <div className="flex items-center justify-between md:justify-start md:space-x-6">
         {/* Logo */}
-        <Link to="/">
-          <a href="#">
-            <img src={logo} alt="PerceptAI Logo" className="h-10" />
-          </a>
+        <Link to="/" className="flex-shrink-0">
+          <img src={logo} alt="PerceptAI Logo" className="h-10 w-10" />
         </Link>
 
-        {/* Navbar Items */}
-        <Link to="/">
-          <a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
-            Home
-          </a>
-        </Link>
-        <Link to="/projects">
-          <a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
-            Projects
-          </a>
-        </Link>
-        <Link to="/blogs">
-          <a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
-            Articles
-          </a>
-        </Link>
-        <Link to="/resources">
-          <a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
-            Resources
-          </a>
-        </Link>
-        <Link to="/contact">
-          <a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
-            Contact
-          </a>
-        </Link>
+        {/* Hamburger Menu Icon */}
+        <button
+          className="md:hidden text-gray-300 hover:text-white transition-colors duration-200"
+          onClick={toggleMenu}
+        >
+          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+
+        {/* Desktop Menu */}
+        <div className="hidden md:flex items-center space-x-6 flex-grow">
+          {navItems.map((item) => (
+            <Link
+              key={item.to}
+              to={item.to}
+              className="text-gray-300 hover:text-white transition-colors duration-200"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
 
         {/* Authentication Buttons */}
-        <div className="flex items-center space-x-2">
+        <div className="hidden md:flex items-center space-x-2">
           <SignedOut>
             <SignInButton>
               <Button variant="default">Sign In</Button>
@@ -59,8 +65,39 @@ const FloatingNavbar: React.FC = () => {
           </SignedIn>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      <div
+        className={`md:hidden absolute top-full left-0 right-0 bg-gray bg-opacity-90 backdrop-blur-md mt-4 rounded-2xl shadow-lg border border-gray-700 overflow-hidden transition-all duration-300 ease-in-out ${
+          isMenuOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'
+        }`}
+      >
+        <div className="px-4 py-2 space-y-2">
+          {navItems.map((item) => (
+            <Link
+              key={item.to}
+              to={item.to}
+              className="block text-gray-300 hover:text-white transition-colors duration-200 py-2"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {item.label}
+            </Link>
+          ))}
+          <div className="pt-2 pb-4">
+            <SignedOut>
+              <SignInButton>
+                <Button variant="default" className="w-full">Sign In</Button>
+              </SignInButton>
+            </SignedOut>
+            <SignedIn>
+              <UserButton afterSignOutUrl="/" />
+            </SignedIn>
+          </div>
+        </div>
+      </div>
     </nav>
   );
 };
 
 export default FloatingNavbar;
+
