@@ -42,7 +42,7 @@ export const ProjectSubmissionForm = () => {
     setIsSubmitting(true);
     
     try {
-      const response = await fetch('https://ts-backend-6swe.onrender.com/api/projects', {
+      const response = await fetch('https://ts-backend-production-53c6.up.railway.app/api/projects', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)

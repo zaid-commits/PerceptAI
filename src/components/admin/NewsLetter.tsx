@@ -30,7 +30,7 @@ const Newsletter: React.FC = () => {
     setSending(true);
     setSendMessage(null);
     try {
-      const response = await fetch('https://ts-backend-6swe.onrender.com/api/newsletter/send', {
+      const response = await fetch('https://ts-backend-production-53c6.up.railway.app/api/newsletter/send', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

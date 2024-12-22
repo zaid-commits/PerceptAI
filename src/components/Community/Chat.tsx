@@ -31,7 +31,7 @@ const Chat: React.FC = () => {
   useEffect(() => {
     if (!user) return;
 
-    socketRef.current = io('https://ts-backend-6swe.onrender.com', {
+    socketRef.current = io('https://ts-backend-production-53c6.up.railway.app/', {
       query: { userId: user.id, username: user.username || user.firstName || 'Anonymous' }
     });
 
