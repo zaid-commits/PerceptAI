@@ -24,7 +24,7 @@ const ResourceLibrary: React.FC = () => {
   useEffect(() => {
     const fetchResources = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/resources');
+        const response = await fetch('https://ts-backend-production-53c6.up.railway.app/api/resources');
         const data = await response.json();
         setResources(data);
         setIsLoading(false);
@@ -45,7 +45,7 @@ const ResourceLibrary: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5000/api/resources', {
+      const response = await fetch('https://ts-backend-production-53c6.up.railway.app/api/resources', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
