@@ -12,6 +12,7 @@ const SubmitResource: React.FC = () => {
     link: "",
     category: "",
     posterImage: "",
+    posterUsername: ""
   });
 
   useEffect(() => {
@@ -19,6 +20,7 @@ const SubmitResource: React.FC = () => {
       setNewResource((prev) => ({
         ...prev,
         posterImage: user.imageUrl || "",
+        posterUsername: user.username || "",
       }));
     }
   }, [user]);
@@ -34,9 +36,10 @@ const SubmitResource: React.FC = () => {
       const resourceToSubmit = {
         ...newResource,
         posterImage: user?.imageUrl || "",
+        posterUsername: user?.username || "",
       };
       const response = await fetch(
-        "https://ts-backend-production-53c6.up.railway.app/api/resources",
+        "http://localhost:5000/api/resources",
         {
           method: "POST",
           headers: {
@@ -52,6 +55,7 @@ const SubmitResource: React.FC = () => {
         link: "",
         category: "",
         posterImage: user?.imageUrl || "",
+        posterUsername: user?.username || "",
       });
       toast.success("Resource added successfully!");
       console.log("Resource added:", data);
@@ -115,6 +119,16 @@ const SubmitResource: React.FC = () => {
               placeholder="Poster Image URL"
               className="block w-full mb-2 p-2 rounded  text-white border-purple-800 border-l-2 border-1-2 border-b bg-black focus:outline-none focus:ring-1 focus:ring-purple-600"
             />
+            <input
+              type="text"
+              name="posterUsername" 
+              value={newResource.posterUsername}
+              readOnly
+              placeholder="Poster Username"
+              className="block w-full mb-2 p-2 rounded  text-white border-purple-800 border-l-2 border-1-2 border-b bg-black focus:outline-none focus:ring-1 focus:ring-purple-600"
+            />
+
+
           </div>
           <div className="buttons flex justify-between">
             <button

@@ -10,6 +10,7 @@ interface Resource {
   category: string;
   author: string;
   posterImage?: string;
+  posterUsername?: string;
 }
 
 const AllResources: React.FC = () => {
@@ -65,13 +66,6 @@ const AllResources: React.FC = () => {
                 key={resource._id}
                 className="bg-black border-b border-l border-purple-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
               >
-                {resource.posterImage && (
-                  <img
-                    src={resource.posterImage}
-                    alt={resource.title}
-                    className="w-full h-40 object-cover rounded-t-lg mb-4"
-                  />
-                )}
                 <h3 className="text-xl font-bold text-white mb-2">{resource.title}</h3>
                 <p className="text-gray-400 mb-4">{resource.description}</p>
                 <a
@@ -82,11 +76,20 @@ const AllResources: React.FC = () => {
                 >
                   View full resource
                 </a>
-                <div className="mt-4 flex justify-between items-center">
+                <div className="mt-4 flex  items-center">
                   <span className="inline-block bg-purple-700 text-white text-xs px-2 py-1 rounded">
                     {resource.category}
                   </span>
-                  <span className="text-white">{resource.author}</span>
+                  {resource.posterImage && (
+                    <img
+                      className="rounded-lg w-10 h-10 ml-4"
+                      src={resource.posterImage}
+                      alt={resource.posterUsername}
+                    />
+                  )}
+                  <span className="text-white ml-2">
+                    posted by <a href="#" className="text-purple-800">{resource.posterUsername}</a>
+                  </span>
                 </div>
               </div>
             )
