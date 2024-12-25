@@ -3,10 +3,12 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { SignedIn, SignedOut } from '@clerk/clerk-react';
 import ModernPurpleLoader from './components/elements/Loader';
 import { useLoading } from './context/LoadingContext';
+import AdminRoute from './components/auth/AdminRoute';
 const Main = React.lazy(() => import('./components/Section1/Hero/Main'));
 const Test = React.lazy(() => import('./components/routes/Test'));
 const Projects = React.lazy(() => import('./components/routes/Projects'));
-const Resources = React.lazy(() => import('./components/routes/Resources'));
+const AllResources = React.lazy(() => import('./components/Resources/AllResources'));
+const SubmitResource = React.lazy(() => import('./components/Resources/SubmitResource'));
 const Contact = React.lazy(() => import('./components/routes/Contact'));
 const AuthPage = React.lazy(() => import('./components/auth/AuthPage'));
 const Blogs = React.lazy(() => import('./components/routes/Blogs'));
@@ -14,8 +16,6 @@ const UserManagement = React.lazy(() => import('./components/admin/UserManagemen
 const Analytics = React.lazy(() => import('./components/admin/Analytics'));
 const AdminDashboard = React.lazy(() => import('./components/admin/adminDashboard'));
 const Newsletter = React.lazy(() => import('./components/admin/NewsLetter'));
-const AdminRoute = React.lazy(() => import('./components/auth/AdminRoute'));
-const Community = React.lazy(() => import('./components/routes/Community'));
 
 const App: React.FC = () => {
   const { loading, setLoading } = useLoading();
@@ -43,8 +43,8 @@ const App: React.FC = () => {
                         <Route path="/" element={<Main />} />
                         <Route path="/test" element={<Test />} />
                         <Route path="/projects" element={<Projects />} />
-                        <Route path="/community" element={<Community />} />
-                        <Route path="/resources" element={<Resources />} />
+                        <Route path="/resources" element={<AllResources/>} />
+                        <Route path="/resources/submit" element={<SubmitResource />} />
                         <Route path="/contact" element={<Contact />} />
                         <Route path="/blogs" element={<Blogs />} />
                         <Route path="/admin/*" element={<AdminRoute element={<AdminDashboard />} />}>
