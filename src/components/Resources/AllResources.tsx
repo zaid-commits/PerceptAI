@@ -45,7 +45,7 @@ const AllResources: React.FC = () => {
     <div className="bg-black py-20 min-h-screen">
       <FloatingNavbar />
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between mb-3 py-8">
           <h2 className="text-4xl font-bold text-white text-center flex-grow ml-6 pl-10">Resource Library</h2>
           <Link to="/resources/submit" className="bg-purple-900 text-white p-2 rounded hover:bg-purple-700 transition-colors">
             Submit Resource
@@ -58,7 +58,7 @@ const AllResources: React.FC = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
           className="block w-full mb-2 p-2 rounded bg-black text-white border border-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-600"
         />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 py-4">
                     {filteredResources.map(resource => (
                       resource.title && resource.description && resource.link && resource.category && (
                         <div
