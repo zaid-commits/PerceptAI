@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import FloatingNavbar from '../Section1/Navbar/Navbar';
 import { Link } from 'react-router-dom';
+import ModernPurpleLoader from '../elements/Loader';
 interface Resource {
   _id: string;
   title: string;
@@ -38,7 +39,7 @@ const AllResources: React.FC = () => {
   );
 
   if (isLoading) {
-    return <div className="text-center text-white">Loading resources...</div>;
+    return <ModernPurpleLoader/>;
   }
 
   return (
