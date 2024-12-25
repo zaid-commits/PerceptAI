@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import FloatingNavbar from '../Section1/Navbar/Navbar';
-
 interface Resource {
   _id: string; // MongoDB ID
   title: string;
@@ -129,10 +128,12 @@ const ResourceLibrary: React.FC = () => {
               />
               <button onClick={() => setIsAddingResource(true)} className="bg-purple-800 text-white p-2 rounded ml-4 hover:bg-purple-700 transition-colors">Add Resource</button>
             </div>
+
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredResources.map(resource => (
                 resource.title && resource.description && resource.link && resource.category && (
-                  <div key={resource._id} className="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+                  <div key={resource._id} className="bg-black border-b border-l border-purple-800  p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
                     <h3 className="text-xl font-bold text-white mb-2">{resource.title}</h3>
                     <p className="text-gray-400 mb-4">{resource.description}</p>
                     <a href={resource.link} className="text-purple-400 hover:text-purple-300 transition-colors" target="_blank" rel="noopener noreferrer">Learn more</a>
@@ -143,6 +144,8 @@ const ResourceLibrary: React.FC = () => {
                 )
               ))}
             </div>
+
+
           </>
         )}
       </div>
