@@ -4,6 +4,7 @@ import { SignedIn, SignedOut } from '@clerk/clerk-react';
 import ModernPurpleLoader from './components/elements/Loader';
 import { useLoading } from './context/LoadingContext';
 import AdminRoute from './components/auth/AdminRoute';
+import Community from './components/routes/Community';
 const Main = React.lazy(() => import('./components/Section1/Hero/Main'));
 const Test = React.lazy(() => import('./components/routes/Test'));
 const Projects = React.lazy(() => import('./components/routes/Projects'));
@@ -47,6 +48,7 @@ const App: React.FC = () => {
                         <Route path="/resources/submit" element={<SubmitResource />} />
                         <Route path="/contact" element={<Contact />} />
                         <Route path="/blogs" element={<Blogs />} />
+                        <Route path="/community" element={<Community />} />
                         <Route path="/admin/*" element={<AdminRoute element={<AdminDashboard />} />}>
                           <Route path="newsletter" element={<Newsletter />} />
                           <Route path="users" element={<UserManagement />} />
