@@ -63,9 +63,13 @@
 @layer base {
   * {
     @apply border-border;
+    overscroll-behavior: none;
+    
   }
   body {
     @apply bg-background text-foreground;
+    scroll-behavior: smooth;
+    overscroll-behavior: none;
   }
 }
 

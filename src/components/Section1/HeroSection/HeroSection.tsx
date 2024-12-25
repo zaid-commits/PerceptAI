@@ -3,6 +3,7 @@ import { FaGithub, FaStar, FaSearch, FaArrowRight } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import './HeroSection.css';
 import FloatingNavbar from '../Navbar/Navbar';
+import { Link } from 'react-router-dom';
 
 const HeroSection: React.FC = () => {
   const [stars, setStars] = useState<number>(612);
@@ -92,8 +93,8 @@ const HeroSection: React.FC = () => {
             <span className="star-count">{stars}</span>
           </a>
           <button className="start-button">
-            Let's get started
-            <FaArrowRight className="arrow-icon" />
+            <Link to="/projects">Lets Get Started</Link>
+            <FaArrowRight className="mx-2 arrow-icon" />
           </button>
         </motion.div>
         <motion.div 
