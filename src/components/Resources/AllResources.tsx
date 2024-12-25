@@ -84,13 +84,13 @@ const AllResources: React.FC = () => {
                               <span className="text-white ml-2">
                                 posted by <a href="#" className="text-purple-800">{resource.posterUsername}</a>
                               </span>
-                              {/* {resource.posterImage && (
+                              {resource.posterImage && (
                                 <img
                                   className="rounded-lg w-10 h-10 ml-4"
                                   src={resource.posterImage}
                                   alt={resource.posterUsername}
                                 />
-                              )} */}
+                              )}
                             </div>
                           </div>
                         </div>

@@ -39,7 +39,7 @@ const SubmitResource: React.FC = () => {
         posterUsername: user?.username || "",
       };
       const response = await fetch(
-        "http://localhost:5000/api/resources",
+        "https://ts-backend-production-53c6.up.railway.app/api/resources",
         {
           method: "POST",
           headers: {
