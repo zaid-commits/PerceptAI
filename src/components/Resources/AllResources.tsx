@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import FloatingNavbar from '../Section1/Navbar/Navbar';
 import { Link } from 'react-router-dom';
-
 interface Resource {
   _id: string;
   title: string;

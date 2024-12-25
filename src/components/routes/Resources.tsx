@@ -1,5 +1,5 @@
 import Footer from '../Footer'
-import ResourceLibrary from '../Resources/ResourceLibrary'
+import AllResources from '../Resources/AllResources'
 import FloatingNavbar from '../Section1/Navbar/Navbar'
 import Promo from '../Section5/promo'
 
@@ -7,7 +7,7 @@ function Resources() {
     return (
         <div>
             <FloatingNavbar />
-            <ResourceLibrary />
+            <AllResources/>
             <Promo/>
             <Footer/>
         </div>

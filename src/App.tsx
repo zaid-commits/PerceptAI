@@ -7,7 +7,7 @@ import AdminRoute from './components/auth/AdminRoute';
 const Main = React.lazy(() => import('./components/Section1/Hero/Main'));
 const Test = React.lazy(() => import('./components/routes/Test'));
 const Projects = React.lazy(() => import('./components/routes/Projects'));
-const AllResources = React.lazy(() => import('./components/Resources/AllResources'));
+const Resources = React.lazy(() => import('./components/routes/Resources'));
 const SubmitResource = React.lazy(() => import('./components/Resources/SubmitResource'));
 const Contact = React.lazy(() => import('./components/routes/Contact'));
 const AuthPage = React.lazy(() => import('./components/auth/AuthPage'));
@@ -43,7 +43,7 @@ const App: React.FC = () => {
                         <Route path="/" element={<Main />} />
                         <Route path="/test" element={<Test />} />
                         <Route path="/projects" element={<Projects />} />
-                        <Route path="/resources" element={<AllResources/>} />
+                        <Route path="/resources" element={<Resources/>} />
                         <Route path="/resources/submit" element={<SubmitResource />} />
                         <Route path="/contact" element={<Contact />} />
                         <Route path="/blogs" element={<Blogs />} />
