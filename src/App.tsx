@@ -5,6 +5,7 @@ import ModernPurpleLoader from './components/elements/Loader';
 import { useLoading } from './context/LoadingContext';
 import AdminRoute from './components/auth/AdminRoute';
 import Community from './components/routes/Community';
+import MouseFollower from './components/MouseFollower';
 const Main = React.lazy(() => import('./components/Section1/Hero/Main'));
 const Test = React.lazy(() => import('./components/routes/Test'));
 const Projects = React.lazy(() => import('./components/routes/Projects'));
@@ -32,6 +33,7 @@ const App: React.FC = () => {
       {loading && <ModernPurpleLoader />}
       {!loading && (
         <Router>
+          <MouseFollower />
           <Suspense fallback={<ModernPurpleLoader />}>
             <Routes>
               <Route path="/auth" element={<AuthPage />} />
