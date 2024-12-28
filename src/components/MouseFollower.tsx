@@ -26,12 +26,12 @@ const MouseFollower: React.FC = () => {
         width: '20px',
         height: '20px',
         borderRadius: '50%',
-        backgroundColor: 'rgba(128, 0, 128, 0.7)', // Changed color to purple
+        backgroundColor: 'rgba(255, 255, 255, 0.7)', // Changed color to white
         pointerEvents: 'none',
         transform: 'translate(-50%, -50%)',
         transition: 'background-color 0.3s',
         zIndex: 9999, // Added z-index for layering
-        boxShadow: '0 0 8px rgba(128, 0, 128, 0.5)', // Changed shadow color to purple
+        boxShadow: '0 0 8px rgba(255, 255, 255, 0.5)', // Changed shadow color to white
       }}
     />
   );
