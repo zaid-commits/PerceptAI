@@ -3,11 +3,12 @@ import { FaGithub, FaStar, FaSearch, FaArrowRight } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import './HeroSection.css';
 import FloatingNavbar from '../Navbar/Navbar';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const HeroSection: React.FC = () => {
   const [stars, setStars] = useState<number>(612);
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchGitHubStars = async () => {
@@ -30,7 +31,7 @@ const HeroSection: React.FC = () => {
   const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log('Search query:', searchQuery);
-    // Implement search functionality here
+    navigate('/projects');
   };
 
   return (
@@ -146,4 +147,3 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, icon }) =
 };
 
 export default HeroSection;
-
