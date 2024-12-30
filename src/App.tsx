@@ -6,6 +6,7 @@ import { useLoading } from './context/LoadingContext';
 import AdminRoute from './components/auth/AdminRoute';
 import Community from './components/routes/Community';
 import MouseFollower from './components/MouseFollower';
+import Home from './components/routes/Home';
 const Main = React.lazy(() => import('./components/Section1/Hero/Main'));
 const Test = React.lazy(() => import('./components/routes/Test'));
 const Projects = React.lazy(() => import('./components/routes/Projects'));
@@ -44,6 +45,7 @@ const App: React.FC = () => {
                     <SignedIn>
                       <Routes>
                         <Route path="/" element={<Main />} />
+                        <Route path="/home" element={<Home/>} />
                         <Route path="/test" element={<Test />} />
                         <Route path="/projects" element={<Projects />} />
                         <Route path="/resources" element={<Resources/>} />
