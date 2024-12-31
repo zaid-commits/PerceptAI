@@ -9,7 +9,7 @@ const Home = () => {
       <FloatingNavbar />
       <NeuHero />
     </div>
-    <div className=" h-[100vh] w-[100vw]">
+    <div className=" h-[100vh] w-[100vw] bg-black">
       <FeatureCards />
       </div>
     </div>
