@@ -34,8 +34,8 @@ import { IconType } from "react-icons";
 
 export const NeuHero = () => {
   return (
-    <section className="overflow-hidden bg-[#161818] h-[100vh] text-white w-[100vw]">
-      <div className="relative h-[85vh] flex flex-col items-center justify-center   px-12 pb-48 pt-12 md:pt-24">
+    <section className="overflow-hidden bg-[#161818] min-h-screen text-white w-full">
+      <div className="relative min-h-[85vh] flex flex-col items-center justify-center px-4 md:px-12 pb-24 md:pb-48 pt-12 md:pt-24 space-y-4">
         <Copy />
         <MockupScreen />
       </div>
@@ -63,15 +63,15 @@ const Copy = () => {
           <FiArrowUpRight className="mr-2 inline-block text-purple-800" />
         </a>
       </div>
-      <h1 className="max-w-4xl text-center text-4xl font-black leading-[1.15] md:text-6xl md:leading-[1.15]">
+      <h1 className="max-w-4xl text-center text-3xl md:text-4xl lg:text-6xl font-black leading-[1.15]">
         AI Infused Vision Directory
       </h1>
-      <p className="mx-auto my-4 max-w-3xl text-center text-base leading-relaxed md:my-6 md:text-xl md:leading-relaxed">
-       Open Source Web Based platform for computer vision entusiasts to learn, create and share things in a community of their own!
+      <p className="mx-auto my-4 max-w-3xl text-center text-sm md:text-base lg:text-xl leading-relaxed">
+        Open Source Web Based platform for computer vision enthusiasts to learn, create and share things in a community of their own!
       </p>
-      <button className="rounded-lg bg-purple-900 p-3 uppercase text-white transition-colors hover:bg-purple-800">
+      <button className="rounded-lg bg-purple-900 p-2 md:p-3 uppercase text-white transition-colors hover:bg-purple-800">
         <a href="/home">
-        <span className="font-bold">Get started - </span> no CC required
+          <span className="font-bold">Get started - </span> no CC required
         </a>
       </button>
     </>
@@ -80,7 +80,7 @@ const Copy = () => {
 
 const MockupScreen = () => {
   return (
-    <div className="absolute bottom-0 left-1/2 h-36 w-[calc(100vw_-_56px)] max-w-[1100px] -translate-x-1/2 overflow-hidden rounded-t-xl bg-zinc-900 p-0.5">
+    <div className="absolute bottom-0 left-1/2 h-36 w-[calc(100vw_-_16px)] md:w-[calc(100vw_-_56px)] max-w-[1100px] -translate-x-1/2 overflow-hidden rounded-t-xl bg-zinc-900 p-0.5">
       <div className="flex items-center justify-between px-2 py-1">
         <div className="flex items-center gap-0.5">
           <span className="size-2 rounded-full bg-red-400" />
@@ -92,7 +92,7 @@ const MockupScreen = () => {
         </span>
         <FiChevronDown className="text-white" />
       </div>
-      <div className="relative z-0 grid h-full w-full grid-cols-[100px,_1fr] overflow-hidden rounded-t-lg bg-white md:grid-cols-[150px,_1fr]">
+      <div className="relative z-0 grid h-full w-full grid-cols-[80px,_1fr] md:grid-cols-[100px,_1fr] lg:grid-cols-[150px,_1fr] overflow-hidden rounded-t-lg bg-white">
         <div className="h-full border-r border-zinc-300 p-2">
           <Logo />
           <div className="mt-3 space-y-1.5">
@@ -111,7 +111,7 @@ const MockupScreen = () => {
           </div>
         </div>
 
-        <div className="relative z-0 p-2 ">
+        <div className="relative z-0 p-2">
           <div className="mb-3 flex items-center justify-between">
             <span className="rounded bg-zinc-200 px-1.5 py-1 pr-8 text-xs text-zinc-600">
               Search...
@@ -131,7 +131,6 @@ const MockupScreen = () => {
 };
 
 const Logo = () => {
-  // Temp logo from https://logoipsum.com/
   return (
     <svg
       width="32"
@@ -179,8 +178,8 @@ const Logos = () => {
         </TranslateWrapper>
       </div>
 
-      <div className="pointer-events-none absolute bottom-0 left-0 top-0 z-10 w-32 bg-gradient-to-r from-purple-800 to-purple-600/0" />
-      <div className="pointer-events-none absolute bottom-0 right-0 top-0 z-10 w-32 bg-gradient-to-l from-purple-800 to-purple-600/0" />
+      <div className="pointer-events-none absolute bottom-0 left-0 top-0 z-10 w-16 md:w-32 bg-gradient-to-r from-purple-800 to-purple-600/0" />
+      <div className="pointer-events-none absolute bottom-0 right-0 top-0 z-10 w-16 md:w-32 bg-gradient-to-l from-purple-800 to-purple-600/0" />
     </div>
   );
 };
@@ -206,9 +205,9 @@ const TranslateWrapper = ({
 
 const LogoItem = ({ Icon, name }: { Icon: IconType; name: string }) => {
   return (
-    <span className="flex items-center justify-center gap-4 px-4 py-2 md:py-4">
-      <Icon className="text-2xl text-indigo-600 md:text-3xl" />
-      <span className="whitespace-nowrap text-xl font-semibold uppercase md:text-2xl">
+    <span className="flex items-center justify-center gap-2 md:gap-4 px-2 md:px-4 py-2 md:py-4">
+      <Icon className="text-xl md:text-2xl lg:text-3xl text-indigo-600" />
+      <span className="whitespace-nowrap text-lg md:text-xl lg:text-2xl font-semibold uppercase">
         {name}
       </span>
     </span>
