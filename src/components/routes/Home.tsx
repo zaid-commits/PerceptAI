@@ -4,11 +4,16 @@ import { NeuHero } from "../testing";
 
 const Home = () => {
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen bg-black">
+    <div className="bg-[#161818]">
+    <div className="flex flex-col justify-center items-center min-h-screen bg-black ">
       <FloatingNavbar />
       <NeuHero />
-      <FeatureCards />
     </div>
+    <div className=" h-[100vh] w-[100vw]">
+      <FeatureCards />
+      </div>
+    </div>
+      
   );
 };
 
