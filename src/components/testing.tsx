@@ -60,7 +60,7 @@ const Copy = () => {
           <span className="ml-1.5 mr-1 inline-block text-black">
             We're live on Product Hunt!
           </span>
-          <FiArrowUpRight className="mr-2 inline-block" />
+          <FiArrowUpRight className="mr-2 inline-block text-purple-800" />
         </a>
       </div>
       <h1 className="max-w-4xl text-center text-4xl font-black leading-[1.15] md:text-6xl md:leading-[1.15]">

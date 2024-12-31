@@ -1,12 +1,13 @@
-// import { useUser } from "@clerk/clerk-react";
+import FeatureCards from "@/TestCards";
 import FloatingNavbar from "../Section1/Navbar/Navbar";
 import { NeuHero } from "../testing";
+
 const Home = () => {
-//   const { user } = useUser();
   return (
-    <div className=" flex justify-center items-center min-h-screen">
+    <div className="flex flex-col justify-center items-center min-h-screen bg-black">
       <FloatingNavbar />
-      <NeuHero/>
+      <NeuHero />
+      <FeatureCards />
     </div>
   );
 };
