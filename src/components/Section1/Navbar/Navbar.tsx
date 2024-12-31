@@ -25,7 +25,7 @@ const FloatingNavbar: React.FC = () => {
   ];
 
   return (
-    <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-gray bg-opacity-70 backdrop-blur-md rounded-full shadow-lg border border-gray-700 z-10 p-4 navbar w-[95%] md:w-auto">
+    <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-gray bg-opacity-70 backdrop-blur-md rounded-full shadow-lg border border-gray-700 z-10 p-4 navbar w-[95%] md:w-auto navShadow">
       <div className="flex items-center justify-between md:justify-start md:space-x-6">
         {/* Logo */}
         <Link to="/" className="flex-shrink-0">

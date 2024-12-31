@@ -96,7 +96,7 @@ const MockupScreen = () => {
         <div className="h-full border-r border-zinc-300 p-2">
           <Logo />
           <div className="mt-3 space-y-1.5">
-            <span className="flex items-center gap-1.5 text-xs text-indigo-600">
+            <span className="flex items-center gap-1.5 text-xs text-[#161818]">
               <FiMessageCircle />
               <span>Messages</span>
             </span>
@@ -111,7 +111,7 @@ const MockupScreen = () => {
           </div>
         </div>
 
-        <div className="relative z-0 p-2">
+        <div className="relative z-0 p-2 ">
           <div className="mb-3 flex items-center justify-between">
             <span className="rounded bg-zinc-200 px-1.5 py-1 pr-8 text-xs text-zinc-600">
               Search...
@@ -139,7 +139,7 @@ const Logo = () => {
       viewBox="0 0 50 39"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="h-fit fill-zinc-950"
+      className="h-fit fill-[#161818]"
     >
       <path
         d="M16.4992 2H37.5808L22.0816 24.9729H1L16.4992 2Z"

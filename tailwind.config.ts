@@ -16,7 +16,11 @@ module.exports = {
         "2xl": "1400px",
       },
     },
+
     extend: {
+      boxShadow: {
+        '3xl': '0 35px 60px -15px rgba(0, 255, 255, 10)',
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -58,6 +62,7 @@ module.exports = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
