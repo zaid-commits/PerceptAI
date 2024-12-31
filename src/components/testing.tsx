@@ -34,8 +34,8 @@ import { IconType } from "react-icons";
 
 export const NeuHero = () => {
   return (
-    <section className="overflow-hidden bg-white">
-      <div className="relative flex flex-col items-center justify-center px-12 pb-48 pt-12 md:pt-24">
+    <section className="overflow-hidden bg-[#161818] h-[100vh] text-white">
+      <div className="relative h-[85vh] flex flex-col items-center justify-center   px-12 pb-48 pt-12 md:pt-24">
         <Copy />
         <MockupScreen />
       </div>
@@ -52,12 +52,12 @@ const Copy = () => {
           href="#"
           target="_blank"
           rel="nofollow"
-          className="flex origin-top-left items-center rounded-full border border-zinc-900 bg-white p-0.5 text-sm transition-transform hover:-rotate-2"
+          className="flex origin-top-left items-center rounded-full border border-zinc-900 bg-[#ffffffa6] p-0.5 text-sm transition-transform hover:-rotate-2"
         >
-          <span className="rounded-full bg-[#FF6154] px-2 py-0.5 font-medium text-white">
+          <span className="rounded-full bg-purple-800 px-2 py-0.5 font-medium text-white">
             HEY!
           </span>
-          <span className="ml-1.5 mr-1 inline-block">
+          <span className="ml-1.5 mr-1 inline-block text-black">
             We're live on Product Hunt!
           </span>
           <FiArrowUpRight className="mr-2 inline-block" />
@@ -69,7 +69,7 @@ const Copy = () => {
       <p className="mx-auto my-4 max-w-3xl text-center text-base leading-relaxed md:my-6 md:text-xl md:leading-relaxed">
        Open Source Web Based platform for computer vision entusiasts to learn, create and share things in a community of their own!
       </p>
-      <button className="rounded-lg bg-indigo-600 p-3 uppercase text-white transition-colors hover:bg-indigo-700">
+      <button className="rounded-lg bg-purple-900 p-3 uppercase text-white transition-colors hover:bg-purple-800">
         <a href="/home">
         <span className="font-bold">Get started - </span> no CC required
         </a>
@@ -155,7 +155,7 @@ const Logo = () => {
 
 const Logos = () => {
   return (
-    <div className="relative -mt-2 -rotate-1 scale-[1.01] border-y-2 border-zinc-900 bg-white">
+    <div className="relative -mt-2 -rotate-1 scale-[1.01] border-y-2 border-zinc-900 bg-[#161818]">
       <div className="relative z-0 flex overflow-hidden border-b-2 border-zinc-900">
         <TranslateWrapper>
           <LogoItemsTop />
@@ -179,8 +179,8 @@ const Logos = () => {
         </TranslateWrapper>
       </div>
 
-      <div className="pointer-events-none absolute bottom-0 left-0 top-0 z-10 w-32 bg-gradient-to-r from-white to-white/0" />
-      <div className="pointer-events-none absolute bottom-0 right-0 top-0 z-10 w-32 bg-gradient-to-l from-white to-white/0" />
+      <div className="pointer-events-none absolute bottom-0 left-0 top-0 z-10 w-32 bg-gradient-to-r from-purple-800 to-purple-600/0" />
+      <div className="pointer-events-none absolute bottom-0 right-0 top-0 z-10 w-32 bg-gradient-to-l from-purple-800 to-purple-600/0" />
     </div>
   );
 };
