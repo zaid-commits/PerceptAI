@@ -7,13 +7,15 @@ import AdminRoute from './components/auth/AdminRoute';
 import Community from './components/routes/Community';
 import MouseFollower from './components/MouseFollower';
 import Home from './components/routes/Home';
+import Auth from './components/auth/Auth';
+import Login from './components/auth/Login';
 const Main = React.lazy(() => import('./components/Section1/Hero/Main'));
 const Test = React.lazy(() => import('./components/routes/Test'));
 const Projects = React.lazy(() => import('./components/routes/Projects'));
 const Resources = React.lazy(() => import('./components/routes/Resources'));
 const SubmitResource = React.lazy(() => import('./components/Resources/SubmitResource'));
 const Contact = React.lazy(() => import('./components/routes/Contact'));
-const AuthPage = React.lazy(() => import('./components/auth/AuthPage'));
+const AuthPage = React.lazy(() => import('./components/auth/Login'));
 const Blogs = React.lazy(() => import('./components/routes/Blogs'));
 const UserManagement = React.lazy(() => import('./components/admin/UserManagement'));
 const Analytics = React.lazy(() => import('./components/admin/Analytics'));
@@ -37,7 +39,9 @@ const App: React.FC = () => {
           <MouseFollower />
           <Suspense fallback={<ModernPurpleLoader />}>
             <Routes>
-              <Route path="/auth" element={<AuthPage />} />
+              <Route path="/auth" element={<Auth />} />
+              <Route path="/auth/login" element={<Login />} />
+              <Route path="/auth/signup" element={<AuthPage />} />
               <Route
                 path="/*"
                 element={
