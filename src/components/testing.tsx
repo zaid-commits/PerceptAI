@@ -34,7 +34,7 @@ import { IconType } from "react-icons";
 
 export const NeuHero = () => {
   return (
-    <section className="overflow-hidden bg-[#161818] min-h-screen text-white w-full">
+    <section className="overflow-hidden bg-black min-h-screen text-white w-full">
       <div className="relative min-h-[85vh] flex flex-col items-center justify-center px-4 md:px-12 pb-24 md:pb-48 pt-12 md:pt-24 space-y-4">
         <Copy />
         <MockupScreen />
