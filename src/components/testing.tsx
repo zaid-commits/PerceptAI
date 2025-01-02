@@ -34,7 +34,7 @@ import { IconType } from "react-icons";
 
 export const NeuHero = () => {
   return (
-    <section className="overflow-hidden bg-black min-h-screen text-white w-full">
+    <section className="overflow-hidden min-h-screen text-white w-full">
       <div className="relative min-h-[85vh] flex flex-col items-center justify-center px-4 md:px-12 pb-24 md:pb-48 pt-12 md:pt-24 space-y-4">
         <Copy />
         <MockupScreen />
@@ -178,8 +178,8 @@ const Logos = () => {
         </TranslateWrapper>
       </div>
 
-      <div className="pointer-events-none absolute bottom-0 left-0 top-0 z-10 w-16 md:w-32 bg-gradient-to-r from-purple-800 to-purple-600/0" />
-      <div className="pointer-events-none absolute bottom-0 right-0 top-0 z-10 w-16 md:w-32 bg-gradient-to-l from-purple-800 to-purple-600/0" />
+      <div className="pointer-events-none absolute bottom-0 left-0 top-0 z-10 w-16 md:w-32 bg-gradient-to-r from-indigo-800 to-purple-600/0" />
+      <div className="pointer-events-none absolute bottom-0 right-0 top-0 z-10 w-16 md:w-32 bg-gradient-to-l from-indigo-800 to-purple-600/0" />
     </div>
   );
 };

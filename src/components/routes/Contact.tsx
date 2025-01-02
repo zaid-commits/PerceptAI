@@ -5,11 +5,33 @@ import Footer from '../Footer';
 
 const Contact: React.FC = () => {
   return (
-    <div className="bg-black text-white min-h-screen flex flex-col">
+    <div className="bg-[#161818] text-white min-h-screen flex flex-col">
       <FloatingNavbar />
-      <div className="container mx-auto px-4 py-16 flex-grow">
-        <h1 className="text-4xl font-bold text-center mb-8">Contact Us</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="container mx-auto px-4 py-36 flex-grow ">
+        <h1 className="text-4xl font-bold text-center mb-16">Contact Us</h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-16">
+        
+          <div>
+            <h2 className="text-2xl font-semibold mb-4">Contact Information</h2>
+            <p className="text-gray-400 mb-4">
+              If you have any questions, feel free to reach out to us using the contact <br /> form or the information below.
+            </p>
+            <ul className="space-y-2">
+              <li>
+                <strong>Address:</strong> 123 AI Street, Tech City, AI World
+              </li>
+              <li>
+                <strong>Phone:</strong> +1 (123) 456-7890
+              </li>
+              <li>
+                <strong>Email:</strong> contact@perceptai.com
+              </li>
+            </ul>
+            <div className="border mt-5 h-auto p-5">
+              <h1>map</h1>
+
+            </div>
+          </div>
           <div>
             <h2 className="text-2xl font-semibold mb-4">Get in Touch</h2>
             <form className="space-y-4">
@@ -53,23 +75,6 @@ const Contact: React.FC = () => {
                 Send Message
               </button>
             </form>
-          </div>
-          <div>
-            <h2 className="text-2xl font-semibold mb-4">Contact Information</h2>
-            <p className="text-gray-400 mb-4">
-              If you have any questions, feel free to reach out to us using the contact form or the information below.
-            </p>
-            <ul className="space-y-2">
-              <li>
-                <strong>Address:</strong> 123 AI Street, Tech City, AI World
-              </li>
-              <li>
-                <strong>Phone:</strong> +1 (123) 456-7890
-              </li>
-              <li>
-                <strong>Email:</strong> contact@perceptai.com
-              </li>
-            </ul>
           </div>
         </div>
       </div>

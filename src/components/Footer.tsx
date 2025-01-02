@@ -7,10 +7,10 @@ const Navigation: React.FC = () => (
         <h3 className="text-xl font-bold mb-4">Navigation</h3>
         <nav className="flex flex-col space-y-2">
             {['Home', 'Projects', 'Community', 'Resources', 'Contact', 'Blogs'].map((item) => (
-                <a 
-                    key={item} 
-                    href={`/${item.toLowerCase()}`} 
-                    className="text-[#BF40BF] hover:text-purple-700 transition-colors"
+                <a
+                    key={item}
+                    href={`/${item.toLowerCase()}`}
+                    className="text-purple-800 hover:text-purple-500 transition-colors"
                 >
                     {item}
                 </a>
@@ -29,12 +29,12 @@ const SocialMedia: React.FC = () => (
                 { Icon: FaLinkedin, link: 'https://linkedin.com/in/zaidrakhange' },
                 { Icon: FaInstagram, link: 'https://instagram.com/zaid_suiii' },
             ].map(({ Icon, link }) => (
-                <a 
-                    key={link} 
-                    href={link} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="text-[#BF40BF] hover:text-purple-700 text-2xl transition-colors"
+                <a
+                    key={link}
+                    href={link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-purple-800 hover:text-purple-500 text-2xl transition-colors"
                 >
                     <Icon />
                 </a>
@@ -58,8 +58,8 @@ const Legal: React.FC = () => (
     <div>
         <h3 className="text-xl font-bold mb-4">Legal</h3>
         <nav className="flex flex-col space-y-2">
-            <a href="/terms" className="text-[#BF40BF] hover:text-purple-700 transition-colors">Terms of Service</a>
-            <a href="/privacy" className="text-[#BF40BF] hover:text-purple-700 transition-colors">Privacy Policy</a>
+            <a href="/terms" className="text-purple-800 hover:text-purple-500 transition-colors">Terms of Service</a>
+            <a href="/privacy" className="text-purple-800 hover:text-purple-500 transition-colors">Privacy Policy</a>
         </nav>
     </div>
 );
@@ -68,9 +68,9 @@ const Support: React.FC = () => (
     <div>
         <h3 className="text-xl font-bold mb-4">Support</h3>
         <nav className="flex flex-col space-y-2">
-            <a href="/faq" className="text-[#BF40BF] hover:text-purple-700 transition-colors">FAQ</a>
-            <a href="/support" className="text-[#BF40BF] hover:text-purple-700 transition-colors">Customer Support</a>
-            <a href="/feedback" className="text-[#BF40BF] hover:text-purple-700 transition-colors">Feedback</a>
+            <a href="/faq" className="text-purple-800 hover:text-purple-500 transition-colors">FAQ</a>
+            <a href="/support" className="text-purple-800 hover:text-purple-500 transition-colors">Customer Support</a>
+            <a href="/feedback" className="text-purple-800 hover:text-purple-500 transition-colors">Feedback</a>
         </nav>
     </div>
 );
@@ -103,29 +103,29 @@ const Newsletter: React.FC = () => {
         <div>
             <h3 className="text-xl font-bold mb-4">Newsletter</h3>
             <form className="flex flex-col space-y-2" onSubmit={handleSubmit}>
-                <input 
-                    type="email" 
-                    placeholder="Enter your email" 
-                    required 
+                <input
+                    type="email"
+                    placeholder="Enter your email"
+                    required
                     className="p-2 rounded bg-white text-black"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
-                <button 
-                    type="submit" 
-                    className="bg-[#BF40BF] text-white p-2 rounded hover:bg-purple-700 transition-colors"
+                <button
+                    type="submit"
+                    className="bg-purple-700 text-white p-2 rounded hover:bg-purple-700 transition-colors"
                 >
                     Subscribe
                 </button>
             </form>
-            <Toaster position='bottom-right'/>
+            <Toaster position='bottom-right' />
         </div>
     );
 };
 
 const Footer: React.FC = () => {
     return (
-        <footer className="w-full bg-black text-white py-10 px-4 border-t border-gray-700">
+        <footer className="w-full bg-[#161618] text-white py-10 px-4 border-t border-gray-700 rounded-[4rem]">
             <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-6">
                     <Navigation />

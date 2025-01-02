@@ -36,7 +36,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       className="h-full"
     >
       <Card 
-        className="relative h-full overflow-hidden border border-purple-800 bg-black hover:border-purple-600 transition-all duration-300"
+        className="relative h-full overflow-hidden border border-[#808080a9] bg-[#161818] hover:border-purple-600 transition-all duration-300"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
@@ -49,7 +49,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
               transform: isHovered ? 'scale(1.1)' : 'scale(1)'
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent" />
+          <div className="absolute inset-0 " />
         </div>
 
         <CardHeader className="relative z-10 -mt-20 pb-0">
