@@ -1,4 +1,4 @@
-import FeatureCards from "@/TestCards";
+import FeatureCards from "../Section1/HeroSection/TestCards";
 import FloatingNavbar from "../Section1/Navbar/Navbar";
 import { NeuHero } from "../testing";
 import About from "../About";

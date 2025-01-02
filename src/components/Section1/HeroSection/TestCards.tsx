@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import './components/Section1/HeroSection/HeroSection.css';
+import './HeroSection.css';
 import { LuBrain } from "react-icons/lu";
 import { FaEarthAmericas } from "react-icons/fa6";
 import { FaUsers } from "react-icons/fa";
