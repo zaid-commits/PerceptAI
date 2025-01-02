@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import FloatingNavbar from "../Section1/Navbar/Navbar";
+import FloatingNavbar from "../Navbar";
 import { useUser } from "@clerk/clerk-react";
 import { Link } from "react-router-dom";
 import { Toaster, toast } from "react-hot-toast";

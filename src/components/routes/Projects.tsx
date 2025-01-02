@@ -4,8 +4,8 @@ import { ProjectSubmissionForm } from '@/components/Section2/ProjectGrid/Project
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { Plus, Grid, List } from 'lucide-react';
-import FloatingNavbar from '../Section1/Navbar/Navbar';
-import Promo from '../Section5/promo';
+import FloatingNavbar from '../Navbar';
+import Promo from '../promo';
 import Footer from '../Footer';
 
 export const ProjectsPage = () => {

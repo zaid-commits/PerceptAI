@@ -1,9 +1,9 @@
 import FeatureCards from "../Section1/HeroSection/TestCards";
-import FloatingNavbar from "../Section1/Navbar/Navbar";
+import FloatingNavbar from "../Navbar";
 import { NeuHero } from "../testing";
 import About from "../About";
 import Footer from "../Footer";
-import Promo from "../Section5/promo";
+import Promo from "../promo";
 
 const Home = () => {
   return (

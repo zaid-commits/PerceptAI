@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import FloatingNavbar from "../Section1/Navbar/Navbar";
+import FloatingNavbar from "../Navbar";
 import Loader from "../elements/Loader";
 import Footer from "../Footer";
-import Promo from "../Section5/promo";
+import Promo from "../promo";
 import { FaBookReader } from "react-icons/fa";
 
 

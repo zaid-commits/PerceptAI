@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import FloatingNavbar from "../Section1/Navbar/Navbar";
+import FloatingNavbar from "../Navbar";
 import { toast, Toaster } from 'react-hot-toast';
 
 interface NewsletterForm {

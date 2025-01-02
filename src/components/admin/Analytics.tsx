@@ -1,5 +1,5 @@
 import React from 'react';
-import FloatingNavbar from "../Section1/Navbar/Navbar"
+import FloatingNavbar from "../Navbar"
 
 const Analytics: React.FC = () => {
   return (

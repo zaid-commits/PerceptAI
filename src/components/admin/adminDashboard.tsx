@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
-import FloatingNavbar from "../Section1/Navbar/Navbar";
+import FloatingNavbar from "../Navbar";
 import Newsletter from './NewsLetter';
 import UserManagement from './UserManagement';
 import Analytics from './Analytics';

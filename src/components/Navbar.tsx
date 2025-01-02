@@ -8,7 +8,7 @@ import {
 } from '@clerk/clerk-react';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
-import logo from "../../../assets/logos/corelogo.png"
+import logo from '../assets/logos/corelogo.png'
 const FloatingNavbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 

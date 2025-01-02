@@ -9,7 +9,6 @@ import MouseFollower from './components/MouseFollower';
 import Home from './components/routes/Home';
 import Auth from './components/auth/Auth';
 import Signup from './components/auth/SignUp';
-const Main = React.lazy(() => import('./components/Section1/Hero/Main'));
 const Test = React.lazy(() => import('./components/routes/Test'));
 const Projects = React.lazy(() => import('./components/routes/Projects'));
 const Resources = React.lazy(() => import('./components/routes/Resources'));
@@ -49,7 +48,6 @@ const App: React.FC = () => {
                     <SignedIn>
                       <Routes>
                         <Route path="/" element={<Home/>} />
-                        <Route path="/home" element={<Main />} />
                         <Route path="/test" element={<Test />} />
                         <Route path="/projects" element={<Projects />} />
                         <Route path="/resources" element={<Resources/>} />

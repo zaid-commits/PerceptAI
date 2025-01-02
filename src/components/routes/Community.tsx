@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import FloatingNavbar from "../Section1/Navbar/Navbar"
+import FloatingNavbar from "../Navbar"
 import Chat from '../Community/Chat'
 const Community = () => {
   useEffect(() => {

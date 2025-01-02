@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import FloatingNavbar from '../Section1/Navbar/Navbar';
+import FloatingNavbar from '../Navbar';
 import Loader from '../elements/Loader';
 
 interface Subscriber {

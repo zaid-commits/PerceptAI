@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import FloatingNavbar from "../Section1/Navbar/Navbar"
+import FloatingNavbar from "../Navbar"
 
 const Sidebar: React.FC = () => {
   return (

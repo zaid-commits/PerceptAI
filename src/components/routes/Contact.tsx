@@ -1,6 +1,6 @@
 import React from 'react';
-import FloatingNavbar from '../Section1/Navbar/Navbar';
-import Promo from '../Section5/promo';
+import FloatingNavbar from '../Navbar';
+import Promo from '../promo';
 import Footer from '../Footer';
 
 const Contact: React.FC = () => {
