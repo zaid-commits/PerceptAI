@@ -77,7 +77,7 @@ export const ProjectGrid: React.FC = () => {
 
   return (
     <div className="space-y-8">
-      <div className="bg-black/50 backdrop-blur-sm sticky top-0 z-10 py-4">
+      <div className="backdrop-blur-sm sticky top-0 z-10 py-4">
         <div className="flex flex-col md:flex-row gap-4">
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
@@ -85,16 +85,16 @@ export const ProjectGrid: React.FC = () => {
               placeholder="Search projects..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 bg-black border-purple-800 focus:border-purple-600 text-white"
+              className="pl-10 bg-[#161618] border-[#8080807a] focus:border-purple-600 text-white"
             />
           </div>
           <div className="flex gap-4">
             <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-              <SelectTrigger className="w-[180px] bg-black border-purple-800 text-white">
+              <SelectTrigger className="w-[180px] bg-[#161618] border-[#8080807a] text-white">
                 <Filter className="w-4 h-4 mr-2" />
                 <SelectValue placeholder="Category" />
               </SelectTrigger>
-              <SelectContent className="bg-black border-purple-800">
+              <SelectContent className="bg-[#ffffff82]">
                 <SelectItem value="all">All Categories</SelectItem>
                 <SelectItem value="web">Web Development</SelectItem>
                 <SelectItem value="mobile">Mobile Apps</SelectItem>
@@ -103,10 +103,10 @@ export const ProjectGrid: React.FC = () => {
               </SelectContent>
             </Select>
             <Select value={sortBy} onValueChange={setSortBy}>
-              <SelectTrigger className="w-[180px] bg-black border-purple-800 text-white">
+              <SelectTrigger className="w-[180px] bg-[#161618] border-[#8080807a] text-white">
                 <SelectValue placeholder="Sort by" />
               </SelectTrigger>
-              <SelectContent className="bg-black border-purple-800">
+              <SelectContent className="bg-[#ffffff82]">
                 <SelectItem value="newest">Newest</SelectItem>
                 <SelectItem value="stars">Most Stars</SelectItem>
                 <SelectItem value="forks">Most Forks</SelectItem>

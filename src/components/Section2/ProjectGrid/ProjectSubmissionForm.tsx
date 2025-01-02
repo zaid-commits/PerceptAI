@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useUser } from '@clerk/clerk-react';
 import { toast } from 'react-hot-toast';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription  } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import {  Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Upload, Link, Tag, X, Code } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
@@ -40,7 +40,7 @@ export const ProjectSubmissionForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     try {
       const response = await fetch('https://ts-backend-production-53c6.up.railway.app/api/projects', {
         method: 'POST',
@@ -93,9 +93,9 @@ export const ProjectSubmissionForm = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <Card className="w-full max-w-2xl mx-auto bg-black border-purple-800">
+      <Card className="w-full max-w-2xl mx-auto bg-[#252526] border-[#8080807b]">
         <CardHeader>
-          <CardTitle className="text-2xl text-purple-400">Submit Your Project</CardTitle>
+          <CardTitle className="text-2xl text-white">Submit Your Project</CardTitle>
           <CardDescription>Share your amazing project with the community</CardDescription>
         </CardHeader>
         <CardContent>
@@ -106,19 +106,20 @@ export const ProjectSubmissionForm = () => {
                 id="title"
                 value={formData.title}
                 onChange={(e) => setFormData(prev => ({ ...prev, title: e.target.value }))}
-                className="bg-black border-purple-800 focus:border-purple-600 text-white"
+                className="border-gray-500 focus:border-purple-600 text-white bg-[#ffffff35] placeholder:text-white"
                 placeholder="Enter your project title"
                 required
               />
+
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="category" className="text-purple-400">Category</Label>
-              <Select 
-                value={formData.category} 
+              <Select
+                value={formData.category}
                 onValueChange={(value: string) => setFormData(prev => ({ ...prev, category: value }))}
               >
-                <SelectTrigger className="bg-black border-purple-800 text-white">
+                <SelectTrigger className="border-gray-500 focus:border-purple-600 text-white bg-[#ffffff35] placeholder:text-white">
                   <SelectValue placeholder="Select a category" />
                 </SelectTrigger>
                 <SelectContent className="bg-black border-purple-800">
@@ -136,7 +137,7 @@ export const ProjectSubmissionForm = () => {
                 id="description"
                 value={formData.description}
                 onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
-                className="bg-black border-purple-800 focus:border-purple-600 text-white min-h-[120px]"
+                className="border-gray-500 focus:border-purple-600 text-white bg-[#ffffff35] placeholder:text-white"
                 placeholder="Describe your project..."
                 required
               />
@@ -151,7 +152,7 @@ export const ProjectSubmissionForm = () => {
                 id="imageUrl"
                 value={formData.imageUrl}
                 onChange={(e) => setFormData(prev => ({ ...prev, imageUrl: e.target.value }))}
-                className="bg-black border-purple-800 focus:border-purple-600 text-white"
+                className="border-gray-500 focus:border-purple-600 text-white bg-[#ffffff35] placeholder:text-white"
                 placeholder="Enter image URL"
                 required
               />
@@ -166,7 +167,7 @@ export const ProjectSubmissionForm = () => {
                 id="demoUrl"
                 value={formData.demoUrl}
                 onChange={(e) => setFormData(prev => ({ ...prev, demoUrl: e.target.value }))}
-                className="bg-black border-purple-800 focus:border-purple-600 text-white"
+                className="border-gray-500 focus:border-purple-600 text-white bg-[#ffffff35] placeholder:text-white"
                 placeholder="Enter demo URL"
                 required
               />
@@ -181,7 +182,7 @@ export const ProjectSubmissionForm = () => {
                 id="codeUrl"
                 value={formData.codeUrl}
                 onChange={(e) => setFormData(prev => ({ ...prev, codeUrl: e.target.value }))}
-                className="bg-black border-purple-800 focus:border-purple-600 text-white"
+                className="border-gray-500 focus:border-purple-600 text-white bg-[#ffffff35] placeholder:text-white"
                 placeholder="Enter repository URL"
                 required
               />
@@ -196,11 +197,11 @@ export const ProjectSubmissionForm = () => {
                 <Input
                   value={currentTag}
                   onChange={(e) => setCurrentTag(e.target.value)}
-                  className="bg-black border-purple-800 focus:border-purple-600 text-white"
+                  className="border-gray-500 focus:border-purple-600 text-white bg-[#ffffff35] placeholder:text-white"
                   placeholder="Add tags..."
                   onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), addTag())}
                 />
-                <Button 
+                <Button
                   type="button"
                   onClick={addTag}
                   className="bg-purple-800 hover:bg-purple-700 text-white"
@@ -210,7 +211,7 @@ export const ProjectSubmissionForm = () => {
               </div>
               <div className="flex flex-wrap gap-2 mt-2">
                 {formData.tags.map(tag => (
-                  <Badge 
+                  <Badge
                     key={tag}
                     variant="outline"
                     className="bg-purple-900/20 text-purple-300 border-purple-800"

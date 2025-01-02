@@ -1,26 +1,33 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import './components/Section1/HeroSection/HeroSection.css'
+import './components/Section1/HeroSection/HeroSection.css';
+import { LuBrain } from "react-icons/lu";
+import { FaEarthAmericas } from "react-icons/fa6";
+import { FaUsers } from "react-icons/fa";
+import { ImSearch } from "react-icons/im";
+
 interface FeatureCardProps {
   title: string;
   description: string;
-  icon: string;
+  icon: React.ReactNode; // Accepts any valid React element
 }
 
 const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, icon }) => {
   return (
-    <div className="feature-card bg-black">
-      <div className="feature-icon">{icon}</div>
-      <h3 className="feature-title">{title}</h3>
-      <p className="feature-description">{description}</p>
+    <div className="feature-card group w-[100%] bg-[#ffffff20] hover:bg-[#ffffff0f] transition-colors duration-300">
+    <div className="feature-icon text-white group-hover:text-purple-800 transition-colors duration-300">
+      {icon}
     </div>
+    <h3 className="feature-title">{title}</h3>
+    <p className="feature-description">{description}</p>
+  </div>
   );
 };
 
 const FeatureCards: React.FC = () => {
   return (
     <motion.div
-      className="feature-grid"
+      className="feature-grid mt-10"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.8 }}
@@ -28,22 +35,22 @@ const FeatureCards: React.FC = () => {
       <FeatureCard
         title="Advanced AI Models"
         description="Access state-of-the-art machine learning models for computer vision tasks."
-        icon="🧠"
+        icon={<LuBrain />}
       />
       <FeatureCard
         title="Open Source Projects"
         description="Explore and contribute to a wide range of open source AI projects."
-        icon="🌐"
+        icon={<FaEarthAmericas />}
       />
       <FeatureCard
         title="Community Driven"
         description="Join a thriving community of AI enthusiasts and professionals."
-        icon="👥"
+        icon={<FaUsers />}
       />
       <FeatureCard
         title="Cutting-edge Research"
         description="Stay updated with the latest advancements in AI and computer vision."
-        icon="🔬"
+        icon={<ImSearch />}
       />
     </motion.div>
   );
