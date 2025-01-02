@@ -1,7 +1,6 @@
 import React from "react"
 import { SignUp } from "@clerk/clerk-react"
-import { Card, CardContent } from "@/components/ui/card"
-
+import { Card, CardContent } from "../ui/card"
 const Signup: React.FC = () => {
     return (
         <div className="flex min-h-screen items-center justify-center bg-black text-white">
