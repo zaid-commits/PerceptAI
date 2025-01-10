@@ -64,7 +64,7 @@ const AllResources: React.FC = () => {
             resource.title && resource.description && resource.link && resource.category && (
               <div
                 key={resource._id}
-                className="bg-[#ffffff17] border-b border-l border-[#492c976f] p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+                className="bg-[#ffffff17] border-b border-l border-[#492c976f] p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transition-transform transform hover:scale-105"
               >
                 <h3 className="text-xl font-bold text-white">{resource.title}</h3>
                 <span className="inline-block bg-purple-700 text-white text-xs px-2 py-1 rounded mb-4">
@@ -103,6 +103,5 @@ const AllResources: React.FC = () => {
     </div>
   );
 };
-
 
 export default AllResources;
