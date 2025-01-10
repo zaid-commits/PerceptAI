@@ -12,7 +12,7 @@ export default function Promo() {
                 <CardContent className="p-8 md:p-12">
                     <div className="flex flex-col items-center text-center space-y-6">
                         <p className="text-purple-800 text-sm font-medium">Ready to get started?</p>
-                        <h1 className="text-3xl uppercase md:text-5xl font-bold text-white leading-tight ">
+                        <h1 className="text-3xl  md:text-5xl font-bold text-white leading-tight ">
                             Join thousands of developers building with PerceptAI.
                         </h1>
                         <div className="flex flex-col sm:flex-row gap-4 pt-4">
