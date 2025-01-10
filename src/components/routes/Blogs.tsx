@@ -5,7 +5,6 @@ import Footer from "../Footer";
 import Promo from "../promo";
 import { FaBookReader } from "react-icons/fa";
 
-
 interface Blog {
     id: number;
     title: string;
@@ -47,6 +46,14 @@ const Blogs: React.FC = () => {
         return title;
     };
 
+    const truncateDescription = (description: string) => {
+        const words = description.split(" ");
+        if (words.length > 15) {
+            return words.slice(0, 15).join(" ") + "...";
+        }
+        return description;
+    };
+
     if (loading) {
         return <Loader />;
     }
@@ -56,7 +63,7 @@ const Blogs: React.FC = () => {
             <FloatingNavbar />
             <div className="container mx-auto px-4 py-8 ">
                 <div className="headingWrapper mt-20 mb-8 py-8" >
-                    <h1 className="text-4xl font-bold text-center text-purple-800 px-10  uppercase">
+                    <h1 className="text-4xl font-bold text-center text-purple-800 px-10 uppercase">
                         PerceptAI Articles Library
                     </h1>
                     <p className="text-center text-gray-400 mt-3">Discover amazing Articles from our community or share your own Articles with the world.</p>
@@ -66,7 +73,7 @@ const Blogs: React.FC = () => {
                         blog.cover_image ? (
                             <div
                                 key={blog.id}
-                                className="bg-[#ffffff20] text-white p-6 rounded-3xl shadow-lg border border-[#8080809e]"
+                                className="bg-[#ffffff20] text-white p-6 rounded-3xl shadow-lg border border-[#8080809e] transform transition-transform duration-300 hover:scale-105"
                             >
                                 <img
                                     src={blog.cover_image}
@@ -77,7 +84,7 @@ const Blogs: React.FC = () => {
                                 <h2 className="text-xl font-semibold mt-4 mb-2 leading-tight">
                                     {truncateTitle(blog.title)}
                                 </h2>
-                                <p className="text-gray-400 mb-4 text-sm">{blog.description}</p>
+                                <p className="text-gray-400 mb-4 text-sm">{truncateDescription(blog.description)}</p>
                                 <div className="flex items-center mt-4 justify-between bg-[#ffffff34] border border-[#80808099] rounded-2xl p-2">
                                     <div className="flex items-center justify-around">
                                         <img
@@ -99,13 +106,10 @@ const Blogs: React.FC = () => {
                                             target="_blank"
                                             className=" hover:underline"
                                         >
-                                            {/* Read More.. */}
                                             <FaBookReader />
-
                                         </a>
                                     </div>
                                 </div>
-                           
                             </div>
                         ) : null
                     ))}
@@ -118,4 +122,3 @@ const Blogs: React.FC = () => {
 };
 
 export default Blogs;
-
