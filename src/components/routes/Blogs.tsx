@@ -61,14 +61,14 @@ const Blogs: React.FC = () => {
     return (
         <div className="bg-[#161818]">
             <FloatingNavbar />
-            <div className="container mx-auto px-4 py-8 ">
-                <div className="headingWrapper mt-20 mb-8 py-8" >
+            <div className="container mx-auto px-4 py-8">
+                <div className="headingWrapper mt-20 mb-8 py-8">
                     <h1 className="text-4xl font-bold text-center text-purple-800 px-10 uppercase">
                         PerceptAI Articles Library
                     </h1>
                     <p className="text-center text-gray-400 mt-3">Discover amazing Articles from our community or share your own Articles with the world.</p>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-20 ">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 sm:px-8 lg:px-20">
                     {blogs.map((blog) => (
                         blog.cover_image ? (
                             <div
@@ -78,7 +78,7 @@ const Blogs: React.FC = () => {
                                 <img
                                     src={blog.cover_image}
                                     alt={`Img not found for ${blog.id}`}
-                                    className="mt-4 rounded-2xl"
+                                    className="mt-4 rounded-2xl w-full h-48 object-cover"
                                     onError={(e) => (e.currentTarget.style.display = "none")}
                                 />
                                 <h2 className="text-xl font-semibold mt-4 mb-2 leading-tight">
@@ -86,7 +86,7 @@ const Blogs: React.FC = () => {
                                 </h2>
                                 <p className="text-gray-400 mb-4 text-sm">{truncateDescription(blog.description)}</p>
                                 <div className="flex items-center mt-4 justify-between bg-[#ffffff34] border border-[#80808099] rounded-2xl p-2">
-                                    <div className="flex items-center justify-around">
+                                    <div className="flex items-center">
                                         <img
                                             src={blog.user.profile_image}
                                             alt={`Profile of ${blog.user.name}`}
@@ -97,14 +97,13 @@ const Blogs: React.FC = () => {
                                             <p className="text-xs text-gray-400">
                                                 {blog.user.username}
                                             </p>
-
                                         </div>
                                     </div>
                                     <div className="mr-2">
                                         <a
                                             href={`${blog.url}`}
                                             target="_blank"
-                                            className=" hover:underline"
+                                            className="hover:underline"
                                         >
                                             <FaBookReader />
                                         </a>
