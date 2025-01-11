@@ -14,13 +14,17 @@ interface FeatureCardProps {
 
 const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, icon }) => {
   return (
-    <div className="feature-card group w-[100%] bg-[#ffffff20] hover:bg-[#ffffff0f] transition-colors duration-300">
-    <div className="feature-icon text-white group-hover:text-purple-800 transition-colors duration-300">
-      {icon}
-    </div>
-    <h3 className="feature-title">{title}</h3>
-    <p className="feature-description">{description}</p>
-  </div>
+    <motion.div
+      className="feature-card group w-[100%] bg-[#ffffff20] hover:bg-[#ffffff0f] transition-colors duration-300"
+      whileHover={{ scale: 1.05 }}
+      transition={{ type: 'spring', stiffness: 200, damping: 20 }}
+    >
+      <div className="feature-icon text-white group-hover:text-purple-800 transition-colors duration-300">
+        {icon}
+      </div>
+      <h3 className="feature-title">{title}</h3>
+      <p className="feature-description">{description}</p>
+    </motion.div>
   );
 };
 
@@ -30,7 +34,7 @@ const FeatureCards: React.FC = () => {
       className="feature-grid mt-10"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: 0.8 }}
+      transition={{ duration: 0.8, ease: 'easeOut' }}
     >
       <FeatureCard
         title="Advanced AI Models"
