@@ -125,7 +125,7 @@ const Newsletter: React.FC = () => {
 
 const Footer: React.FC = () => {
     return (
-        <footer className="w-full bg-[#161618] text-white py-10 px-4 border-t border-gray-700 rounded-[4rem]">
+        <footer className="w-full bg-[#000] text-white py-10 px-4 border-t border-gray-700 rounded-[4rem]">
             <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-6">
                     <Navigation />
