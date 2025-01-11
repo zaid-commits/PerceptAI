@@ -80,7 +80,7 @@ const Chat: React.FC = () => {
 
   const showNotification = (msg: Message | Notification) => {
     // Check if permission is granted
-    if (notificationPermissionGranted && Notification.permission === 'granted') {
+    if ( Notification.permission === 'granted') {
       console.log('Showing notification:', msg);
       new Notification('PerceptAI', {
         body: 'text' in msg ? msg.text : msg.message,
