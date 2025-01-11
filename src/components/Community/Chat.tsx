@@ -29,19 +29,7 @@ const Chat: React.FC = () => {
   const { user } = useUser();
   const [notificationPermissionGranted, setNotificationPermissionGranted] = useState<boolean>(false);
 
-  // Request notification permission when the user interacts with the page
-  const requestNotificationPermission = () => {
-    if (Notification.permission !== 'granted') {
-      Notification.requestPermission().then(permission => {
-        if (permission === 'granted') {
-          console.log('Notification permission granted.');
-          setNotificationPermissionGranted(true);
-        } else {
-          console.log('Notification permission denied.');
-        }
-      });
-    }
-  };
+
 
   useEffect(() => {
     if (!user) return;
@@ -156,15 +144,6 @@ const Chat: React.FC = () => {
           <Button type="submit" className="bg-purple-800 text-white">Send</Button>
         </form>
       </CardFooter>
-      {/* Request notification permission button */}
-      {!notificationPermissionGranted && (
-        <Button
-          onClick={requestNotificationPermission}
-          className="mt-4 bg-blue-500 text-white"
-        >
-          Enable Notifications
-        </Button>
-      )}
     </Card>
   );
 };
