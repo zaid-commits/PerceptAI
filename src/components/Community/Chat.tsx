@@ -27,7 +27,6 @@ const Chat: React.FC = () => {
   const socketRef = useRef<Socket | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const { user } = useUser();
-  const [notificationPermissionGranted, setNotificationPermissionGranted] = useState<boolean>(false);
 
 
 
