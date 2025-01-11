@@ -79,7 +79,7 @@ const AllResources: React.FC = () => {
   }
 
   return (
-    <div className="bg-[#161818] py-20 min-h-fit">
+    <div className="bg-[#000] py-20 min-h-fit">
       <FloatingNavbar />
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between mt-10 mb-3 py-8">

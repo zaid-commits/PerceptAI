@@ -5,7 +5,7 @@ import Promo from '../promo'
 
 function Resources() {
     return (
-        <div className=' bg-[#161818]'>
+        <div className=' bg-[#000]'>
             <FloatingNavbar />
             <AllResources/>
             <Promo/>

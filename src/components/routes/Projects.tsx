@@ -10,7 +10,7 @@ import Footer from '../Footer';
 
 export const ProjectsPage = () => {
   return (
-    <div className="min-h-screen bg-[#161818] text-white">
+    <div className="min-h-screen bg-[#000] text-white">
       <FloatingNavbar/>
       <div className="container mx-auto px-4 py-16">
         <motion.div
@@ -20,7 +20,7 @@ export const ProjectsPage = () => {
           className="text-center mb-16 mt-24"
         >
           <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-purple-800 bg-clip-text text-transparent uppercase">
-            Project Showcasee
+            Project Showcase
           </h1>
           <p className="text-gray-400 max-w-2xl mx-auto">
             Discover amazing projects from our community or share your own creations with the world.
