@@ -7,7 +7,7 @@ import Promo from "../promo";
 
 const Home = () => {
   return (
-    <div className="bg-[#161818]">
+    <div className="bg-[#000]">
       <div className="flex flex-col justify-center items-center min-h-screen  ">
         <FloatingNavbar />
         <NeuHero />
@@ -17,7 +17,7 @@ const Home = () => {
         <div className=" text-white	">
 
           <section className="flex items-center justify-center text-center text-white py-10 px-4">
-            <h1 className="text-5xl md:text-5xl font-bold uppercase leading-tight ">
+            <h1 className="text-5xl md:text-5xl font-bold capitalize  leading-tight ">
               AI Infused Vision Directory is  platform
               <span className="inline-block relative top-2 mx-2 border border-[#ffffff90] rounded-lg overflow-hidden ">
                 <video
@@ -30,7 +30,7 @@ const Home = () => {
                   <source src="https://www.shutterstock.com/shutterstock/videos/1064002762/preview/stock-footage-autonomous-or-driverless-car-driving-through-a-crowded-street-in-los-angeles-computer-vision-with.webm" type="video/mp4" />
                 </video>
               </span>
-              in computer vision.
+              for computer vision enthu.
             </h1>
           </section>
 

@@ -9,26 +9,16 @@ import {
 } from "react-icons/fi";
 import { motion } from "framer-motion";
 import {
-  SiNike,
-  Si3M,
-  SiAbstract,
-  SiAdobe,
-  SiAirtable,
-  SiAmazon,
-  SiBox,
-  SiBytedance,
-  SiChase,
-  SiCloudbees,
-  SiBurton,
-  SiBmw,
-  SiHeroku,
-  SiBuildkite,
-  SiCouchbase,
-  SiDailymotion,
-  SiDeliveroo,
-  SiEpicgames,
-  SiGenius,
-  SiGodaddy,
+
+  SiOpencv,
+
+  SiTensorflow,
+  SiPycharm,
+  SiPython,
+  SiFlask,
+  SiMediapipe,
+  SiFastapi,
+  SiGunicorn,
 } from "react-icons/si";
 import { IconType } from "react-icons";
 
@@ -70,7 +60,7 @@ const Copy = () => {
         Open Source Web Based platform for computer vision enthusiasts to learn, create and share things in a community of their own!
       </p>
       <button className="rounded-lg bg-purple-900 p-2 md:p-3 uppercase text-white transition-colors hover:bg-purple-800">
-        <a href="/home">
+        <a href="/community">
           <span className="font-bold">Get started - </span> no CC required
         </a>
       </button>
@@ -206,7 +196,7 @@ const TranslateWrapper = ({
 const LogoItem = ({ Icon, name }: { Icon: IconType; name: string }) => {
   return (
     <span className="flex items-center justify-center gap-2 md:gap-4 px-2 md:px-4 py-2 md:py-4">
-      <Icon className="text-xl md:text-2xl lg:text-3xl text-indigo-600" />
+      <Icon className="text-xl md:text-2xl lg:text-3xl text-purple-800" />
       <span className="whitespace-nowrap text-lg md:text-xl lg:text-2xl font-semibold uppercase">
         {name}
       </span>
@@ -216,30 +206,26 @@ const LogoItem = ({ Icon, name }: { Icon: IconType; name: string }) => {
 
 const LogoItemsTop = () => (
   <>
-    <LogoItem Icon={SiNike} name="Nike" />
-    <LogoItem Icon={Si3M} name="3M" />
-    <LogoItem Icon={SiAbstract} name="Abstract" />
-    <LogoItem Icon={SiAdobe} name="Adobe" />
-    <LogoItem Icon={SiAirtable} name="Airtable" />
-    <LogoItem Icon={SiAmazon} name="Amazon" />
-    <LogoItem Icon={SiBox} name="Box" />
-    <LogoItem Icon={SiBytedance} name="Bytedance" />
-    <LogoItem Icon={SiChase} name="Chase" />
-    <LogoItem Icon={SiCloudbees} name="Cloudebees" />
+    <LogoItem Icon={SiTensorflow} name="TenserFlow" />
+    <LogoItem Icon={SiPython} name="Python" />
+    <LogoItem Icon={SiPycharm} name="PyCharm" />
+    <LogoItem Icon={SiFlask} name="Flask" />
+    <LogoItem Icon={SiOpencv} name="OpenCV" />
+    <LogoItem Icon={SiMediapipe} name="MediaPipe" />
+    <LogoItem Icon={SiFastapi} name="FastAPI" />
+    <LogoItem Icon={SiGunicorn} name="Gunicorn" />
   </>
 );
 
 const LogoItemsBottom = () => (
   <>
-    <LogoItem Icon={SiBmw} name="BMW" />
-    <LogoItem Icon={SiBurton} name="Burton" />
-    <LogoItem Icon={SiBuildkite} name="Buildkite" />
-    <LogoItem Icon={SiCouchbase} name="Couchbase" />
-    <LogoItem Icon={SiDailymotion} name="Dailymotion" />
-    <LogoItem Icon={SiDeliveroo} name="deliveroo" />
-    <LogoItem Icon={SiEpicgames} name="Epic Games" />
-    <LogoItem Icon={SiGenius} name="Genius" />
-    <LogoItem Icon={SiGodaddy} name="GoDaddy" />
-    <LogoItem Icon={SiHeroku} name="Heroku" />
+    <LogoItem Icon={SiTensorflow} name="TenserFlow" />
+    <LogoItem Icon={SiPython} name="Python" />
+    <LogoItem Icon={SiPycharm} name="PyCharm" />
+    <LogoItem Icon={SiFlask} name="Flask" />
+    <LogoItem Icon={SiOpencv} name="OpenCV" />
+    <LogoItem Icon={SiMediapipe} name="MediaPipe" />
+    <LogoItem Icon={SiFastapi} name="FastAPI" />
+    <LogoItem Icon={SiGunicorn} name="Gunicorn" />
   </>
 );

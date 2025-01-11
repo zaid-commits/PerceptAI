@@ -59,11 +59,11 @@ const Blogs: React.FC = () => {
     }
 
     return (
-        <div className="bg-[#161818]">
+        <div className="bg-[#000]">
             <FloatingNavbar />
             <div className="container mx-auto px-4 py-8">
                 <div className="headingWrapper mt-20 mb-8 py-8">
-                    <h1 className="text-4xl font-bold text-center text-purple-800 px-10 uppercase">
+                    <h1 className="text-5xl font-bold text-center text-purple-800 px-10 ">
                         PerceptAI Articles Library
                     </h1>
                     <p className="text-center text-gray-400 mt-3">Discover amazing Articles from our community or share your own Articles with the world.</p>
@@ -73,7 +73,7 @@ const Blogs: React.FC = () => {
                         blog.cover_image ? (
                             <div
                                 key={blog.id}
-                                className="bg-[#ffffff20] text-white p-6 rounded-3xl shadow-lg border border-[#8080809e] transform transition-transform duration-300 hover:scale-105"
+                                className="bg-[#111] text-white p-6 rounded-3xl shadow-lg border border-[#8080809e] transform transition-transform duration-300 hover:scale-105"
                             >
                                 <img
                                     src={blog.cover_image}

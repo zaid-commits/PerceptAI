@@ -15,7 +15,7 @@ interface FeatureCardProps {
 const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, icon }) => {
   return (
     <motion.div
-      className="feature-card group w-[100%] bg-[#ffffff20] hover:bg-[#ffffff0f] transition-colors duration-300"
+      className="feature-card group w-[100%] bg-[#000] hover:bg-[#ffffff0f] transition-colors duration-300"
       whileHover={{ scale: 1.05 }}
       transition={{ type: 'spring', stiffness: 200, damping: 20 }}
     >
