@@ -12,7 +12,7 @@ const SubmitResource: React.FC = () => {
     link: "",
     category: "",
     posterImage: "",
-    posterUsername: ""
+    posterUsername: "",
   });
 
   useEffect(() => {
@@ -121,14 +121,12 @@ const SubmitResource: React.FC = () => {
             />
             <input
               type="text"
-              name="posterUsername" 
+              name="posterUsername"
               value={newResource.posterUsername}
               readOnly
               placeholder="Poster Username"
               className="block w-full mb-2 p-2 rounded  text-white border-purple-800 border-l-2 border-1-2 border-b bg-black focus:outline-none focus:ring-1 focus:ring-purple-600"
             />
-
-
           </div>
           <div className="buttons flex justify-between">
             <button

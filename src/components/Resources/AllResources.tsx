@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import FloatingNavbar from '../Navbar';
-import { Link } from 'react-router-dom';
-import ModernPurpleLoader from '../elements/Loader';
+import React, { useState, useEffect } from "react";
+import FloatingNavbar from "../Navbar";
+import { Link } from "react-router-dom";
+import ModernPurpleLoader from "../elements/Loader";
 
 interface Resource {
   _id: string;
@@ -35,13 +35,16 @@ const ResourceCard: React.FC<{ resource: Resource }> = ({ resource }) => (
     <div className="mt-4 flex items-center w-full">
       <div className="flex items-center justify-between w-full">
         <span className="text-white ml-2">
-          posted by <a href="#" className="text-purple-800">{resource.posterUsername ?? 'Unknown'}</a>
+          posted by{" "}
+          <a href="#" className="text-purple-800">
+            {resource.posterUsername ?? "Unknown"}
+          </a>
         </span>
         {resource.posterImage && (
           <img
             className="rounded-lg w-10 h-10 ml-4"
             src={resource.posterImage}
-            alt={resource.posterUsername ?? 'Poster'}
+            alt={resource.posterUsername ?? "Poster"}
           />
         )}
       </div>
@@ -51,17 +54,19 @@ const ResourceCard: React.FC<{ resource: Resource }> = ({ resource }) => (
 
 const AllResources: React.FC = () => {
   const [resources, setResources] = useState<Resource[]>([]);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchResources = async () => {
       try {
-        const response = await fetch('https://ts-backend-production-53c6.up.railway.app/api/resources');
+        const response = await fetch(
+          "https://ts-backend-production-53c6.up.railway.app/api/resources"
+        );
         const data = await response.json();
         setResources(data);
       } catch (error) {
-        console.error('Error fetching resources:', error);
+        console.error("Error fetching resources:", error);
       } finally {
         setIsLoading(false);
       }
@@ -70,7 +75,7 @@ const AllResources: React.FC = () => {
     fetchResources();
   }, []);
 
-  const filteredResources = resources.filter(resource =>
+  const filteredResources = resources.filter((resource) =>
     resource.title?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -83,8 +88,13 @@ const AllResources: React.FC = () => {
       <FloatingNavbar />
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between mt-10 mb-3 py-8">
-          <h2 className="text-4xl font-bold text-white text-center flex-grow ml-6 pl-10 uppercase">Resource Library</h2>
-          <Link to="/resources/submit" className="bg-purple-900 text-white p-2 rounded hover:bg-purple-700 transition-colors">
+          <h2 className="text-4xl font-bold text-white text-center flex-grow ml-6 pl-10 uppercase">
+            Resource Library
+          </h2>
+          <Link
+            to="/resources/submit"
+            className="bg-purple-900 text-white p-2 rounded hover:bg-purple-700 transition-colors"
+          >
             Submit Resource
           </Link>
         </div>
@@ -96,11 +106,15 @@ const AllResources: React.FC = () => {
           className="block w-full mb-2 p-2 rounded bg-[#161618] text-white border border-[#8080807a] focus:outline-none focus:ring-2 focus:ring-purple-600"
         />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 py-4">
-          {filteredResources.map(resource => (
-            resource.title && resource.description && resource.link && resource.category && (
-              <ResourceCard key={resource._id} resource={resource} />
-            )
-          ))}
+          {filteredResources.map(
+            (resource) =>
+              resource.title &&
+              resource.description &&
+              resource.link &&
+              resource.category && (
+                <ResourceCard key={resource._id} resource={resource} />
+              )
+          )}
         </div>
       </div>
     </div>
