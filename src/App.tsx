@@ -9,7 +9,7 @@ import MouseFollower from './components/MouseFollower';
 import Home from './components/routes/Home';
 import Auth from './components/auth/Auth';
 import Signup from './components/auth/SignUp';
-import Gemini from './components/routes/Gemini';
+import Gemini from './components/routes/Navigator';
 const Test = React.lazy(() => import('./components/routes/Test'));
 const Projects = React.lazy(() => import('./components/routes/Projects'));
 const Resources = React.lazy(() => import('./components/routes/Resources'));
