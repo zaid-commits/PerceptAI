@@ -9,6 +9,7 @@ import MouseFollower from './components/MouseFollower';
 import Home from './components/routes/Home';
 import Auth from './components/auth/Auth';
 import Signup from './components/auth/SignUp';
+import Gemini from './components/routes/Gemini';
 const Test = React.lazy(() => import('./components/routes/Test'));
 const Projects = React.lazy(() => import('./components/routes/Projects'));
 const Resources = React.lazy(() => import('./components/routes/Resources'));
@@ -55,6 +56,7 @@ const App: React.FC = () => {
                         <Route path="/contact" element={<Contact />} />
                         <Route path="/blogs" element={<Blogs />} />
                         <Route path="/community" element={<Community />} />
+                        <Route path="/gemini" element={<Gemini />} />
                         <Route path="/admin/*" element={<AdminRoute element={<AdminDashboard />} />}>
                           <Route path="newsletter" element={<Newsletter />} />
                           <Route path="users" element={<UserManagement />} />
