@@ -12,7 +12,7 @@ const Navigator = () => {
   return (
     <div>
       {isOpen && (
-        <div className="fixed bottom-16 right-4 bg-black p-4 sm:p-8 rounded-lg shadow-lg w-full max-w-md">
+        <div className="">
           <Gemini />
         </div>
       )}

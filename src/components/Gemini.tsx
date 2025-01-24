@@ -1,14 +1,17 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "@clerk/clerk-react";
 
 const Gemini = () => {
   const [userInput, setUserInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [chatHistory, setChatHistory] = useState<{ sender: string, text: string }[]>([]);
+  const [chatHistory, setChatHistory] = useState<{ sender: string; text: string }[]>([]);
   const navigate = useNavigate();
+  const chatContainerRef = useRef<HTMLDivElement>(null);
+  const { user } = useUser();
 
-  const context = `
+  const baseContext = `
   You are a chatbot for PerceptAI, an AI-infused vision directory with advanced AI & ML solutions including computer vision. The website has the following sections:
   
   - Home: The main landing page that introduces PerceptAI and its features.
@@ -34,6 +37,14 @@ const Gemini = () => {
   Remember to provide clear and concise answers, and guide users to the relevant sections of the website whenever necessary.
   `;
 
+  const cleanMarkdown = (text: string): string => {
+    return text
+      .replace(/\*\*([^*]+)\*\*/g, "$1") 
+      .replace(/\*([^*]+)\*/g, "$1") 
+      .replace(/`([^`]+)`/g, "$1"); 
+  };
+
+  // Function to handle user input submission
   const handleUserInput = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!userInput.trim()) return;
@@ -52,67 +63,94 @@ const Gemini = () => {
       const genAI = new GoogleGenerativeAI(apiKey);
       const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-      const prompt = `${context}\nUser: ${userInput}\nBot:`;
+      const userContext = user ? `The user's name is ${user.firstName || user.username || "User"}.` : "";
+
+      const prompt = `${baseContext}\n${userContext}\nUser: ${userInput}\nBot:`;
 
       const result = await model.generateContent(prompt);
+      const rawResponseText = result.response.text();
+      const responseText = cleanMarkdown(rawResponseText); 
 
-      const responseText = result.response.text();
+      const maxResponseLength = 500; 
+      const truncatedResponseText = responseText.length > maxResponseLength
+        ? responseText.substring(0, maxResponseLength) + "..."
+        : responseText;
 
-      // Check for navigation commands
-      if (responseText.includes("navigate to")) {
-        if (responseText.includes("home")) {
-          navigate("/");
-        } else if (responseText.includes("projects")) {
-          navigate("/projects");
-        } else if (responseText.includes("resources")) {
-          navigate("/resources");
-        } else if (responseText.includes("contact")) {
-          navigate("/contact");
-        } else if (responseText.includes("blogs")) {
-          navigate("/blogs");
-        } else if (responseText.includes("community")) {
-          navigate("/community");
-        } else if (responseText.includes("admin")) {
-          navigate("/admin");
+      const navigationMap: Record<string, string> = {
+        home: "/",
+        projects: "/projects",
+        resources: "/resources",
+        contact: "/contact",
+        blogs: "/blogs",
+        community: "/community",
+        admin: "/admin",
+      };
+
+      for (const [key, path] of Object.entries(navigationMap)) {
+        if (truncatedResponseText.toLowerCase().includes(`navigate to ${key}`)) {
+          navigate(path);
+          break;
         }
       }
 
-      setChatHistory([...newChatHistory, { sender: "bot", text: responseText }]);
+      // Update chat history with bot response
+      setChatHistory([...newChatHistory, { sender: "bot", text: truncatedResponseText }]);
     } catch (error) {
       console.error("Error generating content:", error);
-      setChatHistory([...newChatHistory, { sender: "bot", text: "Sorry, I couldn't generate a response." }]);
+      setChatHistory([
+        ...newChatHistory,
+        { sender: "bot", text: "Sorry, I couldn't generate a response." },
+      ]);
+    } finally {
+      setLoading(false);
+      setUserInput("");
     }
-    setLoading(false);
-    setUserInput("");
   };
 
-  return (
-    <div className="h-[120vh] min-w-full flex flex-col justify-end p-4 overflow-hidden">
-      <div className="flex flex-col space-y-4 p-4 rounded-lg shadow-lg max-w-lg mx-auto">
-        <div className="flex flex-col space-y-2 overflow-y-auto h-[100%]">
-          {chatHistory.map((message, index) => (
-            <div
-              key={index}
-              className={`p-2 rounded-lg ${message.sender === "user" ? "bg-blue-200 self-end" : "bg-gray-200"}`}
-            >
-              <span>{message.text}</span>
-            </div>
-          ))}
-        </div>
+  useEffect(() => {
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    }
+  }, [chatHistory]);
 
-        <form onSubmit={handleUserInput} className="flex items-center space-x-2 mt-4">
-          <input
-            type="text"
-            value={userInput}
-            onChange={(e) => setUserInput(e.target.value)}
-            placeholder="Ask a question..."
-            className="p-2 rounded-lg border-gray-300 flex-1 w-full"
-          />
-          <button type="submit" className="bg-blue-500 text-white p-2 rounded-lg" disabled={loading}>
-            {loading ? "Loading..." : "Send"}
-          </button>
-        </form>
+  return (
+    <div className="flex flex-col space-y-4 p-4 rounded-lg shadow-lg max-w-md mx-auto bg-gray-900 text-white overflow-hidden">
+      {/* Chat container */}
+      <div
+        ref={chatContainerRef}
+        className="flex flex-col space-y-2 overflow-y-auto bg-gray-800 h-[60vh] p-4 rounded-lg"
+      >
+        {chatHistory.map((message, index) => (
+          <div
+            key={index}
+            className={`p-3 rounded-lg ${
+              message.sender === "user"
+                ? "bg-purple-700 text-white self-end"
+                : "bg-gray-300 text-black"
+            }`}
+          >
+            {message.text}
+          </div>
+        ))}
       </div>
+
+  
+      <form onSubmit={handleUserInput} className="flex items-center space-x-2">
+        <input
+          type="text"
+          value={userInput}
+          onChange={(e) => setUserInput(e.target.value)}
+          placeholder="Ask a question..."
+          className="p-3 rounded-lg border border-gray-600 flex-1 bg-gray-800 text-white"
+        />
+        <button
+          type="submit"
+          className="bg-purple-700 text-white px-4 py-2 rounded-lg"
+          disabled={loading}
+        >
+          {loading ? "Loading..." : "Send"}
+        </button>
+      </form>
     </div>
   );
 };
