@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "@clerk/clerk-react";
-import { FaUser, FaRobot, FaPaperPlane } from "react-icons/fa6"; // Import the send icon
+import { FaPaperPlane } from "react-icons/fa6"; // Import the send icon
 
 const Gemini = () => {
   const [userInput, setUserInput] = useState("");
@@ -127,7 +127,6 @@ const Gemini = () => {
                 : "bg-gray-300 text-black"
             }`}
           >
-            {message.sender === "user" ? <FaUser /> : <FaRobot />}
             <span>{message.text}</span>
           </div>
         ))}
