@@ -16,37 +16,51 @@ interface Resource {
   tags: string[];
 }
 
+const truncateText = (text: string, wordLimit: number) => {
+  const words = text.split(" ");
+  if (words.length > wordLimit) {
+    return words.slice(0, wordLimit).join(" ") + "...";
+  }
+  return text;
+};
+
 const ResourceCard: React.FC<{ resource: Resource }> = ({ resource }) => (
   <div
     key={resource._id}
-    className="bg-[#ffffff17] border-b border-l border-[#492c976f] p-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-transform"
+    className="bg-[#ffffff17] border-b border-l border-[#492c976f] p-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-transform h-full flex flex-col justify-between"
   >
-    <h3 className="text-xl font-bold text-white">{resource.title}</h3>
-    <span className="inline-block bg-purple-700 text-white text-xs px-2 py-1 rounded mb-4">
-      {resource.category}
-    </span>
-    <p className="text-gray-400 mb-1">{resource.description}</p>
-    <Link
-      to={`/resources/${resource._id}`}
-      className="text-purple-400 hover:text-purple-300 transition-colors"
-    >
-      View full resource
-    </Link>
-    <div className="mt-4 flex items-center w-full">
-      <div className="flex items-center justify-between w-full">
-        <span className="text-white ml-2">
-          posted by{" "}
-          <a href="#" className="text-purple-800">
-            {resource.posterUsername ?? "Unknown"}
-          </a>
-        </span>
-        {resource.posterImage && (
-          <img
-            className="rounded-lg w-10 h-10 ml-4"
-            src={resource.posterImage}
-            alt={resource.posterUsername ?? "Poster"}
-          />
-        )}
+    <div>
+      <h3 className="text-xl font-bold text-white">{resource.title}</h3>
+      <span className="inline-block bg-purple-700 text-white text-xs px-2 py-1 rounded mb-4">
+        {resource.category}
+      </span>
+      <p className="text-gray-400 mb-1">
+        {truncateText(resource.description, 20)}
+      </p>
+    </div>
+    <div>
+      <Link
+        to={`/resources/${resource._id}`}
+        className="text-purple-400 hover:text-purple-300 transition-colors"
+      >
+        View full resource
+      </Link>
+      <div className="mt-4 flex items-center w-full">
+        <div className="flex items-center justify-between w-full">
+          <span className="text-white ml-2">
+            posted by{" "}
+            <a href="#" className="text-purple-800">
+              {resource.posterUsername ?? "Unknown"}
+            </a>
+          </span>
+          {resource.posterImage && (
+            <img
+              className="rounded-lg w-10 h-10 ml-4"
+              src={resource.posterImage}
+              alt={resource.posterUsername ?? "Poster"}
+            />
+          )}
+        </div>
       </div>
     </div>
   </div>
