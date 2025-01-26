@@ -65,22 +65,31 @@ const ResourceDetail: React.FC = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          View full resource
+          View embedded content &rarr;
         </a>
         <div className="mt-4">
-          <span className="text-white">
-            posted by{" "}
-            <a href="#" className="text-purple-800">
-              {resource.posterUsername ?? "Unknown"}
-            </a>
-          </span>
-          {resource.posterImage && (
-            <img
-              className="rounded-lg w-10 h-10 ml-4"
-              src={resource.posterImage}
-              alt={resource.posterUsername ?? "Poster"}
-            />
-          )}
+          <h3 className="text-2xl font-bold mb-2">Poster Details</h3>
+          <form className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-300">Username</label>
+              <input
+                type="text"
+                value={resource.posterUsername ?? "Unknown"}
+                readOnly
+                className="mt-1 block w-full bg-gray-700 text-white border-gray-600 rounded-md shadow-sm"
+              />
+            </div>
+            {resource.posterImage && (
+              <div>
+                <label className="block text-sm font-medium text-gray-300">Profile Image</label>
+                <img
+                  className="rounded-lg w-20 h-20 mt-1"
+                  src={resource.posterImage}
+                  alt={resource.posterUsername ?? "Poster"}
+                />
+              </div>
+            )}
+          </form>
         </div>
         <div className="mt-4">
           <h3 className="text-2xl font-bold mb-2">Tags</h3>
