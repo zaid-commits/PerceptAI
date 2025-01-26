@@ -61,7 +61,7 @@ const AllResources: React.FC = () => {
     const fetchResources = async () => {
       try {
         const response = await fetch(
-          "https://ts-backend-production-53c6.up.railway.app/api/resources"
+          "http://localhost:5000/api/resources"
         );
         const data = await response.json();
         setResources(data);
