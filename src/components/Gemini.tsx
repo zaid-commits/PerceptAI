@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "@clerk/clerk-react";
+import { FaUser, FaRobot, FaPaperPlane } from "react-icons/fa6"; // Import the send icon
 
 const Gemini = () => {
   const [userInput, setUserInput] = useState("");
@@ -44,7 +45,6 @@ const Gemini = () => {
       .replace(/`([^`]+)`/g, "$1"); 
   };
 
-  // Function to handle user input submission
   const handleUserInput = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!userInput.trim()) return;
@@ -93,7 +93,6 @@ const Gemini = () => {
         }
       }
 
-      // Update chat history with bot response
       setChatHistory([...newChatHistory, { sender: "bot", text: truncatedResponseText }]);
     } catch (error) {
       console.error("Error generating content:", error);
@@ -115,7 +114,6 @@ const Gemini = () => {
 
   return (
     <div className="flex flex-col space-y-4 p-4 rounded-lg shadow-lg max-w-md mx-auto bg-black text-white overflow-hidden">
-      {/* Chat container */}
       <div
         ref={chatContainerRef}
         className="flex flex-col space-y-2 overflow-y-auto bg-black h-[60vh] p-4 rounded-lg"
@@ -123,32 +121,32 @@ const Gemini = () => {
         {chatHistory.map((message, index) => (
           <div
             key={index}
-            className={`p-3 rounded-lg ${
+            className={`p-3 rounded-lg flex items-center space-x-2 ${
               message.sender === "user"
                 ? "bg-purple-700 text-white self-end"
                 : "bg-gray-300 text-black"
             }`}
           >
-            {message.text}
+            {message.sender === "user" ? <FaUser /> : <FaRobot />}
+            <span>{message.text}</span>
           </div>
         ))}
       </div>
 
-  
       <form onSubmit={handleUserInput} className="flex items-center space-x-2">
         <input
           type="text"
           value={userInput}
           onChange={(e) => setUserInput(e.target.value)}
           placeholder="Ask a question..."
-          className="p-3 rounded-lg border border-gray-600 flex-1 bg-gray-800 text-white"
+          className="p-3 rounded-lg border border-purple-800 flex-1 bg-black text-white"
         />
         <button
           type="submit"
           className="bg-purple-700 text-white px-4 py-2 rounded-lg"
           disabled={loading}
         >
-          {loading ? "Loading..." : "Send"}
+          {loading ? "Loading..." : <FaPaperPlane />} {/* Use the send icon */}
         </button>
       </form>
     </div>
