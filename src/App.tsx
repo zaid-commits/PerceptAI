@@ -12,6 +12,7 @@ import Signup from './components/auth/SignUp';
 import Gemini from './components/routes/Navigator';
 import ResourceDetail from './components/Resources/ResourceDetail';
 import Navigator from './components/routes/Navigator';
+import AiAgent from './components/AIAgent';
 
 const Test = React.lazy(() => import('./components/routes/Test'));
 const Projects = React.lazy(() => import('./components/routes/Projects'));
@@ -60,6 +61,7 @@ const App: React.FC = () => {
                         <Route path="/contact" element={<Contact />} />
                         <Route path="/blogs" element={<Blogs />} />
                         <Route path="/community" element={<Community />} />
+                        <Route path="/agent" element={<AiAgent />} />
                         <Route path="/gemini" element={<Gemini />} />
                         <Route path="/admin/*" element={<AdminRoute element={<AdminDashboard />} />}>
                           <Route path="newsletter" element={<Newsletter />} />
