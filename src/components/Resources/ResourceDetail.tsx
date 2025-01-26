@@ -70,7 +70,7 @@ const ResourceDetail: React.FC = () => {
     <div className="bg-black text-white min-h-screen">
       <FloatingNavbar />
       <div className="container mx-auto px-4 py-20">
-        <div className="bg-gray-900 rounded-lg shadow-lg overflow-hidden relative">
+        <div className="bg-black border-purple-800 border-b-2 border-l-2 rounded-lg shadow-lg overflow-hidden relative">
           <div className="p-6 md:p-8 lg:p-10">
             <div className="flex flex-col md:flex-row justify-between items-start mb-6">
               <div>
@@ -107,7 +107,7 @@ const ResourceDetail: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="absolute top-4 right-4 flex items-center space-x-4 bg-gray-800 p-2 rounded-lg">
+          <div className="absolute top-4 right-4 flex items-center space-x-4 bg-black border-purple-800 border-b-2 border-l-2 p-2 rounded-lg">
             {resource.posterImage && (
               <img
                 src={resource.posterImage || "/placeholder.svg"}
