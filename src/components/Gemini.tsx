@@ -114,11 +114,11 @@ const Gemini = () => {
   }, [chatHistory]);
 
   return (
-    <div className="flex flex-col space-y-4 p-4 rounded-lg shadow-lg max-w-md mx-auto bg-gray-900 text-white overflow-hidden">
+    <div className="flex flex-col space-y-4 p-4 rounded-lg shadow-lg max-w-md mx-auto bg-black text-white overflow-hidden">
       {/* Chat container */}
       <div
         ref={chatContainerRef}
-        className="flex flex-col space-y-2 overflow-y-auto bg-gray-800 h-[60vh] p-4 rounded-lg"
+        className="flex flex-col space-y-2 overflow-y-auto bg-black h-[60vh] p-4 rounded-lg"
       >
         {chatHistory.map((message, index) => (
           <div
