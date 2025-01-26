@@ -2,12 +2,12 @@ import { useState, useRef, useEffect } from "react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "@clerk/clerk-react";
-import { FaPaperPlane } from "react-icons/fa6"; // Import the send icon
+import { FaPaperPlane} from "react-icons/fa6"; 
 
 const Gemini = () => {
   const [userInput, setUserInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [chatHistory, setChatHistory] = useState<{ sender: string; text: string }[]>([]);
+  const [chatHistory, setChatHistory] = useState<{ sender: string; text: string; link?: string }[]>([]);
   const navigate = useNavigate();
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const { user } = useUser();
@@ -84,16 +84,25 @@ const Gemini = () => {
         blogs: "/blogs",
         community: "/community",
         admin: "/admin",
+        agent: "/agent",
       };
 
+      let link: string | undefined;
       for (const [key, path] of Object.entries(navigationMap)) {
         if (truncatedResponseText.toLowerCase().includes(`navigate to ${key}`)) {
           navigate(path);
           break;
         }
+        if (truncatedResponseText.toLowerCase().includes(`open detailed view for ${key}`)) {
+          link = path;
+        }
+        if (truncatedResponseText.toLowerCase().includes("read more")) {
+          navigate("/agent");
+          break;
+        }
       }
 
-      setChatHistory([...newChatHistory, { sender: "bot", text: truncatedResponseText }]);
+      setChatHistory([...newChatHistory, { sender: "bot", text: truncatedResponseText, link }]);
     } catch (error) {
       console.error("Error generating content:", error);
       setChatHistory([
@@ -119,15 +128,29 @@ const Gemini = () => {
         className="flex flex-col space-y-2 overflow-y-auto bg-black h-[60vh] p-4 rounded-lg"
       >
         {chatHistory.map((message, index) => (
-          <div
-            key={index}
-            className={`p-3 rounded-lg flex items-center space-x-2 ${
-              message.sender === "user"
-                ? "bg-purple-700 text-white self-end"
-                : "bg-gray-300 text-black"
-            }`}
-          >
-            <span>{message.text}</span>
+          <div key={index} className="flex flex-col space-y-2">
+            <div
+              className={`p-3 rounded-lg flex items-center space-x-2 ${
+                message.sender === "user"
+                  ? "bg-purple-700 text-white self-end"
+                  : "bg-gray-300 text-black"
+              }`}
+            >
+              <span>{message.text}</span>
+              {message.link && (
+                <a href={message.link} className="text-blue-500 underline">
+                  Open detailed view
+                </a>
+              )}
+            </div>
+            {message.sender === "bot" && (
+                <a 
+                href="/agent"
+                className="text-blue-500 underline self-start"
+                >
+                Open detailed view
+                </a>
+            )}
           </div>
         ))}
       </div>
@@ -145,7 +168,7 @@ const Gemini = () => {
           className="bg-purple-700 text-white px-4 py-2 rounded-lg"
           disabled={loading}
         >
-          {loading ? "Loading..." : <FaPaperPlane />} {/* Use the send icon */}
+          {loading ? "Loading..." : <FaPaperPlane />} 
         </button>
       </form>
     </div>
