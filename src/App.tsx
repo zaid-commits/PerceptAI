@@ -5,13 +5,13 @@ import ModernPurpleLoader from './components/elements/Loader';
 import { useLoading } from './context/LoadingContext';
 import AdminRoute from './components/auth/AdminRoute';
 import Community from './components/routes/Community';
-import MouseFollower from './components/MouseFollower';
+// import MouseFollower from './components/MouseFollower'; temp hold
 import Home from './components/routes/Home';
 import Auth from './components/auth/Auth';
 import Signup from './components/auth/SignUp';
 import Gemini from './components/routes/Navigator';
+import ResourceDetail from './components/Resources/ResourceDetail';
 import Navigator from './components/routes/Navigator';
-
 
 const Test = React.lazy(() => import('./components/routes/Test'));
 const Projects = React.lazy(() => import('./components/routes/Projects'));
@@ -39,23 +39,24 @@ const App: React.FC = () => {
       {loading && <ModernPurpleLoader />}
       {!loading && (
         <Router>
-          <MouseFollower />
+          {/* <MouseFollower /> temp purpose */}
           <Suspense fallback={<ModernPurpleLoader />}>
             <Routes>
               <Route path="/auth" element={<Auth />} />
               <Route path="/auth/login" element={<Login />} />
-              <Route path="/auth/signup" element={<Signup/>} />
+              <Route path="/auth/signup" element={<Signup />} />
               <Route
                 path="/*"
                 element={
                   <>
                     <SignedIn>
                       <Routes>
-                        <Route path="/" element={<Home/>} />
+                        <Route path="/" element={<Home />} />
                         <Route path="/test" element={<Test />} />
                         <Route path="/projects" element={<Projects />} />
-                        <Route path="/resources" element={<Resources/>} />
+                        <Route path="/resources" element={<Resources />} />
                         <Route path="/resources/submit" element={<SubmitResource />} />
+                        <Route path="/resources/:id" element={<ResourceDetail />} />
                         <Route path="/contact" element={<Contact />} />
                         <Route path="/blogs" element={<Blogs />} />
                         <Route path="/community" element={<Community />} />

@@ -12,6 +12,8 @@ interface Resource {
   author: string;
   posterImage?: string;
   posterUsername?: string;
+  detailedDescription: string;
+  tags: string[];
 }
 
 const ResourceCard: React.FC<{ resource: Resource }> = ({ resource }) => (
@@ -24,14 +26,12 @@ const ResourceCard: React.FC<{ resource: Resource }> = ({ resource }) => (
       {resource.category}
     </span>
     <p className="text-gray-400 mb-1">{resource.description}</p>
-    <a
-      href={resource.link}
+    <Link
+      to={`/resources/${resource._id}`}
       className="text-purple-400 hover:text-purple-300 transition-colors"
-      target="_blank"
-      rel="noopener noreferrer"
     >
       View full resource
-    </a>
+    </Link>
     <div className="mt-4 flex items-center w-full">
       <div className="flex items-center justify-between w-full">
         <span className="text-white ml-2">
@@ -60,9 +60,7 @@ const AllResources: React.FC = () => {
   useEffect(() => {
     const fetchResources = async () => {
       try {
-        const response = await fetch(
-          "http://localhost:5000/api/resources"
-        );
+        const response = await fetch("http://localhost:5000/api/resources");
         const data = await response.json();
         setResources(data);
       } catch (error) {
