@@ -59,7 +59,7 @@ const Blogs: React.FC = () => {
     }
 
     return (
-        <div className="bg-[#000]">
+        <div className="bg-[#000] "data-scroll data-scroll-speed="2.0">
             <FloatingNavbar />
             <div className="container mx-auto px-4 py-8">
                 <div className="headingWrapper mt-20 mb-8 py-8">

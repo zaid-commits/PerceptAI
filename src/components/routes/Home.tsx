@@ -7,7 +7,7 @@ import Promo from "../promo";
 
 const Home = () => {
   return (
-    <div className="bg-[#000]">
+    <div className="bg-[#000] "data-scroll data-scroll-speed="2.0">
       <div className="flex flex-col justify-center items-center min-h-screen  ">
         <FloatingNavbar />
         <NeuHero />

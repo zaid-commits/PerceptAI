@@ -5,7 +5,7 @@ import Footer from '../Footer';
 
 const Contact: React.FC = () => {
   return (
-    <div className="bg-[#000] text-white min-h-screen flex flex-col">
+    <div className="bg-[#000] text-white min-h-screen flex flex-col "data-scroll data-scroll-speed="2.0">
       <FloatingNavbar />
       <div className="container mx-auto px-4 py-36 flex-grow ">
         <h1 className="text-4xl font-bold text-center mb-16">Contact Us</h1>

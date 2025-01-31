@@ -10,7 +10,7 @@ const Navigator = () => {
   };
 
   return (
-    <div>
+    <div >
       {/* Chat widget */}
       {isOpen && (
         <div

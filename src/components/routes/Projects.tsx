@@ -10,7 +10,7 @@ import Footer from '../Footer';
 
 export const ProjectsPage = () => {
   return (
-    <div className="min-h-screen bg-[#000] text-white">
+    <div className="min-h-screen bg-[#000] text-white" data-scroll data-scroll-speed="2.0">
       <FloatingNavbar/>
       <div className="container mx-auto px-4 py-16">
         <motion.div
