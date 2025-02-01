@@ -1,31 +1,44 @@
-import React, { Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { SignedIn, SignedOut } from '@clerk/clerk-react';
-import ModernPurpleLoader from './components/elements/Loader';
-import { useLoading } from './context/LoadingContext';
-import AdminRoute from './components/auth/AdminRoute';
-import Community from './components/routes/Community';
+import React, { Suspense } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import { SignedIn, SignedOut } from "@clerk/clerk-react";
+import ModernPurpleLoader from "./components/elements/Loader";
+import { useLoading } from "./context/LoadingContext";
+import AdminRoute from "./components/auth/AdminRoute";
+import Community from "./components/routes/Community";
 // import MouseFollower from './components/MouseFollower'; temp hold
-import Home from './components/routes/Home';
-import Auth from './components/auth/Auth';
-import Signup from './components/auth/SignUp';
-import Gemini from './components/routes/Navigator';
-import ResourceDetail from './components/Resources/ResourceDetail';
-import Navigator from './components/routes/Navigator';
-import AiAgent from './components/AIAgent';
-import AIChat from './components/routes/ai-chat';
+import Home from "./components/routes/Home";
+import Auth from "./components/auth/Auth";
+import Signup from "./components/auth/SignUp";
+import Gemini from "./components/routes/Navigator";
+import ResourceDetail from "./components/Resources/ResourceDetail";
+import Navigator from "./components/routes/Navigator";
+import AiAgent from "./components/AIAgent";
+import AIChat from "./components/routes/ai-chat";
+const SubmitProject = React.lazy(() => import("./components/Projects/SubmitProject"));
+const ProjectDetail = React.lazy(() => import("./components/Projects/ProjectsDetail"));
+const Proj = React.lazy(() => import("./components/Projects/Projects"));
 
-const Test = React.lazy(() => import('./components/routes/Test'));
-const Projects = React.lazy(() => import('./components/routes/Projects'));
-const Resources = React.lazy(() => import('./components/routes/Resources'));
-const SubmitResource = React.lazy(() => import('./components/Resources/SubmitResource'));
-const Contact = React.lazy(() => import('./components/routes/Contact'));
-const Login = React.lazy(() => import('./components/auth/Login'));
-const Blogs = React.lazy(() => import('./components/routes/Blogs'));
-const UserManagement = React.lazy(() => import('./components/admin/UserManagement'));
-const Analytics = React.lazy(() => import('./components/admin/Analytics'));
-const AdminDashboard = React.lazy(() => import('./components/admin/adminDashboard'));
-const Newsletter = React.lazy(() => import('./components/admin/NewsLetter'));
+const Test = React.lazy(() => import("./components/routes/Test"));
+const Resources = React.lazy(() => import("./components/routes/Resources"));
+const SubmitResource = React.lazy(
+  () => import("./components/Resources/SubmitResource")
+);
+const Contact = React.lazy(() => import("./components/routes/Contact"));
+const Login = React.lazy(() => import("./components/auth/Login"));
+const Blogs = React.lazy(() => import("./components/routes/Blogs"));
+const UserManagement = React.lazy(
+  () => import("./components/admin/UserManagement")
+);
+const Analytics = React.lazy(() => import("./components/admin/Analytics"));
+const AdminDashboard = React.lazy(
+  () => import("./components/admin/adminDashboard")
+);
+const Newsletter = React.lazy(() => import("./components/admin/NewsLetter"));
 
 const App: React.FC = () => {
   const { loading, setLoading } = useLoading();
@@ -55,21 +68,42 @@ const App: React.FC = () => {
                       <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/test" element={<Test />} />
-                        <Route path="/projects" element={<Projects />} />
+                        {/* <Route path="/projects" element={<Projects />} /> */}
                         <Route path="/resources" element={<Resources />} />
-                        <Route path="/resources/submit" element={<SubmitResource />} />
-                        <Route path="/resources/:id" element={<ResourceDetail />} />
+                        <Route
+                          path="/resources/submit"
+                          element={<SubmitResource />}
+                        />
+                        <Route
+                          path="/resources/:id"
+                          element={<ResourceDetail />}
+                        />
                         <Route path="/contact" element={<Contact />} />
                         <Route path="/blogs" element={<Blogs />} />
                         <Route path="/community" element={<Community />} />
                         <Route path="/agent" element={<AiAgent />} />
                         <Route path="/gemini" element={<Gemini />} />
                         <Route path="/ace" element={<AIChat />} />
-                        <Route path="/admin/*" element={<AdminRoute element={<AdminDashboard />} />}>
+                        <Route path="/projects" element={<Proj />} />
+                        <Route
+                          path="/projects/:id"
+                          element={<ProjectDetail />}
+                        />
+                        <Route
+                          path="/projects/submit"
+                          element={<SubmitProject />}
+                        />
+                        <Route
+                          path="/admin/*"
+                          element={<AdminRoute element={<AdminDashboard />} />}
+                        >
                           <Route path="newsletter" element={<Newsletter />} />
                           <Route path="users" element={<UserManagement />} />
                           <Route path="analytics" element={<Analytics />} />
-                          <Route path="" element={<h2>Welcome to the Admin Dashboard</h2>} />
+                          <Route
+                            path=""
+                            element={<h2>Welcome to the Admin Dashboard</h2>}
+                          />
                         </Route>
                         <Route path="*" element={<Navigate to="/" />} />
                       </Routes>
@@ -82,7 +116,7 @@ const App: React.FC = () => {
               />
             </Routes>
           </Suspense>
-          <Navigator/>
+          <Navigator />
         </Router>
       )}
     </>
