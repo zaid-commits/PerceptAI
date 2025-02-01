@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import FloatingNavbar from "../Navbar";
 import ModernPurpleLoader from "../elements/Loader";
 import toast from "react-hot-toast";
-import {  FaShare } from "react-icons/fa";
+import { FaShare } from "react-icons/fa";
 import {
   Command,
   CommandInput,
@@ -47,50 +47,49 @@ const ResourceCard: React.FC<{ resource: Resource }> = ({ resource }) => {
   };
 
   return (
-    <div
-    className="relative bg-[#0c0c0c] border-b-2 border-l-2 border-purple-800 p-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-transform h-full flex flex-col justify-between"
-  >
-      <button
-        onClick={() => copyToClipboard(resource.sharableLink)}
-        className="absolute top-4 right-4 bg-purple-600 text-white p-2 rounded hover:bg-purple-500 transition-colors flex items-center"
+    <Link to={`/resources/${resource._id}`} className="block">
+      <div
+        className="relative bg-[#0c0c0c] border-b-2 border-l-2 border-purple-800 p-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-transform h-full flex flex-col justify-between"
       >
-        <FaShare className="h-5 w-5 text-white" />
-      </button>
-      <div>
-        <h3 className="text-xl font-bold text-white">{resource.title}</h3>
-        <span className="inline-block bg-purple-900 text-white text-xs px-2 py-1 rounded mb-4">
-          {resource.category}
-        </span>
-        <p className="text-gray-300 mb-1">
-          {truncateText(resource.description, 20)}
-        </p>
-      </div>
-      <div>
-        <Link
-          to={`/resources/${resource._id}`}
-          className="text-purple-400 hover:text-purple-300 transition-colors"
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            copyToClipboard(resource.sharableLink);
+          }}
+          className="absolute top-4 right-4 bg-purple-600 text-white p-2 rounded hover:bg-purple-500 transition-colors flex items-center"
         >
-          View full resource
-        </Link>
-        <div className="mt-4 flex items-center w-full">
-          <div className="flex items-center justify-between w-full">
-            <span className="text-white ml-2">
-              posted by{" "}
-              <a href="#" className="text-purple-400">
-                {resource.posterUsername ?? "Unknown"}
-              </a>
-            </span>
-            {resource.posterImage && (
-              <img
-                className="rounded-lg w-10 h-10 ml-4"
-                src={resource.posterImage || "/placeholder.svg"}
-                alt={resource.posterUsername ?? "Poster"}
-              />
-            )}
+          <FaShare className="h-5 w-5 text-white" />
+        </button>
+        <div>
+          <h3 className="text-xl font-bold text-white">{resource.title}</h3>
+          <span className="inline-block bg-purple-900 text-white text-xs px-2 py-1 rounded mb-4">
+            {resource.category}
+          </span>
+          <p className="text-gray-300 mb-1">
+            {truncateText(resource.description, 20)}
+          </p>
+        </div>
+        <div>
+          <div className="mt-4 flex items-center w-full">
+            <div className="flex items-center justify-between w-full">
+              <span className="text-white ml-2">
+                posted by{" "}
+                <a href="#" className="text-purple-400">
+                  {resource.posterUsername ?? "Unknown"}
+                </a>
+              </span>
+              {resource.posterImage && (
+                <img
+                  className="rounded-lg w-10 h-10 ml-4"
+                  src={resource.posterImage || "/placeholder.svg"}
+                  alt={resource.posterUsername ?? "Poster"}
+                />
+              )}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

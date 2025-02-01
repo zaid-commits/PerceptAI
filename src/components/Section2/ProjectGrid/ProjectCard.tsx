@@ -61,7 +61,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
               {project.category}
             </Badge>
             <h3 className="text-xl font-bold text-white tracking-tight">{project.title}</h3>
-            <p className="text-sm text-gray-400">by {project.author}</p>
+            <p className="text-sm text-gray-400">byy {project.author}</p>
           </div>
         </CardHeader>
 
