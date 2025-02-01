@@ -70,7 +70,7 @@ const ResourceDetail: React.FC = () => {
     <div className="bg-black text-white min-h-screen">
       <FloatingNavbar />
       <div className="container mx-auto px-4 py-20">
-        <div className="bg-black border-purple-800 border-b-2 border-l-2 rounded-lg shadow-lg overflow-hidden relative">
+        <div className="bg-black border-purple-800 border-b-2 border-l-2 rounded-lg shadow-lg overflow-hidden relative max-w-3xl mx-auto p-6 ">
           <div className="p-6 md:p-8 lg:p-10">
             <div className="flex flex-col md:flex-row justify-between items-start mb-6">
               <div>
@@ -79,14 +79,14 @@ const ResourceDetail: React.FC = () => {
                 </span>
                 <h1 className="text-3xl md:text-4xl font-bold mb-4">{resource.title}</h1>
               </div>
-              <a
+              {/* <a
                 href={resource.link}
                 className="bg-purple-700 text-white px-4 py-2 rounded hover:bg-purple-600 transition-colors mt-4 md:mt-0"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 View Resource
-              </a>
+              </a> */}
             </div>
             <div className="mb-8">
               <h2 className="text-xl font-semibold mb-2">Description</h2>

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { fetchProjectById } from "@/api";
 import { Button } from "../ui/button";
 import FloatingNavbar from "../Navbar";
+import ModernPurpleLoader from "../elements/Loader";
 
 interface Project {
   title: string;
@@ -23,13 +24,13 @@ const ProjectDetail = () => {
     if (id) fetchProjectById(id).then(setProject);
   }, [id]);
 
-  if (!project) return <p className="text-center">Loading...</p>;
+  if (!project) return <ModernPurpleLoader />;
 
   return (
-    <div>
+    <div className="bg-black">
       <FloatingNavbar />
     
-    <div className="bg-black h-[100vh] w-screen text-white py-14">
+    <div className="text-white py-14">
       <div className="max-w-3xl mx-auto p-6 ">
         <img
           src={project.coverImage}
@@ -38,10 +39,10 @@ const ProjectDetail = () => {
         />
         <h1 className="text-3xl font-bold">{project.title}</h1>
         <p className="text-gray-700 my-2">{project.description}</p>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-gray-500 py-2">
           Posted by: <span className="font-semibold text-purple-800">{project.postedBy}</span>
         </p>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-gray-500 py-2">
           Category: <span className="font-semibold text-purple-800">{project.category}</span>
         </p>
         <p className="text-gray-600">{project.elaboratedDescription}</p>
