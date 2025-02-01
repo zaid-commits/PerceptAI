@@ -14,7 +14,7 @@ const Navigator = () => {
       {/* Chat widget */}
       {isOpen && (
         <div
-          className="fixed bottom-20 right-4 bg-purple-900 text-white w-80 h-90 rounded-lg shadow-lg overflow-hidden flex flex-col"
+          className="fixed bottom-20 right-4 bg-purple-900 text-white w-80 h-88 rounded-lg shadow-lg overflow-hidden flex flex-col"
         >
           <div className="bg-black p-3 flex justify-between items-center">
             <span className="text-lg font-bold">PerceptAI Chat</span>

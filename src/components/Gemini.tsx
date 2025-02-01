@@ -2,12 +2,14 @@ import { useState, useRef, useEffect } from "react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "@clerk/clerk-react";
-import { FaPaperPlane} from "react-icons/fa6"; 
+import { FaPaperPlane } from "react-icons/fa6";
 
 const Gemini = () => {
   const [userInput, setUserInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [chatHistory, setChatHistory] = useState<{ sender: string; text: string; link?: string }[]>([]);
+  const [conversations, setConversations] = useState<{ id: number; title: string }[]>([{ id: 1, title: "New Chat" }]);
+  const [activeConversation, setActiveConversation] = useState(1);
   const navigate = useNavigate();
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const { user } = useUser();
@@ -24,25 +26,20 @@ const Gemini = () => {
   - Admin: An admin dashboard for managing the site, including user management, analytics, and newsletter management.
   
   PerceptAI aims to provide a comprehensive platform for AI enthusiasts and professionals to learn, create, and share AI and ML projects. The platform offers state-of-the-art machine learning models, open-source projects, and a thriving community.
-  
-  Your job is to assist users with information about PerceptAI, help them navigate the website, and provide support for their queries. You can also help users find specific projects, resources, or blog posts, and guide them to the appropriate sections of the website.
-  
-  Here are some example queries you might receive:
-  - "How do I submit a project?"
-  - "Can you show me the latest AI projects?"
-  - "Where can I find resources for computer vision?"
-  - "How do I contact the PerceptAI team?"
-  - "What are the latest blog posts?"
-  - "How do I join the community chatroom?"
-  
-  Remember to provide clear and concise answers, and guide users to the relevant sections of the website whenever necessary.
   `;
 
   const cleanMarkdown = (text: string): string => {
     return text
-      .replace(/\*\*([^*]+)\*\*/g, "$1") 
-      .replace(/\*([^*]+)\*/g, "$1") 
-      .replace(/`([^`]+)`/g, "$1"); 
+      .replace(/\*\*([^*]+)\*\*/g, "$1")
+      .replace(/\*([^*]+)\*/g, "$1")
+      .replace(/`([^`]+)`/g, "$1");
+  };
+
+  const getCurrentScreenContext = () => {
+    const url = window.location.href;
+    const title = document.title;
+    const description = document.querySelector('meta[name="description"]')?.getAttribute('content') || '';
+    return { url, title, description };
   };
 
   const handleUserInput = async (e: React.FormEvent) => {
@@ -64,51 +61,29 @@ const Gemini = () => {
       const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
       const userContext = user ? `The user's name is ${user.firstName || user.username || "User"}.` : "";
+      const screenContext = getCurrentScreenContext();
 
-      const prompt = `${baseContext}\n${userContext}\nUser: ${userInput}\nBot:`;
+      const prompt = `${baseContext}\n${userContext}\nCurrent Screen Context: ${JSON.stringify(screenContext)}\nUser: ${userInput}\nBot:`;
 
       const result = await model.generateContent(prompt);
       const rawResponseText = result.response.text();
-      const responseText = cleanMarkdown(rawResponseText); 
+      const responseText = cleanMarkdown(rawResponseText);
 
-      const maxResponseLength = 500; 
-      const truncatedResponseText = responseText.length > maxResponseLength
-        ? responseText.substring(0, maxResponseLength) + "..."
-        : responseText;
+      const maxResponseLength = 500;
+      const truncatedResponseText =
+        responseText.length > maxResponseLength ? responseText.substring(0, maxResponseLength) + "..." : responseText;
 
-      const navigationMap: Record<string, string> = {
-        home: "/",
-        projects: "/projects",
-        resources: "/resources",
-        contact: "/contact",
-        blogs: "/blogs",
-        community: "/community",
-        admin: "/admin",
-        agent: "/agent",
-      };
+      setChatHistory([...newChatHistory, { sender: "bot", text: truncatedResponseText }]);
 
-      let link: string | undefined;
-      for (const [key, path] of Object.entries(navigationMap)) {
-        if (truncatedResponseText.toLowerCase().includes(`navigate to ${key}`)) {
-          navigate(path);
-          break;
-        }
-        if (truncatedResponseText.toLowerCase().includes(`open detailed view for ${key}`)) {
-          link = path;
-        }
-        if (truncatedResponseText.toLowerCase().includes("read more")) {
-          navigate("/agent");
-          break;
-        }
+      // Update conversation title if it's a new chat
+      if (conversations[activeConversation - 1] && conversations[activeConversation - 1].title === "New Chat") {
+        const updatedConversations = [...conversations];
+        updatedConversations[activeConversation - 1].title = userInput.substring(0, 30);
+        setConversations(updatedConversations);
       }
-
-      setChatHistory([...newChatHistory, { sender: "bot", text: truncatedResponseText, link }]);
     } catch (error) {
       console.error("Error generating content:", error);
-      setChatHistory([
-        ...newChatHistory,
-        { sender: "bot", text: "Sorry, I couldn't generate a response." },
-      ]);
+      setChatHistory([...newChatHistory, { sender: "bot", text: "Sorry, I couldn't generate a response." }]);
     } finally {
       setLoading(false);
       setUserInput("");
@@ -120,6 +95,16 @@ const Gemini = () => {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     }
   }, [chatHistory]);
+
+  const startNewConversation = () => {
+    setConversations([...conversations, { id: conversations.length + 1, title: "New Chat" }]);
+    setActiveConversation(conversations.length + 1);
+    setChatHistory([]);
+  };
+
+  const handleNavigation = (link: string) => {
+    navigate(link);
+  };
 
   return (
     <div className="flex flex-col space-y-4 p-4 rounded-lg shadow-lg max-w-md mx-auto bg-black text-white overflow-hidden">
@@ -138,19 +123,14 @@ const Gemini = () => {
             >
               <span>{message.text}</span>
               {message.link && (
-                <a href={message.link} className="text-blue-500 underline">
+                <button
+                  onClick={() => message.link && handleNavigation(message.link)}
+                  className="text-blue-500 underline"
+                >
                   Open detailed view
-                </a>
+                </button>
               )}
             </div>
-            {message.sender === "bot" && (
-                <a 
-                href="/agent"
-                className="text-blue-500 underline self-start"
-                >
-                Open detailed view
-                </a>
-            )}
           </div>
         ))}
       </div>
@@ -168,9 +148,16 @@ const Gemini = () => {
           className="bg-purple-700 text-white px-4 py-2 rounded-lg"
           disabled={loading}
         >
-          {loading ? "Loading..." : <FaPaperPlane />} 
+          {loading ? "Loading..." : <FaPaperPlane />}
         </button>
       </form>
+
+      <button
+        onClick={startNewConversation}
+        className="bg-purple-700 text-white px-4 py-2 rounded-lg"
+      >
+        Start New Conversation
+      </button>
     </div>
   );
 };

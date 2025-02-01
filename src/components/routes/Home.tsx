@@ -30,7 +30,7 @@ const Home = () => {
                   <source src="https://www.shutterstock.com/shutterstock/videos/1064002762/preview/stock-footage-autonomous-or-driverless-car-driving-through-a-crowded-street-in-los-angeles-computer-vision-with.webm" type="video/mp4" />
                 </video>
               </span>
-              for computer vision enthu.
+              for computer vision enthusiasts.
             </h1>
           </section>
 

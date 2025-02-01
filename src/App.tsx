@@ -14,13 +14,14 @@ import Community from "./components/routes/Community";
 import Home from "./components/routes/Home";
 import Auth from "./components/auth/Auth";
 import Signup from "./components/auth/SignUp";
-import Gemini from "./components/routes/Navigator";
 import ResourceDetail from "./components/Resources/ResourceDetail";
 import Navigator from "./components/routes/Navigator";
-import AiAgent from "./components/AIAgent";
-import AIChat from "./components/routes/ai-chat";
-const SubmitProject = React.lazy(() => import("./components/Projects/SubmitProject"));
-const ProjectDetail = React.lazy(() => import("./components/Projects/ProjectsDetail"));
+const SubmitProject = React.lazy(
+  () => import("./components/Projects/SubmitProject")
+);
+const ProjectDetail = React.lazy(
+  () => import("./components/Projects/ProjectsDetail")
+);
 const Proj = React.lazy(() => import("./components/Projects/Projects"));
 
 const Test = React.lazy(() => import("./components/routes/Test"));
@@ -81,10 +82,6 @@ const App: React.FC = () => {
                         <Route path="/contact" element={<Contact />} />
                         <Route path="/blogs" element={<Blogs />} />
                         <Route path="/community" element={<Community />} />
-                        <Route path="/agent" element={<AiAgent />} />
-                        <Route path="/gemini" element={<Gemini />} />
-                        <Route path="/ace" element={<AIChat />} />
-                        <Route path="/projects" element={<Proj />} />
                         <Route
                           path="/projects/:id"
                           element={<ProjectDetail />}
@@ -92,6 +89,10 @@ const App: React.FC = () => {
                         <Route
                           path="/projects/submit"
                           element={<SubmitProject />}
+                        />
+                        <Route
+                          path="/projects"
+                          element={<Proj />}
                         />
                         <Route
                           path="/admin/*"
