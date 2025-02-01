@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchProjectById } from "@/api";
 import { Button } from "../ui/button";
+import FloatingNavbar from "../Navbar";
 
 interface Project {
   title: string;
@@ -25,12 +26,15 @@ const ProjectDetail = () => {
   if (!project) return <p className="text-center">Loading...</p>;
 
   return (
-    <div className="bg-black h-full w-screen text-white">
-      <div className="max-w-3xl mx-auto p-6">
+    <div>
+      <FloatingNavbar />
+    
+    <div className="bg-black h-[100vh] w-screen text-white py-14">
+      <div className="max-w-3xl mx-auto p-6 ">
         <img
           src={project.coverImage}
           alt={project.title}
-          className="w-full h-60 object-cover rounded-lg mb-4"
+          className="w-full h-60 object-cover rounded-lg mb-4 "
         />
         <h1 className="text-3xl font-bold">{project.title}</h1>
         <p className="text-gray-700 my-2">{project.description}</p>
@@ -56,6 +60,8 @@ const ProjectDetail = () => {
           <Button variant={"outline"}>View Code</Button>
         </a>
       </div>
+    </div>
+    
     </div>
   );
 };
