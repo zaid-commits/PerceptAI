@@ -164,7 +164,7 @@ const AllResources: React.FC = () => {
                   className="bg-gray-200 text-purple-800 hover:bg-gray-300 hover:text-purple-900"
                 >
                   <Search className="mr-2 h-4 w-4 " />
-                  Search Resources
+                   CTRL+S to search
                 </Button>
               </DialogTrigger>
               <DialogContent className="rounded-lg bg-black text-white p-4 border-none">
