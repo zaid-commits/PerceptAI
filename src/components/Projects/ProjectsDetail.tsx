@@ -14,6 +14,8 @@ interface Project {
   tags: string[];
   category: string;
   coverImage: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 const ProjectDetail = () => {
@@ -27,42 +29,50 @@ const ProjectDetail = () => {
   if (!project) return <ModernPurpleLoader />;
 
   return (
-    <div className="bg-black">
+    <div className="bg-black min-h-screen">
       <FloatingNavbar />
-    
-    <div className="text-white py-14">
-      <div className="max-w-3xl mx-auto p-6 ">
-        <img
-          src={project.coverImage}
-          alt={project.title}
-          className="w-full h-60 object-cover rounded-lg mb-4 "
-        />
-        <h1 className="text-3xl font-bold">{project.title}</h1>
-        <p className="text-gray-700 my-2">{project.description}</p>
-        <p className="text-sm text-gray-500 py-2">
-          Posted by: <span className="font-semibold text-purple-800">{project.postedBy}</span>
-        </p>
-        <p className="text-sm text-gray-500 py-2">
-          Category: <span className="font-semibold text-purple-800">{project.category}</span>
-        </p>
-        <p className="text-gray-600">{project.elaboratedDescription}</p>
-        <div className="mt-3">
-          <span className="text-sm font-semibold">Tags:</span>
-          {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className="inline-block bg-gray-200 text-gray-700 px-2 py-1 rounded-full text-xs mx-1"
-            >
-              {tag}
-            </span>
-          ))}
+      <div className="text-white py-14">
+        <div className="max-w-3xl mx-auto py-6 mt-14  bg-gray-900 rounded-lg shadow-lg">
+          <img
+            src={project.coverImage}
+            alt={project.title}
+            className="w-full h-60 object-cover rounded-lg mb-4"
+          />
+          <h1 className="text-4xl font-bold mb-2">{project.title}</h1>
+          <p className="text-gray-400 mb-4">{project.description}</p>
+          <div className="flex justify-between items-center text-sm text-gray-500 mb-4">
+            <p>
+              Posted by: <span className="font-semibold text-purple-500">{project.postedBy}</span>
+            </p>
+            <p>
+              Category: <span className="font-semibold text-purple-500">{project.category}</span>
+            </p>
+          </div>
+          <p className="text-gray-300 mb-4">{project.elaboratedDescription}</p>
+          <div className="flex flex-wrap mb-4">
+            <span className="text-sm font-semibold mr-2">Tags:</span>
+            {project.tags.map((tag) => (
+              <span
+                key={tag}
+                className="inline-block bg-gray-700 text-gray-300 px-2 py-1 rounded-full text-xs mr-2 mb-2"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+          <div className="flex justify-between items-center text-sm text-gray-500 mb-4">
+            <p>
+              Created at: <span className="font-semibold text-purple-500">{new Date(project.createdAt).toLocaleDateString()}</span>
+            </p>
+            <p>
+              Updated at: <span className="font-semibold text-purple-500">{new Date(project.updatedAt).toLocaleDateString()}</span>
+            </p>
+          </div>
+          <a href={project.codeLink} className="block text-center mt-4">
+            <Button variant={"outline"}>View Code</Button>
+          </a>
         </div>
-        <a href={project.codeLink} className="block text-black mt-4">
-          <Button variant={"outline"}>View Code</Button>
-        </a>
       </div>
-    </div>
-    
     </div>
   );
 };
