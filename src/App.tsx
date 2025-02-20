@@ -16,6 +16,7 @@ import Auth from "./components/auth/Auth";
 import Signup from "./components/auth/SignUp";
 import ResourceDetail from "./components/Resources/ResourceDetail";
 import Navigator from "./components/routes/Navigator";
+import ProfileMainPage from "./components/UserProfile/ProfileMainPage";
 const SubmitProject = React.lazy(
   () => import("./components/Projects/SubmitProject")
 );
@@ -79,6 +80,7 @@ const App: React.FC = () => {
                           path="/resources/:id"
                           element={<ResourceDetail />}
                         />
+                        <Route path="/profile" element={<ProfileMainPage />} />
                         <Route path="/contact" element={<Contact />} />
                         <Route path="/blogs" element={<Blogs />} />
                         <Route path="/community" element={<Community />} />
@@ -90,10 +92,7 @@ const App: React.FC = () => {
                           path="/projects/submit"
                           element={<SubmitProject />}
                         />
-                        <Route
-                          path="/projects"
-                          element={<Proj />}
-                        />
+                        <Route path="/projects" element={<Proj />} />
                         <Route
                           path="/admin/*"
                           element={<AdminRoute element={<AdminDashboard />} />}
