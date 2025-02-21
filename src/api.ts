@@ -16,3 +16,8 @@ export const submitProject = async (projectData: any) => {
   const res = await axios.post(API_URL, projectData);
   return res.data;
 };
+
+export const fetchAllProjects = async () => {
+  const res = await axios.get(API_URL);
+  return res.data;
+};

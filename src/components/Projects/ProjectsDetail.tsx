@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchProjectById } from "@/api";
+import { fetchProjectById, fetchAllProjects } from "@/api";
 import { Button } from "../ui/button";
 import FloatingNavbar from "../Navbar";
 import ModernPurpleLoader from "../elements/Loader";
 
 interface Project {
+  id: string;
   title: string;
   description: string;
   elaboratedDescription: string;
@@ -21,9 +22,15 @@ interface Project {
 const ProjectDetail = () => {
   const { id } = useParams<{ id: string }>();
   const [project, setProject] = useState<Project | null>(null);
+  const [otherProjects, setOtherProjects] = useState<Project[]>([]);
 
   useEffect(() => {
-    if (id) fetchProjectById(id).then(setProject);
+    if (id) {
+      fetchProjectById(id).then(setProject);
+      fetchAllProjects().then((projects) => {
+        setOtherProjects(projects.filter((proj: Project) => proj.id !== id));
+      });
+    }
   }, [id]);
 
   if (!project) return <ModernPurpleLoader />;
@@ -32,7 +39,7 @@ const ProjectDetail = () => {
     <div className="bg-black min-h-screen">
       <FloatingNavbar />
       <div className="text-white py-14">
-        <div className="max-w-3xl mx-auto py-6 mt-14  bg-gray-900 rounded-lg shadow-lg">
+        <div className="max-w-3xl mx-auto py-6 mt-14 bg-gray-900 rounded-lg shadow-lg">
           <img
             src={project.coverImage}
             alt={project.title}
@@ -71,6 +78,25 @@ const ProjectDetail = () => {
           <a href={project.codeLink} className="block text-center mt-4">
             <Button variant={"outline"}>View Code</Button>
           </a>
+        </div>
+        <div className="mt-10">
+          <h2 className="text-3xl font-bold mb-6">Other Projects</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {otherProjects.map((proj) => (
+              <div key={proj.id} className="bg-gray-800 rounded-lg shadow-lg p-4">
+                <img
+                  src={proj.coverImage}
+                  alt={proj.title}
+                  className="w-full h-40 object-cover rounded-lg mb-4"
+                />
+                <h3 className="text-xl font-bold mb-2">{proj.title}</h3>
+                <p className="text-gray-400 mb-4">{proj.description}</p>
+                <a href={`/projects/${proj.id}`} className="block text-center mt-4">
+                  <Button variant={"outline"}>View Project</Button>
+                </a>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
