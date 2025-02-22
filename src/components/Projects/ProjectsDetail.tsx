@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchProjectById, fetchAllProjects } from "@/api";
-import { Button } from "../ui/button";
 import FloatingNavbar from "../Navbar";
 import ModernPurpleLoader from "../elements/Loader";
+import Footer from "../Footer";
+import Promo from "../promo";
+import { Button } from "../ui/button";
+import Proj from "./Projects";
+import { Link } from "react-router-dom";
 
 interface Project {
   id: string;
@@ -17,12 +21,14 @@ interface Project {
   coverImage: string;
   createdAt: string;
   updatedAt: string;
+  useCases: string[];
 }
 
 const ProjectDetail = () => {
   const { id } = useParams<{ id: string }>();
   const [project, setProject] = useState<Project | null>(null);
-  const [otherProjects, setOtherProjects] = useState<Project[]>([]);
+  const [,setOtherProjects] = useState<Project[]>([]);
+  const [rating, setRating] = useState<number | null>(null);
 
   useEffect(() => {
     if (id) {
@@ -30,75 +36,99 @@ const ProjectDetail = () => {
       fetchAllProjects().then((projects) => {
         setOtherProjects(projects.filter((proj: Project) => proj.id !== id));
       });
+      window.scrollTo(0, 0); 
     }
   }, [id]);
 
   if (!project) return <ModernPurpleLoader />;
 
+  const demoUseCases = ["Demo use case 1", "Demo use case 2", "Demo use case 3"];
+  const useCases = project.useCases && project.useCases.length > 0 ? project.useCases : demoUseCases;
+
   return (
-    <div className="bg-black min-h-screen">
+    <div className="bg-black min-h-screen flex flex-col pt-16">
       <FloatingNavbar />
-      <div className="text-white py-14">
-        <div className="max-w-3xl mx-auto py-6 mt-14 bg-gray-900 rounded-lg shadow-lg">
-          <img
-            src={project.coverImage}
-            alt={project.title}
-            className="w-full h-60 object-cover rounded-lg mb-4"
-          />
-          <h1 className="text-4xl font-bold mb-2">{project.title}</h1>
-          <p className="text-gray-400 mb-4">{project.description}</p>
-          <div className="flex justify-between items-center text-sm text-gray-500 mb-4">
-            <p>
-              Posted by: <span className="font-semibold text-purple-500">{project.postedBy}</span>
-            </p>
-            <p>
-              Category: <span className="font-semibold text-purple-500">{project.category}</span>
-            </p>
+      <div className="text-white py-14 max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+          <div className="lg:col-span-2 bg-black rounded-lg shadow-lg p-8">
+            <img
+              src={project.coverImage}
+              alt={project.title}
+              className="w-full h-72 object-cover rounded-lg mb-6"
+            />
+            <h1 className="text-4xl font-bold mb-4">{project.title}</h1>
+            <p className="text-gray-400 mb-4">{project.description}</p>
+            <div className="flex flex-wrap gap-4 text-sm text-gray-500 mb-4">
+              <p>
+                Posted by: <span className="font-semibold text-purple-500">{project.postedBy}</span>
+              </p>
+              <p>
+                Category: <span className="font-semibold text-purple-500">{project.category}</span>
+              </p>
+            </div>
+            <p className="text-gray-300 mb-6">{project.elaboratedDescription}</p>
+            <div className="flex flex-wrap gap-2 mb-6">
+              <span className="text-sm font-semibold">Tags:</span>
+              {project.tags.map((tag) => (
+                <span key={tag} className="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-xs">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <div className="flex justify-between text-sm text-gray-500 mb-6">
+              <p>Created: <span className="font-semibold text-purple-500">{new Date(project.createdAt).toLocaleDateString()}</span></p>
+              <p>Updated: <span className="font-semibold text-purple-500">{new Date(project.updatedAt).toLocaleDateString()}</span></p>
+            </div>
+            <a href={project.codeLink} className="block text-center">
+              <Button variant="outline">View Code</Button>
+            </a>
+            {/* Use Cases Section */}
+            <div className="mt-8">
+              <h2 className="text-2xl font-bold mb-4">Use Cases</h2>
+              <ul className="list-disc list-inside text-gray-300 space-y-2">
+                {useCases.map((useCase, index) => (
+                  <li key={index}>{useCase}</li>
+                ))}
+              </ul>
+            </div>
           </div>
-          <p className="text-gray-300 mb-4">{project.elaboratedDescription}</p>
-          <div className="flex flex-wrap mb-4">
-            <span className="text-sm font-semibold mr-2">Tags:</span>
-            {project.tags.map((tag) => (
-              <span
-                key={tag}
-                className="inline-block bg-gray-700 text-gray-300 px-2 py-1 rounded-full text-xs mr-2 mb-2"
+
+          
+          {/* Sidebar */}
+            <div className="space-y-8">
+            {/* Promote Your Tool Section */}
+            <div className="p-6 bg-black rounded-lg shadow-lg border border-purple-700 text-center">
+              <h2 className="text-2xl font-bold mb-4 text-white">Promote Your Tool</h2>
+              <p className="text-gray-300 mb-4">Want to showcase your own tool? Submit it here and get featured in our community.</p>
+                <Link to="/projects/submit">
+                <Button variant="outline" className="text-black  hover:bg-gray-300 border-none">Submit Your Tool</Button>
+                </Link>
+            </div>
+
+
+            {/* Rating Box */}
+            <div className="p-6 bg-black rounded-lg shadow-lg text-center">
+              <h2 className="text-2xl font-bold mb-4 text-white">Rate This Project</h2>
+              <p className=" mb-4 text-gray-400">Your rating help the developer to improve the projects further</p>
+              <div className="flex justify-center space-x-2">
+              {[1, 2, 3, 4, 5].map((star) => (
+              <button
+              key={star}
+              className={`text-3xl ${rating && rating >= star ? "text-purple-500" : "text-gray-500"}`}
+              onClick={() => setRating(star)}
               >
-                {tag}
-              </span>
-            ))}
-          </div>
-          <div className="flex justify-between items-center text-sm text-gray-500 mb-4">
-            <p>
-              Created at: <span className="font-semibold text-purple-500">{new Date(project.createdAt).toLocaleDateString()}</span>
-            </p>
-            <p>
-              Updated at: <span className="font-semibold text-purple-500">{new Date(project.updatedAt).toLocaleDateString()}</span>
-            </p>
-          </div>
-          <a href={project.codeLink} className="block text-center mt-4">
-            <Button variant={"outline"}>View Code</Button>
-          </a>
-        </div>
-        <div className="mt-10">
-          <h2 className="text-3xl font-bold mb-6">Other Projects</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {otherProjects.map((proj) => (
-              <div key={proj.id} className="bg-gray-800 rounded-lg shadow-lg p-4">
-                <img
-                  src={proj.coverImage}
-                  alt={proj.title}
-                  className="w-full h-40 object-cover rounded-lg mb-4"
-                />
-                <h3 className="text-xl font-bold mb-2">{proj.title}</h3>
-                <p className="text-gray-400 mb-4">{proj.description}</p>
-                <a href={`/projects/${proj.id}`} className="block text-center mt-4">
-                  <Button variant={"outline"}>View Project</Button>
-                </a>
+              ★
+              </button>
+              ))}
               </div>
-            ))}
-          </div>
+            </div>
+            </div>
         </div>
+        {/* Other Projects Section */}
+        <Proj />
       </div>
+      <Promo />
+      <Footer />
     </div>
   );
 };
