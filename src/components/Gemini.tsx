@@ -9,7 +9,7 @@ const Gemini = () => {
   const [loading, setLoading] = useState(false);
   const [chatHistory, setChatHistory] = useState<{ sender: string; text: string; link?: string }[]>([]);
   const [conversations, setConversations] = useState<{ id: number; title: string }[]>([{ id: 1, title: "New Chat" }]);
-  const [activeConversation, setActiveConversation] = useState(1);
+  const [activeConversation, ] = useState(1);   //setActiveConversation
   const navigate = useNavigate();
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const { user } = useUser();
@@ -26,6 +26,8 @@ const Gemini = () => {
   - Admin: An admin dashboard for managing the site, including user management, analytics, and newsletter management.
   
   PerceptAI aims to provide a comprehensive platform for AI enthusiasts and professionals to learn, create, and share AI and ML projects. The platform offers state-of-the-art machine learning models, open-source projects, and a thriving community.
+
+  the email of the platform is engineering.zaidrakhange@gmail.com
   `;
 
   const cleanMarkdown = (text: string): string => {
@@ -96,11 +98,11 @@ const Gemini = () => {
     }
   }, [chatHistory]);
 
-  const startNewConversation = () => {
-    setConversations([...conversations, { id: conversations.length + 1, title: "New Chat" }]);
-    setActiveConversation(conversations.length + 1);
-    setChatHistory([]);
-  };
+  // const startNewConversation = () => {
+  //   setConversations([...conversations, { id: conversations.length + 1, title: "New Chat" }]);
+  //   setActiveConversation(conversations.length + 1);
+  //   setChatHistory([]);
+  // };
 
   const handleNavigation = (link: string) => {
     navigate(link);
@@ -118,7 +120,7 @@ const Gemini = () => {
               className={`p-3 rounded-lg flex items-center space-x-2 ${
                 message.sender === "user"
                   ? "bg-purple-700 text-white self-end"
-                  : "bg-gray-300 text-black"
+                  : "bg-gray-300 text-black "
               }`}
             >
               <span>{message.text}</span>
@@ -152,12 +154,12 @@ const Gemini = () => {
         </button>
       </form>
 
-      <button
+      {/* <button
         onClick={startNewConversation}
         className="bg-purple-700 text-white px-4 py-2 rounded-lg"
       >
         Start New Conversation
-      </button>
+      </button> */}
     </div>
   );
 };

@@ -1,5 +1,9 @@
 import { useState } from "react";
 import { submitProject } from "@/api";
+import FloatingNavbar from "../Navbar";
+import { Button } from "../ui/button";
+import Footer from "../Footer";
+
 const SubmitProject = () => {
   const [formData, setFormData] = useState({
     title: "",
@@ -23,20 +27,33 @@ const SubmitProject = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-lg">
-      <h2 className="text-2xl font-bold mb-4">Submit a New Project</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <input type="text" name="title" placeholder="Project Title" onChange={handleChange} className="w-full border p-2 rounded" required />
-        <textarea name="description" placeholder="Short Description" onChange={handleChange} className="w-full border p-2 rounded" required />
-        <textarea name="elaboratedDescription" placeholder="Elaborated Description" onChange={handleChange} className="w-full border p-2 rounded" required />
-        <input type="text" name="postedBy" placeholder="Your Name" onChange={handleChange} className="w-full border p-2 rounded" required />
-        <input type="text" name="codeLink" placeholder="GitHub/Code Link" onChange={handleChange} className="w-full border p-2 rounded" required />
-        <input type="text" name="category" placeholder="Category" onChange={handleChange} className="w-full border p-2 rounded" required />
-        <input type="text" name="tags" placeholder="Tags (comma separated)" onChange={handleChange} className="w-full border p-2 rounded" required />
-        <input type="text" name="coverImage" placeholder="Cover Image URL" onChange={handleChange} className="w-full border p-2 rounded" required />
-        <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">Submit</button>
-      </form>
+    <>
+    <div className="bg-black h-screen text-white flex flex-col">
+      <FloatingNavbar />
+      <div className="flex-grow flex items-center justify-center text-black">
+        <div className="max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-lg">
+          <h2 className="text-2xl font-bold mb-4 text-black text-center">Submit a New Project</h2>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <input type="text" name="title" placeholder="Project Title" onChange={handleChange} className="w-full border p-2 rounded" required />
+            <textarea name="description" placeholder="Short Description" onChange={handleChange} className="w-full border p-2 rounded" required />
+            <textarea name="elaboratedDescription" placeholder="Elaborated Description" onChange={handleChange} className="w-full border p-2 rounded" required />
+            <input type="text" name="postedBy" placeholder="Your Name" onChange={handleChange} className="w-full border p-2 rounded" required />
+            <input type="text" name="codeLink" placeholder="GitHub/Code Link" onChange={handleChange} className="w-full border p-2 rounded" required />
+            <input type="text" name="category" placeholder="Category" onChange={handleChange} className="w-full border p-2 rounded" required />
+            <input type="text" name="tags" placeholder="Tags (comma separated)" onChange={handleChange} className="w-full border p-2 rounded" required />
+            <input type="text" name="coverImage" placeholder="Cover Image URL" onChange={handleChange} className="w-full border p-2 rounded" required />
+            <Button variant={"outline"} className="w-full bg-black hover:bg-black hover:text-white">
+              Submit Project  
+              </Button>
+          </form>
+        </div>
+      </div>
     </div>
+    <div className="bg-black">
+
+      <Footer/>
+    </div>
+    </>
   );
 };
 

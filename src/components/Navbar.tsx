@@ -21,6 +21,8 @@ const FloatingNavbar: React.FC = () => {
     { to: '/projects', label: 'Projects' },
     { to: '/blogs', label: 'Articles' },
     { to: '/resources', label: 'Resources' },
+    { to: '/opencv', label: 'OpenCV' },
+    { to: '/community', label: 'Community' },
     { to: '/contact', label: 'Contact' },
   ];
 

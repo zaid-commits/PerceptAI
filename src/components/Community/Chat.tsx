@@ -49,7 +49,7 @@ const Chat: React.FC = () => {
       Notification.requestPermission();
     }
 
-    socketRef.current = io('http://localhost:5000/', {
+    socketRef.current = io('https://ztbm3dqt-5000.inc1.devtunnels.ms/', {
       query: { userId: user.id, username: user.username ?? user.firstName ?? 'Anonymous' }
     });
 
@@ -122,7 +122,7 @@ const Chat: React.FC = () => {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto bg-black text-white flex rounded-lg shadow-lg overflow-hidden">
+    <div className="w-full max-w-xl mx-auto bg-black text-white flex rounded-lg shadow-lg overflow-hidden">
       <div className="flex-grow">
         <Card className="bg-black text-white border border-gray-700 rounded-lg shadow-md">
           <CardHeader className="bg-black rounded-t-lg">
@@ -176,7 +176,7 @@ const Chat: React.FC = () => {
         </Card>
         <Button onClick={() => navigate('/profile')} className="mt-4 bg-gray-700 text-white rounded-lg shadow-md hover:bg-gray-800">Your Profile</Button>
       </div>
-      <div className="w-72 bg-black text-white border border-gray-700 ml-6 px-6 py-4 rounded-lg shadow-md">
+      {/* <div className="w-72 bg-black text-white border border-gray-700 ml-6 px-6 py-4 rounded-lg shadow-md">
         <h2 className="text-lg font-bold mb-4">Online Users</h2>
         <ul>
           {onlineUsers.map(user => (
@@ -190,7 +190,7 @@ const Chat: React.FC = () => {
             </li>
           ))}
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 };

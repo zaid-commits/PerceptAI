@@ -80,7 +80,7 @@ const ProjectDetail = () => {
               <p>Updated: <span className="font-semibold text-purple-500">{new Date(project.updatedAt).toLocaleDateString()}</span></p>
             </div>
             <a href={project.codeLink} className="block text-center">
-              <Button variant="outline">View Code</Button>
+              <Button variant="outline" className="text-black">View Code</Button>
             </a>
             {/* Use Cases Section */}
             <div className="mt-8">
