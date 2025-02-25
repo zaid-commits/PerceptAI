@@ -31,7 +31,7 @@ interface User {
 const Chat: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState('');
-  const [onlineUsers, setOnlineUsers] = useState<User[]>([
+  const [, setOnlineUsers] = useState<User[]>([  //onlineusers
     { id: '1', username: 'Zaid Rakhange', userImageUrl: 'https://github.com/zaid-commits.png' },
     { id: '2', username: 'Adqus Farooqui', userImageUrl: 'https://github.com/zaid-commits.png' },
     { id: '3', username: 'Adyan Shaikh', userImageUrl: 'https://github.com/zaid-commits.png' }
