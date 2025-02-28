@@ -3,7 +3,7 @@ import FloatingNavbar from "@/components/Navbar";
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import Footer from "@/components/Footer";
 
-const API_URL = "https://ztbm3dqt-5050.inc1.devtunnels.ms/"; // Backend URL
+const API_URL = "http://localhost:5050"; // Backend URL
 
 const VisionProjects = () => {
     const [projects, setProjects] = useState<{ name: string }[]>([]);

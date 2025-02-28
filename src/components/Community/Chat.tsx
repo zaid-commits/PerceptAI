@@ -50,6 +50,11 @@ const Chat: React.FC = () => {
 
     socketRef.current = io('http://localhost:5000', {
       query: { userId: user.id, username: user.username ?? user.firstName ?? 'Anonymous' }
+
+
+
+      
+
     });
 
     socketRef.current.on('chat message', (msg: Message) => {
