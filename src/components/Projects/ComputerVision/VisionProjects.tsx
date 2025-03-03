@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import FloatingNavbar from "@/components/Navbar";
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import Footer from "@/components/Footer";
-
+import { Toaster,toast } from "react-hot-toast";
 const API_URL = "http://localhost:5050"; // Backend URL
 
 interface Project {
@@ -42,9 +42,9 @@ const VisionProjects = () => {
         try {
             const response = await fetch(`${API_URL}/run/${projectName}`);
             const data = await response.json();
-            alert(data.message || data.error);
+            toast.success(data.message || data.error);
         } catch (error) {
-            alert("Failed to start the project.");
+            toast.error("Failed to start the project.");
         }
     };
 
