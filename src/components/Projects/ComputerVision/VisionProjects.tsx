@@ -5,8 +5,13 @@ import Footer from "@/components/Footer";
 
 const API_URL = "http://localhost:5050"; // Backend URL
 
+interface Project {
+    name: string;
+    image: string | null;
+}
+
 const VisionProjects = () => {
-    const [projects, setProjects] = useState<{ name: string }[]>([]);
+    const [projects, setProjects] = useState<Project[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -18,7 +23,7 @@ const VisionProjects = () => {
                 const data = await response.json();
 
                 if (data.projects) {
-                    setProjects(data.projects.map((name: string) => ({ name })));
+                    setProjects(data.projects);
                 } else {
                     setError("No projects found");
                 }
@@ -62,6 +67,13 @@ const VisionProjects = () => {
                                 className="transform transition-transform duration-300 hover:scale-105"
                             >
                                 <Card className="bg-black text-white border border-gray-700 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl">
+                                    {project.image ? (
+                                        <img src={`${API_URL}${project.image}`} alt={project.name} className="w-full h-48 object-cover"/>
+                                    ) : (
+                                        <div className="w-full h-48 bg-gray-800 flex items-center justify-center text-gray-400">
+                                            No Image
+                                        </div>
+                                    )}
                                     <CardHeader className="p-4">
                                         <CardTitle className="text-2xl font-semibold mb-2">{project.name}</CardTitle>
                                         <CardDescription className="text-gray-400 mb-4">
