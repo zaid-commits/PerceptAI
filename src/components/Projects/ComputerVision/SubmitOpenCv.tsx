@@ -1,3 +1,4 @@
+import FloatingNavbar from "@/components/Navbar";
 import { useState } from "react";
 
 const SubmitOpenCv = () => {
@@ -45,7 +46,9 @@ const SubmitOpenCv = () => {
   };
 
   return (
-    <div className="p-6 border rounded-lg shadow-md">
+    <div className="flex justify-center items-center h-screen bg-black text-white">
+<FloatingNavbar/>
+    <div className="p-6 border rounded-lg shadow-md bg-white text-black">
       <h2 className="text-xl font-bold">Submit OpenCV Project</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
@@ -62,6 +65,8 @@ const SubmitOpenCv = () => {
       </form>
       {message && <p className="mt-4 text-red-600">{message}</p>}
     </div>
+    </div>
+    // <Footer/>
   );
 };
 
