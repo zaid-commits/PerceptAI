@@ -8,6 +8,7 @@ const API_URL = "http://localhost:5050"; // Backend URL
 interface Project {
     name: string;
     image: string | null;
+    description: string;
 }
 
 const VisionProjects = () => {
@@ -80,6 +81,7 @@ const VisionProjects = () => {
                                             Click to run this project.
                                         </CardDescription>
                                         <span className="text-blue-500 font-medium">Run Project</span>
+                                        <p>{project.description}</p>
                                     </CardHeader>
                                 </Card>
                             </button>
