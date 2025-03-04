@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import FloatingNavbar from "@/components/Navbar";
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import Footer from "@/components/Footer";
-import { Toaster,toast } from "react-hot-toast";
-import Generation from "./Generation";
+import { toast } from "react-hot-toast";
 const API_URL = "http://localhost:5050"; // Backend URL
 
 interface Project {
@@ -89,7 +88,6 @@ const VisionProjects = () => {
                 )}
             </div>
             <Footer/>
-            <Generation/>   
         </div>
     );
 };

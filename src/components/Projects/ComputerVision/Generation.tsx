@@ -1,43 +1,92 @@
-import { useState } from "react";
-import axios from "axios";
+import { useState, useRef, useEffect } from "react";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { FaPaperPlane } from "react-icons/fa6";
 
-const API_URL = "http://localhost:5050"; // Change if backend runs on a different port
 
 function Generation() {
-    interface ChatMessage {
-        sender: "User" | "AI";
-        text: string;
-    }
-
     const [userInput, setUserInput] = useState<string>("");
-    const [chatHistory, setChatHistory] = useState<ChatMessage[]>([]);
+    const [loading, setLoading] = useState<boolean>(false);
+    const [chatHistory, setChatHistory] = useState<{ sender: string; text: string }[]>([]);
+    const chatContainerRef = useRef<HTMLDivElement>(null);
 
-    // Function to send chat messages to AI
-    const sendMessage = async () => {
+    const baseContext = `
+    You are a chatbot for PerceptAI, an AI-infused vision directory with advanced AI & ML solutions including computer vision. you are especially trained to handle tasks and code generation related to computer vision. and other ai related tasks. you should help the user to generate code for their projects. you can help the user with the selection between approaches and all but explain them why it is the best appraoch then.
+    
+  
+    `;
+
+    const cleanMarkdown = (text: string): string => {
+        return text
+            .replace(/\*\*([^*]+)\*\*/g, "$1")
+            .replace(/\*([^*]+)\*/g, "$1")
+            .replace(/`([^`]+)`/g, "$1");
+    };
+
+    const getCurrentScreenContext = () => {
+        const url = window.location.href;
+        const title = document.title;
+        const description = document.querySelector('meta[name="description"]')?.getAttribute('content') || '';
+        return { url, title, description };
+    };
+
+    const sendMessage = async (e: React.FormEvent) => {
+        e.preventDefault();
         if (!userInput.trim()) return;
 
-        setChatHistory([...chatHistory, { sender: "User", text: userInput }]);
-        setUserInput("");
+        setLoading(true);
+
+        const newChatHistory = [...chatHistory, { sender: "User", text: userInput }];
+        setChatHistory(newChatHistory);
 
         try {
-            const res = await axios.post(`${API_URL}/chat`, { user_input: userInput });
-            setChatHistory([...chatHistory, { sender: "User", text: userInput }, { sender: "AI", text: res.data.response }]);
+            const apiKey = import.meta.env.VITE_GOOGLE_API_KEY;
+            if (!apiKey) {
+                throw new Error("API key is missing. Please set VITE_GOOGLE_API_KEY in the .env file.");
+            }
+
+            const genAI = new GoogleGenerativeAI(apiKey);
+            const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+            const screenContext = getCurrentScreenContext();
+
+            const prompt = `${baseContext}\nCurrent Screen Context: ${JSON.stringify(screenContext)}\nUser: ${userInput}\nBot:`;
+
+            const result = await model.generateContent(prompt);
+            const rawResponseText = result.response.text();
+            const responseText = cleanMarkdown(rawResponseText);
+
+            const maxResponseLength = 500;
+            const truncatedResponseText =
+                responseText.length > maxResponseLength ? responseText.substring(0, maxResponseLength) + "..." : responseText;
+
+            setChatHistory([...newChatHistory, { sender: "AI", text: truncatedResponseText }]);
         } catch (error) {
+            console.error("Error generating content:", error);
+            setChatHistory([...newChatHistory, { sender: "AI", text: "Sorry, I couldn't generate a response." }]);
             toast.error("AI response failed!");
+        } finally {
+            setLoading(false);
+            setUserInput("");
         }
     };
 
+    useEffect(() => {
+        if (chatContainerRef.current) {
+            chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+        }
+    }, [chatHistory]);
+
     return (
-        <div className="min-h-screen flex flex-col items-center p-6 bg-gray-900 text-white">
+        <div className="min-h-screen flex flex-col items-center p-6  text-white">
             <ToastContainer />
-            <h1 className="text-3xl font-bold">OpenCV AI Hub</h1>
+            <h1 className="text-4xl font-bold">CodeHelper</h1>
 
             {/* AI Chatbot Section */}
             <div className="w-full max-w-3xl my-6 p-4 bg-gray-800 rounded-lg">
                 <h2 className="text-2xl mb-4">Ask the AI (Code Generator)</h2>
-                <div className="h-64 overflow-y-auto border border-gray-600 p-3 rounded-md bg-gray-700">
+                <div ref={chatContainerRef} className="h-64 overflow-y-auto border border-gray-600 p-3 rounded-md bg-gray-700">
                     {chatHistory.length > 0 ? (
                         chatHistory.map((msg, index) => (
                             <div key={index} className={`p-2 my-1 ${msg.sender === "User" ? "text-right" : "text-left"}`}>
@@ -51,7 +100,7 @@ function Generation() {
                         <p className="text-gray-400">Start a conversation...</p>
                     )}
                 </div>
-                <div className="flex mt-4">
+                <form onSubmit={sendMessage} className="flex mt-4">
                     <input
                         type="text"
                         value={userInput}
@@ -60,12 +109,13 @@ function Generation() {
                         placeholder="Ask something..."
                     />
                     <button
-                        onClick={sendMessage}
+                        type="submit"
                         className="ml-2 px-4 py-2 bg-green-600 rounded-md hover:bg-green-500"
+                        disabled={loading}
                     >
-                        Send
+                        {loading ? "Loading..." : <FaPaperPlane />}
                     </button>
-                </div>
+                </form>
             </div>
         </div>
     );
