@@ -1,11 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useUser } from '@clerk/clerk-react';
-import { useNavigate } from 'react-router-dom';
-import io, { Socket } from 'socket.io-client';
-import { Input } from '../ui/input';
-import { Button } from '../ui/button';
+import React, { useState, useEffect, useRef } from "react";
+import { useUser } from "@clerk/clerk-react";
+import { useNavigate } from "react-router-dom";
+import io, { Socket } from "socket.io-client";
+import { Input } from "../ui/input";
+import { Button } from "../ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "../ui/card";
 import { Separator } from "@/components/ui/separator";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 interface Message {
   id: string;
@@ -30,12 +31,8 @@ interface User {
 
 const Chat: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
-  const [inputValue, setInputValue] = useState('');
-  const [, setOnlineUsers] = useState<User[]>([  //onlineusers
-    { id: '1', username: 'Zaid Rakhange', userImageUrl: 'https://github.com/zaid-commits.png' },
-    { id: '2', username: 'Adqus Farooqui', userImageUrl: 'https://github.com/zaid-commits.png' },
-    { id: '3', username: 'Adyan Shaikh', userImageUrl: 'https://github.com/zaid-commits.png' }
-  ]);
+  const [inputValue, setInputValue] = useState("");
+  const [onlineUsers, setOnlineUsers] = useState<User[]>([]);
   const socketRef = useRef<Socket | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const { user } = useUser();
@@ -44,34 +41,29 @@ const Chat: React.FC = () => {
   useEffect(() => {
     if (!user || !user.id) return;
 
-    if (Notification.permission !== 'granted') {
+    if (Notification.permission !== "granted") {
       Notification.requestPermission();
     }
 
-    socketRef.current = io('http://localhost:5000', {
-      query: { userId: user.id, username: user.username ?? user.firstName ?? 'Anonymous' }
-
-
-
-      
-
+    socketRef.current = io("http://localhost:5000", {
+      query: { userId: user.id, username: user.username ?? user.firstName ?? "Anonymous" },
     });
 
-    socketRef.current.on('chat message', (msg: Message) => {
-      setMessages(prevMessages => [...prevMessages, msg]);
+    socketRef.current.on("chat message", (msg: Message) => {
+      setMessages((prevMessages) => [...prevMessages, msg]);
       showNotification(msg);
     });
 
-    socketRef.current.on('chat history', (messages: Message[]) => {
+    socketRef.current.on("chat history", (messages: Message[]) => {
       setMessages(messages);
     });
 
-    socketRef.current.on('notification', (notification: ChatNotification) => {
+    socketRef.current.on("notification", (notification: ChatNotification) => {
       showChatNotification(notification);
     });
 
-    socketRef.current.on('online users', (users: User[]) => {
-      console.log('Online users:', users); // Debugging log
+    socketRef.current.on("online users", (users: User[]) => {
+      console.log("Online users:", users); // Debugging log
       setOnlineUsers(users);
     });
 
@@ -93,69 +85,78 @@ const Chat: React.FC = () => {
         id: Date.now().toString(),
         text: inputValue,
         userId: user.id,
-        username: user.username || user.firstName || 'Anonymous',
-        userImageUrl: (user.publicMetadata as { profileImageUrl?: string }).profileImageUrl || user.imageUrl || '',
-        timestamp: Date.now()
+        username: user.username || user.firstName || "Anonymous",
+        userImageUrl: (user.publicMetadata as { profileImageUrl?: string }).profileImageUrl || user.imageUrl || "",
+        timestamp: Date.now(),
       };
 
-      socketRef.current.emit('chat message', newMessage);
-      setInputValue('');
+      socketRef.current.emit("chat message", newMessage);
+      setInputValue("");
     }
   };
 
   const showNotification = (msg: Message | Notification) => {
-    // Check if permission is granted
-    if (Notification.permission === 'granted') {
-      console.log('Showing notification:', msg);
-      new Notification('PerceptAI', {
-        body: 'text' in msg ? msg.text : msg.body,
-        icon: 'userImageUrl' in msg ? msg.userImageUrl : '/favicon.ico',
+    if (Notification.permission === "granted") {
+      console.log("Showing notification:", msg);
+      new Notification("PerceptAI", {
+        body: "text" in msg ? msg.text : msg.body,
+        icon: "userImageUrl" in msg ? msg.userImageUrl : "/favicon.ico",
       });
     }
   };
 
   const showChatNotification = (notification: ChatNotification) => {
-    // Check if permission is granted
-    if (Notification.permission === 'granted') {
-      console.log('Showing chat notification:', notification);
-      new Notification('PerceptAI', {
+    if (Notification.permission === "granted") {
+      console.log("Showing chat notification:", notification);
+      new Notification("PerceptAI", {
         body: notification.message,
-        icon: '/favicon.ico',
+        icon: "/favicon.ico",
       });
     }
   };
 
   return (
-    <div className="w-full max-w-xl mx-auto bg-black text-white flex rounded-lg shadow-lg overflow-hidden">
-      <div className="flex-grow">
-        <Card className="bg-black text-white border border-gray-700 rounded-lg shadow-md">
-          <CardHeader className="bg-black rounded-t-lg">
-            <CardTitle className="text-xl font-semibold">PerceptAI ChatRoom</CardTitle>
+    <div className="w-full h-[100vh] overflow-hidden fixed bg-black text-white flex">
+      {/* Chat Window */}
+      <div className="flex-grow flex flex-col">
+        <Card className="bg-[#0c0c0c] text-white border border-gray-800 rounded-none shadow-lg h-full flex flex-col">
+          <CardHeader className="bg-[#0c0c0c] border-b border-gray-800">
+            <CardTitle className="text-2xl font-bold">PerceptAI ChatRoom</CardTitle>
           </CardHeader>
-          <CardContent className="h-96 overflow-y-auto p-4">
+          <CardContent className="flex-1 overflow-y-auto p-6">
             {messages.map((message, index) => (
               <React.Fragment key={message.id}>
                 {index > 0 && messages[index - 1].userId !== message.userId && (
-                  <Separator className="my-4 bg-gray-700" />
+                  <Separator className="my-4 bg-gray-800" />
                 )}
-                <div className={`mb-4 ${message.userId === user?.id ? 'flex justify-end' : 'flex justify-start'}`}>
-                  <div className={`flex max-w-[80%] ${message.userId === user?.id ? 'flex-row-reverse' : 'flex-row'} items-end gap-2`}>
-                    <img
-                      src={message.userImageUrl}
-                      alt={message.username}
-                      className="w-10 h-10 rounded-full flex-shrink-0 shadow-md"
-                    />
-                    <div className={`flex flex-col ${message.userId === user?.id ? 'items-end' : 'items-start'}`}>
-                      <div className={`px-4 py-2 rounded-2xl shadow-md ${message.userId === user?.id ? 'bg-purple-800 text-white rounded-br-none' : 'bg-gray-800 text-white rounded-bl-none'}`}>
+                <div
+                  className={`mb-4 ${message.userId === user?.id ? "flex justify-end" : "flex justify-start"}`}
+                >
+                  <div
+                    className={`flex max-w-[80%] ${message.userId === user?.id ? "flex-row-reverse" : "flex-row"} items-end gap-2`}
+                  >
+                    <Avatar
+                      className="w-10 h-10 rounded-full flex-shrink-0 shadow-md cursor-pointer"
+                      onClick={() => navigate(`/profile/${message.userId}`)}
+                    >
+                      <AvatarImage src={message.userImageUrl} alt={message.username} />
+                      <AvatarFallback>{message.username[0]}</AvatarFallback>
+                    </Avatar>
+                    <div
+                      className={`flex flex-col ${message.userId === user?.id ? "items-end" : "items-start"}`}
+                    >
+                      <div
+                        className={`px-4 py-2 rounded-2xl shadow-md ${message.userId === user?.id ? "bg-purple-800 text-white rounded-br-none" : "bg-gray-800 text-white rounded-bl-none"}`}
+                      >
                         <p className="font-bold text-sm">{message.username}</p>
                         <p className="break-words">{message.text}</p>
                       </div>
                       <p className="text-xs text-gray-400 mt-1 px-2">
                         {new Date(message.timestamp).toLocaleTimeString([], {
-                          hour: '2-digit',
-                          minute: '2-digit',
-                          second: '2-digit',
-                          hour12: true
+                          hour: "2-digit",
+                          minute: "2-digit",
+                          second: "2-digit",
+                          hour12: true,
                         })}
                       </p>
                     </div>
@@ -165,39 +166,47 @@ const Chat: React.FC = () => {
             ))}
             <div ref={messagesEndRef} />
           </CardContent>
-          <CardFooter className="bg-black rounded-b-lg p-4">
+          <CardFooter className="bg-[#0c0c0c] border-t border-gray-800 p-4">
             <form onSubmit={handleSubmit} className="flex w-full space-x-2">
               <Input
                 type="text"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 placeholder="Type a message..."
-                className="flex-grow bg-gray-800 text-white rounded-lg shadow-inner"
+                className="flex-grow bg-gray-800 text-white rounded-lg shadow-inner focus:ring-2 focus:ring-purple-600"
               />
-              <Button type="submit" className="bg-purple-800 text-white rounded-lg shadow-md hover:bg-purple-900">Send</Button>
+              <Button
+                type="submit"
+                className="bg-purple-800 text-white rounded-lg shadow-md hover:bg-purple-900 transition-colors"
+              >
+                Send
+              </Button>
             </form>
           </CardFooter>
         </Card>
-        <Button onClick={() => navigate('/profile')} className="mt-4 bg-gray-700 text-white rounded-lg shadow-md hover:bg-gray-800">Your Profile</Button>
       </div>
-      {/* <div className="w-72 bg-black text-white border border-gray-700 ml-6 px-6 py-4 rounded-lg shadow-md">
-        <h2 className="text-lg font-bold mb-4">Online Users</h2>
-        <ul>
-          {onlineUsers.map(user => (
-            <li key={user.id} className="flex items-center mb-2">
-              <img
-                src={user.userImageUrl}
-                alt={user.username}
-                className="w-10 h-10 rounded-full flex-shrink-0 mr-2 shadow-md"
-              />
-              <span>{user.username}</span>
+
+      {/* Online Users Sidebar */}
+      <div className="w-72 bg-[#0c0c0c] text-white border-l border-gray-800 p-6">
+        <h2 className="text-xl font-bold mb-6">Online Users</h2>
+        <ul className="space-y-4">
+          {onlineUsers.map((user) => (
+            <li
+              key={user.id}
+              className="flex items-center cursor-pointer hover:bg-gray-800 p-2 rounded-lg transition-colors"
+              onClick={() => navigate(`/profile/${user.id}`)}
+            >
+              <Avatar className="w-10 h-10 rounded-full flex-shrink-0 mr-2 shadow-md">
+                <AvatarImage src={user.userImageUrl} alt={user.username} />
+                <AvatarFallback>{user.username[0]}</AvatarFallback>
+              </Avatar>
+              <span className="font-medium">{user.username}</span>
             </li>
           ))}
         </ul>
-      </div> */}
+      </div>
     </div>
   );
 };
 
 export default Chat;
-
