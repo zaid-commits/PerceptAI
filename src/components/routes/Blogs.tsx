@@ -73,7 +73,7 @@ const Blogs: React.FC = () => {
                         blog.cover_image ? (
                             <div
                                 key={blog.id}
-                                className="bg-[#111] text-white p-6 rounded-3xl shadow-lg border border-[#8080809e] transform transition-transform duration-300 hover:scale-105"
+                                className="bg-[#111] text-white p-6 rounded-3xl shadow-lg border border-[#8080809e] transform transition-transform duration-300 hover:scale-105 cursor-pointer"
                             >
                                 <img
                                     src={blog.cover_image}
