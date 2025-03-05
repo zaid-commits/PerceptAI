@@ -9,7 +9,7 @@ const Gemini = () => {
   const [loading, setLoading] = useState(false);
   const [chatHistory, setChatHistory] = useState<{ sender: string; text: string; link?: string }[]>([]);
   const [conversations, setConversations] = useState<{ id: number; title: string }[]>([{ id: 1, title: "New Chat" }]);
-  const [activeConversation, ] = useState(1);   //setActiveConversation
+  const [activeConversation] = useState(1); // setActiveConversation
   const navigate = useNavigate();
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const { user } = useUser();
@@ -27,7 +27,7 @@ const Gemini = () => {
   
   PerceptAI aims to provide a comprehensive platform for AI enthusiasts and professionals to learn, create, and share AI and ML projects. The platform offers state-of-the-art machine learning models, open-source projects, and a thriving community.
 
-  the email of the platform is engineering.zaidrakhange@gmail.com
+  The email of the platform is engineering.zaidrakhange@gmail.com
   `;
 
   const cleanMarkdown = (text: string): string => {
@@ -98,36 +98,36 @@ const Gemini = () => {
     }
   }, [chatHistory]);
 
-  // const startNewConversation = () => {
-  //   setConversations([...conversations, { id: conversations.length + 1, title: "New Chat" }]);
-  //   setActiveConversation(conversations.length + 1);
-  //   setChatHistory([]);
-  // };
-
   const handleNavigation = (link: string) => {
     navigate(link);
   };
 
   return (
-    <div className="flex flex-col space-y-4 p-4 rounded-lg shadow-lg max-w-md mx-auto bg-black text-white overflow-hidden">
+    <div className="flex flex-col h-full">
+      {/* Chat History */}
       <div
         ref={chatContainerRef}
-        className="flex flex-col space-y-2 overflow-y-auto bg-black h-[60vh] p-4 rounded-lg"
+        className="flex-1 overflow-y-auto p-4 space-y-4"
       >
         {chatHistory.map((message, index) => (
-          <div key={index} className="flex flex-col space-y-2">
+          <div
+            key={index}
+            className={`flex ${
+              message.sender === "user" ? "justify-end" : "justify-start"
+            }`}
+          >
             <div
-              className={`p-3 rounded-lg flex items-center space-x-2 ${
+              className={`max-w-[80%] p-3 rounded-lg ${
                 message.sender === "user"
-                  ? "bg-purple-700 text-white self-end"
-                  : "bg-gray-300 text-black "
+                  ? "bg-purple-800 text-white"
+                  : "bg-gray-700 text-white"
               }`}
             >
               <span>{message.text}</span>
               {message.link && (
                 <button
                   onClick={() => message.link && handleNavigation(message.link)}
-                  className="text-blue-500 underline"
+                  className="text-blue-400 underline mt-2 block"
                 >
                   Open detailed view
                 </button>
@@ -137,29 +137,26 @@ const Gemini = () => {
         ))}
       </div>
 
-      <form onSubmit={handleUserInput} className="flex items-center space-x-2">
-        <input
-          type="text"
-          value={userInput}
-          onChange={(e) => setUserInput(e.target.value)}
-          placeholder="Ask a question..."
-          className="p-3 rounded-lg border border-purple-800 flex-1 bg-black text-white"
-        />
-        <button
-          type="submit"
-          className="bg-purple-700 text-white px-4 py-2 rounded-lg"
-          disabled={loading}
-        >
-          {loading ? "Loading..." : <FaPaperPlane />}
-        </button>
+      {/* Input Form */}
+      <form onSubmit={handleUserInput} className="p-4 border-t border-gray-800">
+        <div className="flex items-center space-x-2">
+          <input
+            type="text"
+            value={userInput}
+            onChange={(e) => setUserInput(e.target.value)}
+            placeholder="Ask a question..."
+            className="flex-1 p-3 rounded-lg bg-[#0c0c0c] border border-gray-800 text-white focus:outline-none focus:border-purple-800"
+            disabled={loading}
+          />
+          <button
+            type="submit"
+            className="bg-purple-800 text-white p-3 rounded-lg hover:bg-purple-700 transition-colors"
+            disabled={loading}
+          >
+            {loading ? "..." : <FaPaperPlane />}
+          </button>
+        </div>
       </form>
-
-      {/* <button
-        onClick={startNewConversation}
-        className="bg-purple-700 text-white px-4 py-2 rounded-lg"
-      >
-        Start New Conversation
-      </button> */}
     </div>
   );
 };

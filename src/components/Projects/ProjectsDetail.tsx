@@ -54,7 +54,7 @@ const ProjectDetail = () => {
   const mailToLink = `mailto:${ownerEmail}?subject=Collaboration Request for ${project.title}&body=Hi, I am interested in collaborating on your project '${project.title}'. Let's discuss further!`;
 
   return (
-    <div className="bg-black min-h-screen flex flex-col pt-16">
+    <div className="bg-black min-h-screen flex flex-col pt-16 ">
       <FloatingNavbar />
       <div className="text-white py-14 max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">

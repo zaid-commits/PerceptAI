@@ -10,22 +10,20 @@ const Navigator = () => {
   };
 
   return (
-    <div >
+    <div>
       {/* Chat widget */}
       {isOpen && (
-        <div
-          className="fixed bottom-20 right-4 bg-purple-900 text-white w-80 h-88 rounded-lg shadow-lg overflow-hidden flex flex-col"
-        >
-          <div className="bg-black p-3 flex justify-between items-center">
+        <div className="fixed bottom-20 right-4 bg-[#0c0c0c] text-white w-96 h-[70vh] rounded-lg shadow-lg overflow-hidden flex flex-col border border-gray-800">
+          <div className="bg-[#0c0c0c] p-4 flex justify-between items-center border-b border-gray-800">
             <span className="text-lg font-bold">PerceptAI Chat</span>
             <button
               onClick={toggleChat}
-              className="text-white hover:text-gray-300"
+              className="text-white hover:text-gray-300 transition-colors"
             >
               ✕
             </button>
           </div>
-          <div className="flex-1">
+          <div className="flex-1 overflow-y-auto">
             <Gemini />
           </div>
         </div>
@@ -34,7 +32,7 @@ const Navigator = () => {
       {/* Floating chat toggle button */}
       <button
         onClick={toggleChat}
-        className="fixed bottom-4 right-4 bg-purple-800 text-white p-3 rounded-full shadow-lg focus:outline-none"
+        className="fixed bottom-4 right-4 bg-purple-800 text-white p-4 rounded-full shadow-lg hover:bg-purple-700 transition-colors focus:outline-none"
       >
         <FaComments size={24} />
       </button>

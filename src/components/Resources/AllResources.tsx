@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import FloatingNavbar from "../Navbar";
 import ModernPurpleLoader from "../elements/Loader";
 import toast from "react-hot-toast";
-import { FaShare } from "react-icons/fa";
+import { FaShare, FaFilter, FaSort } from "react-icons/fa";
 import {
   Command,
   CommandInput,
@@ -48,45 +48,39 @@ const ResourceCard: React.FC<{ resource: Resource }> = ({ resource }) => {
 
   return (
     <Link to={`/resources/${resource._id}`} className="block">
-      <div
-        className="relative bg-[#0c0c0c] border-b-2 border-l-2 border-purple-800 p-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-transform h-full flex flex-col justify-between"
-      >
+      <div className="relative bg-[#0c0c0c] border border-purple-800 p-6 rounded-lg shadow-md hover:shadow-lg transform hover:scale-[1.02] transition-all duration-300 h-full flex flex-col justify-between ">
         <button
           onClick={(e) => {
             e.preventDefault();
             copyToClipboard(resource.sharableLink);
           }}
-          className="absolute top-4 right-4 bg-purple-600 text-white p-2 rounded hover:bg-purple-500 transition-colors flex items-center"
+          className="absolute top-4 right-4 bg-purple-800 text-white p-2 rounded-full hover:bg-purple-700 transition-colors flex items-center shadow-sm"
         >
           <FaShare className="h-5 w-5 text-white" />
         </button>
         <div>
-          <h3 className="text-xl font-bold text-white">{resource.title}</h3>
-          <span className="inline-block bg-purple-900 text-white text-xs px-2 py-1 rounded mb-4">
+          <h3 className="text-2xl font-bold text-white mb-2">{resource.title}</h3>
+          <span className="inline-block bg-purple-800 text-white text-sm px-3 py-1 rounded-full mb-4">
             {resource.category}
           </span>
-          <p className="text-gray-300 mb-1">
+          <p className="text-gray-300 mb-4">
             {truncateText(resource.description, 20)}
           </p>
         </div>
-        <div>
-          <div className="mt-4 flex items-center w-full">
-            <div className="flex items-center justify-between w-full">
-              <span className="text-white ml-2">
-                posted by{" "}
-                <a href="#" className="text-purple-400">
-                  {resource.posterUsername ?? "Unknown"}
-                </a>
-              </span>
-              {resource.posterImage && (
-                <img
-                  className="rounded-lg w-10 h-10 ml-4"
-                  src={resource.posterImage || "/placeholder.svg"}
-                  alt={resource.posterUsername ?? "Poster"}
-                />
-              )}
-            </div>
-          </div>
+        <div className="mt-4 flex items-center justify-between">
+          <span className="text-white">
+            Posted by{" "}
+            <a href="#" className="text-purple-400 hover:text-purple-300 transition-colors">
+              {resource.posterUsername ?? "Unknown"}
+            </a>
+          </span>
+          {resource.posterImage && (
+            <img
+              className="rounded-full w-10 h-10 ml-4 border-2 border-purple-800"
+              src={resource.posterImage || "/placeholder.svg"}
+              alt={resource.posterUsername ?? "Poster"}
+            />
+          )}
         </div>
       </div>
     </Link>
@@ -151,70 +145,95 @@ const AllResources: React.FC = () => {
   return (
     <div className="bg-black text-white min-h-screen">
       <FloatingNavbar />
-      <div className="container mx-auto px-4 pt-20">
-        <div className="flex items-center justify-between mb-8">
-          <h2 className="text-4xl font-bold py-4 text-white">
-            PerceptAI Resource Library
-          </h2>
-          <div className="flex items-center space-x-4">
-            <Dialog open={open} onOpenChange={setOpen}>
-              <DialogTrigger asChild>
-                <Button
-                  variant="outline"
-                  className="bg-gray-200 text-purple-800 hover:bg-gray-300 hover:text-purple-900"
-                >
-                  <Search className="mr-2 h-4 w-4 " />
-                   CTRL+S to search
-                </Button>
-              </DialogTrigger>
-              <DialogContent className="rounded-lg bg-black text-white p-4 border-none">
-                <Command className="bg-black text-white">
-                  <CommandInput
-                    placeholder="Type to search..."
-                    value={searchTerm}
-                    onValueChange={setSearchTerm}
-                    className="bg-black text-white"
-                  />
-                  <CommandList className="bg-black text-white">
-                    {filteredResources.length > 0 ? (
-                      <CommandGroup heading="Resources" className="text-white">
-                        {filteredResources.map((resource) => (
-                          <CommandItem
-                            key={resource._id}
-                            onSelect={() => {
-                              setOpen(false);
-                              navigate(`/resources/${resource._id}`);
-                            }}
-                            className="flex items-center space-x-2 rounded p-2 hover:bg-gray-700 hover:text-white transition-colors"
-                          >
-                            <FaFile className="text-purple-800 h-5 w-5" />
-                            <span>{resource.title}</span>
-                          </CommandItem>
-                        ))}
-                      </CommandGroup>
-                    ) : (
-                      <CommandEmpty className="text-white">
-                        No results found.
-                      </CommandEmpty>
-                    )}
-                  </CommandList>
-                </Command>
-              </DialogContent>
-            </Dialog>
+      <div className="py-10">
+        {/* Hero Section */}
+        <div className="bg-[#0c0c0c] py-20">
+          <div className="container mx-auto px-4 text-center">
+            <h1 className="text-5xl font-bold text-white mb-4">
+              PerceptAI Resource Library
+            </h1>
+            <p className="text-lg text-gray-300 mb-8">
+              Explore a curated collection of resources to enhance your projects and knowledge.
+            </p>
+            <div className="flex justify-center space-x-4">
+              <Dialog open={open} onOpenChange={setOpen}>
+                <DialogTrigger asChild>
+                  <Button
+                    variant="default"
+                    className="bg-purple-800 text-white hover:bg-purple-700 hover:text-white transition-colors shadow-sm"
+                  >
+                    <Search className="mr-2 h-5 w-5" />
+                    CTRL+S to Search
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="rounded-lg bg-[#0c0c0c] text-white p-6 border border-purple-800">
+                  <Command className="bg-[#0c0c0c] text-white">
+                    <CommandInput
+                      placeholder="Type to search..."
+                      value={searchTerm}
+                      onValueChange={setSearchTerm}
+                      className="bg-[#0c0c0c] text-white placeholder-gray-400"
+                    />
+                    <CommandList className="bg-[#0c0c0c] text-white">
+                      {filteredResources.length > 0 ? (
+                        <CommandGroup heading="Resources" className="text-white">
+                          {filteredResources.map((resource) => (
+                            <CommandItem
+                              key={resource._id}
+                              onSelect={() => {
+                                setOpen(false);
+                                navigate(`/resources/${resource._id}`);
+                              }}
+                              className="flex items-center space-x-2 rounded p-2 hover:bg-purple-800 hover:text-white transition-colors"
+                            >
+                              <FaFile className="text-purple-500 h-5 w-5" />
+                              <span>{resource.title}</span>
+                            </CommandItem>
+                          ))}
+                        </CommandGroup>
+                      ) : (
+                        <CommandEmpty className="text-white">
+                          No results found.
+                        </CommandEmpty>
+                      )}
+                    </CommandList>
+                  </Command>
+                </DialogContent>
+              </Dialog>
 
-            <Link
-              to="/resources/submit"
-              className="bg-purple-800 text-white px-4 py-2 rounded hover:bg-purple-500 transition-colors"
-            >
-              Submit Resource
-            </Link>
+              <Link
+                to="/resources/submit"
+                className="bg-purple-800 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors shadow-sm"
+              >
+                Submit Resource
+              </Link>
+            </div>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredResources.map((resource) => (
-            <ResourceCard key={resource._id} resource={resource} />
-          ))}
+
+        {/* Resources Section */}
+        <div className="container mx-auto px-4 py-8">
+          <div className="flex justify-between items-center mb-8">
+            <div className="flex space-x-4">
+              <Button variant="outline" className="bg-purple-800 text-white hover:bg-purple-700">
+                <FaFilter className="mr-2" /> Filter
+              </Button>
+              <Button variant="outline" className="bg-purple-800 text-white hover:bg-purple-700">
+                <FaSort className="mr-2" /> Sort
+              </Button>
+            </div>
+            <p className="text-gray-300">
+              Showing {filteredResources.length} resources
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredResources.map((resource) => (
+              <ResourceCard key={resource._id} resource={resource} />
+            ))}
+          </div>
         </div>
+
       </div>
     </div>
   );

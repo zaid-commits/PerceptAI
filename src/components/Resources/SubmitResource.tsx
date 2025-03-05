@@ -59,72 +59,121 @@ const SubmitResource: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#000] text-white min-h-screen py-10">
+    <div className="bg-black text-white min-h-screen">
       <FloatingNavbar />
       <div className="container mx-auto px-4 py-20">
-        <Card className="bg-[#161618] text-white border border-[#8080807a] shadow-lg">
-          <CardHeader>
-            <CardTitle className="text-4xl font-bold mb-8">Submit a Resource to PerceptAI</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <Input
-                type="text"
-                placeholder="Enter the title here"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                required
-                className="w-full p-3 rounded-md bg-[#1f1f1f] border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-600"
-              />
-              <Textarea
-                placeholder="Enter a brief description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                required
-                className="w-full p-3 rounded-md bg-[#1f1f1f] border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-600"
-              />
-              <Textarea
-                placeholder="Enter a detailed description"
-                value={detailedDescription}
-                onChange={(e) => setDetailedDescription(e.target.value)}
-                required
-                className="w-full p-3 rounded-md bg-[#1f1f1f] border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-600"
-              />
-              <Input
-                type="text"
-                placeholder="Enter the link"
-                value={link}
-                onChange={(e) => setLink(e.target.value)}
-                required
-                className="w-full p-3 rounded-md bg-[#1f1f1f] border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-600"
-              />
-              <Select onValueChange={(value: string) => setCategory(value)} required>
-                <SelectTrigger className="w-full p-3 rounded-md bg-[#1f1f1f] border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-600">
-                  <span>{category || "Select a category for your project"}</span>
-                </SelectTrigger>
-                <SelectContent className="bg-[#1f1f1f] border border-gray-700">
-                  <SelectItem value="AI" className="text-gray-400">AI</SelectItem>
-                  <SelectItem value="Computer Vision" className="text-gray-400">Computer Vision</SelectItem>
-                  <SelectItem value="Machine Learning" className="text-gray-400">Machine Learning</SelectItem>
-                </SelectContent>
-              </Select>
-              <Input
-                type="text"
-                placeholder="Enter tags (comma separated)"
-                value={tags}
-                onChange={(e) => setTags(e.target.value)}
-                className="w-full p-3 rounded-md bg-[#1f1f1f] border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-600"
-              />
-              <Button
-                type="submit"
-                className={`w-full p-3 rounded-md bg-purple-900 text-white hover:bg-purple-700 transition-colors ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
-                disabled={loading}
-              >
-                {loading ? "Submitting..." : "Submit"}
-              </Button>
-            </form>
-          </CardContent>
-        </Card>
+        <div className="max-w-5xl mx-auto">
+          <Card className="bg-[#0c0c0c] text-white border border-gray-800 rounded-lg shadow-lg">
+            <CardHeader>
+              <CardTitle className="text-3xl md:text-4xl font-bold text-center mb-8">
+                Submit a Resource to PerceptAI
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Title */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Title
+                  </label>
+                  <Input
+                    type="text"
+                    placeholder="Enter the title here"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                    required
+                    className="w-full p-3 rounded-lg bg-[#1f1f1f] border border-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-600"
+                  />
+                </div>
+
+                {/* Brief Description */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Brief Description
+                  </label>
+                  <Textarea
+                    placeholder="Enter a brief description"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    required
+                    className="w-full p-3 rounded-lg bg-[#1f1f1f] border border-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-600"
+                  />
+                </div>
+
+                {/* Detailed Description */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Detailed Description
+                  </label>
+                  <Textarea
+                    placeholder="Enter a detailed description"
+                    value={detailedDescription}
+                    onChange={(e) => setDetailedDescription(e.target.value)}
+                    required
+                    className="w-full p-3 rounded-lg bg-[#1f1f1f] border border-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-600"
+                  />
+                </div>
+
+                {/* Link */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Link
+                  </label>
+                  <Input
+                    type="text"
+                    placeholder="Enter the link"
+                    value={link}
+                    onChange={(e) => setLink(e.target.value)}
+                    required
+                    className="w-full p-3 rounded-lg bg-[#1f1f1f] border border-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-600"
+                  />
+                </div>
+
+                {/* Category */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Category
+                  </label>
+                  <Select onValueChange={(value: string) => setCategory(value)} required>
+                    <SelectTrigger className="w-full p-3 rounded-lg bg-[#1f1f1f] border border-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-600">
+                      <span>{category || "Select a category for your project"}</span>
+                    </SelectTrigger>
+                    <SelectContent className="bg-[#1f1f1f] border border-gray-800">
+                      <SelectItem value="AI" className="text-gray-400">AI</SelectItem>
+                      <SelectItem value="Computer Vision" className="text-gray-400">Computer Vision</SelectItem>
+                      <SelectItem value="Machine Learning" className="text-gray-400">Machine Learning</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                {/* Tags */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Tags
+                  </label>
+                  <Input
+                    type="text"
+                    placeholder="Enter tags (comma separated)"
+                    value={tags}
+                    onChange={(e) => setTags(e.target.value)}
+                    className="w-full p-3 rounded-lg bg-[#1f1f1f] border border-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-600"
+                  />
+                </div>
+
+                {/* Submit Button */}
+                <Button
+                  type="submit"
+                  className={`w-full p-3 rounded-lg bg-purple-800 text-white hover:bg-purple-700 transition-colors ${
+                    loading ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
+                  disabled={loading}
+                >
+                  {loading ? "Submitting..." : "Submit"}
+                </Button>
+              </form>
+            </CardContent>
+          </Card>
+        </div>
       </div>
       <Promo />
       <Footer />
