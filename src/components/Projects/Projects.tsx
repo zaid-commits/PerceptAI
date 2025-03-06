@@ -25,10 +25,15 @@ const Proj = () => {
       <FloatingNavbar />
       <div className="max-w-6xl mx-auto p-8">
         <h2 className="text-4xl font-bold mb-8 mt-16 text-white text-center">PerceptAI Projects Directory</h2>
-        <div className="flex justify-end">
+        <div className="flex justify-end space-x-4">
           <Link to="/projects/submit">
-            <Button variant={"outline"} className="bg-white">
+            <Button className="">
               Submit a Project
+            </Button>
+          </Link>
+          <Link to="/projects/collaborator">
+            <Button variant={"secondary"} className="bg-white">
+              Just an Idea? Submit it here!
             </Button>
           </Link>
         </div>

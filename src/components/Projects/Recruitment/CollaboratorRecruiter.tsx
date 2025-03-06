@@ -6,6 +6,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import toast from "react-hot-toast";
 import axios from "axios";
+import FloatingNavbar from "@/components/Navbar";
+import Promo from "@/components/promo";
+import Footer from "@/components/Footer";
 
 const CollaboratorRecruitmentForm: React.FC = () => {
   const [title, setTitle] = useState("");
@@ -44,50 +47,55 @@ const CollaboratorRecruitmentForm: React.FC = () => {
   };
 
   return (
-    <div className="bg-black text-white min-h-screen flex items-center justify-center p-4">
-      <Card className="bg-[#0c0c0c] text-white border border-gray-800 rounded-lg shadow-lg w-full max-w-2xl">
-        <CardHeader>
-          <CardTitle className="text-2xl font-bold">Post a Project Idea</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <Input
-              type="text"
-              placeholder="Project Title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              required
-              className="bg-[#1f1f1f] border border-gray-800 text-white"
-            />
-            <Textarea
-              placeholder="Project Description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              required
-              className="bg-[#1f1f1f] border border-gray-800 text-white"
-            />
-            <Input
-              type="text"
-              placeholder="Required Skills (comma separated)"
-              value={requiredSkills}
-              onChange={(e) => setRequiredSkills(e.target.value)}
-              required
-              className="bg-[#1f1f1f] border border-gray-800 text-white"
-            />
-            <Input
-              type="email"
-              placeholder="Contact Email"
-              value={contactEmail}
-              onChange={(e) => setContactEmail(e.target.value)}
-              required
-              className="bg-[#1f1f1f] border border-gray-800 text-white"
-            />
-            <Button type="submit" className="bg-purple-800 hover:bg-purple-900">
-              Post Project
-            </Button>
-          </form>
-        </CardContent>
-      </Card>
+    <div className="bg-black text-white min-h-screen flex flex-col">
+      <FloatingNavbar />
+      <div className="flex-grow flex items-center justify-center p-4 h-screen">
+        <Card className="bg-[#0c0c0c] text-white border border-gray-800 rounded-lg shadow-lg w-full max-w-2xl">
+          <CardHeader>
+            <CardTitle className="text-2xl font-bold">Post a Project Idea</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <Input
+                type="text"
+                placeholder="Project Title"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                required
+                className="bg-[#1f1f1f] border border-gray-800 text-white"
+              />
+              <Textarea
+                placeholder="Project Description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                required
+                className="bg-[#1f1f1f] border border-gray-800 text-white"
+              />
+              <Input
+                type="text"
+                placeholder="Required Skills (comma separated)"
+                value={requiredSkills}
+                onChange={(e) => setRequiredSkills(e.target.value)}
+                required
+                className="bg-[#1f1f1f] border border-gray-800 text-white"
+              />
+              <Input
+                type="email"
+                placeholder="Contact Email"
+                value={contactEmail}
+                onChange={(e) => setContactEmail(e.target.value)}
+                required
+                className="bg-[#1f1f1f] border border-gray-800 text-white"
+              />
+              <Button type="submit" className="bg-purple-800 hover:bg-purple-900">
+                Post Project
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
+      </div>
+      <Promo />
+      <Footer />
     </div>
   );
 };

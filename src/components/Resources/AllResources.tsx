@@ -48,7 +48,7 @@ const ResourceCard: React.FC<{ resource: Resource }> = ({ resource }) => {
 
   return (
     <Link to={`/resources/${resource._id}`} className="block">
-      <div className="relative bg-[#0c0c0c] border border-purple-800 p-6 rounded-lg shadow-md hover:shadow-lg transform hover:scale-[1.02] transition-all duration-300 h-full flex flex-col justify-between ">
+      <div className="relative bg-[#0c0c0c] p-6 rounded-lg shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 h-full flex flex-col justify-between">
         <button
           onClick={(e) => {
             e.preventDefault();
@@ -166,7 +166,7 @@ const AllResources: React.FC = () => {
                     CTRL+S to Search
                   </Button>
                 </DialogTrigger>
-                <DialogContent className="rounded-lg bg-[#0c0c0c] text-white p-6 border border-purple-800">
+                <DialogContent className="rounded-lg bg-[#0c0c0c] text-white p-6 border ">
                   <Command className="bg-[#0c0c0c] text-white">
                     <CommandInput
                       placeholder="Type to search..."
@@ -215,14 +215,14 @@ const AllResources: React.FC = () => {
         <div className="container mx-auto px-4 py-8">
           <div className="flex justify-between items-center mb-8">
             <div className="flex space-x-4">
-              <Button variant="outline" className="bg-purple-800 text-white hover:bg-purple-700">
+              <Button  className="bg-purple-800 text-white hover:bg-purple-700">
                 <FaFilter className="mr-2" /> Filter
               </Button>
-              <Button variant="outline" className="bg-purple-800 text-white hover:bg-purple-700">
+              <Button  className="bg-purple-800 text-white hover:bg-purple-700">
                 <FaSort className="mr-2" /> Sort
               </Button>
             </div>
-            <p className="text-gray-300">
+            <p className="text-green-400">
               Showing {filteredResources.length} resources
             </p>
           </div>

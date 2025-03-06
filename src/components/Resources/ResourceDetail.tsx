@@ -130,13 +130,13 @@ const ResourceDetail: React.FC = () => {
           {/* Main Content */}
           <div className="lg:col-span-2">
             <div className="bg-[#0c0c0c] border border-gray-800 rounded-lg p-6 mb-8">
-              <h2 className="text-2xl font-bold mb-4">Detailed Description</h2>
+              <h2 className="text-2xl font-bold mb-4 text-purple-500">Detailed Description</h2>
               <p className="text-gray-400">{resource.detailedDescription}</p>
             </div>
 
             {/* Tags */}
             <div className="bg-[#0c0c0c] border border-gray-800 rounded-lg p-6 mb-8">
-              <h2 className="text-2xl font-bold mb-4">Tags</h2>
+              <h2 className="text-2xl font-bold mb-4  text-purple-500">Tags</h2>
               <div className="flex flex-wrap gap-2">
                 {resource.tags.map((tag, index) => (
                   <span
@@ -151,7 +151,7 @@ const ResourceDetail: React.FC = () => {
 
             {/* Comments Section */}
             <div className="bg-[#0c0c0c] border border-gray-800 rounded-lg p-6">
-              <h2 className="text-2xl font-bold mb-4">Comments</h2>
+              <h2 className="text-2xl font-bold mb-4  text-purple-500">Comments</h2>
               {comments.map((comment) => (
                 <div key={comment.id} className="mb-4">
                   <div className="flex items-center space-x-4">
@@ -180,7 +180,7 @@ const ResourceDetail: React.FC = () => {
           <div className="lg:col-span-1">
             {/* Author Section */}
             <div className="bg-[#0c0c0c] border border-gray-800 rounded-lg p-6 mb-8">
-              <h2 className="text-2xl font-bold mb-4">Author</h2>
+              <h2 className="text-2xl font-bold mb-4  text-purple-500">Author</h2>
               <div className="flex items-center space-x-4">
                 {resource.posterImage && (
                   <img
@@ -198,7 +198,7 @@ const ResourceDetail: React.FC = () => {
 
             {/* Related Resources */}
             <div className="bg-[#0c0c0c] border border-gray-800 rounded-lg p-6">
-              <h2 className="text-2xl font-bold mb-4">Related Resources</h2>
+              <h2 className="text-2xl font-bold mb-4  text-purple-500">Related Resources</h2>
               {relatedResources.map((related) => (
                 <div key={related._id} className="mb-4">
                   <h3 className="font-semibold">{related.title}</h3>
