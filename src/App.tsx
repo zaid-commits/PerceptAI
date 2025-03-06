@@ -22,6 +22,7 @@ import CodeGenerationPage from "./components/routes/CodeGeneration";
 import SubmitOpenCv from "./components/Projects/ComputerVision/SubmitOpenCv";
 import CollaboratorRecruitmentForm from "./components/Projects/Recruitment/CollaboratorRecruiter";
 import ProjectListing from "./components/Projects/Recruitment/ProjectListing";
+import RecruitmentDetailPage from "./components/Projects/Recruitment/RecruitmentDetailPage";
 const SubmitProject = React.lazy(
   () => import("./components/Projects/SubmitProject")
 );
@@ -100,7 +101,8 @@ const App: React.FC = () => {
                          <Route
                           path="/projects/collaborator/submit"
                           element={<CollaboratorRecruitmentForm />}
-                        />
+                        /> 
+                                <Route path="/projects/collaborator/:id" element={<RecruitmentDetailPage />} />
 
                         <Route
                           path="/opencv/submit"
