@@ -168,14 +168,14 @@ const Chat: React.FC = () => {
             ))}
             <div ref={messagesEndRef} />
           </CardContent>
-          <CardFooter className="bg-[#0c0c0c] border-t border-gray-800 p-4">
+          <CardFooter className="bg-black  border-t border-gray-800 p-4">
             <form onSubmit={handleSubmit} className="flex w-full space-x-2">
               <Input
                 type="text"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 placeholder="Type a message..."
-                className="flex-grow bg-gray-800 text-white rounded-lg shadow-inner focus:ring-2 focus:ring-purple-600"
+                className="flex-grow bg-black text-white rounded-lg shadow-inner focus:ring-2 focus:ring-purple-600"
               />
               <Button
                 type="submit"

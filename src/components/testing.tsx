@@ -22,6 +22,8 @@ import {
 } from "react-icons/si";
 import { IconType } from "react-icons";
 import { LineShadowText } from "./magicui/line-shadow-text";
+import { Button } from "./ui/button";
+import { Link } from "react-router-dom";
 
 export const NeuHero = () => {
   return (
@@ -62,11 +64,25 @@ const Copy = () => {
       <p className="mx-auto my-4 max-w-3xl text-center text-sm md:text-base lg:text-xl leading-relaxed">
         Open Source Web Based platform for computer vision enthusiasts to learn, create and share things in a community of their own!
       </p>
-      <button className="rounded-lg bg-purple-900 p-2 md:p-3 uppercase text-white transition-colors hover:bg-purple-800">
-        <a href="/community">
-          <span className="font-bold">Get started - </span> no CC required
-        </a>
-      </button>
+
+      <div className="flex justify-evenly space-x-4 py-4">
+        <Button variant={"secondary"} className="bg-white">
+          <Link to="/community" target="_blank" rel="nofollow">
+        <span className="flex items-center gap-1">
+          <span>Join Community!</span>
+          <FiArrowUpRight />
+        </span>
+          </Link>
+        </Button>
+        <Button className="bg-purple-600 hover:bg-black hover:text-white hover:border-b-2" variant={"ghost"}>
+          <Link to="/projects/" target="_blank" rel="nofollow">
+            <span className="flex items-center gap-1">
+              <span>Explore Projects</span>
+              <FiArrowUpRight />
+            </span>
+          </Link>
+        </Button>
+      </div>
     </>
   );
 };

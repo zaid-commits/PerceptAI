@@ -4,6 +4,8 @@ import { fetchProjects } from "@/api";
 import FloatingNavbar from "../Navbar";
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "../ui/button";
+import Promo from "../promo";
+import Footer from "../Footer";
 
 interface Project {
   _id: string;
@@ -65,6 +67,8 @@ const Proj = () => {
           ))}
         </div>
       </div>
+      <Promo/>
+      <Footer/>
     </div>
   );
 };

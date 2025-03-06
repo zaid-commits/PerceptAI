@@ -23,6 +23,7 @@ import SubmitOpenCv from "./components/Projects/ComputerVision/SubmitOpenCv";
 import CollaboratorRecruitmentForm from "./components/Projects/Recruitment/CollaboratorRecruiter";
 import ProjectListing from "./components/Projects/Recruitment/ProjectListing";
 import RecruitmentDetailPage from "./components/Projects/Recruitment/RecruitmentDetailPage";
+import LandingPage from "./components/Testttt";
 const SubmitProject = React.lazy(
   () => import("./components/Projects/SubmitProject")
 );
@@ -75,7 +76,7 @@ const App: React.FC = () => {
                     <SignedIn>
                       <Routes>
                         <Route path="/" element={<Home />} />
-                        <Route path="/test" element={<Test />} />
+                        <Route path="/test" element={<LandingPage />} />
                         {/* <Route path="/projects" element={<Projects />} /> */}
                         <Route path="/resources" element={<Resources />} />
                         <Route
