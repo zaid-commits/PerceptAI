@@ -8,7 +8,7 @@ import Promo from "../promo";
 import { Button } from "../ui/button";
 import Proj from "./Projects";
 import CollaborationButton from "./CollaborationButton";
-
+import { useUser } from "@clerk/clerk-react";
 interface Project {
   id: string;
   title: string;
@@ -44,14 +44,22 @@ const ProjectDetail = () => {
 
   if (!project) return <ModernPurpleLoader />;
 
-  const demoUseCases = ["Demo use case 1", "Demo use case 2", "Demo use case 3"];
-  const useCases = project.useCases && project.useCases.length > 0 ? project.useCases : demoUseCases;
+  const demoUseCases = [
+    "Demo use case 1",
+    "Demo use case 2",
+    "Demo use case 3",
+  ];
+  const useCases =
+    project.useCases && project.useCases.length > 0
+      ? project.useCases
+      : demoUseCases;
 
   // Get project owner's email from the backend (fallback if undefined)
-  const ownerEmail = project?.email || "contact@perceptai.com";
+  const ownerEmail = project?.email || "engineering.zaidrakhange@gmail.com";
 
-  // Pre-filled email template for collaboration
-  const mailToLink = `mailto:${ownerEmail}?subject=Collaboration Request for ${project.title}&body=Hi, I am interested in collaborating on your project '${project.title}'. Let's discuss further!`;
+  const { user } = useUser();
+  const senderName = user?.username || user?.fullName;
+  const mailToLink = `mailto:${ownerEmail}?subject=Collaboration Request for ${project.title}&body=Hi, I am ${senderName}. I am interested in collaborating on your project '${project.title}'. Let's discuss further and build something great!`;
 
   return (
     <div className="bg-black min-h-screen flex flex-col pt-16 ">
@@ -68,29 +76,52 @@ const ProjectDetail = () => {
             <p className="text-gray-400 mb-4">{project.description}</p>
             <div className="flex flex-wrap gap-4 text-sm text-gray-500 mb-4">
               <p>
-                Posted by: <span className="font-semibold text-purple-500">{project.postedBy}</span>
+                Posted by:{" "}
+                <span className="font-semibold text-purple-500">
+                  {project.postedBy}
+                </span>
               </p>
               <p>
-                Category: <span className="font-semibold text-purple-500">{project.category}</span>
+                Category:{" "}
+                <span className="font-semibold text-purple-500">
+                  {project.category}
+                </span>
               </p>
             </div>
-            <p className="text-gray-300 mb-6">{project.elaboratedDescription}</p>
+            <p className="text-gray-300 mb-6">
+              {project.elaboratedDescription}
+            </p>
             <div className="flex flex-wrap gap-2 mb-6">
               <span className="text-sm font-semibold">Tags:</span>
               {project.tags.map((tag) => (
-                <span key={tag} className="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-xs">
+                <span
+                  key={tag}
+                  className="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-xs"
+                >
                   {tag}
                 </span>
               ))}
             </div>
             <div className="flex justify-between text-sm text-gray-500 mb-6">
-              <p>Created: <span className="font-semibold text-purple-500">{new Date(project.createdAt).toLocaleDateString()}</span></p>
-              <p>Updated: <span className="font-semibold text-purple-500">{new Date(project.updatedAt).toLocaleDateString()}</span></p>
+              <p>
+                Created:{" "}
+                <span className="font-semibold text-purple-500">
+                  {new Date(project.createdAt).toLocaleDateString()}
+                </span>
+              </p>
+              <p>
+                Updated:{" "}
+                <span className="font-semibold text-purple-500">
+                  {new Date(project.updatedAt).toLocaleDateString()}
+                </span>
+              </p>
             </div>
 
             {/* View Code Button */}
             <a href={project.codeLink} className="block text-center">
-              <Button variant="outline" className="text-black">View Code</Button>
+              <Button variant="outline" className="text-black">
+                View Code
+              </Button>
             </a>
 
             {/* Collaborate Button */}
@@ -119,22 +150,40 @@ const ProjectDetail = () => {
           <div className="space-y-8">
             {/* Promote Your Tool Section */}
             <div className="p-6 bg-black rounded-lg shadow-lg border border-purple-700 text-center">
-              <h2 className="text-2xl font-bold mb-4 text-white">Promote Your Tool</h2>
-              <p className="text-gray-300 mb-4">Want to showcase your own tool? Submit it here and get featured in our community.</p>
+              <h2 className="text-2xl font-bold mb-4 text-white">
+                Promote Your Tool
+              </h2>
+              <p className="text-gray-300 mb-4">
+                Want to showcase your own tool? Submit it here and get featured
+                in our community.
+              </p>
               <Link to="/projects/submit">
-                <Button variant="outline" className="text-black hover:bg-gray-300 border-none">Submit Your Tool</Button>
+                <Button
+                  variant="outline"
+                  className="text-black hover:bg-gray-300 border-none"
+                >
+                  Submit Your Tool
+                </Button>
               </Link>
             </div>
 
             {/* Rating Box */}
             <div className="p-6 bg-black rounded-lg shadow-lg text-center">
-              <h2 className="text-2xl font-bold mb-4 text-white">Rate This Project</h2>
-              <p className="mb-4 text-gray-400">Your rating helps the developer improve the project further.</p>
+              <h2 className="text-2xl font-bold mb-4 text-white">
+                Rate This Project
+              </h2>
+              <p className="mb-4 text-gray-400">
+                Your rating helps the developer improve the project further.
+              </p>
               <div className="flex justify-center space-x-2">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <button
                     key={star}
-                    className={`text-3xl ${rating && rating >= star ? "text-purple-500" : "text-gray-500"}`}
+                    className={`text-3xl ${
+                      rating && rating >= star
+                        ? "text-purple-500"
+                        : "text-gray-500"
+                    }`}
                     onClick={() => setRating(star)}
                   >
                     ★
@@ -144,7 +193,7 @@ const ProjectDetail = () => {
             </div>
           </div>
         </div>
-        
+
         {/* Other Projects Section */}
         <Proj />
       </div>

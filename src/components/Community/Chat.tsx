@@ -1,13 +1,12 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useUser } from "@clerk/clerk-react";
-import { useNavigate } from "react-router-dom";
-import io, { Socket } from "socket.io-client";
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "../ui/card";
-import { Separator } from "@/components/ui/separator";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-
+import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import io, { Socket } from 'socket.io-client';
+import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '../ui/card';
+import { Avatar, AvatarImage, AvatarFallback } from '../ui/avatar';
+import { useUser } from '@clerk/clerk-react';
+import { Input } from '../ui/input';
+import { Button } from '../ui/button';
+import { Separator } from '../ui/separator';
 interface Message {
   id: string;
   text: string;
@@ -17,22 +16,24 @@ interface Message {
   timestamp: number;
 }
 
-interface ChatNotification {
-  type: string;
-  message: string;
-  timestamp: number;
-}
-
 interface User {
   id: string;
   username: string;
   userImageUrl: string;
 }
 
+interface ChatNotification {
+  message: string;
+}
+
 const Chat: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState("");
-  const [onlineUsers, setOnlineUsers] = useState<User[]>([]);
+  const [onlineUsers, setOnlineUsers] = useState<User[]>([
+    { id: "1", username: "zaid-commits", userImageUrl: "https://github.com/zaid-commits.png" },
+    { id: "2", username: "maqfa", userImageUrl: "https://th.bing.com/th/id/OIP.8fxcVLYUJsyVEhsXql7PxAHaEK?rs=1&pid=ImgDetMain" },
+    { id: "3", username: "adyan", userImageUrl: "https://th.bing.com/th/id/OIP.Gn67FLVSiYsnUaU1g1TgFwHaEK?rs=1&pid=ImgDetMain" },
+  ]);
   const socketRef = useRef<Socket | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const { user } = useUser();
@@ -136,11 +137,12 @@ const Chat: React.FC = () => {
                     className={`flex max-w-[80%] ${message.userId === user?.id ? "flex-row-reverse" : "flex-row"} items-end gap-2`}
                   >
                     <Avatar
-                      className="w-10 h-10 rounded-full flex-shrink-0 shadow-md cursor-pointer"
+                      className="w-10 h-10 rounded-full flex-shrink-0 shadow-md cursor-pointer relative"
                       onClick={() => navigate(`/profile/${message.userId}`)}
                     >
                       <AvatarImage src={message.userImageUrl} alt={message.username} />
                       <AvatarFallback>{message.username[0]}</AvatarFallback>
+                      <span className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-[#0c0c0c] rounded-full translate-x-1/2 translate-y-1/2"></span>
                     </Avatar>
                     <div
                       className={`flex flex-col ${message.userId === user?.id ? "items-end" : "items-start"}`}
@@ -196,9 +198,10 @@ const Chat: React.FC = () => {
               className="flex items-center cursor-pointer hover:bg-gray-800 p-2 rounded-lg transition-colors"
               onClick={() => navigate(`/profile/${user.id}`)}
             >
-              <Avatar className="w-10 h-10 rounded-full flex-shrink-0 mr-2 shadow-md">
+              <Avatar className="w-10 h-10 rounded-full flex-shrink-0 mr-2 shadow-md relative">
                 <AvatarImage src={user.userImageUrl} alt={user.username} />
                 <AvatarFallback>{user.username[0]}</AvatarFallback>
+                <span className="absolute bottom-1 right-0 w-3 h-3 bg-green-500 border-2 border-[#0c0c0c] rounded-full"></span>
               </Avatar>
               <span className="font-medium">{user.username}</span>
             </li>
