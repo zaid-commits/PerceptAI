@@ -21,6 +21,7 @@ import {
   SiGunicorn,
 } from "react-icons/si";
 import { IconType } from "react-icons";
+import { LineShadowText } from "./magicui/line-shadow-text";
 
 export const NeuHero = () => {
   return (
@@ -33,7 +34,7 @@ export const NeuHero = () => {
     </section>
   );
 };
-
+const shadowColor = "black";
 const Copy = () => {
   return (
     <>
@@ -54,7 +55,9 @@ const Copy = () => {
         </a>
       </div>
       <h1 className="max-w-4xl text-center text-3xl md:text-4xl lg:text-6xl font-black leading-[1.15]">
-        AI Infused Vision Directory
+        AI Infused Vision <span> <LineShadowText className="italic" shadowColor={"white"}>
+        Directory!
+      </LineShadowText></span>
       </h1>
       <p className="mx-auto my-4 max-w-3xl text-center text-sm md:text-base lg:text-xl leading-relaxed">
         Open Source Web Based platform for computer vision enthusiasts to learn, create and share things in a community of their own!
