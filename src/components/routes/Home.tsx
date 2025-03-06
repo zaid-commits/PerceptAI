@@ -180,11 +180,39 @@ const Home = () => {
             </div>
           </div>
         </section>
+        
 
-          <p className="text-[1rem] text-center">
+          {/* <p className="text-[1rem] text-center">
             Explore, Create, Share: These Are Our Features!
-          </p>
+          </p> */}
         </div>
+                {/* Statistics */}
+                <section className="py-20 border-b border-border">
+                  <div className="container">
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    {[
+                    { value: 10000, label: "Developers" },
+                    { value: 5000, label: "Projects" },
+                    { value: 200, label: "Pre-trained Models" },
+                    { value: 50, label: "Countries" }
+                    ].map((stat, index) => (
+                    <motion.div
+                      key={index}
+                      className="text-center"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.2 }}
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <div className="text-4xl md:text-5xl font-bold text-purple-500 mb-2">
+                      {stat.value.toLocaleString()}
+                      </div>
+                      <div className="text-muted-foreground">{stat.label}</div>
+                    </motion.div>
+                    ))}
+                  </div>
+                  </div>
+                </section>
         <FeatureCards />
       </div>
       <Promo />

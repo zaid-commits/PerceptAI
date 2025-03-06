@@ -552,7 +552,8 @@ export default function LandingPage() {
         </section>
 
         {/* Statistics */}
-        <section className="py-20 border-b border-border">
+        <section className="py-20 border-b border-borderF
+        ">
           <div className="container">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {[

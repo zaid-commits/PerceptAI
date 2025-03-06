@@ -9,6 +9,7 @@ import { Button } from "../ui/button";
 import Proj from "./Projects";
 import CollaborationButton from "./CollaborationButton";
 import { useUser } from "@clerk/clerk-react";
+
 interface Project {
   id: string;
   title: string;
@@ -30,7 +31,7 @@ const ProjectDetail = () => {
   const [project, setProject] = useState<Project | null>(null);
   const [, setOtherProjects] = useState<Project[]>([]);
   const [rating, setRating] = useState<number | null>(null);
-  // const { user } = useUser(); // Fetch current logged-in user
+  const { user } = useUser();
 
   useEffect(() => {
     if (id) {
@@ -57,16 +58,16 @@ const ProjectDetail = () => {
   // Get project owner's email from the backend (fallback if undefined)
   const ownerEmail = project?.email || "engineering.zaidrakhange@gmail.com";
 
-  const { user } = useUser();
   const senderName = user?.username || user?.fullName;
   const mailToLink = `mailto:${ownerEmail}?subject=Collaboration Request for ${project.title}&body=Hi, I am ${senderName}. I am interested in collaborating on your project '${project.title}'. Let's discuss further and build something great!`;
 
   return (
-    <div className="bg-black min-h-screen flex flex-col pt-16 ">
+    <div className="bg-black min-h-screen flex flex-col">
       <FloatingNavbar />
-      <div className="text-white py-14 max-w-7xl mx-auto px-6">
+      <div className="text-white py-14 max-w-7xl mx-auto px-6 flex-grow">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-          <div className="lg:col-span-2 bg-black rounded-lg shadow-lg p-8">
+          {/* Main Content */}
+          <div className="lg:col-span-2 bg-[#0c0c0c] rounded-lg shadow-lg p-8 border border-gray-800">
             <img
               src={project.coverImage}
               alt={project.title}
@@ -74,6 +75,8 @@ const ProjectDetail = () => {
             />
             <h1 className="text-4xl font-bold mb-4">{project.title}</h1>
             <p className="text-gray-400 mb-4">{project.description}</p>
+
+            {/* Project Metadata */}
             <div className="flex flex-wrap gap-4 text-sm text-gray-500 mb-4">
               <p>
                 Posted by:{" "}
@@ -88,9 +91,11 @@ const ProjectDetail = () => {
                 </span>
               </p>
             </div>
-            <p className="text-gray-300 mb-6">
-              {project.elaboratedDescription}
-            </p>
+
+            {/* Elaborated Description */}
+            <p className="text-gray-300 mb-6">{project.elaboratedDescription}</p>
+
+            {/* Tags */}
             <div className="flex flex-wrap gap-2 mb-6">
               <span className="text-sm font-semibold">Tags:</span>
               {project.tags.map((tag) => (
@@ -102,6 +107,8 @@ const ProjectDetail = () => {
                 </span>
               ))}
             </div>
+
+            {/* Dates */}
             <div className="flex justify-between text-sm text-gray-500 mb-6">
               <p>
                 Created:{" "}
@@ -149,7 +156,7 @@ const ProjectDetail = () => {
           {/* Sidebar */}
           <div className="space-y-8">
             {/* Promote Your Tool Section */}
-            <div className="p-6 bg-black rounded-lg shadow-lg border border-purple-700 text-center">
+            <div className="p-6 bg-[#0c0c0c] rounded-lg shadow-lg border border-gray-800 text-center">
               <h2 className="text-2xl font-bold mb-4 text-white">
                 Promote Your Tool
               </h2>
@@ -168,7 +175,7 @@ const ProjectDetail = () => {
             </div>
 
             {/* Rating Box */}
-            <div className="p-6 bg-black rounded-lg shadow-lg text-center">
+            <div className="p-6 bg-[#0c0c0c] rounded-lg shadow-lg text-center border border-gray-800">
               <h2 className="text-2xl font-bold mb-4 text-white">
                 Rate This Project
               </h2>
@@ -183,7 +190,7 @@ const ProjectDetail = () => {
                       rating && rating >= star
                         ? "text-purple-500"
                         : "text-gray-500"
-                    }`}
+                    } hover:text-purple-500 transition-colors`}
                     onClick={() => setRating(star)}
                   >
                     ★
