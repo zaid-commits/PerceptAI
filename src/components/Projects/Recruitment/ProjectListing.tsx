@@ -53,28 +53,16 @@ const ProjectListing: React.FC = () => {
       applicantEmail: "user@example.com", // Replace with the logged-in user's email
     };
 
-    try {
-      const response = await fetch(
-        `http://localhost:5000/api/collaborator/${selectedProject._id}/apply`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(applicationData),
-        }
-      );
+    const mailtoLink = `mailto:${selectedProject.contactEmail}?subject=Collaboration Request for ${selectedProject.title}&body=Hi, I am interested in collaborating on your project '${selectedProject.title}'.%0D%0A%0D%0AYou can see my past experiences through my GitHub profile which is available at ${applicationData.githubLink}.%0D%0AMy skill set includes ${applicationData.skills.join(", ")}.%0D%0AI just want to let you know that ${applicationData.message}.%0D%0A%0D%0AThis request is made through PerceptAI - AI Infused Vision Directory.%0D%0A%0D%0AThank you!`;
 
-      if (response.ok) {
-        alert("Application submitted successfully!");
-        setSelectedProject(null);
-        setGithubLink("");
-        setSkills("");
-        setMessage("");
-      } else {
-        alert("Failed to submit application.");
-      }
-    } catch (error) {
-      console.error("Error submitting application:", error);
-    }
+    // Open the mailto link in the user's email client
+    window.location.href = mailtoLink;
+
+    // Clear the form fields
+    setSelectedProject(null);
+    setGithubLink("");
+    setSkills("");
+    setMessage("");
   };
 
   return (
