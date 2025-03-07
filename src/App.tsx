@@ -23,7 +23,6 @@ import SubmitOpenCv from "./components/Projects/ComputerVision/SubmitOpenCv";
 import CollaboratorRecruitmentForm from "./components/Projects/Recruitment/CollaboratorRecruiter";
 import ProjectListing from "./components/Projects/Recruitment/ProjectListing";
 import RecruitmentDetailPage from "./components/Projects/Recruitment/RecruitmentDetailPage";
-import LandingPage from "./components/Testttt";
 import Haha from "./components/Testttt";
 const SubmitProject = React.lazy(
   () => import("./components/Projects/SubmitProject")
@@ -33,7 +32,6 @@ const ProjectDetail = React.lazy(
 );
 const Proj = React.lazy(() => import("./components/Projects/Projects"));
 
-const Test = React.lazy(() => import("./components/routes/Test"));
 const Resources = React.lazy(() => import("./components/routes/Resources"));
 const SubmitResource = React.lazy(
   () => import("./components/Resources/SubmitResource")

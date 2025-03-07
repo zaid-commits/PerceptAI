@@ -36,7 +36,6 @@ export const NeuHero = () => {
     </section>
   );
 };
-const shadowColor = "black";
 const Copy = () => {
   return (
     <>

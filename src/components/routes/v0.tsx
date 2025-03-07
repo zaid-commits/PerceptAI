@@ -19,7 +19,7 @@ interface FeatureCardProps {
   link: string;
 }
 
-const FeatureCard = ({ icon, title, description, link }: FeatureCardProps) => (
+const FeatureCard = ({  title, description, link }: FeatureCardProps) => (
   <Link to={link}>
     <motion.div
       className="feature-card group w-full bg-black hover:bg-[#ffffff0f] border border-purple-500/20 rounded-xl p-6 transition-all duration-300"
