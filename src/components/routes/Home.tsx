@@ -6,7 +6,7 @@ import Promo from "../promo";
 import { Brain, Layers, Globe, Code } from "lucide-react";
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "../ui/card";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle,CardDescription } from "../ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 import { Button } from "../ui/button";
 import { MessageSquare, Users } from "lucide-react";
@@ -214,7 +214,142 @@ const Home = () => {
                   </div>
                 </section>
         <FeatureCards />
+        <section id="resources" className="py-20 border-b border-border">
+          <div className="container">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Developer Resources</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Access comprehensive documentation, tutorials, and tools to accelerate your development.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  title: "Documentation",
+                  description: "Comprehensive guides and API references",
+                  icon: <Code className="h-10 w-10 text-purple-500" />
+                },
+                {
+                  title: "Tutorials",
+                  description: "Step-by-step guides for common use cases",
+                  icon: <Layers className="h-10 w-10 text-purple-500" />
+                },
+                {
+                  title: "Model Zoo",
+                  description: "Pre-trained models ready for deployment",
+                  icon: <Brain className="h-10 w-10 text-purple-500" />
+                },
+                {
+                  title: "Code Samples",
+                  description: "Example implementations and snippets",
+                  icon: <Code className="h-10 w-10 text-purple-500" />
+                },
+                {
+                  title: "Community Forums",
+                  description: "Connect with other developers",
+                  icon: <Users className="h-10 w-10 text-purple-500" />
+                },
+                {
+                  title: "Webinars & Workshops",
+                  description: "Live and recorded training sessions",
+                  icon: <Globe className="h-10 w-10 text-purple-500" />
+                }
+              ].map((resource, index) => (
+                <Card key={index} className="border-border bg-card">
+                  <CardHeader className="flex flex-row items-center gap-4">
+                    {resource.icon}
+                    <div>
+                      <CardTitle>{resource.title}</CardTitle>
+                      <CardDescription>{resource.description}</CardDescription>
+                    </div>
+                  </CardHeader>
+                  <CardFooter>
+                    <Button variant="link" className="text-purple-500 p-0">Access Resource</Button>
+                  </CardFooter>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
       </div>
+         {/* Trending Technologies */}
+         <section className="py-20 border-b border-border">
+          <div className="container">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Trending Technologies</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Stay at the forefront of computer vision innovation with these trending technologies.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {[
+                {
+                  title: "Real-time 3D Reconstruction",
+                  description: "Convert 2D images into detailed 3D models in real-time for AR/VR applications.",
+                  image: "/placeholder.svg?height=300&width=500&text=3D"
+                },
+                {
+                  title: "Multimodal Vision-Language Models",
+                  description: "Combining visual understanding with natural language processing for more intuitive interfaces.",
+                  image: "/placeholder.svg?height=300&width=500&text=Multimodal"
+                },
+                {
+                  title: "Edge AI Optimization",
+                  description: "Deploy high-performance computer vision models on resource-constrained edge devices.",
+                  image: "/placeholder.svg?height=300&width=500&text=Edge"
+                },
+                {
+                  title: "Synthetic Data Generation",
+                  description: "Create realistic synthetic datasets to train robust computer vision models.",
+                  image: "/placeholder.svg?height=300&width=500&text=Synthetic"
+                }
+              ].map((tech, index) => (
+                <div key={index} className="flex flex-col md:flex-row gap-6 items-center">
+                  <div className="w-full md:w-1/2">
+                    <img 
+                      src={tech.image || "/placeholder.svg"} 
+                      alt={tech.title}
+                      className="w-full h-auto rounded-lg object-cover aspect-video"
+                    />
+                  </div>
+                  <div className="w-full md:w-1/2">
+                    <h3 className="text-xl font-bold mb-2">{tech.title}</h3>
+                    <p className="text-muted-foreground mb-4">{tech.description}</p>
+                    <Button variant="link" className="text-purple-500 p-0">Learn More</Button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Video Introduction */}
+        <section className="py-20 border-b border-border">
+          <div className="container">
+            <div className="max-w-4xl mx-auto">
+              <div className="aspect-video w-full bg-black rounded-lg overflow-hidden relative">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <img 
+                    src="/placeholder.svg?height=720&width=1280&text=PerceptAI+Introduction+Video" 
+                    alt="PerceptAI Introduction Video"
+                    className="w-full h-full object-cover"
+                  />
+                  <Button size="icon" className="absolute bg-purple-600 hover:bg-purple-700 rounded-full h-16 w-16">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
+                      <path d="M8 5.14v14l11-7-11-7z" />
+                    </svg>
+                  </Button>
+                </div>
+              </div>
+              <div className="text-center mt-8">
+                <h2 className="text-2xl font-bold mb-2">See PerceptAI in Action</h2>
+                <p className="text-muted-foreground">
+                  Watch our quick introduction video to learn how PerceptAI can transform your computer vision projects.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
       <Promo />
       <Footer />
     </div>

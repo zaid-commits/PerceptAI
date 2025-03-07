@@ -46,7 +46,7 @@ const Chat: React.FC = () => {
       Notification.requestPermission();
     }
 
-    socketRef.current = io("http://localhost:5000", {
+    socketRef.current = io("https://ztbm3dqt-5000.inc1.devtunnels.ms", {
       query: { userId: user.id, username: user.username ?? user.firstName ?? "Anonymous" },
     });
 

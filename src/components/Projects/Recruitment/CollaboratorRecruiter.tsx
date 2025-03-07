@@ -33,7 +33,7 @@ const CollaboratorRecruitmentForm: React.FC = () => {
     };
 
     try {
-      const response = await axios.post('http://localhost:5000/api/collaborator', projectData);
+      const response = await axios.post('https://ztbm3dqt-5000.inc1.devtunnels.ms/api/collaborator', projectData);
       if (response.status === 201) {
         toast.success("Project posted successfully!");
         setTitle("");

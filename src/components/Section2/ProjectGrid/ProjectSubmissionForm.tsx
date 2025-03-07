@@ -42,7 +42,7 @@ export const ProjectSubmissionForm = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('http://localhost:5000/api/projects', {
+      const response = await fetch('https://ztbm3dqt-5000.inc1.devtunnels.ms/api/projects', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)

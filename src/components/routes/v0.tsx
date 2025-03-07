@@ -2,15 +2,16 @@
 import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
 import { Brain, Layers, Globe, Code, MessageSquare, Users, Play } from "lucide-react"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from "./ui/card"
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
-import { Button } from "./ui/button"
-import FloatingNavbar from "./Navbar"
-import { NeuHero } from "./testing"
-import About from "./About"
-import FeatureCards from "./Section1/HeroSection/TestCards"
-import Promo from "./promo"
-import Footer from "./Footer"
+import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from "../ui/card"
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
+import { Button } from "../ui/button"
+import FloatingNavbar from "../Navbar"
+import { NeuHero } from "../testing"
+import About from "../About"
+import FeatureCards from "../Section1/HeroSection/TestCards"
+import Promo from "../promo"
+import Footer from "../Footer"
+
 interface FeatureCardProps {
   icon: React.ReactNode;
   title: string;
@@ -18,7 +19,7 @@ interface FeatureCardProps {
   link: string;
 }
 
-const FeatureCard = ({ title, description, link }: FeatureCardProps) => (
+const FeatureCard = ({ icon, title, description, link }: FeatureCardProps) => (
   <Link to={link}>
     <motion.div
       className="feature-card group w-full bg-black hover:bg-[#ffffff0f] border border-purple-500/20 rounded-xl p-6 transition-all duration-300"
@@ -50,7 +51,7 @@ const StatCard = ({ value, label, index }: StatCardProps) => (
   </motion.div>
 )
 
-const Haha = () => {
+const Home = () => {
   return (
     <div className="bg-black text-white" data-scroll data-scroll-speed="2.0">
       <FloatingNavbar />
@@ -436,5 +437,5 @@ const Haha = () => {
   )
 }
 
-export default Haha
+export default Home
 
