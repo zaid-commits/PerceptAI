@@ -1,4 +1,3 @@
-import FeatureCards from "../Section1/HeroSection/TestCards";
 import FloatingNavbar from "../Navbar";
 import { NeuHero } from "../testing";
 import Footer from "../Footer";
@@ -6,7 +5,7 @@ import Promo from "../promo";
 import { Brain, Layers, Globe, Code } from "lucide-react";
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle,CardDescription } from "../ui/card";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "../ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 import { Button } from "../ui/button";
 import { MessageSquare, Users } from "lucide-react";
