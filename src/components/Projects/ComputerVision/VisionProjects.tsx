@@ -5,7 +5,8 @@ import Footer from "@/components/Footer";
 import { toast } from "react-hot-toast";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-const API_URL = "http://localhost:5050"; // Backend URL
+
+const API_URL = "https://ztbm3dqt-5050.inc1.devtunnels.ms/"; // Backend URL
 const FALLBACK_IMAGE_URL = "./logo.jpg"; // Fallback image URL
 
 interface Project {
@@ -19,7 +20,6 @@ const VisionProjects = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
-    // Fetch projects from Flask backend
     useEffect(() => {
         const fetchProjects = async () => {
             try {
@@ -41,7 +41,6 @@ const VisionProjects = () => {
         fetchProjects();
     }, []);
 
-    // Run Python script when clicked
     const handleRunProject = async (projectName: string) => {
         try {
             const response = await fetch(`${API_URL}/run/${projectName}`);
@@ -54,48 +53,68 @@ const VisionProjects = () => {
 
     return (
         <div className="bg-black text-white min-h-screen">
-            <div className="max-w-6xl mx-auto p-8">
-                <FloatingNavbar />
-                <h2 className="text-4xl font-bold mb-8 mt-16 text-white text-center">PerceptAI Vision Directory</h2>
-                <div className="flex justify-end mb-8">
+                            <FloatingNavbar />
+
+            <div className="max-w-7xl mx-auto px-4 py-12 pt-[10rem]">
+                <h2 className="text-3xl font-bold mb-6 text-white text-center">
+                    PerceptAI Vision Directory
+                </h2>
+
+                {/* Submit Button */}
+                <div className="flex justify-end mb-6">
                     <Link to="/opencv/submit">
-                    <Button  variant={"outline"} className="text-black">Submit Your's</Button>
+                        <Button variant="outline" className="text-black text-sm px-4 py-2">
+                            Submit Yours
+                        </Button>
                     </Link>
                 </div>
 
+                {/* Loading & Error Handling */}
                 {loading ? (
                     <p className="text-white text-center">Loading projects...</p>
                 ) : error ? (
                     <p className="text-red-500 text-center">{error}</p>
                 ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 py-6">
-                        {projects.map((project) => (
-                            <button
-                                key={project.name}
-                                onClick={() => handleRunProject(project.name)}
-                                className="transform transition-transform duration-300 hover:scale-105"
-                            >
-                                <Card className="bg-black text-white border border-gray-700 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl">
-                                    <img
-                                        src={project.image ? `${API_URL}${project.image}` : FALLBACK_IMAGE_URL}
-                                        alt={project.name}
-                                        className="w-full h-48 object-cover"
-                                    />
-                                    <CardHeader className="p-4">
-                                        <CardTitle className="text-2xl font-semibold mb-2">{project.name}</CardTitle>
-                                        <CardDescription className="text-gray-400 mb-4">
-                                            Click to run this project.
-                                        </CardDescription>
-                                        <span className="text-blue-500 font-medium">Run Project</span>
-                                        <p>{project.description}</p>
-                                    </CardHeader>
-                                </Card>
-                            </button>
+                    <div className="columns-2 sm:columns-3 md:columns-4 lg:columns-5 gap-4">
+                        {projects.map((project, index) => (
+                            <div key={index} className="break-inside-avoid mb-4">
+                                <button
+                                    onClick={() => handleRunProject(project.name)}
+                                    className="group block w-full transition-transform duration-300 hover:scale-[1.02]"
+                                >
+                                    <Card className="relative bg-[#1a1a1a] text-white border border-gray-700 rounded-lg overflow-hidden 
+                                    shadow-lg hover:shadow-purple-500/20 transition-all duration-300">
+                                        {/* Dynamic Image Height */}
+                                        <img
+                                            src={project.image ? `${API_URL}${project.image}` : FALLBACK_IMAGE_URL}
+                                            alt={project.name}
+                                            className="w-full object-cover rounded-t-lg"
+                                            style={{ height: `${Math.floor(Math.random() * (280 - 180) + 180)}px` }} 
+                                        />
+
+                                        {/* Project Details */}
+                                        <CardHeader className="p-4">
+                                            <CardTitle className="text-lg font-semibold">{project.name}</CardTitle>
+                                            <CardDescription className="text-gray-400 text-sm">
+                                                {project.description}
+                                            </CardDescription>
+
+                                            {/* Run Button */}
+                                            <button 
+                                                className="w-full mt-3 py-1 text-xs rounded-md text-white border
+                                                hover:bg-white/20 hover:text-white transition-all duration-300"
+                                            >
+                                                Run Project 🚀
+                                            </button>
+                                        </CardHeader>
+                                    </Card>
+                                </button>
+                            </div>
                         ))}
                     </div>
                 )}
             </div>
-            <Footer/>
+            <Footer />
         </div>
     );
 };

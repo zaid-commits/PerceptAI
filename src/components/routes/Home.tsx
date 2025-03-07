@@ -20,7 +20,7 @@ const Home = () => {
       </div>
       <About />
 
-      <section id="features" className="py-20">
+       <section id="features" className="py-20">
         <div className="container">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-4xl font-bold mb-4 text-white">
@@ -59,7 +59,7 @@ const Home = () => {
             ].map((feature, index) => (
               <Link to={feature.link} key={index}>
                 <motion.div
-                  className="feature-card group w-[100%] bg-[#000] hover:bg-[#ffffff0f] transition-colors duration-300"
+                  className="feature-card group w-[100%] bg-[#000] hover:bg-[#ffffff0f] transition-colors duration-300 border border-[#2f285fb1]"
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 200, damping: 20 }}
                 >
@@ -73,7 +73,9 @@ const Home = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> 
+
+      
       <div className="h-fit w-[100%] p-10">
         <div className="text-white">
           <section className="flex items-center justify-center text-center text-white py-10 px-4">
@@ -97,94 +99,113 @@ const Home = () => {
             </h1>
           </section>
 
+
+
+
+
+
 {/* community section  */}
 
-          <section id="community" className="py-20 border-b border-border">
-          <div className="container">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Community Spotlight</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Join a thriving community of computer vision experts, developers, and enthusiasts.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              <Card className="border-border bg-card">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Users className="h-5 w-5 text-purple-500" />
-                    Top Contributors
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-4">
-                    {[1, 2, 3, 4, 5, 6].map((i) => (
-                      <Avatar key={i} className="h-12 w-12 border-2 border-purple-500">
-                        <AvatarImage src={`/placeholder.svg?height=100&width=100&text=User${i}`} />
-                        <AvatarFallback>U{i}</AvatarFallback>
-                      </Avatar>
-                    ))}
-                  </div>
-                </CardContent>
-                <CardFooter>
-                  <Button variant="outline" size="sm" className="w-full">View All Contributors</Button>
-                </CardFooter>
-              </Card>
+       
 
-              <Card className="border-border bg-card">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Layers className="h-5 w-5 text-purple-500" />
-                    Featured Projects
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  {[
-                    "Facial Emotion Recognition",
-                    "Real-time Object Tracking",
-                    "Document OCR System"
-                  ].map((project, i) => (
-                    <div key={i} className="flex items-center gap-2">
-                      <div className="h-2 w-2 rounded-full bg-purple-500"></div>
-                      <span>{project}</span>
-                    </div>
-                  ))}
-                </CardContent>
-                <CardFooter>
-                  <Button variant="outline" size="sm" className="w-full">Explore Projects</Button>
-                </CardFooter>
-              </Card>
+        <section id="community" className="py-20 border-b border-border">
+  <div className="container">
+    <div className="text-center mb-16">
+      <h2 className="text-4xl font-extrabold text-white mb-4">Community Spotlight</h2>
+      <p className="text-muted-foreground max-w-2xl mx-auto text-gray-400">
+        Join a thriving community of computer vision experts, developers, and enthusiasts.
+      </p>
+    </div>
 
-              <Card className="border-border bg-card">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <MessageSquare className="h-5 w-5 text-purple-500" />
-                    Recent Discussions
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  {[
-                    "Best practices for model optimization",
-                    "Comparing YOLOv8 vs EfficientDet",
-                    "Edge deployment challenges"
-                  ].map((topic, i) => (
-                    <div key={i} className="flex items-center gap-2">
-                      <div className="h-2 w-2 rounded-full bg-purple-500"></div>
-                      <span>{topic}</span>
-                    </div>
-                  ))}
-                </CardContent>
-                <CardFooter>
-                  <Button variant="outline" size="sm" className="w-full">Join the Conversation</Button>
-                </CardFooter>
-              </Card>
-            </div>
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+      {/* Top Contributors Card */}
+      <Card className="bg-[#121212] border border-[#1f1f1f] shadow-lg rounded-lg backdrop-blur-lg">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2 text-white">
+            <Users className="h-5 w-5 text-purple-500" />
+            Top Contributors
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="flex flex-wrap gap-4 justify-center">
+            {[1, 2, 3, 4, 5, 6].map((i) => (
+              <Avatar key={i} className="h-14 w-14 border-2 border-purple-500 hover:scale-105 transition-transform duration-200">
+                <AvatarImage src={`/placeholder.svg?height=100&width=100&text=U${i}`} />
+                <AvatarFallback className="bg-purple-700 text-white">{`U${i}`}</AvatarFallback>
+              </Avatar>
+            ))}
           </div>
-        </section>
+        </CardContent>
+        <CardFooter>
+        <Button variant="outline" size="sm" className="w-full bg-[#67656576] text-white  border-gray-500 hover:bg-purple-500">
+            View All Contributors
+          </Button>
+        </CardFooter>
+      </Card>
+
+      {/* Featured Projects Card */}
+      <Card className="bg-[#121212] border border-[#1f1f1f] shadow-lg rounded-lg backdrop-blur-lg">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2 text-white">
+            <Layers className="h-5 w-5 text-purple-500" />
+            Featured Projects
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {[
+            "Facial Emotion Recognition",
+            "Real-time Object Tracking",
+            "Document OCR System",
+          ].map((project, i) => (
+            <div key={i} className="flex items-center gap-3 text-gray-300">
+              <div className="h-3 w-3 rounded-full bg-purple-500 animate-pulse"></div>
+              <span className="hover:text-white transition-colors duration-200">{project}</span>
+            </div>
+          ))}
+        </CardContent>
+        <CardFooter>
+        <Button variant="outline" size="sm" className="w-full bg-[#67656576] text-white  border-gray-500 hover:bg-purple-500">
+        Explore Projects
+          </Button>
+        </CardFooter>
+      </Card>
+
+      {/* Recent Discussions Card */}
+      <Card className="bg-[#121212] border border-[#1f1f1f] shadow-lg rounded-lg backdrop-blur-lg">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2 text-white">
+            <MessageSquare className="h-5 w-5 text-purple-500" />
+            Recent Discussions
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {[
+            "Best practices for model optimization",
+            "Comparing YOLOv8 vs EfficientDet",
+            "Edge deployment challenges",
+            
+          ].map((topic, i) => (
+            <div key={i} className="flex items-center gap-3 text-gray-300">
+              <div className="h-3 w-3 rounded-full bg-purple-500 animate-pulse"></div>
+              <span className="hover:text-white transition-colors duration-200">{topic}</span>
+            </div>
+          ))}
+        </CardContent>
+        <CardFooter>
+        <Button variant="outline" size="sm" className="w-full bg-[#67656576] text-white  border-gray-500 hover:bg-purple-500">
+        Join the Conversation
+          </Button>
+        </CardFooter>
+      </Card>
+    </div>
+  </div>
+</section>
+
         
 
-          {/* <p className="text-[1rem] text-center">
+          <p className="text-[1rem] text-center mt-5">
             Explore, Create, Share: These Are Our Features!
-          </p> */}
+          </p>
         </div>
                 {/* Statistics */}
                 <section className="py-20 border-b border-border">
@@ -213,145 +234,222 @@ const Home = () => {
                   </div>
                   </div>
                 </section>
-        <FeatureCards />
-        <section id="resources" className="py-20 border-b border-border">
-          <div className="container">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Developer Resources</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Access comprehensive documentation, tutorials, and tools to accelerate your development.
-              </p>
+        {/* <FeatureCards /> */}
+    
+
+        <section id="resources" className="py-24 border-b border-border">
+  <div className="container">
+    <div className="text-center mb-16">
+      <h2 className="text-4xl font-extrabold text-white mb-4 tracking-tight">
+        Developer Resources
+      </h2>
+      <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+        Access cutting-edge documentation, tutorials, and tools to supercharge your development journey.
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      {[
+        {
+          title: "Documentation",
+          description: "Comprehensive guides and API references",
+          icon: <Code className="h-12 w-12 text-purple-400" />
+        },
+        {
+          title: "Tutorials",
+          description: "Step-by-step guides for common use cases",
+          icon: <Layers className="h-12 w-12 text-purple-400" />
+        },
+        {
+          title: "Model Zoo",
+          description: "Pre-trained models ready for deployment",
+          icon: <Brain className="h-12 w-12 text-purple-400" />
+        },
+        {
+          title: "Code Samples",
+          description: "Example implementations and snippets",
+          icon: <Code className="h-12 w-12 text-purple-400" />
+        },
+        {
+          title: "Community Forums",
+          description: "Connect with other developers",
+          icon: <Users className="h-12 w-12 text-purple-400" />
+        },
+        {
+          title: "Webinars & Workshops",
+          description: "Live and recorded training sessions",
+          icon: <Globe className="h-12 w-12 text-purple-400" />
+        }
+      ].map((resource, index) => (
+        <div
+          key={index}
+          className="relative group overflow-hidden rounded-xl border border-gray-700 bg-[#111] p-6 
+          shadow-lg transition-all duration-300 hover:scale-[1.03] hover:shadow-purple-500/50"
+        >
+          <div className="absolute inset-0 h-full w-full bg-gradient-to-br from-transparent via-[#222] to-[#0A0A0A] opacity-0 
+          transition-opacity duration-300 group-hover:opacity-100"></div>
+
+          <div className="relative flex items-center gap-4">
+            <div className="p-3 bg-[#1A1A1A] rounded-lg group-hover:bg-purple-500/20 transition">
+              {resource.icon}
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[
-                {
-                  title: "Documentation",
-                  description: "Comprehensive guides and API references",
-                  icon: <Code className="h-10 w-10 text-purple-500" />
-                },
-                {
-                  title: "Tutorials",
-                  description: "Step-by-step guides for common use cases",
-                  icon: <Layers className="h-10 w-10 text-purple-500" />
-                },
-                {
-                  title: "Model Zoo",
-                  description: "Pre-trained models ready for deployment",
-                  icon: <Brain className="h-10 w-10 text-purple-500" />
-                },
-                {
-                  title: "Code Samples",
-                  description: "Example implementations and snippets",
-                  icon: <Code className="h-10 w-10 text-purple-500" />
-                },
-                {
-                  title: "Community Forums",
-                  description: "Connect with other developers",
-                  icon: <Users className="h-10 w-10 text-purple-500" />
-                },
-                {
-                  title: "Webinars & Workshops",
-                  description: "Live and recorded training sessions",
-                  icon: <Globe className="h-10 w-10 text-purple-500" />
-                }
-              ].map((resource, index) => (
-                <Card key={index} className="border-border bg-card">
-                  <CardHeader className="flex flex-row items-center gap-4">
-                    {resource.icon}
-                    <div>
-                      <CardTitle>{resource.title}</CardTitle>
-                      <CardDescription>{resource.description}</CardDescription>
-                    </div>
-                  </CardHeader>
-                  <CardFooter>
-                    <Button variant="link" className="text-purple-500 p-0">Access Resource</Button>
-                  </CardFooter>
-                </Card>
-              ))}
+            <div>
+              <h3 className="text-lg font-semibold text-white">{resource.title}</h3>
+              <p className="text-gray-400 text-sm">{resource.description}</p>
             </div>
           </div>
-        </section>
+
+          <div className="mt-6 z-20 ">
+            <button
+              className="w-full bg-[#67656576] text-white  border-gray-500 hover:bg-purple-500 rounded-md"
+            >
+              Access Resource
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
       </div>
          {/* Trending Technologies */}
-         <section className="py-20 border-b border-border">
-          <div className="container">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Trending Technologies</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Stay at the forefront of computer vision innovation with these trending technologies.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {[
-                {
-                  title: "Real-time 3D Reconstruction",
-                  description: "Convert 2D images into detailed 3D models in real-time for AR/VR applications.",
-                  image: "/placeholder.svg?height=300&width=500&text=3D"
-                },
-                {
-                  title: "Multimodal Vision-Language Models",
-                  description: "Combining visual understanding with natural language processing for more intuitive interfaces.",
-                  image: "/placeholder.svg?height=300&width=500&text=Multimodal"
-                },
-                {
-                  title: "Edge AI Optimization",
-                  description: "Deploy high-performance computer vision models on resource-constrained edge devices.",
-                  image: "/placeholder.svg?height=300&width=500&text=Edge"
-                },
-                {
-                  title: "Synthetic Data Generation",
-                  description: "Create realistic synthetic datasets to train robust computer vision models.",
-                  image: "/placeholder.svg?height=300&width=500&text=Synthetic"
-                }
-              ].map((tech, index) => (
-                <div key={index} className="flex flex-col md:flex-row gap-6 items-center">
-                  <div className="w-full md:w-1/2">
-                    <img 
-                      src={tech.image || "/placeholder.svg"} 
-                      alt={tech.title}
-                      className="w-full h-auto rounded-lg object-cover aspect-video"
-                    />
-                  </div>
-                  <div className="w-full md:w-1/2">
-                    <h3 className="text-xl font-bold mb-2">{tech.title}</h3>
-                    <p className="text-muted-foreground mb-4">{tech.description}</p>
-                    <Button variant="link" className="text-purple-500 p-0">Learn More</Button>
-                  </div>
-                </div>
-              ))}
-            </div>
+      
+
+<section className="py-24 border-b border-border">
+  <div className="container">
+    <div className="text-center mb-16">
+      <h2 className="text-4xl font-extrabold text-white tracking-tight">
+        Trending Technologies
+      </h2>
+      <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+        Stay at the forefront of computer vision innovation with these emerging trends.
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+      {[
+        {
+          title: "Real-time 3D Reconstruction",
+          description: "Convert 2D images into detailed 3D models in real-time for AR/VR applications.",
+          image: "/placeholder.svg?height=300&width=500&text=3D"
+        },
+        {
+          title: "Multimodal Vision-Language Models",
+          description: "Combining visual understanding with natural language processing for more intuitive interfaces.",
+          image: "/placeholder.svg?height=300&width=500&text=Multimodal"
+        },
+        {
+          title: "Edge AI Optimization",
+          description: "Deploy high-performance computer vision models on resource-constrained edge devices.",
+          image: "/placeholder.svg?height=300&width=500&text=Edge"
+        },
+        {
+          title: "Synthetic Data Generation",
+          description: "Create realistic synthetic datasets to train robust computer vision models.",
+          image: "/placeholder.svg?height=300&width=500&text=Synthetic"
+        }
+      ].map((tech, index) => (
+        <div 
+          key={index} 
+          className="group relative flex flex-col md:flex-row items-center gap-6 p-6 rounded-xl 
+          bg-[#111111]/70 border border-gray-800 backdrop-blur-md shadow-lg transition-all 
+          duration-300 hover:scale-[1.02] hover:shadow-purple-500/40"
+        >
+          {/* Image Section */}
+          <div className="w-full md:w-1/2 overflow-hidden rounded-lg">
+            <img 
+              src={tech.image} 
+              alt={tech.title}
+              className="w-full h-auto rounded-lg object-cover aspect-video transition-all 
+              duration-300 group-hover:scale-105"
+            />
           </div>
-        </section>
+
+          {/* Text Section */}
+          <div className="w-full md:w-1/2">
+            <h3 className="text-2xl font-semibold text-white mb-2">
+              {tech.title}
+            </h3>
+            <p className="text-gray-400 text-md leading-relaxed mb-4">
+              {tech.description}
+            </p>
+            <button 
+              className="inline-flex items-center gap-2 text-purple-400 text-sm font-medium 
+              transition-all duration-300 hover:text-white hover:underline"
+            >
+              Learn More →
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+
+
 
         {/* Video Introduction */}
-        <section className="py-20 border-b border-border">
-          <div className="container">
-            <div className="max-w-4xl mx-auto">
-              <div className="aspect-video w-full bg-black rounded-lg overflow-hidden relative">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <img 
-                    src="/placeholder.svg?height=720&width=1280&text=PerceptAI+Introduction+Video" 
-                    alt="PerceptAI Introduction Video"
-                    className="w-full h-full object-cover"
-                  />
-                  <Button size="icon" className="absolute bg-purple-600 hover:bg-purple-700 rounded-full h-16 w-16">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
-                      <path d="M8 5.14v14l11-7-11-7z" />
-                    </svg>
-                  </Button>
-                </div>
-              </div>
-              <div className="text-center mt-8">
-                <h2 className="text-2xl font-bold mb-2">See PerceptAI in Action</h2>
-                <p className="text-muted-foreground">
-                  Watch our quick introduction video to learn how PerceptAI can transform your computer vision projects.
-                </p>
-              </div>
-            </div>
+   {/* Video Introduction */}
+<section className="py-24 border-b border-border">
+  <div className="container">
+    <div className="max-w-4xl mx-auto">
+      {/* Video Wrapper */}
+      <div 
+        className="relative w-full aspect-video overflow-hidden rounded-xl bg-black 
+        border border-gray-800 shadow-xl transition-all duration-300 hover:shadow-purple-500/30"
+      >
+        {/* Background Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black"></div>
+
+        {/* Video Thumbnail */}
+        <img 
+          src="/placeholder.svg?height=720&width=1280&text=PerceptAI+Introduction+Video" 
+          alt="PerceptAI Introduction Video"
+          className="w-full h-full object-cover transition-all duration-300 hover:scale-105"
+        />
+
+        {/* Play Button */}
+        <button 
+          className="absolute inset-0 flex items-center justify-center group"
+        >
+          <div 
+            className="relative bg-purple-600/90 hover:bg-purple-500 transition-all duration-300 rounded-full 
+            h-20 w-20 flex items-center justify-center shadow-lg group-hover:scale-110"
+          >
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              viewBox="0 0 24 24" 
+              fill="white" 
+              className="w-10 h-10"
+            >
+              <path d="M8 5.14v14l11-7-11-7z" />
+            </svg>
+            {/* Subtle Glow */}
+            <div 
+              className="absolute inset-0 h-full w-full rounded-full bg-purple-500/40 blur-xl opacity-60 group-hover:opacity-90"
+            ></div>
           </div>
-        </section>
-      <Promo />
-      <Footer />
+        </button>
+      </div>
+
+      {/* Text Content */}
+      <div className="text-center mt-10">
+        <h2 className="text-3xl font-extrabold text-white tracking-tight">
+          See PerceptAI in Action
+        </h2>
+        <p className="text-gray-400 max-w-xl mx-auto text-lg">
+          Watch our quick introduction video to learn how PerceptAI can transform your computer vision projects.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+      <Promo /> *
+       <Footer />
     </div>
   );
 };
