@@ -10,6 +10,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 import { Button } from "../ui/button";
 import { MessageSquare, Users } from "lucide-react";
 import About from "../About";
+import CountUp from 'react-countup';
 const Home = () => {
   return (
     <div className="bg-[#000]" data-scroll data-scroll-speed="2.0">
@@ -234,7 +235,7 @@ const Home = () => {
                       whileHover={{ scale: 1.05 }}
                     >
                       <div className="text-4xl md:text-5xl font-bold text-purple-500 mb-2">
-                      {stat.value.toLocaleString()}+
+                      <CountUp end={stat.value} duration={2} />+
                       </div>
                       <div className="text-muted-foreground">{stat.label}</div>
                     </motion.div>

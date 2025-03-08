@@ -1,5 +1,3 @@
-// Language: TypeScript (TSX)
-// filepath: /d:/Projects/PerceptAI Ends/PerceptAI/src/components/Projects/SubmitProject.tsx
 import { useState } from "react";
 import { useUser } from "@clerk/clerk-react";
 import { submitProject } from "@/api";
@@ -30,12 +28,12 @@ const SubmitProject = () => {
     postedBy: userName,
     email: userEmail,
     collaboratorEmail: userEmail,
-    githubUrl: "",
-    liveUrl: "",
-    category: "",
+    codeLink: "",
     tags: [] as string[],
+    category: "",
     coverImage: "",
     techStack: [] as string[],
+    image: "", // Add the image field
   });
 
   const [currentTag, setCurrentTag] = useState("");
@@ -236,6 +234,18 @@ const SubmitProject = () => {
                       ))}
                     </div>
                   </div>
+                </div>
+
+                {/* Image */}
+                <div>
+                  <label className="block text-sm font-medium text-white/80 mb-2">Project Image URL</label>
+                  <Input
+                    name="image"
+                    placeholder="https://your-image-url.com"
+                    className="bg-black border-white/20 text-white placeholder:text-white/40"
+                    value={formData.image}
+                    onChange={(e) => setFormData({ ...formData, image: e.target.value })}
+                  />
                 </div>
 
                 <Button
