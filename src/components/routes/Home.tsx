@@ -234,7 +234,7 @@ const Home = () => {
                       whileHover={{ scale: 1.05 }}
                     >
                       <div className="text-4xl md:text-5xl font-bold text-purple-500 mb-2">
-                      {stat.value.toLocaleString()}
+                      {stat.value.toLocaleString()}+
                       </div>
                       <div className="text-muted-foreground">{stat.label}</div>
                     </motion.div>
