@@ -107,7 +107,7 @@ const Home = () => {
 
        
 
-        <section id="community" className="py-20 border-b border-border">
+        <section id="community" className="py-20">
   <div className="container">
     <div className="text-center mb-16">
       <h2 className="text-4xl font-extrabold text-white mb-4">Community Spotlight</h2>
@@ -121,23 +121,32 @@ const Home = () => {
       <Card className="bg-[#121212] border border-[#1f1f1f] shadow-lg rounded-lg backdrop-blur-lg">
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-white">
-            <Users className="h-5 w-5 text-purple-500" />
-            Top Contributors
+        <Users className="h-5 w-5 text-purple-500" />
+        Top Contributors
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="flex flex-wrap gap-4 justify-center">
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <Avatar key={i} className="h-14 w-14 border-2 border-purple-500 hover:scale-105 transition-transform duration-200">
-                <AvatarImage src={`/placeholder.svg?height=100&width=100&text=U${i}`} />
-                <AvatarFallback className="bg-purple-700 text-white">{`U${i}`}</AvatarFallback>
-              </Avatar>
-            ))}
+        {[
+          { src: "https://github.com/zaid-commits.png", fallback: "ZC" },
+          { src: "https://github.com/purohitdev.png", fallback: "PD" },
+          { src: "/placeholder.svg?height=100&width=100&text=U3", fallback: "U3" },
+          { src: "/placeholder.svg?height=100&width=100&text=U4", fallback: "U4" },
+          { src: "/placeholder.svg?height=100&width=100&text=U5", fallback: "U5" },
+        ].map((contributor, i) => (
+          <Avatar key={i} className="h-14 w-14 border-2 border-purple-500 hover:scale-105 transition-transform duration-200">
+            <AvatarImage src={contributor.src} />
+            <AvatarFallback className="bg-purple-700 text-white">{contributor.fallback}</AvatarFallback>
+          </Avatar>
+        ))}
           </div>
         </CardContent>
         <CardFooter>
-        <Button variant="outline" size="sm" className="w-full bg-[#67656576] text-white  border-gray-500 hover:bg-purple-500">
+       
+          <Button variant="outline" size="sm" className="w-full bg-[#67656576] text-white  border-gray-500 hover:bg-purple-500">
+          <Link to="/community">
             View All Contributors
+        </Link>
           </Button>
         </CardFooter>
       </Card>
@@ -207,14 +216,14 @@ const Home = () => {
           </p>
         </div>
                 {/* Statistics */}
-                <section className="py-20 border-b border-border">
+                <section className="py-20">
                   <div className="container">
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                     {[
-                    { value: 10000, label: "Developers" },
-                    { value: 5000, label: "Projects" },
-                    { value: 200, label: "Pre-trained Models" },
-                    { value: 50, label: "Countries" }
+                    { value: 1000, label: "Developers" },
+                    { value: 200, label: "Projects" },
+                    { value: 500, label: "Active Community Members" },
+                    { value: 50, label: "Resources" }
                     ].map((stat, index) => (
                     <motion.div
                       key={index}
@@ -236,7 +245,7 @@ const Home = () => {
         {/* <FeatureCards /> */}
     
 
-        <section id="resources" className="py-24 border-b border-border">
+        <section id="resources" className="py-24 ">
   <div className="container">
     <div className="text-center mb-16">
       <h2 className="text-4xl font-extrabold text-white mb-4 tracking-tight">
@@ -315,7 +324,7 @@ const Home = () => {
          {/* Trending Technologies */}
       
 
-<section className="py-24 border-b border-border">
+<section className="py-24 ">
   <div className="container">
     <div className="text-center mb-16">
       <h2 className="text-4xl font-extrabold text-white tracking-tight">
@@ -392,7 +401,7 @@ const Home = () => {
 
         {/* Video Introduction */}
    {/* Video Introduction */}
-<section className="py-24 border-b border-border">
+<section className="py-24 ">
   <div className="container">
     <div className="max-w-4xl mx-auto">
       {/* Video Wrapper */}
