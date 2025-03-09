@@ -341,22 +341,22 @@ const Home = () => {
         {
           title: "Real-time 3D Reconstruction",
           description: "Convert 2D images into detailed 3D models in real-time for AR/VR applications.",
-          image: "/placeholder.svg?height=300&width=500&text=3D"
+          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNWC4zi55FgsZOk1qOlaayaQBCEJwrZTGCFg&s"
         },
         {
           title: "Multimodal Vision-Language Models",
           description: "Combining visual understanding with natural language processing for more intuitive interfaces.",
-          image: "/placeholder.svg?height=300&width=500&text=Multimodal"
+          image: "https://media.geeksforgeeks.org/wp-content/uploads/20240926175423/Vision-Language-Models.webp"
         },
         {
           title: "Edge AI Optimization",
           description: "Deploy high-performance computer vision models on resource-constrained edge devices.",
-          image: "/placeholder.svg?height=300&width=500&text=Edge"
+          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHV2jQpMFcbP3ybw0k_PmSE36HowAQKQtGmQ&s"
         },
         {
           title: "Synthetic Data Generation",
           description: "Create realistic synthetic datasets to train robust computer vision models.",
-          image: "/placeholder.svg?height=300&width=500&text=Synthetic"
+          image: "https://cdn.prod.website-files.com/63fb240c478a961afe78a8b0/65942139ad8f21bac72301a4_Synthetic%20Data%20Generation.png"
         }
       ].map((tech, index) => (
         <div 
