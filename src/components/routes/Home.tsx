@@ -90,7 +90,7 @@ const Home = () => {
                   className="w-48 h-28 md:w-50 md:h-14 object-cover"
                 >
                   <source
-                    src="https://www.shutterstock.com/shutterstock/videos/1064002762/preview/stock-footage-autonomous-or-driverless-car-driving-through-a-crowded-street-in-los-angeles-computer-vision-with.webm"
+                    src="https://cdn.prod.website-files.com/5f6bc60e665f54545a1e52a5%2F66de5e8c8945e61eaf09620e_walking-trace-and-corner-and-mask%20(1)%20(2)-transcode.mp4"
                     type="video/mp4"
                   />
                 </video>
@@ -415,7 +415,7 @@ const Home = () => {
 
         {/* Video Thumbnail */}
         <img 
-          src="/placeholder.svg?height=720&width=1280&text=PerceptAI+Introduction+Video" 
+          src="http://localhost:5173/src/assets/logos/corelogo.png" 
           alt="PerceptAI Introduction Video"
           className="w-full h-full object-cover transition-all duration-300 hover:scale-105"
         />
@@ -457,7 +457,7 @@ const Home = () => {
   </div>
 </section>
 
-      <Promo /> *
+      <Promo /> 
        <Footer />
     </div>
   );
