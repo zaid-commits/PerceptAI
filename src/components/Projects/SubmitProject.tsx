@@ -34,6 +34,8 @@ const SubmitProject = () => {
     coverImage: "",
     techStack: [] as string[],
     image: "", // Add the image field
+    githubUrl: "",
+    liveUrl: "",
   });
 
   const [currentTag, setCurrentTag] = useState("");
