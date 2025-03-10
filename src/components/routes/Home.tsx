@@ -54,7 +54,7 @@ const Home = () => {
                 icon: <Globe className="h-10 w-10 text-purple-500" />,
                 title: "Community Deployment",
                 description: "Collaborate with the community to make the most out of it.",
-                link: "",
+                link: "/community",
               },
             ].map((feature, index) => (
               <Link to={feature.link} key={index}>
@@ -90,7 +90,7 @@ const Home = () => {
                   className="w-48 h-28 md:w-50 md:h-14 object-cover"
                 >
                   <source
-                    src="https://cdn.prod.website-files.com/5f6bc60e665f54545a1e52a5%2F66de5e8c8945e61eaf09620e_walking-trace-and-corner-and-mask%20(1)%20(2)-transcode.mp4"
+                    src="https://www.shutterstock.com/shutterstock/videos/1064002762/preview/stock-footage-autonomous-or-driverless-car-driving-through-a-crowded-street-in-los-angeles-computer-vision-with.webm"
                     type="video/mp4"
                   />
                 </video>
@@ -396,9 +396,126 @@ const Home = () => {
   </div>
 </section>
 
+{/* Add this section after the Trending Technologies section */}
 
+<section className="py-24">
+  <div className="container">
+    <div className="text-center mb-16">
+      <h2 className="text-4xl font-extrabold text-white tracking-tight">
+        Latest Research Papers
+      </h2>
+      <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+        Stay updated with cutting-edge computer vision research and breakthroughs
+      </p>
+    </div>
 
+    <div className="grid grid-cols-1 gap-8">
+      {[
+        {
+          title: "NeRF: Neural Radiance Fields for View Synthesis",
+          authors: "Ben Mildenhall, Pratul P. Srinivasan, Matthew Tancik",
+          date: "2024",
+          category: "3D Vision",
+          citations: 12500,
+          abstract: "A novel method for synthesizing novel views of complex scenes using a fully-connected deep network trained to represent a continuous volumetric scene function.",
+          tags: ["Neural Rendering", "View Synthesis", "3D Reconstruction"]
+        },
+        {
+          title: "DINO: Emerging Properties in Self-Supervised Vision Transformers",
+          authors: "Mathilde Caron, Hugo Touvron, Ishan Misra",
+          date: "2024",
+          category: "Self-Supervised Learning",
+          citations: 8900,
+          abstract: "Self-supervised vision transformers show emerging properties comparable to human vision systems without explicit supervision.",
+          tags: ["Vision Transformers", "Self-Supervised", "Deep Learning"]
+        },
+        {
+          title: "SAM: Segment Anything Model",
+          authors: "Alexander Kirillov, Eric Mintun, Nikhila Ravi",
+          date: "2024",
+          category: "Segmentation",
+          citations: 5600,
+          abstract: "A new AI model that can identify and segment any object in an image based on any form of user prompt.",
+          tags: ["Segmentation", "Foundation Models", "Computer Vision"]
+        }
+      ].map((paper, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+          className="group relative bg-[#111111]/70 border border-gray-800 rounded-xl p-6 
+          hover:shadow-purple-500/20 transition-all duration-300"
+        >
+          <div className="flex flex-col md:flex-row gap-6">
+            {/* Paper Info */}
+            <div className="flex-1">
+              <div className="flex items-center gap-3 mb-2">
+                <span className="text-purple-400 text-sm">{paper.category}</span>
+                <span className="text-gray-500">•</span>
+                <span className="text-gray-400 text-sm">{paper.date}</span>
+              </div>
+              
+              <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-purple-400 
+              transition-colors duration-300">
+                {paper.title}
+              </h3>
+              
+              <p className="text-gray-400 text-sm mb-4">
+                {paper.authors}
+              </p>
+              
+              <p className="text-gray-500 text-sm mb-4">
+                {paper.abstract}
+              </p>
 
+              <div className="flex flex-wrap gap-2 mb-4">
+                {paper.tags.map((tag, i) => (
+                  <span
+                    key={i}
+                    className="text-xs px-3 py-1 rounded-full bg-purple-500/10 
+                    text-purple-400 border border-purple-500/20"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Citations & Actions */}
+            <div className="flex flex-col md:items-end justify-between">
+              <div className="flex items-center gap-2 text-gray-400">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
+                  d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+                <span>{paper.citations.toLocaleString()} citations</span>
+              </div>
+
+              <button className="mt-4 px-4 py-2 rounded-lg bg-[#67656576] text-white 
+              border-gray-500 hover:bg-purple-500 transition-all duration-300">
+                Read Paper
+              </button>
+            </div>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+
+    <div className="text-center mt-10">
+      <button className="px-6 py-3 rounded-lg bg-purple-500/10 text-purple-400 
+      hover:bg-purple-500 hover:text-white transition-all duration-300 border border-purple-500/20">
+        View More Research Papers
+      </button>
+    </div>
+  </div>
+</section>
 
         {/* Video Introduction */}
    {/* Video Introduction */}
