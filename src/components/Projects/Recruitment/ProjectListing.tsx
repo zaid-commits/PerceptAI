@@ -35,7 +35,7 @@ const ProjectListing: React.FC = () => {
     const fetchProjects = async () => {
       try {
         setLoading(true);
-        const response = await fetch("https://ztbm3dqt-5000.inc1.devtunnels.ms/api/collaborator");
+        const response = await fetch("http://localhost:5000/api/collaborator");
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }

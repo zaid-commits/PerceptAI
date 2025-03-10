@@ -31,7 +31,7 @@ export const ProjectGrid: React.FC = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await fetch('https://ztbm3dqt-5000.inc1.devtunnels.ms/api/projects');
+        const response = await fetch('http://localhost:5000/api/projects');
         if (!response.ok) {
           throw new Error("Failed to fetch projects");
         }

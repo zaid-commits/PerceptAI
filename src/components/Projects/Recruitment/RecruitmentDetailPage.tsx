@@ -33,7 +33,7 @@ const RecruitmentDetailPage: React.FC = () => {
     const fetchProject = async () => {
       try {
         const response = await axios.get(
-          `https://ztbm3dqt-5000.inc1.devtunnels.ms/api/collaborator/${id}`
+          `http://localhost:5000/api/collaborator/${id}`
         );
         setProject(response.data);
       } catch (error) {

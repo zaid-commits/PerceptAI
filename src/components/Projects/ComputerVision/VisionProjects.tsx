@@ -6,7 +6,7 @@ import { toast } from "react-hot-toast";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
-const API_URL = "https://ztbm3dqt-5050.inc1.devtunnels.ms/"; // Backend URL
+const API_URL = "http://localhost:5050/"; // Backend URL
 const FALLBACK_IMAGE_URL = "./logo.jpg"; // Fallback image URL
 
 interface Project {
