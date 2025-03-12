@@ -272,7 +272,7 @@ const ProjectDetail = () => {
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <Button
                   variant="outline"
-                  className={`flex-1 gap-2 ${isLiked ? 'bg-white text-black' : 'text-black/70'}`}
+                  className={`flex-1 gap-2 ${isLiked ? 'bg-white text-black' : 'text-black'}`}
                   onClick={() => setIsLiked(!isLiked)}
                 >
                   <Heart className={`w-4 h-4 ${isLiked ? 'fill-current' : ''}`} />
@@ -280,7 +280,7 @@ const ProjectDetail = () => {
                 </Button>
                 <Button
                   variant="outline"
-                  className={`flex-1 gap-2 ${isBookmarked ? 'bg-white text-black' : 'text-white/70'}`}
+                  className={`flex-1 gap-2 ${isBookmarked ? 'bg-white text-black' : 'text-black'}`}
                   onClick={() => setIsBookmarked(!isBookmarked)}
                 >
                   <Bookmark className={`w-4 h-4 ${isBookmarked ? 'fill-current' : ''}`} />
