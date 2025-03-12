@@ -46,7 +46,7 @@ const Chat: React.FC = () => {
       Notification.requestPermission();
     }
 
-    socketRef.current = io("http://localhost:5000", {
+    socketRef.current = io("https://ts-backend-6swe.onrender.com", {
       query: { userId: user.id, username: user.username ?? user.firstName ?? "Anonymous" },
     });
 

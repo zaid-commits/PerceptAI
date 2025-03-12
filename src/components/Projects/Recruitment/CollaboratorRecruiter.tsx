@@ -35,7 +35,7 @@ const CollaboratorRecruitmentForm: React.FC = () => {
     };
 
     try {
-      const response = await axios.post('http://localhost:5000/api/collaborator', projectData);
+      const response = await axios.post('https://ts-backend-6swe.onrender.com/api/collaborator', projectData);
       if (response.status === 201) {
         toast.success("Project posted successfully!");
         setTitle("");

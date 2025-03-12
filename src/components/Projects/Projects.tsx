@@ -23,6 +23,7 @@ interface Project {
   views?: number;
   stars?: number;
   collaborators?: number;
+  id: string;
 }
 
 const Projects = () => {

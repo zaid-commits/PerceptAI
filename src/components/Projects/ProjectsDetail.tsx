@@ -187,7 +187,7 @@ const ProjectDetail = () => {
                     </p>
                   </div>
                 </div>
-                <Button variant="outline" className="text-white border-white/20">
+                <Button variant="outline" className="text-black border-white/20">
                   Follow
                 </Button>
               </div>
@@ -207,7 +207,7 @@ const ProjectDetail = () => {
               <p className="text-white/80 leading-relaxed mb-8">
                 {project.description || "No description available"}
               </p>
-              <div className="prose prose-invert max-w-none">
+              <div className="prose prose-invert max-w-none text">
                 {project.elaboratedDescription || "No detailed description available"}
               </div>
             </motion.div>
@@ -272,15 +272,16 @@ const ProjectDetail = () => {
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <Button
                   variant="outline"
-                  className={`flex-1 gap-2 ${isLiked ? 'bg-white/10 text-white' : 'text-white/70'}`}
+                  className={`flex-1 gap-2 ${isLiked ? 'bg-white text-black' : 'text-black/70'}`}
                   onClick={() => setIsLiked(!isLiked)}
                 >
                   <Heart className={`w-4 h-4 ${isLiked ? 'fill-current' : ''}`} />
                   {isLiked ? 'Liked' : 'Like'}
+                  {isLiked ? 'Liked' : 'Like'}
                 </Button>
                 <Button
                   variant="outline"
-                  className={`flex-1 gap-2 ${isBookmarked ? 'bg-white/10 text-white' : 'text-white/70'}`}
+                  className={`flex-1 gap-2 ${isBookmarked ? 'bg-white text-black' : 'text-white/70'}`}
                   onClick={() => setIsBookmarked(!isBookmarked)}
                 >
                   <Bookmark className={`w-4 h-4 ${isBookmarked ? 'fill-current' : ''}`} />

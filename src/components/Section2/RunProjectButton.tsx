@@ -7,7 +7,7 @@ interface RunProjectButtonProps {
 const RunProjectButton: React.FC<RunProjectButtonProps> = ({ projectName }) => {
   const handleRunProject = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/run/${projectName}`);
+      const response = await fetch(`https://ts-backend-6swe.onrender.com/run/${projectName}`);
       const data = await response.json();
       if (response.ok) {
         alert(data.message);

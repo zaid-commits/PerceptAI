@@ -33,7 +33,7 @@ const RecruitmentDetailPage: React.FC = () => {
     const fetchProject = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/collaborator/${id}`
+          `https://ts-backend-6swe.onrender.com/api/collaborator/${id}`
         );
         setProject(response.data);
       } catch (error) {
