@@ -207,7 +207,7 @@ const ProjectDetail = () => {
               <p className="text-white/80 leading-relaxed mb-8">
                 {project.description || "No description available"}
               </p>
-              <div className="prose prose-invert max-w-none text">
+              <div className="prose prose-invert max-w-none text-white/80"> 
                 {project.elaboratedDescription || "No detailed description available"}
               </div>
             </motion.div>
@@ -276,7 +276,6 @@ const ProjectDetail = () => {
                   onClick={() => setIsLiked(!isLiked)}
                 >
                   <Heart className={`w-4 h-4 ${isLiked ? 'fill-current' : ''}`} />
-                  {isLiked ? 'Liked' : 'Like'}
                   {isLiked ? 'Liked' : 'Like'}
                 </Button>
                 <Button
