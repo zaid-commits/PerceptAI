@@ -18,6 +18,13 @@ const Contact: React.FC = () => {
       linkedin: "zaidrakhange",
       email: "engineering.zaidrakhange@gmail.com"
     },
+    {
+      title: "Full Stack Developer",
+      name: "Adyan Shaikh",
+      github: "gabbarframework",
+      linkedin: "adyan-shaikh",
+      email: "adyanshaikh06@gmail.com"
+    },
    
   ];
 
