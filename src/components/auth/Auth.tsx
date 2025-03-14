@@ -1,8 +1,9 @@
 import React from "react"
+import { useNavigate } from "react-router-dom"
 import { Button } from "@/components/ui/button"
-import { SignInButton, SignUpButton } from "@clerk/clerk-react"
 
 const Auth: React.FC = () => {
+    const navigate = useNavigate()
 
     return (
         <div className="flex min-h-screen flex-col items-center justify-center bg-black text-white">
@@ -15,16 +16,18 @@ const Auth: React.FC = () => {
                 </p>
             </header>
             <div className="flex flex-col md:flex-row gap-6">
-            <Button
-                className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg"
-            >
-                <SignInButton/>
-            </Button>
-            <Button
-                className="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg"
-            >
-                <SignUpButton/>
-            </Button>
+                <Button
+                    onClick={() => navigate("/auth/login")}
+                    className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg"
+                >
+                    Log In
+                </Button>
+                <Button
+                    onClick={() => navigate("/auth/signup")}
+                    className="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg"
+                >
+                    Sign Up
+                </Button>
             </div>
         </div>
     )
