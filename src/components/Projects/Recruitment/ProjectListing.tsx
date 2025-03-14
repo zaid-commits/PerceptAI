@@ -35,15 +35,17 @@ const ProjectListing: React.FC = () => {
     const fetchProjects = async () => {
       try {
         setLoading(true);
-        const response = await fetch("https://ts-backend-6swe.onrender.com/api/collaborator");
+        const response = await fetch("http://localhost:5000/api/collaborator");
         if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+          const errorData = await response.json();
+          console.error("Error response body:", errorData);
+          throw new Error(`HTTP error! status: ${response.status}, message: ${errorData.message}`);
         }
         const data = await response.json();
         setProjects(data);
       } catch (error) {
         console.error("Error fetching projects:", error);
-        toast.error("Failed to fetch projects. Please try again later.");
+        toast.error(`Failed to fetch projects: ${(error as any).message}`);
       } finally {
         setLoading(false);
       }

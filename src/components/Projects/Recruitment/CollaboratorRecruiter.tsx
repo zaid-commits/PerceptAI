@@ -5,7 +5,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import toast from "react-hot-toast";
-import axios from "axios";
 import FloatingNavbar from "@/components/Navbar";
 import Promo from "@/components/promo";
 import Footer from "@/components/Footer";
@@ -17,34 +16,78 @@ const CollaboratorRecruitmentForm: React.FC = () => {
   const [description, setDescription] = useState("");
   const [requiredSkills, setRequiredSkills] = useState("");
   const [contactEmail, setContactEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { user } = useUser();
+
+  const validateForm = () => {
+    if (!title.trim()) {
+      toast.error("Please enter a project title");
+      return false;
+    }
+    if (!description.trim()) {
+      toast.error("Please enter a project description");
+      return false;
+    }
+    if (!requiredSkills.trim()) {
+      toast.error("Please enter required skills");
+      return false;
+    }
+    if (!contactEmail.trim()) {
+      toast.error("Please enter a contact email");
+      return false;
+    }
+    return true;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
     if (!user) {
       toast.error("Please log in to post a project.");
       return;
     }
 
+    if (!validateForm()) {
+      return;
+    }
+
+    setIsSubmitting(true);
+
     const projectData = {
-      title,
-      description,
-      requiredSkills: requiredSkills.split(',').map(skill => skill.trim()),
-      contactEmail,
+      title: title.trim(),
+      description: description.trim(),
+      requiredSkills: requiredSkills.split(',').map(skill => skill.trim()).filter(Boolean),
+      contactEmail: contactEmail.trim(),
       postedBy: user.username || user.fullName || "Anonymous",
     };
 
     try {
-      const response = await axios.post('https://ts-backend-6swe.onrender.com/api/collaborator', projectData);
-      if (response.status === 201) {
-        toast.success("Project posted successfully!");
-        setTitle("");
-        setDescription("");
-        setRequiredSkills("");
-        setContactEmail("");
+      const response = await fetch("https://ts-backend-6swe.onrender.com/api/collaborator", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(projectData),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Failed to submit project");
       }
+
+      
+      // Reset form
+      setTitle("");
+      setDescription("");
+      setRequiredSkills("");
+      setContactEmail("");
+
     } catch (error) {
-      toast.error("Failed to post project. Please try again.");
+      console.error("Error submitting collaborator data:", error);
+      toast.error(error instanceof Error ? error.message : "Failed to submit project");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -131,10 +174,20 @@ const CollaboratorRecruitmentForm: React.FC = () => {
 
                   <Button
                     type="submit"
+                    disabled={isSubmitting}
                     className="w-full bg-purple-600 hover:bg-purple-700 text-white py-6 text-lg font-medium rounded-xl transition-colors duration-200 flex items-center justify-center gap-2"
                   >
-                    <Send className="w-5 h-5" />
-                    Post Project
+                    {isSubmitting ? (
+                      <>
+                        <span className="animate-spin">⌛</span>
+                        Posting...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-5 h-5" />
+                        Post Project
+                      </>
+                    )}
                   </Button>
                 </form>
               </CardContent>
