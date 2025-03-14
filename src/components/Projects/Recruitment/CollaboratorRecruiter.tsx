@@ -10,6 +10,7 @@ import Promo from "@/components/promo";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { FileCode2, Send, Users, Mail, BrainCircuit } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const CollaboratorRecruitmentForm: React.FC = () => {
   const [title, setTitle] = useState("");
@@ -18,6 +19,7 @@ const CollaboratorRecruitmentForm: React.FC = () => {
   const [contactEmail, setContactEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { user } = useUser();
+  const navigate = useNavigate();
 
   const validateForm = () => {
     if (!title.trim()) {
@@ -76,12 +78,14 @@ const CollaboratorRecruitmentForm: React.FC = () => {
         throw new Error(errorData.error || "Failed to submit project");
       }
 
-      
       // Reset form
       setTitle("");
       setDescription("");
       setRequiredSkills("");
       setContactEmail("");
+
+      // Navigate to /projects/collaborator
+      navigate("/projects/collaborator");
 
     } catch (error) {
       console.error("Error submitting collaborator data:", error);
@@ -190,41 +194,42 @@ const CollaboratorRecruitmentForm: React.FC = () => {
                     )}
                   </Button>
                 </form>
-              </CardContent>
-            </Card>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4 }}
-            className="space-y-6"
-          >
-            <div className="bg-zinc-900 p-6 rounded-2xl border border-purple-900/20 hover:border-purple-500/30 transition-colors duration-200">
-              <Users className="w-10 h-10 text-purple-500 mb-4" />
-              <h3 className="text-xl font-bold mb-2 text-white">Find Collaborators</h3>
-              <p className="text-gray-400">Connect with skilled developers who share your passion and vision for innovation</p>
-            </div>
-
-            <div className="bg-zinc-900 p-6 rounded-2xl border border-purple-900/20 hover:border-purple-500/30 transition-colors duration-200">
-              <BrainCircuit className="w-10 h-10 text-purple-500 mb-4" />
-              <h3 className="text-xl font-bold mb-2 text-white">Share Ideas</h3>
-              <p className="text-gray-400">Transform your innovative concepts into tangible solutions with the perfect team</p>
-            </div>
-
-            <div className="bg-zinc-900 p-6 rounded-2xl border border-purple-900/20 hover:border-purple-500/30 transition-colors duration-200">
-              <Mail className="w-10 h-10 text-purple-500 mb-4" />
-              <h3 className="text-xl font-bold mb-2 text-white">Easy Communication</h3>
-              <p className="text-gray-400">Seamless collaboration through direct communication channels</p>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-
-      <Promo />
-      <Footer />
-    </div>
-  );
-};
-
-export default CollaboratorRecruitmentForm;
+                          </CardContent>
+                        </Card>
+                      </motion.div>
+            
+                      <motion.div
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.4 }}
+                        className="space-y-6"
+                      >
+                        <div className="bg-zinc-900 p-6 rounded-2xl border border-purple-900/20 hover:border-purple-500/30 transition-colors duration-200">
+                          <Users className="w-10 h-10 text-purple-500 mb-4" />
+                          <h3 className="text-xl font-bold mb-2 text-white">Find Collaborators</h3>
+                          <p className="text-gray-400">Connect with skilled developers who share your passion and vision for innovation</p>
+                        </div>
+            
+                        <div className="bg-zinc-900 p-6 rounded-2xl border border-purple-900/20 hover:border-purple-500/30 transition-colors duration-200">
+                          <BrainCircuit className="w-10 h-10 text-purple-500 mb-4" />
+                          <h3 className="text-xl font-bold mb-2 text-white">Share Ideas</h3>
+                          <p className="text-gray-400">Transform your innovative concepts into tangible solutions with the perfect team</p>
+                        </div>
+            
+                        <div className="bg-zinc-900 p-6 rounded-2xl border border-purple-900/20 hover:border-purple-500/30 transition-colors duration-200">
+                          <Mail className="w-10 h-10 text-purple-500 mb-4" />
+                          <h3 className="text-xl font-bold mb-2 text-white">Easy Communication</h3>
+                          <p className="text-gray-400">Seamless collaboration through direct communication channels</p>
+                        </div>
+                      </motion.div>
+                    </div>
+                  </div>
+            
+                  <Promo />
+                  <Footer />
+                </div>
+              );
+            };
+            
+            export default CollaboratorRecruitmentForm;
+         
