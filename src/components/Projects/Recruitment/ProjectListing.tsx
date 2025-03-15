@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 import FloatingNavbar from "@/components/Navbar";
 import { motion } from "framer-motion";
 import { Search, Filter, Briefcase, Star, Clock, Users, ChevronRight } from "lucide-react";
+import Footer from "@/components/Footer";
 
 interface Project {
   _id: string;
@@ -126,13 +127,14 @@ const ProjectListing: React.FC = () => {
         <div className="flex flex-col md:flex-row gap-6 mb-12">
           <div className="flex-1 space-y-4">
             <div className="relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} aria-label="Search Icon" />
               <Input
                 type="text"
                 placeholder="Search projects by title, description, or skills..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="pl-12 py-6 bg-[#0c0c0c] border-gray-800 text-white w-full focus:ring-2 focus:ring-purple-500 rounded-xl"
+                aria-label="Search Projects"
               />
             </div>
             <div className="flex gap-4">
@@ -140,20 +142,21 @@ const ProjectListing: React.FC = () => {
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
                 className="bg-[#0c0c0c] border border-gray-800 rounded-lg px-4 py-2 text-gray-300 focus:ring-2 focus:ring-purple-500"
+                aria-label="Sort By"
               >
                 <option value="newest">Newest First</option>
                 <option value="popular">Most Popular</option>
                 <option value="difficulty">Difficulty</option>
               </select>
-              <Button variant="outline" className="border-gray-800 text-gray-300">
-                <Filter className="mr-2" size={18} />
+              <Button variant="outline" className="border-gray-800 text-gray-700">
+                <Filter className="mr-2" size={18} aria-label="Filter Icon" />
                 Filters
               </Button>
             </div>
           </div>
           <Link to="/projects/collaborator/submit">
             <Button variant="secondary" className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-6 rounded-xl">
-              <Briefcase className="mr-2" size={20} />
+              <Briefcase className="mr-2" size={20} aria-label="Briefcase Icon" />
               Post Your Project
             </Button>
           </Link>
@@ -173,54 +176,56 @@ const ProjectListing: React.FC = () => {
                 transition={{ duration: 0.3 }}
                 className="h-full"
               >
-                <Card className="bg-[#0c0c0c] border border-gray-800 rounded-xl shadow-lg hover:shadow-purple-900/20 hover:border-purple-500/50 hover:scale-[1.02] transition-all duration-300 h-full flex flex-col">
-                  <CardHeader>
-                    <div className="flex justify-between items-start mb-4">
-                      <CardTitle className="text-2xl font-bold text-white">
-                        {project.title}
-                      </CardTitle>
-                      <div className="flex items-center gap-2">
-                        <Star className="text-yellow-500" size={16} />
-                        <span className="text-gray-400 text-sm">Featured</span>
+                <Link to={`/projects/collaborator/${project._id}`} onClick={() => handleApply(project)}>
+                  <Card className="bg-[#0c0c0c] border border-gray-800 rounded-xl shadow-lg hover:shadow-purple-900/20 hover:border-purple-500/50 hover:scale-[1.02] transition-all duration-300 h-full flex flex-col">
+                    <CardHeader>
+                      <div className="flex justify-between items-start mb-4">
+                        <CardTitle className="text-2xl font-bold text-white">
+                          {project.title}
+                        </CardTitle>
+                        <div className="flex items-center gap-2">
+                          <Star className="text-yellow-500" size={16} aria-label="Star Icon" />
+                          <span className="text-gray-400 text-sm">Featured</span>
+                        </div>
                       </div>
-                    </div>
-                    <div className="flex gap-4 text-sm text-gray-400">
-                      <div className="flex items-center">
-                        <Clock size={14} className="mr-1" />
-                        <span>{project.createdAt ? getTimeAgo(project.createdAt) : 'Recently'}</span>
+                      <div className="flex gap-4 text-sm text-gray-400">
+                        <div className="flex items-center">
+                          <Clock size={14} className="mr-1" aria-label="Clock Icon" />
+                          <span>{project.createdAt ? getTimeAgo(project.createdAt) : 'Recently'}</span>
+                        </div>
+                        <div className="flex items-center">
+                          <Users size={14} className="mr-1" aria-label="Users Icon" />
+                          <span>2-4 people</span>
+                        </div>
                       </div>
-                      <div className="flex items-center">
-                        <Users size={14} className="mr-1" />
-                        <span>2-4 people</span>
+                    </CardHeader>
+                    <CardContent className="flex-grow flex flex-col">
+                      <p className="text-gray-300 mb-6 line-clamp-3 flex-grow">{project.description}</p>
+                      <div className="space-y-4">
+                        <div className="flex flex-wrap gap-2">
+                          {project.requiredSkills.map((skill, index) => (
+                            <span
+                              key={index}
+                              className="px-3 py-1 bg-purple-900/30 text-purple-300 rounded-full text-sm font-medium"
+                            >
+                              {skill}
+                            </span>
+                          ))}
+                        </div>
+                        <Button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handleApply(project);
+                          }}
+                          className="w-full bg-purple-600 hover:bg-purple-700 text-white transition-colors rounded-lg py-6 flex items-center justify-center"
+                        >
+                          Apply to Collaborate
+                          <ChevronRight size={18} className="ml-2" aria-label="Chevron Right Icon" />
+                        </Button>
                       </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="flex-grow flex flex-col">
-                    <p className="text-gray-300 mb-6 line-clamp-3 flex-grow">{project.description}</p>
-                    <div className="space-y-4">
-                      <div className="flex flex-wrap gap-2">
-                        {project.requiredSkills.map((skill, index) => (
-                          <span
-                            key={index}
-                            className="px-3 py-1 bg-purple-900/30 text-purple-300 rounded-full text-sm font-medium"
-                          >
-                            {skill}
-                          </span>
-                        ))}
-                      </div>
-                      <Button
-                        onClick={(e) => {
-                          e.preventDefault();
-                          handleApply(project);
-                        }}
-                        className="w-full bg-purple-600 hover:bg-purple-700 text-white transition-colors rounded-lg py-6 flex items-center justify-center"
-                      >
-                        Apply to Collaborate
-                        <ChevronRight size={18} className="ml-2" />
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
+                    </CardContent>
+                  </Card>
+                </Link>
               </motion.div>
             ))}
           </div>
@@ -253,6 +258,7 @@ const ProjectListing: React.FC = () => {
                       value={githubLink}
                       onChange={(e) => setGithubLink(e.target.value)}
                       className="bg-black border-gray-800 text-white focus:ring-2 focus:ring-purple-500 py-6"
+                      aria-label="GitHub Profile"
                     />
                   </div>
                   <div className="space-y-2">
@@ -263,6 +269,7 @@ const ProjectListing: React.FC = () => {
                       value={skills}
                       onChange={(e) => setSkills(e.target.value)}
                       className="bg-black border-gray-800 text-white focus:ring-2 focus:ring-purple-500 py-6"
+                      aria-label="Your Skills"
                     />
                   </div>
                   <div className="space-y-2">
@@ -272,6 +279,7 @@ const ProjectListing: React.FC = () => {
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       className="bg-black border-gray-800 text-white min-h-[160px] focus:ring-2 focus:ring-purple-500"
+                      aria-label="Cover Message"
                     />
                   </div>
                   <div className="flex justify-end gap-4 mt-8">
@@ -295,6 +303,7 @@ const ProjectListing: React.FC = () => {
           </motion.div>
         )}
       </div>
+      <Footer/>
     </div>
   );
 };

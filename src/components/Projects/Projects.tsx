@@ -239,10 +239,11 @@ const Projects = () => {
                 </Button>
               </Link>
               <Link to="/projects/collaborator">
-                <Button variant="outline" className="bg-transparent border-2 border-white text-white hover:bg-white/10 px-10 py-6 text-lg w-full sm:w-auto shadow-lg transition-all duration-300">
+                <Button variant="default" className="bg-transparent border-2 border-white text-white hover:bg-white/10 px-10 py-6 text-lg w-full sm:w-auto shadow-lg transition-all duration-300">
                   Looking for Collaborators?
                 </Button>
               </Link>
+             
             </div>
           </div>
         </motion.div>
