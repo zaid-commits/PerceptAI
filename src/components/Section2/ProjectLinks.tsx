@@ -6,7 +6,7 @@ const ProjectLinks = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await fetch('https://ts-backend-6swe.onrender.com/'); // Adjust as needed
+        const response = await fetch('http://localhost:5000/'); // Adjust as needed
         const data = await response.json();
         setProjects(data.projects);
       } catch (error) {

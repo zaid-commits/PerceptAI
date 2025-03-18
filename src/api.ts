@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://ts-backend-6swe.onrender.com/api/projects"; // Backend URL
+const API_URL = "http://localhost:5000/api/projects"; // Backend URL
 
 export const fetchProjects = async () => {
   const res = await axios.get(API_URL);

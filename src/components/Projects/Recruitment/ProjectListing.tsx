@@ -213,11 +213,12 @@ const ProjectListing: React.FC = () => {
                           ))}
                         </div>
                         <Button
+                          variant="outline"
                           onClick={(e) => {
-                            e.preventDefault();
-                            handleApply(project);
+                          e.preventDefault();
+                          handleApply(project);
                           }}
-                          className="w-full bg-purple-600 hover:bg-purple-700 text-white transition-colors rounded-lg py-6 flex items-center justify-center"
+                          className="w-full bg-white text-black transition-colors rounded-lg py-4 flex items-center justify-center hover:bg-gray-200"
                         >
                           Apply to Collaborate
                           <ChevronRight size={18} className="ml-2" aria-label="Chevron Right Icon" />

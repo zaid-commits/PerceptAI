@@ -28,7 +28,7 @@ const ResourceDetail: React.FC = () => {
   useEffect(() => {
     const fetchResource = async () => {
       try {
-        const response = await fetch(`https://ts-backend-6swe.onrender.com/api/resources/${id}`);
+        const response = await fetch(`http://localhost:5000/api/resources/${id}`);
         const data = await response.json();
         setResource(data);
       } catch (error) {

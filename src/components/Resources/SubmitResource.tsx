@@ -41,7 +41,7 @@ const SubmitResource: React.FC = () => {
     };
 
     try {
-      const response = await fetch("https://ts-backend-6swe.onrender.com/api/resources", {
+      const response = await fetch("http://localhost:5000/api/resources", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(resource),

@@ -64,7 +64,7 @@ const CollaboratorRecruitmentForm: React.FC = () => {
     };
 
     try {
-      const response = await fetch("https://ts-backend-6swe.onrender.com/api/collaborator", {
+      const response = await fetch("http://localhost:5000/api/collaborator", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
