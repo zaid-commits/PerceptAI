@@ -532,7 +532,7 @@ const Home = () => {
 
         {/* Video Thumbnail */}
         <img 
-          src="https://perceptai.impic.tech/src/assets/logos/corelogo.png" 
+          src="./logo.jpg" 
           alt="PerceptAI Introduction Video"
           className="w-full h-full object-cover transition-all duration-300 hover:scale-105"
         />
