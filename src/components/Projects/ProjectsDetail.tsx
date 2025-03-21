@@ -9,12 +9,13 @@ import { Badge } from "@/components/ui/badge";
 import { fetchProjectById } from "@/api";
 import ModernPurpleLoader from "../elements/Loader";
 import { 
-  Calendar, Users, Github, Globe, ChevronLeft, Star,
+  Calendar, Users, Globe, ChevronLeft, Star,
    Share2, BookOpen,  Eye,
   ArrowUpRight,  Heart, Bookmark,
   FileCode2, Terminal, GitBranch, Coffee
 } from "lucide-react";
 import { toast } from "react-hot-toast";
+import { SiGithub } from "react-icons/si";
 
 interface Project {
   _id: string;
@@ -26,7 +27,7 @@ interface Project {
   category: string;
   createdAt: string;
   githubUrl?: string;
-  liveUrl?: string;
+  demoUrl?: string;
   demoVideo?: string;
   techStack?: string[];
   features?: string[];
@@ -43,6 +44,7 @@ interface Project {
   stars?: number;
   forks?: number;
   sponsors?: number;
+  codeLink?: string; // Added codeLink field
 }
 
 const defaultProject: Project = {
@@ -56,7 +58,8 @@ const defaultProject: Project = {
   createdAt: new Date().toISOString(),
   techStack: [],
   features: [],
-  postedBy: "Anonymous"
+  postedBy: "Anonymous",
+  codeLink: "" // Added default value for codeLink
 };
 
 const ProjectDetail = () => {
@@ -96,7 +99,7 @@ const ProjectDetail = () => {
       {/* Back Button */}
       <div className="container mx-auto px-4 pt-24">
         <Link to="/projects">
-          <Button variant="ghost" className="text-white/70 hover:text-white mb-6">
+          <Button variant="ghost" className="text-black bg-white hover:text-black/70 mb-6">
             <ChevronLeft className="w-4 h-4 mr-2" />
             Back to Projects
           </Button>
@@ -296,17 +299,28 @@ const ProjectDetail = () => {
                     className="w-full bg-transparent border-white/20 text-white hover:bg-white/10"
                     onClick={() => window.open(project.githubUrl, '_blank')}
                   >
-                    <Github className="w-4 h-4 mr-2" />
+                    <SiGithub className="w-4 h-4 mr-2" />
                     View Source Code
                   </Button>
                 )}
-                {project.liveUrl && (
+                {project.demoUrl && (
                   <Button
-                    className="w-full bg-white text-black hover:bg-white/90"
-                    onClick={() => window.open(project.liveUrl, '_blank')}
+                    variant="outline"
+                    className="w-full"
+                    onClick={() => window.open(project.demoUrl, '_blank')}
                   >
                     <Globe className="w-4 h-4 mr-2" />
                     View Live Demo
+                  </Button>
+                )}
+                {project.codeLink && (
+                  <Button
+                    variant="outline"
+                    className="w-full bg-transparent border-white/20 text-white hover:bg-white/10 hover:text-white"
+                    onClick={() => window.open(project.codeLink, '_blank')}
+                  >
+                    <FileCode2 className="w-4 h-4 mr-2" />
+                    View Code
                   </Button>
                 )}
               </div>
@@ -341,7 +355,6 @@ const ProjectDetail = () => {
               </div>
             </div>
 
-            {/* Share Project */}
             <div className="bg-white/5 rounded-xl p-6">
               <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
                 <Share2 className="w-4 h-4" />
@@ -349,7 +362,7 @@ const ProjectDetail = () => {
               </h3>
               <Button
                 variant="outline"
-                className="w-full bg-transparent border-white/20 text-white hover:bg-white/10"
+                className="w-full bg-transparent border-white/20 text-white hover:bg-white"
                 onClick={() => {
                   navigator.clipboard.writeText(window.location.href);
                   toast.success("Link copied to clipboard!");
